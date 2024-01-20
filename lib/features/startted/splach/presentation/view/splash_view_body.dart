@@ -61,7 +61,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         children: [
           ScaleTransition(
             scale: _scaleAnimation,
-            child: Image.asset('lib/core/utils/appImages/images/splahImage.png'),
+            child: Image.asset('lib/core/utils/appImages/images/splashImage.png'),
           ),
           const SizedBox(height: 10),
           FadeTransition(
