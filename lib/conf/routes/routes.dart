@@ -1,4 +1,6 @@
+import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
 import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
+import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -23,13 +25,63 @@ class Routes {
 }
 
 class AppRoutes {
-  ongenrate(RouteSettings routeSettings) {
+  static MaterialPageRoute generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.splash:
-        MaterialPageRoute(
-          builder: (context) => onBoarding(),
+        return MaterialPageRoute(builder: (_) => const SplashView());
+
+      case Routes.onBoarding1:
+        return MaterialPageRoute(builder: (_) => const onBoarding());
+
+      case Routes.onBoarding2:
+        return MaterialPageRoute(builder: (_) => const onBoarding());
+
+      case Routes.onBoarding3:
+        return MaterialPageRoute(builder: (_) => const onBoarding());
+
+      case Routes.signIn:
+        return MaterialPageRoute(builder: (_) => const SignInScreen());
+
+      // case Routes.signUp:
+      //   return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      //
+      // case Routes.wrongPassword:
+      //   return MaterialPageRoute(builder: (_) => const WrongPasswordScreen());
+      //
+      // case Routes.forgotPassword:
+      //   return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+      //
+      // case Routes.verify:
+      //   return MaterialPageRoute(builder: (_) => const VerfiyScreen());
+      //
+      // case Routes.newPassword:
+      //   return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
+      //
+      // case Routes.camera:
+      //   return MaterialPageRoute(builder: (_) => const CameraScreen());
+      //
+      // case Routes.home:
+      //   return MaterialPageRoute(builder: (_) => const HomeScreen());
+      //
+      // case Routes.Reshotting:
+      //   return MaterialPageRoute(builder: (_) => const ReshottingScreen());
+      //
+      // case Routes.upLoad:
+      //   return MaterialPageRoute(builder: (_) => const UploadScreen());
+      // case Routes.eyelid:
+      //   return MaterialPageRoute(builder: (_) => const EyelidScreen());
+      //
+      // case Routes.result:
+      //   return MaterialPageRoute(builder: (_) => const ResultScreen());
+      // case Routes.profile:
+      //   return MaterialPageRoute(builder: (_) => const ProfileScreen());
+
+      default:
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+            body: Center(child: Text("No Found Route")),
+          ),
         );
-        break;
     }
   }
 }
