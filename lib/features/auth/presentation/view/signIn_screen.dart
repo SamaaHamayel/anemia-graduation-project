@@ -49,6 +49,7 @@ class SignInScreen extends StatelessWidget {
                     child: Text(AppStrings.email,style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: AppColors.primaryColor,
                       fontSize: 13,
+                      fontFamily: "Kodchasan",
                       fontWeight: FontWeight.w600
                     ),),
                   ),
@@ -58,7 +59,8 @@ class SignInScreen extends StatelessWidget {
                   CustomTextFormField(
                     controller:
                         BlocProvider.of<SignInCubit>(context).emailController,
-                    hint: AppStrings.email,
+                    hint: AppStrings.emailHint,
+                    prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
                     validate: (data) {
                       if (data!.isEmpty || !data.contains('@gmail.com')) {
@@ -68,13 +70,24 @@ class SignInScreen extends StatelessWidget {
                     },
                   ),
 
-                  SizedBox(height: 32.h,),
+                  SizedBox(height: 24.h,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Text(AppStrings.password,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: AppColors.primaryColor,
+                        fontSize: 13,
+                        fontFamily: "Kodchasan",
+                        fontWeight: FontWeight.w600
+                    ),),
+                  ),
+                  SizedBox(height: 16.h,),
 
                   //!! password
                   CustomTextFormField(
                     controller: BlocProvider.of<SignInCubit>(context)
                         .passwordController,
                     hint: AppStrings.password,
+                    prefixIcon: Icons.lock_outlined,
                     isPassword: BlocProvider.of<SignInCubit>(context)
                         .isLoginPasswordShowing,
                     icon:
@@ -90,6 +103,78 @@ class SignInScreen extends StatelessWidget {
                       }
                       return null;
                     },
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16,top: 4,right: 16),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Text(AppStrings.forgetPassword,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: AppColors.primaryColor,
+                          fontSize: 13,
+                          fontFamily: "Kodchasan",
+                          fontWeight: FontWeight.w600
+                      ),),
+                    ),
+                  ),
+                  SizedBox(height: 58.h,),
+
+                  // Ink(
+                  //   padding: EdgeInsets.zero,
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(20),
+                  //     gradient: LinearGradient(
+                  //       begin: Alignment(.05, -1),
+                  //       end: Alignment(-.05, 1),
+                  //       stops: [.5, .5],
+                  //       colors: <Color>[
+                  //         Color(0xFF2BB598),
+                  //         Color(0xFF398272),
+                  //       ],
+                  //     ),
+                  //   ),
+                  //   child: ElevatedButton(onPressed: (){},
+                  //     child: Text(AppStrings.signIn,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  //         color: AppColors.whiteColor,
+                  //         fontSize: 20,
+                  //         fontFamily: "Kodchasan",
+                  //         fontWeight: FontWeight.w700
+                  //     ),),
+                  //     style: ElevatedButton.styleFrom(
+                  //        shadowColor: Color(0xFF398272),
+                  //        backgroundColor: Color(0xFF2BB598),
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(20),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+
+
+
+
+
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 343.w,
+                      height: 56.h,
+                      child: ElevatedButton(onPressed: (){},
+                          child: Text(AppStrings.signIn,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: AppColors.whiteColor,
+                              fontSize: 20,
+                              fontFamily: "Kodchasan",
+                              fontWeight: FontWeight.w700
+                          ),),
+                        style: ElevatedButton.styleFrom(
+                          shadowColor: Color(0xFF398272),
+                          backgroundColor: Color(0xFF2BB598),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                      ),
+                      ),
+                    ),
                   ),
                 ],
               ),
