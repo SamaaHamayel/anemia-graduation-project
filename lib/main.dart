@@ -7,18 +7,20 @@ import 'core/services/service_locator.dart';
 import 'my_app.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  initServiceLoactor();
-  await sl<CacheHelper>().init();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // initServiceLoactor();
+  // await sl<CacheHelper>().init();
 
-  runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => sl<SignInCubit>(),
-        )
-      ],
-      child: const MyApp(),
-    ),
-  );
+  // runApp(
+  //   MultiBlocProvider(
+  //     providers: [
+  //       BlocProvider(
+  //         create: (context) => sl<SignInCubit>(),
+  //       )
+  //     ],
+  //     child: const MyApp(),
+  //   ),
+  // );
+
+  runApp(const MyApp());
 }

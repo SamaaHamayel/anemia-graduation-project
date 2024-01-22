@@ -23,21 +23,21 @@ class SignInScreen extends StatelessWidget {
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w700)),
       ),
-      // body: SingleChildScrollView(
-      //   child: BlocConsumer<SignInCubit, SignInState>(
-      //     listener: (context, state) {
-      //       if (state is SignInSuccessState) {
-      //         showToast(
-      //             message: AppStrings.loginSuccessfully,
-      //             state: ToastStates.success);
-      //         navigateReplacement(context: context, route: Routes.home);
-      //       }
-      //       if (state is SignInErrorState) {
-      //         showToast(message: state.message, state: ToastStates.error);
-      //       }
-      //     },
-      //     builder: (context, state) {
-      //       return Form(
+      // body: BlocConsumer<SignInCubit, SignInState>(
+      //   listener: (context, state) {
+      //     if (state is SignInSuccessState) {
+      //       showToast(
+      //           message: AppStrings.loginSuccessfully,
+      //           state: ToastStates.success);
+      //       navigateReplacement(context: context, route: Routes.home);
+      //     }
+      //     if (state is SignInErrorState) {
+      //       showToast(message: state.message, state: ToastStates.error);
+      //     }
+      //   },
+      //   builder: (context, state) {
+      //     return SingleChildScrollView(
+      //       child: Form(
       //         key: BlocProvider.of<SignInCubit>(context).signInKey,
       //         child: Column(
       //           children: [
@@ -45,12 +45,12 @@ class SignInScreen extends StatelessWidget {
       //               controller:
       //                   BlocProvider.of<SignInCubit>(context).emailController,
       //               hint: AppStrings.email,
-      //               // validate: (data) {
-      //               //   if (data!.isEmpty || !data.contains('@gmail.com')) {
-      //               //     return AppStrings.enterValidEmail;
-      //               //   }
-      //               //   return null;
-      //               // },
+      //               validate: (data) {
+      //                 if (data!.isEmpty || !data.contains('@gmail.com')) {
+      //                   return AppStrings.enterValidEmail;
+      //                 }
+      //                 return null;
+      //               },
       //             ),
       //
       //             SizedBox(height: 32.h,),
@@ -77,11 +77,29 @@ class SignInScreen extends StatelessWidget {
       //             ),
       //           ],
       //         ),
-      //       );
-      //     },
-      //   ),
+      //       ),
+      //     );
+      //   },
       // ),
-
+      
+      body: Form(
+        child: Column(
+          children: [
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              controller: TextEditingController(),
+              //cursorColor: AppColors.primary,
+              //validator: validate,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
+                hintText: AppStrings.emailHint,
+                labelText: AppStrings.email,
+                suffixIcon: Icon(Icons.email_outlined)
+              ),
+            )
+          ],
+        ),
+      ),
 
     );
   }

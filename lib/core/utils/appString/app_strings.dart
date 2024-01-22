@@ -18,11 +18,13 @@ class AppStrings {
   static const String signIn = "Sign in";
   static const String email = "Email";
   static const String emailHint = "Enter your Email";
+  static const String enterValidEmail = "Enter Valid Email";
   static const String password = "Password";
   static const String passwordHint = "Enter your Password";
   static const String forgetPassword = "Forget password ?";
   static const String or = "OR";
   static const String dontHaveAccount = "Don’t have an account? ";
+  static const String loginSuccessfully = "Login Successfully ";
   static const String signUp = "Sign up";
   static const String name = "Name";
   static const String nameHint = "Enter your Name";
@@ -30,6 +32,7 @@ class AppStrings {
   static const String confirmPasswordHint = "Enter your Confirm Password";
   static const String alreadyHaveAnAccount = "Already have an account? ";
   static const String wrongPassword = "Wrong Password";
+  static const String enterValidPassword = "Enter Valid Password";
   static const String forgetPasswordTitle =
       "Enter your email Address or phone number to recieve a verification card";
   static const String send = "Send";
