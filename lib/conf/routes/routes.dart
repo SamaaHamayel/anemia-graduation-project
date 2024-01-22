@@ -30,7 +30,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashView());
 
       case Routes.onBoarding:
-        return MaterialPageRoute(builder: (_) =>  onBoarding());
+        return MaterialPageRoute(builder: (_) =>  OnBoarding());
 
       
 

@@ -110,7 +110,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) =>  onBoarding(),
+            builder: (context) =>  OnBoarding(),
           ),
         );
       },

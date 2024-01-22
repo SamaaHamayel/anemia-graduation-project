@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class OnboardingModel {
+class OnBoardingModel {
   final String title;
   final String subtitle;
   final String image;
@@ -8,7 +8,7 @@ class OnboardingModel {
   final Color bgColor;
   final double height;
 
-  OnboardingModel({
+  OnBoardingModel({
     required this.title,
     required this.subtitle,
     required this.image,

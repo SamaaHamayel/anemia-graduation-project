@@ -1,6 +1,4 @@
-
-import 'dart:ui';
-
+import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -13,13 +11,13 @@ class OnBoardingPage extends StatelessWidget {
     required this.model,
   }) : super(key: key);
 
-  final OnboardingModel model;
+  final OnBoardingModel model;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
-      color:  Color(0xFF81B7AC),
+      padding: const EdgeInsets.all(20),
+      color:  AppColors.primaryColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         // mainAxisSize: MainAxisSize.max,
@@ -28,12 +26,12 @@ class OnBoardingPage extends StatelessWidget {
             model.image,
             height: model.height * 0.5,
           ),
-          Column(
+          const Column(
             children: [
               Text(
                 AppStrings.onBoardingTitle0,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.blackColor,
                   fontSize: 20,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w700,
@@ -44,7 +42,7 @@ class OnBoardingPage extends StatelessWidget {
                 AppStrings.onBoardingSubTitle0,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFF535354),
+                  color: AppColors.lightBlackColor,
                   fontSize: 16,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w400,
@@ -53,18 +51,18 @@ class OnBoardingPage extends StatelessWidget {
               ),
             ],
           ),
-          Text(
+          const Text(
             AppStrings.onBoardingcounter0,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Color(0xFF535354),
+              color: AppColors.lightBlackColor,
               fontSize: 16,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w400,
               height: 0.10,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 80.0,
           )
         ],
