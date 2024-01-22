@@ -1,13 +1,17 @@
 class AppStrings {
   static const String anadoc = "Anadoc";
-  static const String onBoardingTitleOne = "Stay healthy";
-  static const String onBoardingSubTitleOne =
+  static const String onBoardingTitle0 = "Stay healthy";
+  static const String onBoardingcounter0 = "1 / 3";
+   static const String onBoardingcounter1 = "2 / 3";
+  static const String onBoardingcounter2 = "3 / 3";
+
+  static const String onBoardingSubTitle0 =
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-  static const String onBoardingTitleTwo = "No need for hospital";
-  static const String onBoardingSubTitleTwo =
+  static const String onBoardingTitle1 = "No need for hospital";
+  static const String onBoardingSubTitle1 =
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-  static const String onBoardingTitleThree = "Follow up constantly";
-  static const String onBoardingSubTitleThree =
+  static const String onBoardingTitle2 = "Follow up constantly";
+  static const String onBoardingSubTitle2 =
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
   static const String skip = "Skip";
   static const String next = "Next";

@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 
 class Routes {
   static const String splash = "/";
-  static const String onBoarding1 = "onBoarding1";
-  static const String onBoarding2 = "onBoarding2";
-  static const String onBoarding3 = "onBoarding3";
+  static const String onBoarding = "onBoarding";
+ 
   static const String login = "login";
   static const String signUp = "signUp";
   static const String signIn = "signIn";
@@ -30,14 +29,10 @@ class AppRoutes {
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashView());
 
-      case Routes.onBoarding1:
-        return MaterialPageRoute(builder: (_) => const onBoarding());
+      case Routes.onBoarding:
+        return MaterialPageRoute(builder: (_) =>  onBoarding());
 
-      case Routes.onBoarding2:
-        return MaterialPageRoute(builder: (_) => const onBoarding());
-
-      case Routes.onBoarding3:
-        return MaterialPageRoute(builder: (_) => const onBoarding());
+      
 
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
