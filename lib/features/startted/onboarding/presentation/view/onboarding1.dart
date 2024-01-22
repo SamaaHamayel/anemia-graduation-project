@@ -22,6 +22,8 @@ class _onBoardingState extends State<onBoarding> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    
     final page = [
       OnBoardingPage(
         model: OnboardingModel(
