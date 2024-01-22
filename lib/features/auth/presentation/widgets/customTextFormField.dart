@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/appColors/app_colors.dart';
+
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -27,10 +29,21 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       keyboardType: keyboardType,
       controller: controller,
-      //cursorColor: AppColors.primary,
+      cursorColor: AppColors.primaryColor,
       validator: validate,
       obscureText: isPassword,
       decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+              color: AppColors.primaryColor
+          ),
+          borderRadius: BorderRadius.circular(8)
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.primaryColor
+          )
+        ),
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
         hintText: hint,
         labelText: label,

@@ -1,6 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
-import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,9 +8,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:  SplashView(),
+    return const ScreenUtilInit(
+      designSize: Size(375, 812),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home:  SignInScreen(),
+      ),
     );
   }
 }
