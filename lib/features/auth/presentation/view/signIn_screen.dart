@@ -4,17 +4,20 @@ import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_state.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/commens.dart';
 import '../widgets/customTextFormField.dart';
+import '../widgets/custom_elevated_button.dart';
+import '../widgets/custom_social_media.dart';
+import '../widgets/divider.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -44,6 +47,7 @@ class SignInScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 50.h,),
+                  //___email____
                   Padding(
                     padding: const EdgeInsets.only(left: 16),
                     child: Text(AppStrings.email,style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -54,8 +58,6 @@ class SignInScreen extends StatelessWidget {
                     ),),
                   ),
                   SizedBox(height: 16.h,),
-
-                  //!! email
                   CustomTextFormField(
                     controller:
                         BlocProvider.of<SignInCubit>(context).emailController,
@@ -69,8 +71,9 @@ class SignInScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-
                   SizedBox(height: 24.h,),
+
+                  //___password____
                   Padding(
                     padding: const EdgeInsets.only(left: 16),
                     child: Text(AppStrings.password,style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -81,8 +84,6 @@ class SignInScreen extends StatelessWidget {
                     ),),
                   ),
                   SizedBox(height: 16.h,),
-
-                  //!! password
                   CustomTextFormField(
                     controller: BlocProvider.of<SignInCubit>(context)
                         .passwordController,
@@ -104,80 +105,73 @@ class SignInScreen extends StatelessWidget {
                       return null;
                     },
                   ),
+                  SizedBox(height: 4.h,),
 
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16,top: 4,right: 16),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: Text(AppStrings.forgetPassword,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  //____text forgetPassword_____
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextButton(
+                      onPressed: () {
+                        navigateReplacement(
+                            context: context, route: Routes.forgotPassword);
+                      },
+                      child: Text(
+                      AppStrings.forgetPassword,style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: AppColors.primaryColor,
                           fontSize: 13,
                           fontFamily: "Kodchasan",
                           fontWeight: FontWeight.w600
-                      ),),
+
+                      ),
+                      ),
                     ),
                   ),
                   SizedBox(height: 58.h,),
 
-                  // Ink(
-                  //   padding: EdgeInsets.zero,
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(20),
-                  //     gradient: LinearGradient(
-                  //       begin: Alignment(.05, -1),
-                  //       end: Alignment(-.05, 1),
-                  //       stops: [.5, .5],
-                  //       colors: <Color>[
-                  //         Color(0xFF2BB598),
-                  //         Color(0xFF398272),
-                  //       ],
-                  //     ),
-                  //   ),
-                  //   child: ElevatedButton(onPressed: (){},
-                  //     child: Text(AppStrings.signIn,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  //         color: AppColors.whiteColor,
-                  //         fontSize: 20,
-                  //         fontFamily: "Kodchasan",
-                  //         fontWeight: FontWeight.w700
-                  //     ),),
-                  //     style: ElevatedButton.styleFrom(
-                  //        shadowColor: Color(0xFF398272),
-                  //        backgroundColor: Color(0xFF2BB598),
-                  //       shape: RoundedRectangleBorder(
-                  //         borderRadius: BorderRadius.circular(20),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
 
+                  //____Button_____
+                  state is SignInLoadingState
+                      ? const CircularProgressIndicator()
+                      :const CustomElevatedButton(),
+                SizedBox(height: 40.h,),
 
+                //____divider____
+                   DividerWidget(),
+                  SizedBox(height: 32.h,),
 
+                  //____other way to sign in_____
+                  const CustomSocialMedia(),
+                  SizedBox(height: 32.h,),
 
+                  //____Text____
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(AppStrings.dontHaveAccount,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: AppColors.blackColor,
+                          fontSize: 16,
+                          fontFamily: "Kodchasan",
+                          fontWeight: FontWeight.w600
+                      ),),
 
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 343.w,
-                      height: 56.h,
-                      child: ElevatedButton(onPressed: (){},
-                          child: Text(AppStrings.signIn,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: AppColors.whiteColor,
-                              fontSize: 20,
-                              fontFamily: "Kodchasan",
-                              fontWeight: FontWeight.w700
-                          ),),
-                        style: ElevatedButton.styleFrom(
-                          shadowColor: Color(0xFF398272),
-                          backgroundColor: Color(0xFF2BB598),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                      InkWell(
+                        onTap: () {},
+                        child: Text(AppStrings.signUp,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: AppColors.primaryColor,
+                            fontSize: 16,
+                            fontFamily: "Kodchasan",
+                            fontWeight: FontWeight.w600
+                        ),),
                       ),
-                      ),
-                    ),
-                  ),
+                    ],
+                  )
+
+                  
+                  
+
                 ],
               ),
+
             ),
           );
         },
@@ -187,3 +181,6 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
+
+
+

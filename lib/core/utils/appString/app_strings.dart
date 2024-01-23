@@ -17,6 +17,7 @@ class AppStrings {
   static const String next = "Next";
   static const String signIn = "Sign in";
   static const String email = "Email";
+  static const String phone = "Phone";
   static const String emailHint = "Enter your Email";
   static const String enterValidEmail = "Enter Valid Email";
   static const String password = "Password";
@@ -33,6 +34,7 @@ class AppStrings {
   static const String alreadyHaveAnAccount = "Already have an account? ";
   static const String wrongPassword = "Wrong Password";
   static const String enterValidPassword = "Enter Valid Password";
+  static const String enterYourPhone = "Enter your Phone";
   static const String forgetPasswordTitle =
       "Enter your email Address or phone number to recieve a verification card";
   static const String send = "Send";

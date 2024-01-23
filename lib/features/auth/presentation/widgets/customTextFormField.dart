@@ -15,10 +15,11 @@ class CustomTextFormField extends StatelessWidget {
     this.icon,
     this.suffixIconOnPressed,
     this.keyboardType, 
-    this.prefixIcon,
+    this.prefixIcon, this.errorText,
   });
   final TextEditingController controller;
   final String? hint;
+  final String? errorText;
   final String? label;
   final IconData? prefixIcon;
   final TextInputType? keyboardType;
@@ -31,6 +32,9 @@ class CustomTextFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8,right: 8),
       child: TextFormField(
+        style: const TextStyle(
+          color: AppColors.primaryColor
+        ),
         keyboardType: keyboardType,
         controller: controller,
         cursorColor: AppColors.primaryColor,
@@ -55,8 +59,14 @@ class CustomTextFormField extends StatelessWidget {
             )
           ),
           contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
+          errorText: errorText,
+          errorStyle: const TextStyle(
+            color: AppColors.redColor,
+            fontSize: 13,
+            fontWeight: FontWeight.w600
+          ),
           hintText: hint,
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             color: AppColors.hintTextColor
           ),
           labelText: label,
