@@ -17,13 +17,13 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(AppStrings.signIn,
             style: Theme.of(context).textTheme.displayMedium!.copyWith(
                 fontSize: 24,
+                color: AppColors.primaryColor,
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w700)),
       ),
@@ -46,18 +46,24 @@ class SignInScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 50.h,),
+                  SizedBox(
+                    height: 50.h,
+                  ),
                   //___email____
                   Padding(
                     padding: const EdgeInsets.only(left: 16),
-                    child: Text(AppStrings.email,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: AppColors.primaryColor,
-                      fontSize: 13,
-                      fontFamily: "Kodchasan",
-                      fontWeight: FontWeight.w600
-                    ),),
+                    child: Text(
+                      AppStrings.email,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: AppColors.primaryColor,
+                          fontSize: 13,
+                          fontFamily: "Kodchasan",
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
-                  SizedBox(height: 16.h,),
+                  SizedBox(
+                    height: 16.h,
+                  ),
                   CustomTextFormField(
                     controller:
                         BlocProvider.of<SignInCubit>(context).emailController,
@@ -71,19 +77,25 @@ class SignInScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  SizedBox(height: 24.h,),
+                  SizedBox(
+                    height: 24.h,
+                  ),
 
                   //___password____
                   Padding(
                     padding: const EdgeInsets.only(left: 16),
-                    child: Text(AppStrings.password,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: AppColors.primaryColor,
-                        fontSize: 13,
-                        fontFamily: "Kodchasan",
-                        fontWeight: FontWeight.w600
-                    ),),
+                    child: Text(
+                      AppStrings.password,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: AppColors.primaryColor,
+                          fontSize: 13,
+                          fontFamily: "Kodchasan",
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
-                  SizedBox(height: 16.h,),
+                  SizedBox(
+                    height: 16.h,
+                  ),
                   CustomTextFormField(
                     controller: BlocProvider.of<SignInCubit>(context)
                         .passwordController,
@@ -91,21 +103,21 @@ class SignInScreen extends StatelessWidget {
                     prefixIcon: Icons.lock_outlined,
                     isPassword: BlocProvider.of<SignInCubit>(context)
                         .isLoginPasswordShowing,
-                    icon:
-                    BlocProvider.of<SignInCubit>(context).suffixIcon,
+                    icon: BlocProvider.of<SignInCubit>(context).suffixIcon,
                     suffixIconOnPressed: () {
                       BlocProvider.of<SignInCubit>(context)
                           .changeLoginPasswordSuffixIcon();
                     },
                     validate: (data) {
                       if (data!.length < 6 || data.isEmpty) {
-                        return AppStrings.enterValidPassword
-                            ;
+                        return AppStrings.enterValidPassword;
                       }
                       return null;
                     },
                   ),
-                  SizedBox(height: 4.h,),
+                  SizedBox(
+                    height: 4.h,
+                  ),
 
                   //____text forgetPassword_____
                   Align(
@@ -116,71 +128,75 @@ class SignInScreen extends StatelessWidget {
                             context: context, route: Routes.forgotPassword);
                       },
                       child: Text(
-                      AppStrings.forgetPassword,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColors.primaryColor,
-                          fontSize: 13,
-                          fontFamily: "Kodchasan",
-                          fontWeight: FontWeight.w600
-
-                      ),
+                        AppStrings.forgetPassword,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: AppColors.primaryColor,
+                            fontSize: 13,
+                            fontFamily: "Kodchasan",
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ),
-                  SizedBox(height: 58.h,),
-
+                  SizedBox(
+                    height: 58.h,
+                  ),
 
                   //____Button_____
                   state is SignInLoadingState
                       ? const CircularProgressIndicator()
-                      :const CustomElevatedButton(),
-                SizedBox(height: 40.h,),
+                      : const CustomElevatedButton(data: AppStrings.signIn,),
+                  SizedBox(
+                    height: 40.h,
+                  ),
 
-                //____divider____
-                   DividerWidget(),
-                  SizedBox(height: 32.h,),
+                  //____divider____
+                  DividerWidget(),
+                  SizedBox(
+                    height: 32.h,
+                  ),
 
                   //____other way to sign in_____
                   const CustomSocialMedia(),
-                  SizedBox(height: 32.h,),
+                  SizedBox(
+                    height: 32.h,
+                  ),
 
                   //____Text____
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(AppStrings.dontHaveAccount,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColors.blackColor,
-                          fontSize: 16,
-                          fontFamily: "Kodchasan",
-                          fontWeight: FontWeight.w600
-                      ),),
-
-                      InkWell(
-                        onTap: () {},
-                        child: Text(AppStrings.signUp,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.primaryColor,
+                      Text(
+                        AppStrings.dontHaveAccount,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: AppColors.blackColor,
                             fontSize: 16,
                             fontFamily: "Kodchasan",
-                            fontWeight: FontWeight.w600
-                        ),),
+                            fontWeight: FontWeight.w600),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          navigateReplacement(context: context, route: Routes.signUp);
+                        },
+                        child: Text(
+                          AppStrings.signUp,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(
+                                  color: AppColors.primaryColor,
+                                  fontSize: 16,
+                                  fontFamily: "Kodchasan",
+                                  fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ],
                   )
-
-                  
-                  
-
                 ],
               ),
-
             ),
           );
         },
       ),
-      
-
     );
   }
 }
-
-
-

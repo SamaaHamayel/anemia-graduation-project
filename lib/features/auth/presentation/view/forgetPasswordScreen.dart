@@ -20,6 +20,7 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             navigateReplacement(context: context, route: Routes.signIn);
@@ -34,6 +35,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           AppStrings.forgetPassword,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
+              color: AppColors.primaryColor,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w700),
         ),
@@ -68,7 +70,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                             .textTheme
                             .displaySmall!
                             .copyWith(
-                                color: AppColors.lightBlackColor,
+                                color: AppColors.primaryColor,
                                 fontSize: 16,
                                 fontFamily: "Kodchasan",
                                 fontWeight: FontWeight.w400),
@@ -85,7 +87,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       child: Text(
                         AppStrings.email,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.lightBlackColor,
+                            color: AppColors.primaryColor,
                             fontSize: 13,
                             fontFamily: "Kodchasan",
                             fontWeight: FontWeight.w600),
@@ -118,7 +120,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       child: Text(
                         AppStrings.phone,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.lightBlackColor,
+                            color: AppColors.primaryColor,
                             fontSize: 13,
                             fontFamily: "Kodchasan",
                             fontWeight: FontWeight.w600),
@@ -137,27 +139,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 32.h),
 
-                  //___button____
-                  SizedBox(
-                    width: 343.w,
-                    height: 56.h,
-                    child: ElevatedButton(onPressed: (){
-                      navigateReplacement(context: context, route: Routes.verify);
-                    },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF2BB598),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      child: Text(AppStrings.send,style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColors.whiteColor,
-                          fontSize: 20,
-                          fontFamily: "Kodchasan",
-                          fontWeight: FontWeight.w700
-                      ),),
-                    ),
-                  ),
+                  CustomElevatedButton(data: AppStrings.send)
+
+
 
                 ],
               ),

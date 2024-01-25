@@ -1,10 +1,13 @@
 import 'package:animeacheck/features/auth/presentation/view/forgetPasswordScreen.dart';
 import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
+import 'package:animeacheck/features/signUp/presentation/pages/register.dart';
 import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/auth/presentation/view/signUp_screen.dart';
 import '../../features/auth/presentation/view/verfiy_screen.dart';
+import '../../features/home/presentation/view/home.dart';
 
 
 class Routes {
@@ -13,6 +16,7 @@ class Routes {
  
   static const String login = "/login";
   static const String signUp = "/signUp";
+  static const String register = "/register";
   static const String signIn = "/signIn";
   static const String wrongPassword = "/wrongPassword";
   static const String forgotPassword = "/forgotPassword";
@@ -43,10 +47,15 @@ class AppRoutes {
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
 
-      // case Routes.signUp:
-      //   return MaterialPageRoute(builder: (_) => const SignUpScreen());
-      //
-      // case Routes.wrongPassword:
+      case Routes.signUp:
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
+
+
+      case Routes.register:
+        return MaterialPageRoute(builder: (_) =>  Register());
+
+
+    // case Routes.wrongPassword:
       //   return MaterialPageRoute(builder: (_) => const WrongPasswordScreen());
       //
 
@@ -59,9 +68,9 @@ class AppRoutes {
       // case Routes.camera:
       //   return MaterialPageRoute(builder: (_) => const CameraScreen());
       //
-      // case Routes.home:
-      //   return MaterialPageRoute(builder: (_) => const HomeScreen());
-      //
+      case Routes.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+
       // case Routes.Reshotting:
       //   return MaterialPageRoute(builder: (_) => const ReshottingScreen());
       //
