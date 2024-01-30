@@ -82,6 +82,7 @@ class ForgetPasswordScreen extends StatelessWidget {
 
                   //____Email____
                   const CustomText(
+                      alignment: Alignment.bottomLeft,
                       text: AppStrings.email),
                   SizedBox(
                     height: 4.h,
@@ -104,6 +105,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   //____phone____
                   SizedBox(height: 24.h),
                   CustomText(
+                      alignment: Alignment.bottomLeft,
                       text: AppStrings.phone),
                   SizedBox(
                     height: 4.h,
@@ -129,6 +131,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                         BlocProvider.of<ForgetPasswordCubit>(context)
                             .sendCode();
                       }
+                      navigateReplacement(context: context, route: Routes.verify);
+
                     },
                       text: AppStrings.send,),
 

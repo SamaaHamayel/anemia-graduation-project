@@ -59,7 +59,9 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 children: [
                   //_____name____
-                  const CustomText(text: AppStrings.name),
+                  const CustomText(
+                    alignment: Alignment.bottomLeft,
+                      text: AppStrings.name),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -74,7 +76,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
 
                   //____email____
-                  const CustomText(text: AppStrings.email),
+                  const CustomText(alignment: Alignment.bottomLeft,text: AppStrings.email),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -96,7 +98,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
 
                   //___password_____
-                  const CustomText(text: AppStrings.password),
+                  const CustomText(alignment: Alignment.bottomLeft,text: AppStrings.password),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -124,7 +126,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
 
                   //____confirm password____
-                  const CustomText(text: AppStrings.confirmPassword),
+                  const CustomText(alignment: Alignment.bottomLeft,text: AppStrings.confirmPassword),
                   SizedBox(
                     height: 4.h,
                   ),

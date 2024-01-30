@@ -52,6 +52,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                   //___email____
                   const CustomText(
+                      alignment: Alignment.bottomLeft,
                       text: AppStrings.email),
                   SizedBox(
                     height: 16.h,
@@ -75,7 +76,9 @@ class SignInScreen extends StatelessWidget {
                   ),
 
                   //___password____
-                  const CustomText(text: AppStrings.password),
+                  const CustomText(
+                      alignment: Alignment.bottomLeft,
+                      text: AppStrings.password),
                   SizedBox(
                     height: 16.h,
                   ),
