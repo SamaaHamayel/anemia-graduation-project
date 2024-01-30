@@ -1,6 +1,7 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_state.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
+import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -80,20 +81,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                   SizedBox(height: 24.h),
 
                   //____Email____
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        AppStrings.email,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.primaryColor,
-                            fontSize: 13,
-                            fontFamily: "Kodchasan",
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
+                  const CustomText(
+                      text: AppStrings.email),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -103,6 +92,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     hint: AppStrings.emailHint,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
                     validate: (data) {
                       if (data!.isEmpty || !data.contains('@gmail.com')) {
                         return AppStrings.enterValidEmail;
@@ -113,20 +103,8 @@ class ForgetPasswordScreen extends StatelessWidget {
 
                   //____phone____
                   SizedBox(height: 24.h),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        AppStrings.phone,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.primaryColor,
-                            fontSize: 13,
-                            fontFamily: "Kodchasan",
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
+                  CustomText(
+                      text: AppStrings.phone),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -139,7 +117,20 @@ class ForgetPasswordScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 32.h),
 
-                  CustomElevatedButton(data: AppStrings.send)
+                  state is SendCodeLoading
+                      ? const Center(
+                      child: CircularProgressIndicator())
+                      :CustomElevatedButton(
+                    onPressed: () {
+                      if (BlocProvider.of<ForgetPasswordCubit>(context)
+                          .sendCodeKey
+                          .currentState!
+                          .validate()) {
+                        BlocProvider.of<ForgetPasswordCubit>(context)
+                            .sendCode();
+                      }
+                    },
+                      text: AppStrings.send,),
 
 
 

@@ -1,6 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
-import 'package:animeacheck/features/signUp/presentation/manager/cubit.dart';
+import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,12 +19,12 @@ void main() async {
         BlocProvider(
           create: (context) => sl<SignInCubit>(),
         ),
-
         BlocProvider(
           create: (context) => sl<ForgetPasswordCubit>(),
         ),
-
-
+        BlocProvider(
+          create: (context) => sl<SignUpCubit>(),
+        ),
       ],
       child: const MyApp(),
     ),

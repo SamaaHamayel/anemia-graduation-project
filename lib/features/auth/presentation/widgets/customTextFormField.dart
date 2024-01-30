@@ -15,7 +15,8 @@ class CustomTextFormField extends StatelessWidget {
     this.icon,
     this.suffixIconOnPressed,
     this.keyboardType, 
-    this.prefixIcon, this.errorText,
+    this.prefixIcon,
+    this.errorText, this.textInputAction,
   });
   final TextEditingController controller;
   final String? hint;
@@ -23,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? label;
   final IconData? prefixIcon;
   final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   final String? Function(String?)? validate;
   final bool isPassword;
   final IconData? icon;
@@ -36,6 +38,7 @@ class CustomTextFormField extends StatelessWidget {
           color: AppColors.primaryColor
         ),
         keyboardType: keyboardType,
+        textInputAction: textInputAction,
         controller: controller,
         cursorColor: AppColors.primaryColor,
         validator: validate,

@@ -25,6 +25,28 @@ class AuthRepository {
     }
   }
 
+Future<Either<String, SignUpModel>> signUp({
+  required String name,
+  required String email,
+    required String password,
+    required String confirmPassword,
+  }) async {
+    try {
+      final response = await sl<ApiConsumer>().post(
+        EndPoint.chefSignUp,
+        data: {
+          ApiKeys.email: email,
+          ApiKeys.name: name,
+          ApiKeys.password: password,
+          ApiKeys.confirmPassword: confirmPassword,
+        },
+      );
+      return Right(SignUpModel.fromJson(response));
+    } on ServerException catch (error) {
+      return Left(error.errorModel.errorMessage);
+    }
+  }
+
   Future<Either<String, String>> sendCode(String email) async {
     try {
       final response = await sl<ApiConsumer>().post(

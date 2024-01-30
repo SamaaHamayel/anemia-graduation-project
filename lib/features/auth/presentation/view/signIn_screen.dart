@@ -1,6 +1,7 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_state.dart';
+import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,17 +51,8 @@ class SignInScreen extends StatelessWidget {
                     height: 50.h,
                   ),
                   //___email____
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      AppStrings.email,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColors.primaryColor,
-                          fontSize: 13,
-                          fontFamily: "Kodchasan",
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
+                  const CustomText(
+                      text: AppStrings.email),
                   SizedBox(
                     height: 16.h,
                   ),
@@ -70,6 +62,7 @@ class SignInScreen extends StatelessWidget {
                     hint: AppStrings.emailHint,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
                     validate: (data) {
                       if (data!.isEmpty || !data.contains('@gmail.com')) {
                         return AppStrings.enterValidEmail;
@@ -82,17 +75,7 @@ class SignInScreen extends StatelessWidget {
                   ),
 
                   //___password____
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      AppStrings.password,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: AppColors.primaryColor,
-                          fontSize: 13,
-                          fontFamily: "Kodchasan",
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
+                  const CustomText(text: AppStrings.password),
                   SizedBox(
                     height: 16.h,
                   ),
@@ -143,14 +126,26 @@ class SignInScreen extends StatelessWidget {
 
                   //____Button_____
                   state is SignInLoadingState
-                      ? const CircularProgressIndicator()
-                      : const CustomElevatedButton(data: AppStrings.signIn,),
+                      ? const Center(
+                      child: CircularProgressIndicator())
+                      :  CustomElevatedButton(
+                    onPressed: () {
+                      if (BlocProvider.of<SignInCubit>(context)
+                          .signInKey
+                          .currentState!
+                          .validate()) {
+                        BlocProvider.of<SignInCubit>(context)
+                            .login();
+                      }
+                    },
+                    text: AppStrings.signIn,
+                  ),
                   SizedBox(
                     height: 40.h,
                   ),
 
                   //____divider____
-                  DividerWidget(),
+                  const DividerWidget(),
                   SizedBox(
                     height: 32.h,
                   ),
@@ -200,3 +195,4 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
+

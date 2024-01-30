@@ -5,20 +5,20 @@ import '../../../../core/utils/appColors/app_colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
-    super.key, required this.data,
+    super.key,
+    required this.text,
+    required this.onPressed,
   });
 
-
-  final String data;
+  final String text;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
       child: InkWell(
-        onTap: (){
-          navigateReplacement(context: context, route: Routes.home);
-        },
+        onTap: onPressed,
         child: Container(
           width: 343,
           height: 56,
@@ -34,8 +34,8 @@ class CustomElevatedButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-           child: Text(
-             data,
+          child: Text(
+            text,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: AppColors.whiteColor,

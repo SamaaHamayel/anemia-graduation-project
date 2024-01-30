@@ -1,5 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
+import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import '../../features/auth/domain/repo/auth_repo.dart';
@@ -13,6 +14,7 @@ void initServiceLoactor(){
   //cubit
   sl.registerLazySingleton(()=> SignInCubit(sl()));
   sl.registerLazySingleton(()=> ForgetPasswordCubit(sl()));
+  sl.registerLazySingleton(()=> SignUpCubit(sl()));
 
 
   //auth feature

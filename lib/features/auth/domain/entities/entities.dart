@@ -19,3 +19,20 @@ class SignInModel {
     );
   }
 }
+
+
+class SignUpModel {
+  final String message;
+  final String token;
+
+  SignUpModel({
+    required this.message,
+    required this.token,
+  });
+  factory SignUpModel.fromJson(Map<String, dynamic> jsonData) {
+    return SignUpModel(
+      message: jsonData[ApiKeys.message],
+      token: jsonData[ApiKeys.token],
+    );
+  }
+}

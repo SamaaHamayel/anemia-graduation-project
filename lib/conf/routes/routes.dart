@@ -1,10 +1,8 @@
 import 'package:animeacheck/features/auth/presentation/view/forgetPasswordScreen.dart';
 import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
-import 'package:animeacheck/features/signUp/presentation/pages/register.dart';
 import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
-
 import '../../features/auth/presentation/view/signUp_screen.dart';
 import '../../features/auth/presentation/view/verfiy_screen.dart';
 import '../../features/home/presentation/view/home.dart';
@@ -49,10 +47,6 @@ class AppRoutes {
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
-
-
-      case Routes.register:
-        return MaterialPageRoute(builder: (_) =>  Register());
 
 
     // case Routes.wrongPassword:

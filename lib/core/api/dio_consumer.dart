@@ -98,32 +98,32 @@ class DioConsumer extends ApiConsumer {
   handleDioException(e) {
     switch (e.type) {
       case DioExceptionType.badCertificate:
-        throw BadCertificateException(ErrorModel.fromJson(e.response!.data));
+        throw BadCertificateException(ErrorModel.fromJson(e.response!.text));
       case DioExceptionType.connectionTimeout:
-        throw ConnectionTimeoutException(ErrorModel.fromJson(e.response!.data));
+        throw ConnectionTimeoutException(ErrorModel.fromJson(e.response!.text));
       case DioExceptionType.receiveTimeout:
       case DioExceptionType.connectionError:
       case DioExceptionType.sendTimeout:
-        throw ServerException(ErrorModel.fromJson(e.response!.data));
+        throw ServerException(ErrorModel.fromJson(e.response!.text));
 
       case DioExceptionType.badResponse:
         switch (e.response?.statusCode) {
           case 400: //bad request
-            throw BadRequestException(ErrorModel.fromJson(e.response!.data));
+            throw BadRequestException(ErrorModel.fromJson(e.response!.text));
 
           case 401: //unauthorized
-            throw UnauthorizedException(ErrorModel.fromJson(e.response!.data));
+            throw UnauthorizedException(ErrorModel.fromJson(e.response!.text));
 
           case 403: //forbidden
-            throw ForbiddenException(ErrorModel.fromJson(e.response!.data));
+            throw ForbiddenException(ErrorModel.fromJson(e.response!.text));
 
           case 404: //notFound
-            throw NotFoundException(ErrorModel.fromJson(e.response!.data));
+            throw NotFoundException(ErrorModel.fromJson(e.response!.text));
 
           case 409: //conflict
-            throw ConflictException(ErrorModel.fromJson(e.response!.data));
+            throw ConflictException(ErrorModel.fromJson(e.response!.text));
           case 504:
-            throw BadRequestException(ErrorModel.fromJson(e.response!.data));
+            throw BadRequestException(ErrorModel.fromJson(e.response!.text));
 
           // print(e.response);
         }
