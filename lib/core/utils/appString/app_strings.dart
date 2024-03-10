@@ -1,18 +1,18 @@
 class AppStrings {
   static const String anadoc = "Anadoc";
-  static const String onBoardingTitle0 = "Stay healthy";
+  static const String onBoardingTitle0 = "Easily Detect Anemia!";
   static const String onBoardingcounter0 = "1 / 3";
    static const String onBoardingcounter1 = "2 / 3";
   static const String onBoardingcounter2 = "3 / 3";
 
   static const String onBoardingSubTitle0 =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-  static const String onBoardingTitle1 = "No need for hospital";
+      "Welcome to our app! Use your eyelid to detect and identify the type of anemia with high accuracy. Start now and discover your health with just one click!";
+  static const String onBoardingTitle1 = "Identify Your Anemia Type!";
   static const String onBoardingSubTitle1 =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-  static const String onBoardingTitle2 = "Follow up constantly";
+      "With our app, your knowledge of anemia won't be limited to detection only, but you'll also get an analysis of the type of anemia you're experiencing.";
+  static const String onBoardingTitle2 = "Get Accurate Medical Guidance!";
   static const String onBoardingSubTitle2 =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+      "Discover the best doctors and specialists in anemia and its types through our app. Let's embark on your health journey today!";
   static const String skip = "Skip";
   static const String next = "Next";
   static const String signIn = "Sign in";

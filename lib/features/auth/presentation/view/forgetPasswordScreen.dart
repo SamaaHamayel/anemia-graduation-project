@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../conf/routes/routes.dart';
-import '../../../../core/utils/appImages/images/app_assets.dart';
+import '../../../../core/utils/appImages/app_assets.dart';
 import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/commens.dart';
 import '../forgetPassword_cubit/forget_password_cubit.dart';

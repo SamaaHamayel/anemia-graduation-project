@@ -1,4 +1,4 @@
-import 'package:animeacheck/core/utils/appImages/images/app_assets.dart';
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_image.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
@@ -109,10 +109,9 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
             SizedBox(
               height: 50.h,
             ),
+
         
-        
-        
-        
+
             //___text____
             InkWell(
               onTap: (){},

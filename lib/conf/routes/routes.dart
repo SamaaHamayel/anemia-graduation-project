@@ -36,7 +36,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashView());
 
       case Routes.onBoarding:
-        return MaterialPageRoute(builder: (_) =>  const OnBoarding());
+        return MaterialPageRoute(builder: (_) =>  const OnBoardingScreen());
 
 
       case Routes.forgotPassword:
@@ -63,7 +63,7 @@ class AppRoutes {
       //   return MaterialPageRoute(builder: (_) => const CameraScreen());
       //
       case Routes.home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) =>  HomeScreen());
 
       // case Routes.Reshotting:
       //   return MaterialPageRoute(builder: (_) => const ReshottingScreen());
