@@ -1,24 +1,19 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/commens.dart';
 
-class HomeScreen extends StatelessWidget {
-   HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
-
-  // List<Widget> tabs = [
-  //   QuranTap(),
-  //   SebhaTap(),
-  //   const RadioTap(),
-  //   AhdethTap(),
-  //   const SettingsTap()
-  // ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,30 +39,26 @@ class HomeScreen extends StatelessWidget {
               fontWeight: FontWeight.w700),
         ),
       ),
-
       bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add),
-              label: 'Quran',
-              // backgroundColor: MyThemeData.primaryColor)
-            ),BottomNavigationBarItem(
-              icon: Icon(Icons.add),
-              label: 'Quran',
-              // backgroundColor: MyThemeData.primaryColor)
-            ),BottomNavigationBarItem(
-              icon: Icon(Icons.add),
-              label: 'Quran',
-              // backgroundColor: MyThemeData.primaryColor)
-            // ),BottomNavigationBarItem(
-            //   icon: Icon(Icons.add),
-            //   label: 'Quran',
-            //   // backgroundColor: MyThemeData.primaryColor)
-            // ),BottomNavigationBarItem(
-            //   icon: Icon(Icons.add),
-            //   label: 'Quran',
-              // backgroundColor: MyThemeData.primaryColor)
-            )],
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.house),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.calendarDays),
+            label: 'History',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Person',
+          ),
+        ],
       ),
     );
   }

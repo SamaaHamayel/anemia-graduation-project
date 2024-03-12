@@ -35,7 +35,7 @@ class OnBoardingPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: TextButton(
-                  onPressed: () => navigateReplacement(context: context, route: Routes.signIn),
+                  onPressed: () => navigateReplacement(context: context, route: Routes.home),
                   child: Text(
                     'Skip',
                     style: textStyle(
