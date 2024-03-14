@@ -61,7 +61,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
         children: [
           ScaleTransition(
             scale: _scaleAnimation,
-            child: Image.asset('lib/core/utils/appImages/images/splashImage.png'),
+            child:
+                Image.asset('lib/core/utils/appImages/images/splashImage.png'),
           ),
           const SizedBox(height: 10),
           FadeTransition(
@@ -110,7 +111,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) =>  OnBoardingScreen(),
+            builder: (context) => const OnBoardingScreen(),
           ),
         );
       },

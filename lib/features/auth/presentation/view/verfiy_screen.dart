@@ -9,7 +9,7 @@ import 'package:flutter_verification_code/flutter_verification_code.dart';
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/appString/app_strings.dart';
-import '../../../../core/utils/commens.dart';
+import '../../../../core/utils/common.dart';
 
 class VerfiyScreen extends StatefulWidget {
   const VerfiyScreen({super.key});

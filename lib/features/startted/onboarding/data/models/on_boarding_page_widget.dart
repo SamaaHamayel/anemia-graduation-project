@@ -1,7 +1,7 @@
 import 'package:animeacheck/conf/routes/routes.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/app_text_them.dart';
-import 'package:animeacheck/core/utils/commens.dart';
+import 'package:animeacheck/core/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

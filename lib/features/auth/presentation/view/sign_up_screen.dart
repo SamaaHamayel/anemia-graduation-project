@@ -1,6 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_state.dart';
-import 'package:animeacheck/features/auth/presentation/widgets/customTextFormField.dart';
+import 'package:animeacheck/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_social_media.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/appString/app_strings.dart';
-import '../../../../core/utils/commens.dart';
+import '../../../../core/utils/common.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

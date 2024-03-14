@@ -2,7 +2,7 @@ import 'package:animeacheck/features/auth/domain/entities/entities.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/api/api_consumer.dart';
-import '../../../../core/api/endPoints/endPoint.dart';
+import '../../../../core/api/endPoints/end_point.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/services/service_locator.dart';
 
