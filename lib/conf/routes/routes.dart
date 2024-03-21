@@ -1,11 +1,12 @@
-import 'package:animeacheck/features/auth/presentation/view/forget_password_screen.dart';
-import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
-import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
-import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/auth/presentation/view/forget_password_screen.dart';
+import '../../features/auth/presentation/view/sign_in_screen.dart';
 import '../../features/auth/presentation/view/sign_up_screen.dart';
 import '../../features/auth/presentation/view/verfiy_screen.dart';
 import '../../features/home/presentation/view/home.dart';
+import '../../features/startted/onboarding/presentation/view/onboarding1.dart';
+import '../../features/startted/splach/presentation/view/splash_view.dart';
 
 class Routes {
   static const String intialRoutes = "/";
@@ -26,6 +27,11 @@ class Routes {
   static const String eyelid = "/eyelid";
   static const String result = "/result";
   static const String profile = "/profile";
+    static const String setting = "/setting";
+  static const String history = "/history";
+  static const String myAccount = "/myAccount";
+  static const String priHome = "/priHome";
+
 }
 
 class AppRoutes {
