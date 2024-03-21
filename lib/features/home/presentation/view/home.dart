@@ -16,15 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
- int _selectedIndex = 0; 
-  List<Widget> pages = [
-    priHome(),
-    history(),
-    setting(),
-    myAccount()
-
-  ];
- 
+  int _selectedIndex = 0;
+  List<Widget> pages = [priHome(), history(), setting(), myAccount()];
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: pages[_selectedIndex],
       ),
-      bottomNavigationBar:  Padding(
+      bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: GNav(
-          
           backgroundColor: Colors.white,
           activeColor: Colors.white,
           color: const Color.fromARGB(255, 146, 146, 153),
@@ -66,12 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
           gap: 8,
           padding: EdgeInsets.all(16),
           selectedIndex: _selectedIndex,
-              onTabChange: (index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
-        
+          onTabChange: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
           tabs: [
             GButton(
               icon: FontAwesomeIcons.house,
@@ -91,8 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
               text: 'MyAccount',
             ),
           ],
-          
-        
         ),
       ),
       // bottomNavigationBar: BottomNavigationBar(
