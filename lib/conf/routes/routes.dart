@@ -31,6 +31,8 @@ class Routes {
   static const String history = "/history";
   static const String myAccount = "/myAccount";
   static const String priHome = "/priHome";
+    static const String dettected = "/dettected";
+
 
 }
 

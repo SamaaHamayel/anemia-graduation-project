@@ -1,3 +1,4 @@
+import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -140,9 +141,18 @@ class priHome extends StatelessWidget {
                                                 shape: BoxShape.circle,
                                                 
                                                             ),
-                                                            child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color:AppColors.whiteColor
+                                                            child: InkWell(
+                                                               onTap: () {
+            // Navigate to the DetectedScreen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => dettected()),
+            );
+          },
+                                                              child: Icon(
+                                                                                                              Icons.arrow_forward_ios,
+                                                                                                              color:AppColors.whiteColor
+                                                              ),
                                                             ),
                                                           ),
                                                     
@@ -253,9 +263,20 @@ class priHome extends StatelessWidget {
                                                 shape: BoxShape.circle,
                                                 
                                                             ),
-                                                            child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color:AppColors.whiteColor
+                                                            
+                                                            child: InkWell(
+                                                              onTap: () {
+            // Navigate to the DetectedScreen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => dettected()),
+            );
+          },
+        
+                                                              child: Icon(
+                                                                                                              Icons.arrow_forward_ios,
+                                                                                                              color:AppColors.whiteColor
+                                                              ),
                                                             ),
                                                           ),
                                                     
@@ -366,9 +387,19 @@ class priHome extends StatelessWidget {
                                                 shape: BoxShape.circle,
                                                 
                                                             ),
-                                                            child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color:AppColors.whiteColor
+                                                            child: InkWell(
+                                                              onTap: () {
+            // Navigate to the DetectedScreen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => dettected()),
+            );
+          },
+        
+                                                              child: Icon(
+                                                                                                              Icons.arrow_forward_ios,
+                                                                                                              color:AppColors.whiteColor
+                                                              ),
                                                             ),
                                                           ),
                                                     
