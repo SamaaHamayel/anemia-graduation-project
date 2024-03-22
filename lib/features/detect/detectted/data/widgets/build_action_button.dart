@@ -1,0 +1,32 @@
+
+  import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/appColors/app_colors.dart';
+
+Widget buildActionButton(IconData iconData) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Container(
+        width: 335,
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        clipBehavior: Clip.antiAlias,
+        decoration: ShapeDecoration(
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: Container(
+          width: 40,
+          height: 40,
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(),
+          child: Icon(
+            iconData,
+            color: AppColors.lightPrimaryColor,
+            size: 40.0,
+          ),
+        ),
+      ),
+    );
+  }

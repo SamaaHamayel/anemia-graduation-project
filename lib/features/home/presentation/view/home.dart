@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<Widget> pages = [priHome(), history(), setting(), myAccount()];
+  List<Widget> pages = [PriHome(), history(), setting(), myAccount()];
 
   @override
   Widget build(BuildContext context) {
@@ -84,42 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-
-      //   elevation: 0,
-
-      //   selectedItemColor: AppColors.primaryColor,
-      //   unselectedItemColor: AppColors.lightBlackColor,
-      //   showSelectedLabels: false,
-      //   showUnselectedLabels: false,
-
-      //   // type: BottomNavigationBarType.fixed,
-      //   currentIndex: currentIndex,
-      //   onTap: (int newIndex) {
-      //     setState(() {
-      //       currentIndex = newIndex;
-      //     });
-      //   },
-
-      //   items: const [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(FontAwesomeIcons.house),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(FontAwesomeIcons.calendarDays),
-      //       label: 'History',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.settings),
-      //       label: 'Settings',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.person),
-      //       label: 'Person',
-      //     ),
-      //   ],
-      // ),
+      
     );
   }
 }
