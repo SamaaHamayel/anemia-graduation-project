@@ -1,10 +1,14 @@
-
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/appColors/app_colors.dart';
 
-Widget buildActionButton(IconData iconData) {
-    return Padding(
+Widget buildActionButton({
+  required IconData iconData,
+  required VoidCallback onTap,
+}) {
+  return InkWell(
+    onTap: onTap,
+    child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Container(
         width: 335,
@@ -28,5 +32,6 @@ Widget buildActionButton(IconData iconData) {
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}

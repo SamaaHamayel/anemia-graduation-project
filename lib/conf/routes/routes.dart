@@ -27,13 +27,13 @@ class Routes {
   static const String eyelid = "/eyelid";
   static const String result = "/result";
   static const String profile = "/profile";
-    static const String setting = "/setting";
+  static const String setting = "/setting";
   static const String history = "/history";
   static const String myAccount = "/myAccount";
   static const String priHome = "/priHome";
-    static const String dettected = "/dettected";
-
-
+  static const String dettected = "/dettected";
+  static const String DetectAnemiabyEye = "/DetectAnemiabyEye";
+  static const String DetectAnemiabyimage = "/DetectAnemiabyimage";
 }
 
 class AppRoutes {
