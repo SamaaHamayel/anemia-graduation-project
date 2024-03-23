@@ -22,7 +22,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     }
   }
 
-  Widget _buildBackButton() {
+  Widget buildBackButton() {
     return IconButton(
       icon: Icon(
         Icons.arrow_back_ios,
@@ -35,7 +35,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     );
   }
 
-  Widget _buildHeaderText() {
+  Widget buildHeaderText() {
     return Column(
       children: [
         Padding(
@@ -65,7 +65,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     );
   }
 
-  Widget _buildImageContainer() {
+  Widget buildImageContainer() {
     return _pickedImage != null
         ? Image.file(
             _pickedImage!,
@@ -127,7 +127,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
           );
   }
 
-  Widget _buildChooseFileButton() {
+  Widget buildChooseFileButton() {
     return ElevatedButton(
       onPressed: pickImageFromGallery,
       child: Container(
@@ -177,16 +177,16 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
             children: <Widget>[
               Row(
                 children: [
-                  _buildBackButton(),
+                  buildBackButton(),
                   SizedBox(
                     width: 30,
                   ),
-                  _buildHeaderText(),
+                  buildHeaderText(),
                 ],
               ),
-              _buildImageContainer(),
+              buildImageContainer(),
               SizedBox(height: 20),
-              _buildChooseFileButton(),
+              buildChooseFileButton(),
             ],
           ),
         ),
