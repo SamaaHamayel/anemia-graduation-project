@@ -1,5 +1,5 @@
 import 'package:animeacheck/features/detect/image/byEye/view/Detect_anemia_by_eye.dart';
-import 'package:animeacheck/features/detect/image/gallery/view/detect_anemia_by_image.dart';
+import 'package:animeacheck/features/detect/image/gallery/data/widget/detect_anemia_by_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
@@ -32,7 +32,7 @@ class DetectedScreen extends StatelessWidget {
                 onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DetectAnemiabyimage()),
+                          builder: (context) => DetectAnemiaByImage()),
                     ))
           ],
         ),

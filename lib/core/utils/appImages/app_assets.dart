@@ -17,6 +17,8 @@ class AppAssets {
   static const String female = '${basePath}female.png';
   static const String logo = '${basePath}logo(2).png';
     static const String detect = '${basePath}detect.png';
+        static const String uploadImage = '${basePath}.png';
+
 
 
 

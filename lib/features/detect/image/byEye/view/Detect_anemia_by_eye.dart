@@ -1,7 +1,7 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../gallery/view/detect_anemia_by_image.dart';
+import '../../gallery/data/widget/detect_anemia_by_image.dart';
 import '../data/widget/build_icon_button.dart';
 import '../data/widget/take_packer.dart';
 
@@ -59,7 +59,7 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetectAnemiabyimage(),
+                          builder: (context) => DetectAnemiaByImage(),
                         ),
                       );
                     },

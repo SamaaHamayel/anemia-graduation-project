@@ -11,12 +11,11 @@ void takePicture(BuildContext context) async {
     // Picture taken successfully, you can process or display it
     print('Picture taken: ${picture.path}');
   } catch (e) {
+
     print('Error taking picture: $e');
     // Show a SnackBar with the error message
-    ScaffoldMessenger.of(context).showSnackBar(
-     SnackBar(
-      content:
-      Scaffold(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Scaffold(
       backgroundColor: Colors.transparent,
       body: Center(
         child: Container(
@@ -49,60 +48,54 @@ void takePicture(BuildContext context) async {
                     ),
                     const SizedBox(height: 32),
                     GestureDetector(
-                      onTap: () {
-                        // Add your onPressed logic here
-                        print('Try Again button pressed');
-                      },
-                      child: TextButton(
-                      onPressed: () {
-                        
-                       Navigator.popUntil(context, ModalRoute.withName('/DetectAnemiaByEye'));
+                        onTap: () {
+                          // Add your onPressed logic here
+                          print('Try Again button pressed');
+                        },
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.popUntil(context,
+                                ModalRoute.withName('/DetectAnemiaByEye'));
 
-                        // Add your onPressed logic here
-                      },
-                      child: 
-                      Text(
-                        'Try Again',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFFEA4335),
-                          fontSize: 24,
-                          fontFamily: 'Kodchasan',
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    )
-                     
-                    ),
+                            // Add your onPressed logic here
+                          },
+                          child: Text(
+                            'Try Again',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xFFEA4335),
+                              fontSize: 24,
+                              fontFamily: 'Kodchasan',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        )),
                   ],
                 ),
               ),
               Positioned(
-                left: 16,
-                top: 16,
-                child:TextButton(
-                      onPressed: () {
-                        
-                       Navigator.popUntil(context, ModalRoute.withName('/DetectAnemiaByEye'));
+                  left: 16,
+                  top: 16,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.popUntil(
+                          context, ModalRoute.withName('/DetectAnemiaByEye'));
 
-                        // Add your onPressed logic here
-                      },
-                      child: Text(
-                        ' x ',
-                        style: TextStyle(
-                           fontSize: 30,
-                          color: AppColors.lightPrimaryColor,
-                            // Add your text style properties here
-                            ),
+                      // Add your onPressed logic here
+                    },
+                    child: Text(
+                      ' x ',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: AppColors.lightPrimaryColor,
+                        // Add your text style properties here
                       ),
-                    )
-              ),
+                    ),
+                  )),
             ],
           ),
         ),
       ),
-    )
- )
-    );
+    )));
   }
 }
