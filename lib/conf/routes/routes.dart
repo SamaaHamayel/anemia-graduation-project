@@ -1,4 +1,3 @@
-import 'package:animeacheck/features/auth/presentation/view/createPassword_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/forgetPasswordScreen.dart';
 import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
 import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
@@ -50,18 +49,17 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
 
-
     // case Routes.wrongPassword:
       //   return MaterialPageRoute(builder: (_) => const WrongPasswordScreen());
       //
 
       case Routes.verify:
-        return MaterialPageRoute(builder: (_) => const VerifyScreen());
+        return MaterialPageRoute(builder: (_) => const VerfiyScreen());
 
-      case Routes.newPassword:
-        return MaterialPageRoute(builder: (_) => const CreatePasswordScreen());
-
-      //case Routes.camera:
+      // case Routes.newPassword:
+      //   return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
+      //
+      // case Routes.camera:
       //   return MaterialPageRoute(builder: (_) => const CameraScreen());
       //
       case Routes.home:

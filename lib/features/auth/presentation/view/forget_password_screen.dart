@@ -47,7 +47,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           listener: (context, state) {
             if(state is SendCodeSuccess){
               //Show message
-              showToast(message: AppStrings.checkEmail, state: ToastStates.success);
+              showToast(message: state.message, state: ToastStates.success);
               //Navigate to change password screen
               navigateReplacement(context: context, route: Routes.verify);
             }          },
@@ -104,7 +104,7 @@ class ForgetPasswordScreen extends StatelessWidget {
 
                   //____phone____
                   SizedBox(height: 24.h),
-                  const CustomText(
+                  CustomText(
                       alignment: Alignment.bottomLeft,
                       text: AppStrings.phone),
                   SizedBox(
@@ -131,6 +131,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                         BlocProvider.of<ForgetPasswordCubit>(context)
                             .sendCode();
                       }
+                      navigateReplacement(context: context, route: Routes.verify);
 
                     },
                       text: AppStrings.send,),

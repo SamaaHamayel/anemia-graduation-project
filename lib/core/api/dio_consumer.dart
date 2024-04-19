@@ -5,7 +5,7 @@ import '../error/error_model.dart';
 import '../error/exceptions.dart';
 import 'api_consumer.dart';
 import 'api_interceptors.dart';
-import 'endPoints/endPoint.dart';
+import 'endPoints/end_point.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;

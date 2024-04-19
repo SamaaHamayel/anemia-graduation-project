@@ -2,7 +2,7 @@
 //  نسخة مصغرة من المودل او المودل بس متفلتر
 
 
-import '../../../../core/api/endPoints/endPoint.dart';
+import '../../../../core/api/endPoints/end_point.dart';
 
 class SignInModel {
   final String message;

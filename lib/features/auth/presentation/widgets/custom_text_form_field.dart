@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/appColors/app_colors.dart';
 
-
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
@@ -14,9 +13,10 @@ class CustomTextFormField extends StatelessWidget {
     this.isPassword = false,
     this.icon,
     this.suffixIconOnPressed,
-    this.keyboardType, 
+    this.keyboardType,
     this.prefixIcon,
-    this.errorText, this.textInputAction,
+    this.errorText,
+    this.textInputAction,
   });
   final TextEditingController controller;
   final String? hint;
@@ -32,11 +32,9 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8,right: 8),
+      padding: const EdgeInsets.only(left: 8, right: 8),
       child: TextFormField(
-        style: const TextStyle(
-          color: AppColors.primaryColor
-        ),
+        style: const TextStyle(color: AppColors.primaryColor),
         keyboardType: keyboardType,
         textInputAction: textInputAction,
         controller: controller,
@@ -45,33 +43,21 @@ class CustomTextFormField extends StatelessWidget {
         obscureText: isPassword,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.primaryColor
-            ),
-            borderRadius: BorderRadius.circular(8)
-          ),
+              borderSide: const BorderSide(color: AppColors.primaryColor),
+              borderRadius: BorderRadius.circular(8)),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: AppColors.primaryColor
-            ),
-            borderRadius: BorderRadius.circular(8)
-          ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.primaryColor
-            )
-          ),
+              borderSide: const BorderSide(color: AppColors.primaryColor),
+              borderRadius: BorderRadius.circular(8)),
+          border: const OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.primaryColor)),
           contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
           errorText: errorText,
           errorStyle: const TextStyle(
-            color: AppColors.redColor,
-            fontSize: 13,
-            fontWeight: FontWeight.w600
-          ),
+              color: AppColors.redColor,
+              fontSize: 13,
+              fontWeight: FontWeight.w600),
           hintText: hint,
-          hintStyle: const TextStyle(
-            color: AppColors.hintTextColor
-          ),
+          hintStyle: const TextStyle(color: AppColors.hintTextColor),
           labelText: label,
           prefixIcon: Icon(prefixIcon),
           prefixIconColor: AppColors.primaryColor,
@@ -83,7 +69,6 @@ class CustomTextFormField extends StatelessWidget {
             ),
           ),
         ),
-        
       ),
     );
   }

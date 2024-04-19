@@ -29,6 +29,4 @@ void main() async {
       child: const MyApp(),
     ),
   );
-
-  //runApp(const MyApp());
 }

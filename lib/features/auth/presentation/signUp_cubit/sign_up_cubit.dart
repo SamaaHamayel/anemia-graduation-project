@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-import '../../../../core/api/endPoints/endPoint.dart';
+import '../../../../core/api/endPoints/end_point.dart';
 import '../../../../core/cache_helper/cache_helper.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../domain/repo/auth_repo.dart';
