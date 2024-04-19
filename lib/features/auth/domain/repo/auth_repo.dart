@@ -7,6 +7,7 @@ import '../../../../core/error/exceptions.dart';
 import '../../../../core/services/service_locator.dart';
 
 class AuthRepository {
+  //!!1 login
   Future<Either<String, SignInModel>> login({
     required String email,
     required String password,
@@ -25,6 +26,8 @@ class AuthRepository {
     }
   }
 
+
+  //!!! signUp
 Future<Either<String, SignUpModel>> signUp({
   required String name,
   required String email,
@@ -47,6 +50,8 @@ Future<Either<String, SignUpModel>> signUp({
     }
   }
 
+
+  //!!! sendCode
   Future<Either<String, String>> sendCode(String email) async {
     try {
       final response = await sl<ApiConsumer>().post(
@@ -63,6 +68,9 @@ Future<Either<String, SignUpModel>> signUp({
     }
   }
 
+
+
+  //!!! resetPassword
   Future<Either<String, String>> resetPassword({
     required String email,
     required String password,

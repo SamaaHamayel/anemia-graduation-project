@@ -7,7 +7,12 @@ class ChangeNewPasswordSuffixIcon extends ForgetPasswordState{}
 class ChangeConfirmPasswordSuffixIcon extends ForgetPasswordState{}
 
 
-class SendCodeLoading extends ForgetPasswordState {}
+class SendCodeLoading extends ForgetPasswordState {
+  // final String message;
+  //
+  // SendCodeLoading(this.message);
+}
+
 class SendCodeSuccess extends ForgetPasswordState {
   final String message;
 
