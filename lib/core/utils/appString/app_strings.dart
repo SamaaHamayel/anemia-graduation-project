@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String anadoc = "Anadoc";
+  static const String eyeNemia = "EyeNemia";
   static const String onBoardingTitle0 = "Easily Detect Anemia!";
   static const String onBoardingcounter0 = "1 / 3";
    static const String onBoardingcounter1 = "2 / 3";
@@ -18,8 +18,10 @@ class AppStrings {
   static const String signIn = "Sign in";
   static const String email = "Email";
   static const String phone = "Phone";
+  static const String code = "Code";
   static const String emailHint = "Enter your Email";
   static const String enterValidEmail = "Enter Valid Email";
+  static const String enterValidCode = "Enter Valid Code";
   static const String password = "Password";
   static const String passwordHint = "Enter your Password";
   static const String forgetPassword = "Forget password ?";
@@ -48,6 +50,8 @@ class AppStrings {
   static const String newPassword = "New Password";
   static const String confirmNewPassword = "Confirm New Password";
   static const String save = "Save";
+  static const String yourPasswordHasBeenChangedSuccessfully = "Your password has been changed successfully !";
+  static const String homeScreenSubTitle ="Start your journey towards better health now.";
   static const String homeScreenTitle =
       "You can take or upload photo for your eyelid to know whether you have anemia or not";
   static const String uploadYourFile = "Upload your File";
@@ -60,4 +64,10 @@ class AppStrings {
   static const String recognize = "recognize";
   static const String youAreNotAnemic = "you are: not anemic";
   static const String youAreAnemic = "You are: anemic";
+  static const String detectAnemia = "Detect Anemia:";
+  static const String detectAnemiaTitle = "You can take or upload photo for your eyelid to know whether you have anemia or not";
+  static const String testResults = "Test Results:";
+  static const String testResultsTitle = "Input the required test results to accurately determine the type of anemia you are suffering from.";
+  static const String consultADoctor = "Consult a Doctor:";
+  static const String consultADoctorTitle = " Enter your location to discover nearby doctors, and schedule an appointment effortlessly";
 }

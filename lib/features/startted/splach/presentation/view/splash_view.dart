@@ -1,3 +1,4 @@
+import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color(0xff2BA3B4),
+      backgroundColor: AppColors.whiteColor,
       body: SplashViewBody(),
     );
   }

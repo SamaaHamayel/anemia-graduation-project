@@ -9,14 +9,13 @@ import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
 import '../../../../core/utils/appString/app_strings.dart';
-import '../../../../core/utils/commens.dart';
-import '../signUp_cubit/sign_up_cubit.dart';
-import '../widgets/customTextFormField.dart';
+import '../../../../core/utils/common.dart';
 import '../widgets/custom_image.dart';
 import '../widgets/custom_text.dart';
+import '../widgets/custom_text_form_field.dart';
 
-class CreatePasswordScreen extends StatelessWidget {
-  const CreatePasswordScreen({super.key});
+class CreateNewPasswordScreen extends StatelessWidget {
+  const CreateNewPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +44,34 @@ class CreatePasswordScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
           listener: (context, state) {
-            if(state is SendCodeSuccess){
+            if(state is ResetPasswordSuccessState){
               //Show message
-              showToast(message: AppStrings.checkEmail, state: ToastStates.success);
-              //Navigate to change password screen
-              navigateReplacement(context: context, route: Routes.verify);
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const CircleAvatar(
+                    backgroundColor: AppColors.lightPrimaryColor,
+                    child: Icon(Icons.check_sharp,
+                    color: AppColors.whiteColor,),),
+                  content:  Text(
+                    AppStrings.yourPasswordHasBeenChangedSuccessfully,
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                      color: AppColors.blackColor,
+                      fontSize: 16,
+                      fontFamily: "Kodchasan",),
+                  ),
+                  actions: [
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    CustomElevatedButton(
+                        text: AppStrings.signIn,
+                        onPressed: (){
+                          navigateReplacement(context: context, route: Routes.home);
+                        },),
+                  ],
+                ),
+              );
             }
           },
           builder: (context, state) {
@@ -93,6 +115,7 @@ class CreatePasswordScreen extends StatelessWidget {
                     height: 24.h,
                   ),
 
+
                   //____confirm NewPassword____
                   const CustomText(
                       alignment: Alignment.bottomLeft,
@@ -105,6 +128,7 @@ class CreatePasswordScreen extends StatelessWidget {
                         .confirmPasswordController,
                     prefixIcon: Icons.lock_outlined,
                     hint: AppStrings.confirmNewPassword,
+                    textInputAction: TextInputAction.next,
                     isPassword: BlocProvider.of<ForgetPasswordCubit>(context)
                         .isConfirmPasswordShowing,
                     icon: BlocProvider.of<ForgetPasswordCubit>(context).confirmPasswordSuffixIcon,
@@ -124,22 +148,60 @@ class CreatePasswordScreen extends StatelessWidget {
                     },
                   ),
                   SizedBox(
-                    height: 55.h,
+                    height: 24.h,
                   ),
 
+
+                  //____code_____
+                  const CustomText(
+                      alignment: Alignment.bottomLeft,
+                      text: AppStrings.code),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  CustomTextFormField(
+                    prefixIcon: Icons.code,
+                    keyboardType: TextInputType.number,
+                    controller:
+                    BlocProvider.of<ForgetPasswordCubit>(context)
+                        .codeController,
+                    hint: AppStrings.code,
+                    validate: (data) {
+                      //123h ==> null
+                      //123 ==> true & return 123
+                      if(num.tryParse(data!)== null){
+                        return AppStrings.enterValidCode;
+                      }
+                      if (data.isEmpty) {
+                        return AppStrings.enterValidCode;
+                      }
+                      return null;
+                    },
+                  ),
+
+
+
                   //____button____
-                  CustomElevatedButton(
+                  SizedBox(
+                    height: 25.h,
+                  ),
+                  state is ResetPasswordLoadingState
+                  ?const CircularProgressIndicator()
+                  :CustomElevatedButton(
                       text: AppStrings.save,
                       onPressed: () {
                         if (BlocProvider.of<ForgetPasswordCubit>(context)
                             .resetPasswordKey
                             .currentState!
                             .validate()) {
-                          // BlocProvider.of<ForgetPasswordCubit>(context)
-                          //     .resetPassword();
+                          BlocProvider.of<ForgetPasswordCubit>(context)
+                              .resetPassword();
                         }
 
-                      }),
+
+                      },),
+
+
                 ],
               ),
             );

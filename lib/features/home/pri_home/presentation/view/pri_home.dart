@@ -1,5 +1,7 @@
+import 'package:animeacheck/core/utils/appString/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
 import '../../data/widget/build_feature_card.dart';
 
@@ -10,12 +12,12 @@ class PriHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding:  EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'Welcome, Sarah',
               style: TextStyle(
                 color: AppColors.lightPrimaryColor,
@@ -25,9 +27,9 @@ class PriHome extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 351,
-              child: Text(
-                'Start your journey towards better health now.',
+              width: 351.w,
+              child: const Text(
+                AppStrings.homeScreenSubTitle,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 14,
@@ -38,23 +40,23 @@ class PriHome extends StatelessWidget {
             ),
             buildFeatureCard(
               icon: Icons.camera_alt_rounded,
-              title: 'Detect Anemia',
+              title: AppStrings.detectAnemia,
               description:
-                  'You can take or upload photo for your eyelid to know whether you have anemia or not',
+                  AppStrings.detectAnemiaTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
               icon: Icons.biotech,
-              title: 'Test Results',
+              title: AppStrings.testResults,
               description:
-                  'Input the required test results to accurately determine the type of anemia you are suffering from.',
+                  AppStrings.testResultsTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
               icon: Icons.person_search_rounded,
-              title: 'Consult a Doctor',
+              title: AppStrings.consultADoctor,
               description:
-                  'Enter your location to discover nearby doctors, and schedule an appointment effortlessly.',
+                  AppStrings.consultADoctorTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
           ],

@@ -1,9 +1,10 @@
-import 'package:animeacheck/features/auth/presentation/view/forgetPasswordScreen.dart';
-import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
+import 'package:animeacheck/features/auth/presentation/view/createNewPassword_screen.dart';
 import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
-import '../../features/auth/presentation/view/signUp_screen.dart';
+import '../../features/auth/presentation/view/forget_password_screen.dart';
+import '../../features/auth/presentation/view/sign_in_screen.dart';
+import '../../features/auth/presentation/view/sign_up_screen.dart';
 import '../../features/auth/presentation/view/verfiy_screen.dart';
 import '../../features/home/presentation/view/home.dart';
 
@@ -56,9 +57,9 @@ class AppRoutes {
       case Routes.verify:
         return MaterialPageRoute(builder: (_) => const VerfiyScreen());
 
-      // case Routes.newPassword:
-      //   return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
-      //
+      case Routes.newPassword:
+        return MaterialPageRoute(builder: (_) => const CreateNewPasswordScreen());
+
       // case Routes.camera:
       //   return MaterialPageRoute(builder: (_) => const CameraScreen());
       //

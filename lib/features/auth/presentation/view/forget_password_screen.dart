@@ -9,10 +9,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
 import '../../../../core/utils/appString/app_strings.dart';
-import '../../../../core/utils/commens.dart';
+import '../../../../core/utils/common.dart';
 import '../forgetPassword_cubit/forget_password_cubit.dart';
-import '../widgets/customTextFormField.dart';
 import '../widgets/custom_image.dart';
+import '../widgets/custom_text_form_field.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -131,7 +131,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                         BlocProvider.of<ForgetPasswordCubit>(context)
                             .sendCode();
                       }
-                      navigateReplacement(context: context, route: Routes.verify);
 
                     },
                       text: AppStrings.send,),

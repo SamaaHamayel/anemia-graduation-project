@@ -9,7 +9,7 @@ import 'package:flutter_verification_code/flutter_verification_code.dart';
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/appString/app_strings.dart';
-import '../../../../core/utils/commens.dart';
+import '../../../../core/utils/common.dart';
 
 class VerfiyScreen extends StatefulWidget {
   const VerfiyScreen({super.key});
@@ -43,15 +43,13 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
               fontWeight: FontWeight.w700),
         ),
       ),
-
-      body:  SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             //___image___
             const CustomImage(imagePath: AppAssets.verify),
-        
-        
+
             //___title___
             Align(
               alignment: Alignment.center,
@@ -59,10 +57,7 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
                 width: 343.w,
                 child: Text(
                   AppStrings.verifyTitle,
-                  style: Theme.of(context)
-                      .textTheme
-                      .displaySmall!
-                      .copyWith(
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
                       color: AppColors.primaryColor,
                       fontSize: 16,
                       fontFamily: "Kodchasan",
@@ -73,25 +68,28 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
             SizedBox(
               height: 32.h,
             ),
-        
-        
+
             //___write code____
             VerificationCode(
-              textStyle: const TextStyle(fontSize: 20.0, color: AppColors.blackColor),
+              fullBorder: true,
+              textStyle:
+                  const TextStyle(fontSize: 20.0, color: AppColors.blackColor),
               keyboardType: TextInputType.number,
-              underlineColor: AppColors.primaryColor, // If this is null it will use primaryColor: Colors.red from Theme
+              underlineColor: AppColors
+                  .primaryColor, // If this is null it will use primaryColor: Colors.red from Theme
               length: 4,
-              cursorColor: AppColors.primaryColor, // If this is null it will default to the ambient
+              cursorColor: AppColors
+                  .primaryColor, // If this is null it will default to the ambient
               // clearAll is NOT required, you can delete it
               // takes any widget, so you can implement your design
               onCompleted: (String value) {
                 setState(() {
-                 // _code = value;
+                  // _code = value;
                 });
               },
               onEditing: (bool value) {
                 setState(() {
-                 // _onEditing = value;
+                  // _onEditing = value;
                 });
                 //if (!_onEditing) FocusScope.of(context).unfocus();
               },
@@ -99,34 +97,48 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
             SizedBox(
               height: 50.h,
             ),
-        
-        
-        
+
             //____button____
             CustomElevatedButton(
-                text: AppStrings.verify,
-              onPressed: (){},),
+              text: AppStrings.verify,
+              onPressed: () {
+                navigateReplacement(
+                    context: context, route: Routes.newPassword);
+              },
+            ),
+
+
             SizedBox(
               height: 50.h,
             ),
 
-        
+
+
 
             //___text____
             InkWell(
               onTap: (){},
-              child: const CustomText(
-                text: AppStrings.resentCode,
-                alignment: Alignment.center,
-                color: AppColors.lightRedColor,
+              child: Container(
+                padding: const EdgeInsets.only(
+                  bottom: 2, // Space between underline and text
+                ),
+                decoration: const BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(
+                  color: AppColors.lightRedColor,
+                  width: 1.0, // Underline thickness
+                ),),),
+                child: const Text(
+                  AppStrings.resentCode,
+                  style: TextStyle(
+                    color: AppColors.lightRedColor,
+                  ),
+                ),
               ),
             ),
-        
           ],
         ),
       ),
-
-
     );
   }
 }

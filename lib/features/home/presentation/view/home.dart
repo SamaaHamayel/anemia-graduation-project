@@ -5,6 +5,7 @@ import 'package:animeacheck/features/home/my_account/presentation/view/my_accoun
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
 import 'package:animeacheck/features/home/setting/presentation/view/setting.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<Widget> pages = [PriHome(), history(), setting(), myAccount()];
+  List<Widget> pages = [const PriHome(), const history(), const setting(), const myAccount()];
 
   @override
   Widget build(BuildContext context) {
@@ -49,21 +50,21 @@ class _HomeScreenState extends State<HomeScreen> {
         child: pages[_selectedIndex],
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
         child: GNav(
           backgroundColor: Colors.white,
           activeColor: Colors.white,
           color: const Color.fromARGB(255, 146, 146, 153),
           tabBackgroundColor: AppColors.lightPrimaryColor,
-          gap: 8,
-          padding: EdgeInsets.all(16),
+          gap: 8.h,
+          padding: const EdgeInsets.all(16),
           selectedIndex: _selectedIndex,
           onTabChange: (index) {
             setState(() {
               _selectedIndex = index;
             });
           },
-          tabs: [
+          tabs: const [
             GButton(
               icon: FontAwesomeIcons.house,
               // icon: Icon(FontAwesomeIcons.house),

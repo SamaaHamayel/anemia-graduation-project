@@ -1,4 +1,5 @@
  import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/appColors/app_colors.dart';
 
@@ -9,13 +10,13 @@ Widget buildFeatureCard({
     required VoidCallback onTap,
   }) {
     return Container(
-      width: 343,
-      height: 149,
-      margin: EdgeInsets.symmetric(vertical: 10),
+      width: 343.w,
+      height: 149.h,
+      margin: EdgeInsets.symmetric(vertical: 10.w),
       decoration: BoxDecoration(
         border: Border.all(
-          width: 1,
-          color: Color.fromARGB(255, 195, 195, 201),
+          width: 1.w,
+          color: const Color.fromARGB(255, 195, 195, 201),
         ),
         borderRadius: BorderRadius.circular(20),
       ),
@@ -31,11 +32,11 @@ Widget buildFeatureCard({
                   color: AppColors.lightPrimaryColor,
                   size: 25.0,
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 Text(
                   title,
-                  style: TextStyle(
-                    color: Color(0xFF2BB598),
+                  style: const TextStyle(
+                    color: AppColors.lightPrimaryColor,
                     fontSize: 16,
                     fontFamily: 'Sunflower',
                     fontWeight: FontWeight.w600,
@@ -45,18 +46,19 @@ Widget buildFeatureCard({
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding:  EdgeInsets.symmetric(horizontal: 10.0.h),
             child: Text(
+              maxLines: 2,
               description,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColors.lightBlackColor,
-                fontSize: 13,
+                fontSize: 14,
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Align(
             alignment: Alignment.bottomRight,
             child: InkWell(
@@ -64,13 +66,13 @@ Widget buildFeatureCard({
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
+                  width: 40.w,
+                  height: 40.h,
+                  decoration: const BoxDecoration(
                     color: AppColors.lightPrimaryColor,
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_forward_ios,
                     color: AppColors.whiteColor,
                   ),
