@@ -1,17 +1,17 @@
+import 'package:animeacheck/features/auth/presentation/view/forgetPasswordScreen.dart';
+import 'package:animeacheck/features/auth/presentation/view/signIn_screen.dart';
+import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
+import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
-
-import '../../features/auth/presentation/view/forget_password_screen.dart';
-import '../../features/auth/presentation/view/sign_in_screen.dart';
-import '../../features/auth/presentation/view/sign_up_screen.dart';
+import '../../features/auth/presentation/view/signUp_screen.dart';
 import '../../features/auth/presentation/view/verfiy_screen.dart';
 import '../../features/home/presentation/view/home.dart';
-import '../../features/startted/onboarding/presentation/view/onboarding1.dart';
-import '../../features/startted/splach/presentation/view/splash_view.dart';
+
 
 class Routes {
   static const String intialRoutes = "/";
   static const String onBoarding = "/onBoarding";
-
+ 
   static const String login = "/login";
   static const String signUp = "/signUp";
   static const String register = "/register";
@@ -22,18 +22,11 @@ class Routes {
   static const String newPassword = "/newPassword";
   static const String home = "/home";
   static const String camera = "/camera";
-  static const String reShotting = "/re_shotting";
+  static const String Reshotting = "/Reshotting";
   static const String upLoad = "/upLoad";
   static const String eyelid = "/eyelid";
   static const String result = "/result";
   static const String profile = "/profile";
-  static const String setting = "/setting";
-  static const String history = "/history";
-  static const String myAccount = "/myAccount";
-  static const String priHome = "/priHome";
-  static const String dettected = "/dettected";
-  static const String DetectAnemiabyEye = "/DetectAnemiabyEye";
-  static const String DetectAnemiabyimage = "/DetectAnemiabyimage";
 }
 
 class AppRoutes {
@@ -43,12 +36,11 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashView());
 
       case Routes.onBoarding:
-        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+        return MaterialPageRoute(builder: (_) =>  const OnBoardingScreen());
+
 
       case Routes.forgotPassword:
-        return MaterialPageRoute(
-          builder: (_) => const ForgetPasswordScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen(),);
 
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
@@ -56,7 +48,8 @@ class AppRoutes {
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
-      // case Routes.wrongPassword:
+
+    // case Routes.wrongPassword:
       //   return MaterialPageRoute(builder: (_) => const WrongPasswordScreen());
       //
 
@@ -70,7 +63,7 @@ class AppRoutes {
       //   return MaterialPageRoute(builder: (_) => const CameraScreen());
       //
       case Routes.home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) =>  HomeScreen());
 
       // case Routes.Reshotting:
       //   return MaterialPageRoute(builder: (_) => const ReshottingScreen());

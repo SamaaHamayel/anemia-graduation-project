@@ -11,18 +11,23 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   final AuthRepository authRepo;
 
   GlobalKey<FormState> sendCodeKey = GlobalKey<FormState>();
-  GlobalKey<FormState> resetPasswordKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+
   void sendCode() async {
     emit(SendCodeLoading());
     final result = await authRepo.sendCode(emailController.text);
     result.fold((l) => emit(SendCodeError(l)), (r) => emit(SendCodeSuccess(r)));
   }
-  //!!reset password logic
-  //!!!new password text form field
-  //GlobalKey<FormState> resetPasswordKey =GlobalKey<FormState>();
 
+
+
+
+  //reset password (create new password) Logic
+  GlobalKey<FormState> resetPasswordKey = GlobalKey<FormState>();
+
+
+  //* new password text form field
   TextEditingController newPasswordController = TextEditingController();
   bool isNewPasswordShowing = true;
   IconData newPasswordSuffixIcon = Icons.visibility;
@@ -44,7 +49,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     emit(ChangeConfirmPasswordSuffixIcon());
   }
 
-//!!! code
+//!!! verify Code
   TextEditingController codeController = TextEditingController();
 
   //!!!! method change password & send & recives & confirm code,email

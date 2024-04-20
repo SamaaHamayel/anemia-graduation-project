@@ -26,6 +26,7 @@ class AppStrings {
   static const String or = "OR";
   static const String dontHaveAccount = "Don’t have an account? ";
   static const String loginSuccessfully = "Login Successfully ";
+  static const String checkEmail = "Check Your Email..! ";
   static const String signUp = "Sign up";
   static const String name = "Name";
   static const String nameHint = "Enter your Name";
@@ -34,6 +35,7 @@ class AppStrings {
   static const String alreadyHaveAnAccount = "Already have an account? ";
   static const String wrongPassword = "Wrong Password";
   static const String enterValidPassword = "Enter Valid Password";
+  static const String enterValidPasswordEqualTo = "Enter Same above Password";
   static const String enterYourPhone = "Enter your Phone";
   static const String forgetPasswordTitle =
       "Enter your email Address or phone number to recieve a verification card";
