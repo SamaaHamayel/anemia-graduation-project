@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
+import '../../../../test/view/presentation/explana.dart';
 import '../../data/widget/build_feature_card.dart';
 
 class PriHome extends StatelessWidget {
@@ -41,21 +42,25 @@ class PriHome extends StatelessWidget {
               title: 'Detect Anemia',
               description:
                   'You can take or upload photo for your eyelid to know whether you have anemia or not',
-              onTap: () => _navigateToDetectedScreen(context),
+              onTap: () => navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
               icon: Icons.biotech,
               title: 'Test Results',
               description:
                   'Input the required test results to accurately determine the type of anemia you are suffering from.',
-              onTap: () => _navigateToDetectedScreen(context),
+              onTap: () =>  Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => explanaScreen()),
+    )
+         
             ),
             buildFeatureCard(
               icon: Icons.person_search_rounded,
               title: 'Consult a Doctor',
               description:
                   'Enter your location to discover nearby doctors, and schedule an appointment effortlessly.',
-              onTap: () => _navigateToDetectedScreen(context),
+              onTap: () => navigateToDetectedScreen(context),
             ),
           ],
         ),
@@ -63,7 +68,7 @@ class PriHome extends StatelessWidget {
     );
   }
 
-  void _navigateToDetectedScreen(BuildContext context) {
+  void navigateToDetectedScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => DetectedScreen()),

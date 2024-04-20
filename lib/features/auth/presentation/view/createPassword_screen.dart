@@ -9,11 +9,13 @@ import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
 import '../../../../core/utils/appString/app_strings.dart';
-import '../../../../core/utils/commens.dart';
-import '../signUp_cubit/sign_up_cubit.dart';
-import '../widgets/customTextFormField.dart';
+// import '../../../../core/utils/commens.dart';
+import '../../../../core/utils/common.dart';
+// import '../signUp_cubit/sign_up_cubit.dart';
+// import '../widgets/customTextFormField.dart';
 import '../widgets/custom_image.dart';
 import '../widgets/custom_text.dart';
+import '../widgets/custom_text_form_field.dart';
 
 class CreatePasswordScreen extends StatelessWidget {
   const CreatePasswordScreen({super.key});

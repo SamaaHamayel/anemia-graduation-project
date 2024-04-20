@@ -1,9 +1,9 @@
 class AppAssets {
   static const String basePath = 'lib/core/utils/appImages/images/';
   static const String splash = '${basePath}splashImage.png';
-  static const String onBoarding0 = '${basePath}OnBoarding1.png';
-  static const String onBoarding1 = '${basePath}OnBoarding2.png';
-  static const String onBoarding2 = '${basePath}OnBoarding3.png';
+  static const String onBoarding0 = '${basePath}Retroviruses-pana 1.png';
+  static const String onBoarding1 = '${basePath}onboarding2_l.png';
+  static const String onBoarding2 = '${basePath}onboarding3_l.png';
   static const String createNewPassword = '${basePath}createNewPassword.png';
   static const String facebook = '${basePath}facebook.png';
   static const String forgetPassword = '${basePath}Forgot password.png';
@@ -15,8 +15,4 @@ class AppAssets {
   static const String notAnemic = '${basePath}notAnematic.png';
   static const String male = '${basePath}male.png';
   static const String female = '${basePath}female.png';
-  static const String logo = '${basePath}logo(2).png';
-  static const String detect = '${basePath}detect.png';
-  static const String uploadImage = '${basePath}uploadimage.png';
-  static const String test = '${basePath}test.png';
 }

@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 
 class DetectAnemiaByImage extends StatefulWidget {
@@ -11,7 +13,8 @@ class DetectAnemiaByImage extends StatefulWidget {
 
 class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
   File? _pickedImage;
-  Color containerColor = Color(0xFFB0B0B0); // Default color
+  Color containerColor = Color(0xFFB0B0B0); 
+  // Default color
 
   Future<void> pickImageFromGallery() async {
     final picker = ImagePicker();
@@ -19,7 +22,8 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     if (pickedImage != null) {
       setState(() {
         _pickedImage = File(pickedImage.path);
-        containerColor = Colors.transparent; // Change color when image is picked
+        containerColor =
+            Colors.transparent; // Change color when image is picked
       });
     }
   }
@@ -75,14 +79,17 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
           )
         : Center(
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 300), // Duration of color transition
+              duration:
+                  Duration(milliseconds: 300), // Duration of color transition
               width: 203,
               height: 203,
               padding: const EdgeInsets.all(30),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(width: 7, color: containerColor), // Use animated color here
+                  side: BorderSide(
+                      width: 7,
+                      color: containerColor), // Use animated color here
                   borderRadius: BorderRadius.circular(128),
                 ),
               ),
@@ -177,8 +184,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: 90.0, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 90.0, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -200,5 +206,28 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
       ),
     );
   }
-
 }
+
+class BackButtonWidget extends StatelessWidget {
+  final Color color;
+  final double size;
+
+  const BackButtonWidget(
+      {Key? key, this.color = AppColors.lightPrimaryColor, this.size = 25.0})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+        Icons.arrow_back_ios,
+        color: color,
+        size: size,
+      ),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+  }
+}
+
