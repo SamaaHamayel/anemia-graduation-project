@@ -11,6 +11,7 @@ class DetectAnemiaByImage extends StatefulWidget {
 
 class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
   File? _pickedImage;
+  Color containerColor = Color(0xFFB0B0B0); // Default color
 
   Future<void> pickImageFromGallery() async {
     final picker = ImagePicker();
@@ -18,6 +19,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     if (pickedImage != null) {
       setState(() {
         _pickedImage = File(pickedImage.path);
+        containerColor = Colors.transparent; // Change color when image is picked
       });
     }
   }
@@ -69,18 +71,18 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     return _pickedImage != null
         ? Image.file(
             _pickedImage!,
-            
             fit: BoxFit.cover,
           )
         : Center(
-          child: Container(
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 300), // Duration of color transition
               width: 203,
               height: 203,
               padding: const EdgeInsets.all(30),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(width: 5, color: Color(0xFFB0B0B0)),
+                  side: BorderSide(width: 7, color: containerColor), // Use animated color here
                   borderRadius: BorderRadius.circular(128),
                 ),
               ),
@@ -104,7 +106,8 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
                           height: 48,
                           child: Stack(
                             children: [
-                              Image.asset('lib/core/utils/appImages/images/uploadimage.png'),
+                              Image.asset(
+                                  'lib/core/utils/appImages/images/uploadimage.png'),
                             ],
                           ),
                         ),
@@ -125,7 +128,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
                 ],
               ),
             ),
-        );
+          );
   }
 
   Widget buildChooseFileButton() {
@@ -141,7 +144,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
             gradient: LinearGradient(
               begin: Alignment(0.00, -1.00),
               end: Alignment(0, 1),
-              colors: [Color(0xFF2BB598), Color(0xFF398272)],
+              colors: [AppColors.lightBlackColor, AppColors.lightPrimaryColor],
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -174,7 +177,8 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 90.0, horizontal: 30),
+          padding:
+              const EdgeInsets.symmetric(vertical: 90.0, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -196,4 +200,5 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
       ),
     );
   }
+
 }

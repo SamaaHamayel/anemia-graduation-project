@@ -23,7 +23,7 @@ Widget buildloading(BuildContext context) {
                   'Please wait....',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color:AppColors.lightPrimaryColor,
+                    color: Color(0xFF2BB598),
                     fontSize: 32,
                     fontFamily: 'Kodchasan',
                     fontWeight: FontWeight.w700,
