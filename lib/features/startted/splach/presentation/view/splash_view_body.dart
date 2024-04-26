@@ -1,13 +1,15 @@
+import 'package:animeacheck/core/api/endPoints/end_point.dart';
+import 'package:animeacheck/core/cache_helper/cache_helper.dart';
+import 'package:animeacheck/core/utils/appString/app_strings.dart';
+import 'package:animeacheck/features/home/presentation/view/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import '../../../../../core/services/service_locator.dart';
 import '../../../onboarding/presentation/view/onboarding1.dart';
 
 FlutterTts flutterTts = FlutterTts();
 
 late AnimationController _opacityController;
-late final Animation<double> _opacityAnimation;
 
 late AnimationController _scaleController;
 late final Animation<double> _scaleAnimation;
@@ -27,7 +29,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     _initTts();
     ttsDelayed();
     initScalingAnimation();
-    initOpacityAnimation();
     navigateToHome();
   }
 
@@ -35,7 +36,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     return Future.delayed(
       const Duration(seconds: 2),
       () {
-        flutterTts.speak('Anadoc');
+        flutterTts.speak(AppStrings.eyeNemia);
       },
     );
   }
@@ -62,35 +63,14 @@ class _SplashViewBodyState extends State<SplashViewBody>
           ScaleTransition(
             scale: _scaleAnimation,
             child:
-                Image.asset('lib/core/utils/appImages/images/splashImage.png'),
+                Image.asset('lib/core/utils/appImages/images/splash.png'),
           ),
           const SizedBox(height: 10),
-          FadeTransition(
-            opacity: _opacityAnimation,
-            child: Text(
-              'Anadoc',
-              style: GoogleFonts.kodchasan(
-                color: Colors.white,
-                fontSize: 63,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-              ),
-            ),
-          ),
         ],
       ),
     );
   }
 
-  void initOpacityAnimation() {
-    _opacityController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 3),
-    );
-    Tween<double> opacityTween = Tween<double>(begin: 0.0, end: 1.0);
-    _opacityAnimation = opacityTween.animate(_opacityController);
-    _opacityController.forward();
-  }
 
   void initScalingAnimation() {
     _scaleController = AnimationController(
@@ -108,10 +88,15 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToHome() {
     Future.delayed(
       const Duration(seconds: 4),
-      () {
-        Navigator.of(context).pushReplacement(
+      ()  async {
+        await sl<CacheHelper>().getData(key: ApiKeys.token)==null
+        ?Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => const OnBoardingScreen(),
+          ),
+        ):Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
           ),
         );
       },

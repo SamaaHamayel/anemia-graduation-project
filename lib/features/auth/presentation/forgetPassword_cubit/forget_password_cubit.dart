@@ -61,7 +61,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
         confirmPassword: confirmPasswordController.text,
         code: codeController.text);
     result.fold((l) => emit(ResetPasswordErrorState(l)),
-            (r) => emit(ResetPasswordSuccesState(r)));
+            (r) => emit(ResetPasswordSuccessState(r)));
   }
 
 
