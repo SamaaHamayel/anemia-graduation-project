@@ -1,4 +1,6 @@
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/core/utils/appString/app_strings.dart';
+import 'package:animeacheck/features/test/view/presentation/explana.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +13,32 @@ class PriHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CircleAvatar(
+              backgroundColor: AppColors.lightPrimaryColor,
+              child: Image.asset(
+                AppAssets.female,
+                width: double.infinity,
+              ),
+            ),
+            Image.asset(
+              'lib/core/utils/appImages/images/logo (2).png',
+              scale: 2,
+            ),
+            const Icon(
+              Icons.notifications,
+              color: AppColors.primaryColor,
+              size: 30.0,
+            )
+          ],
+        ),
+      ),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,22 +67,24 @@ class PriHome extends StatelessWidget {
             buildFeatureCard(
               icon: Icons.camera_alt_rounded,
               title: AppStrings.detectAnemia,
-              description:
-                  AppStrings.detectAnemiaTitle,
+              description: AppStrings.detectAnemiaTitle,
               onTap: () => navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
-              icon: Icons.biotech,
-              title: AppStrings.testResults,
-              description:
-                  AppStrings.testResultsTitle,
-              onTap: () => navigateToDetectedScreen(context),
-            ),
+                icon: Icons.biotech,
+                title: AppStrings.testResults,
+                description: AppStrings.testResultsTitle,
+                onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => explanaScreen()),
+                      )
+                    }),
             buildFeatureCard(
               icon: Icons.person_search_rounded,
               title: AppStrings.consultADoctor,
-              description:
-                  AppStrings.consultADoctorTitle,
+              description: AppStrings.consultADoctorTitle,
               onTap: () => navigateToDetectedScreen(context),
             ),
           ],
@@ -71,5 +99,4 @@ class PriHome extends StatelessWidget {
       MaterialPageRoute(builder: (context) => DetectedScreen()),
     );
   }
-
 }
