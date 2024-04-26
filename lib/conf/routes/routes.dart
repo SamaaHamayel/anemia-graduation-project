@@ -3,6 +3,8 @@ import 'package:animeacheck/features/startted/onboarding/presentation/view/onboa
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/view/forget_password_screen.dart';
+import '../../features/auth/presentation/view/info_one_screen.dart';
+import '../../features/auth/presentation/view/info_two_screen.dart';
 import '../../features/auth/presentation/view/sign_in_screen.dart';
 import '../../features/auth/presentation/view/sign_up_screen.dart';
 import '../../features/auth/presentation/view/verfiy_screen.dart';
@@ -13,17 +15,18 @@ class Routes {
   static const String intialRoutes = "/";
   static const String onBoarding = "/onBoarding";
  
-  static const String login = "/login";
   static const String signUp = "/signUp";
   static const String register = "/register";
   static const String signIn = "/signIn";
+  static const String infoOne = "/infoOne";
+  static const String infoTwo = "/infoTwo";
   static const String wrongPassword = "/wrongPassword";
   static const String forgotPassword = "/forgotPassword";
   static const String verify = "/verify";
   static const String newPassword = "/newPassword";
   static const String home = "/home";
   static const String camera = "/camera";
-  static const String Reshotting = "/Reshotting";
+  static const String reshotting = "/Reshotting";
   static const String upLoad = "/upLoad";
   static const String eyelid = "/eyelid";
   static const String result = "/result";
@@ -49,11 +52,18 @@ class AppRoutes {
       case Routes.forgotPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen(),);
 
+
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+
+      case Routes.infoOne:
+        return MaterialPageRoute(builder: (_) => const InfoOneScreen());
+
+        case Routes.infoTwo:
+        return MaterialPageRoute(builder: (_) => const InfoTwoScreen());
 
 
     // case Routes.wrongPassword:
@@ -70,7 +80,7 @@ class AppRoutes {
       //   return MaterialPageRoute(builder: (_) => const CameraScreen());
       //
       case Routes.home:
-        return MaterialPageRoute(builder: (_) =>  HomeScreen());
+        return MaterialPageRoute(builder: (_) =>  const HomeScreen());
 
       // case Routes.Reshotting:
       //   return MaterialPageRoute(builder: (_) => const ReshottingScreen());

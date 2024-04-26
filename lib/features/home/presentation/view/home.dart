@@ -12,17 +12,15 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen> createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<Widget> pages = [
-    const PriHome(),
-    const history(),
-    const setting(),
-   MyAccount (),
-  ];
+  List<Widget> pages = [const PriHome(),
+  
+   const history(),
+    const Setting(),  MyAccount()];
 
   @override
   Widget build(BuildContext context) {

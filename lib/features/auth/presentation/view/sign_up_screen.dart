@@ -1,3 +1,4 @@
+import 'package:animeacheck/core/cache_helper/cache_helper.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_state.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_text_form_field.dart';
@@ -46,7 +47,7 @@ class SignUpScreen extends StatelessWidget {
             showToast(
                 message: AppStrings.loginSuccessfully,
                 state: ToastStates.success);
-            navigateReplacement(context: context, route: Routes.home);
+            navigateReplacement(context: context, route: Routes.infoOne);
           }
           if (state is SignUpErrorState) {
             showToast(message: state.message, state: ToastStates.error);
@@ -168,6 +169,10 @@ class SignUpScreen extends StatelessWidget {
                           BlocProvider.of<SignUpCubit>(context)
                               .signUp();
                         }
+
+                        //navigateReplacement(context: context, route: Routes.infoOne);
+
+
                       },),
                   SizedBox(
                     height: 41.h,
