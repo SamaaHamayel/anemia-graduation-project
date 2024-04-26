@@ -10,6 +10,7 @@ import '../../../onboarding/presentation/view/onboarding1.dart';
 FlutterTts flutterTts = FlutterTts();
 
 late AnimationController _opacityController;
+late final Animation<double> _opacityAnimation;
 
 late AnimationController _scaleController;
 late final Animation<double> _scaleAnimation;
@@ -29,6 +30,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     _initTts();
     ttsDelayed();
     initScalingAnimation();
+    initOpacityAnimation();
     navigateToHome();
   }
 
@@ -66,9 +68,34 @@ class _SplashViewBodyState extends State<SplashViewBody>
                 Image.asset('lib/core/utils/appImages/images/splash.png'),
           ),
           const SizedBox(height: 10),
+          FadeTransition(
+            opacity: _opacityAnimation,
+
+            // child: Text(
+            //   'Anadoc',
+            //   style: GoogleFonts.kodchasan(
+            //     color: Colors.white,
+            //     fontSize: 63,
+            //     fontWeight: FontWeight.w400,
+            //     fontStyle: FontStyle.normal,
+            //   ),
+            // ),
+
+          ),
         ],
       ),
     );
+  }
+
+
+  void initOpacityAnimation() {
+    _opacityController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+    Tween<double> opacityTween = Tween<double>(begin: 0.0, end: 1.0);
+    _opacityAnimation = opacityTween.animate(_opacityController);
+    _opacityController.forward();
   }
 
 

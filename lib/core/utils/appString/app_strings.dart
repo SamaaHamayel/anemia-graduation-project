@@ -5,6 +5,8 @@ class AppStrings {
    static const String onBoardingcounter1 = "2 / 3";
   static const String onBoardingcounter2 = "3 / 3";
 
+  static const String personalInfoKey = "personalInfo";
+
   static const String onBoardingSubTitle0 =
       "Welcome to our app! Use your eyelid to detect and identify the type of anemia with high accuracy. Start now and discover your health with just one click!";
   static const String onBoardingTitle1 = "Identify Your Anemia Type!";
@@ -16,9 +18,26 @@ class AppStrings {
   static const String skip = "Skip";
   static const String next = "Next";
   static const String signIn = "Sign in";
+  static const String settings = "Settings";
   static const String email = "Email";
   static const String phone = "Phone";
   static const String code = "Code";
+  static const String yes = "Yes";
+  static const String no = "No";
+  static const String start = "Start";
+  static const String weight = "Weight:";
+  static const String height = "Height:";
+  static const String enterYourHeight = "Enter your height";
+  static const String enterYourWeight  = "Enter your weight ";
+  static const String writeHere  = "WriteHere ";
+  static const String areYouOnYourPeriod  = "Are you on your period?";
+  static const String infants = "Infants";
+  static const String adultMales = "Adult males";
+  static const String adultFemalesPregnant = "Adult females (pregnant)";
+  static const String adultFemalesNotPregnant = "Adult females (not pregnant)";
+  static const String youngChildren = "Young children";
+  static const String chooseYourCategory = "Choose your category:";
+  static const String personalInformation = "Personal information";
   static const String emailHint = "Enter your Email";
   static const String enterValidEmail = "Enter Valid Email";
   static const String enterValidCode = "Enter Valid Code";
@@ -59,6 +78,11 @@ class AppStrings {
   static const String chooseFile = "Choose File";
   static const String weCantReachYourEyelid = "we can’t reach your eyelid";
   static const String tryAgain = "Try Again";
+  static const String doYouSufferFromAnyChronicIllnesses = "Do you suffer from any chronic illnesses?";
+  static const String whatMedicationsAreYouTaking = "What medications are you taking?";
+  static const String whatChronicIllnessDoYouSufferFrom = "What chronic illness do you suffer from?";
+  static const String areYouVegetarian = "Are you vegetarian?";
+  static const String doYouTakeVitaminB12 = "Do you take vitamin B12?";
   static const String uploadComplete = "Upload Complete";
   static const String pleaseWait = "Please wait....";
   static const String recognize = "recognize";

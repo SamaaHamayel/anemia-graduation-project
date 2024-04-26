@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<Widget> pages = [const PriHome(), const history(), const setting(), const myAccount()];
+  List<Widget> pages = [const PriHome(), const history(), const Setting(), const myAccount()];
 
   @override
   Widget build(BuildContext context) {
