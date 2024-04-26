@@ -1,3 +1,4 @@
+import 'package:animeacheck/features/test/view/presentation/cbc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -723,7 +724,12 @@ class explanaScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CBCTest()),
+    );
+                  },
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.white,
                     padding: EdgeInsets.zero,
