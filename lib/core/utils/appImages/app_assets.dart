@@ -18,8 +18,9 @@ class AppAssets {
   static const String logo = '${basePath}logo(2).png';
   static const String detect = '${basePath}detect.png';
   static const String uploadImage = '$basePath.png';
+  static const String Push_notifications ='${basePath}Push_notifications.png';
 
-
+//Push notifications-rafiki 1
 
 
 }

@@ -1,5 +1,8 @@
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/core/utils/appString/app_strings.dart';
+import 'package:animeacheck/features/home/doctor/presentation/view/doctor.dart';
+import 'package:animeacheck/features/home/notification/presentation/view/no_notification.dart';
+import 'package:animeacheck/features/home/notification/presentation/view/notification.dart';
 import 'package:animeacheck/features/test/view/presentation/explana.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
@@ -7,8 +10,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
 import '../../data/widget/build_feature_card.dart';
 
-class PriHome extends StatelessWidget {
+class PriHome extends StatefulWidget {
   const PriHome({Key? key});
+
+  @override
+  State<PriHome> createState() => _PriHomeState();
+}
+
+class _PriHomeState extends State<PriHome> {
+  bool isSwitched = true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +39,26 @@ class PriHome extends StatelessWidget {
               'lib/core/utils/appImages/images/logo (2).png',
               scale: 2,
             ),
-            const Icon(
-              Icons.notifications,
-              color: AppColors.primaryColor,
-              size: 30.0,
+            IconButton(
+              onPressed: () {
+                if (isSwitched == true)
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => notificationScreen()),
+                  );
+                else
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => noNotificationScreen()),
+                  );
+              },
+              icon: Icon(
+                Icons.notifications,
+                color: AppColors.primaryColor,
+                size: 30.0,
+              ),
             )
           ],
         ),
@@ -82,11 +108,15 @@ class PriHome extends StatelessWidget {
                       )
                     }),
             buildFeatureCard(
-              icon: Icons.person_search_rounded,
-              title: AppStrings.consultADoctor,
-              description: AppStrings.consultADoctorTitle,
-              onTap: () => navigateToDetectedScreen(context),
-            ),
+                icon: Icons.person_search_rounded,
+                title: AppStrings.consultADoctor,
+                description: AppStrings.consultADoctorTitle,
+                onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => doctorScreen()),
+                      )
+                    }),
           ],
         ),
       ),
