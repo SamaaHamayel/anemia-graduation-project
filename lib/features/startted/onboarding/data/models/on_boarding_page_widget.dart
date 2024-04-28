@@ -46,7 +46,7 @@ class OnBoardingPage extends StatelessWidget {
                     AppLocalizations.of(context)!.skip,
                     style: textStyle(
                         color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                            ?AppColors.whiteColor:AppColors.lightPrimaryColor,
+                            ?AppColors.whiteColor:AppColors.whiteColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w600),
                   ),
@@ -68,7 +68,7 @@ class OnBoardingPage extends StatelessWidget {
                     : AppLocalizations.of(context)!.onBoardingTitle2,
                 style: TextStyle(
                   color: currentIndex == 1 // And here
-                      ? AppColors.primaryColor
+                      ? AppColors.whiteColor
                       : AppColors.whiteColor,
                   fontSize: 20,
                   fontFamily: 'Kodchasan',
@@ -88,7 +88,7 @@ class OnBoardingPage extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: currentIndex == 1 // And here
-                      ? AppColors.primaryColor
+                      ? AppColors.whiteColor
                       : AppColors.whiteColor,
                   fontSize: 16,
                   fontFamily: 'Kodchasan',
@@ -107,7 +107,7 @@ class OnBoardingPage extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: currentIndex == 1 // And here
-                  ? AppColors.primaryColor
+                  ? AppColors.whiteColor
                   : AppColors.whiteColor,
               fontSize: 16,
               fontFamily: 'Kodchasan',
@@ -129,7 +129,7 @@ class OnBoardingPage extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white, side: BorderSide(
                   color: currentIndex == 1
-                      ? AppColors.primaryColor
+                      ? AppColors.whiteColor
                       : AppColors.whiteColor,
                 ),
                 shape: const CircleBorder(),
@@ -138,14 +138,14 @@ class OnBoardingPage extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: currentIndex == 1
-                    ? AppColors.primaryColor
+                    ? AppColors.whiteColor
                     : AppColors.whiteColor,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.arrow_forward_ios,
                 color: currentIndex == 1
-                    ? AppColors.whiteColor
+                    ? AppColors.primaryColor
                     : AppColors.primaryColor,
               ),
             ),
@@ -155,7 +155,7 @@ class OnBoardingPage extends StatelessWidget {
             count: 3,
             effect: ExpandingDotsEffect(
               activeDotColor: currentIndex == 1 // And here
-                  ? AppColors.primaryColor
+                  ? AppColors.whiteColor
                   : AppColors.whiteColor,
               dotColor: Colors.grey,
               dotHeight: 10,

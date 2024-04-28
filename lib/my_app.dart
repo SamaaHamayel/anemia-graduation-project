@@ -2,6 +2,7 @@ import 'package:animeacheck/conf/routes/routes.dart';
 import 'package:animeacheck/conf/theme/my_them.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_state.dart';
+import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -25,7 +25,7 @@ class DetectedScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               buildHeader(context),
-              buildDetectedInfo(),
+              buildDetectedInfo(context),
               buildActionButton(iconData: Icons.camera_alt_rounded, onTap: () =>
                   Navigator.push(
                     context,

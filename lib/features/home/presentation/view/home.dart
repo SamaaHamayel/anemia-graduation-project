@@ -9,6 +9,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -18,7 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<Widget> pages = [const PriHome(), const history(), const Setting(), const myAccount()];
+  List<Widget> pages = [const PriHome(), const history(), const Setting(),  MyAccount()];
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
         child: GNav(
-          backgroundColor: Colors.white,
           activeColor: Colors.white,
           color: const Color.fromARGB(255, 146, 146, 153),
           tabBackgroundColor: AppColors.lightPrimaryColor,
@@ -64,23 +67,23 @@ class _HomeScreenState extends State<HomeScreen> {
               _selectedIndex = index;
             });
           },
-          tabs: const [
+          tabs:  [
             GButton(
               icon: FontAwesomeIcons.house,
               // icon: Icon(FontAwesomeIcons.house),
-              text: 'Home',
+              text: AppLocalizations.of(context)!.home,
             ),
             GButton(
               icon: (FontAwesomeIcons.calendarDays),
-              text: 'History',
+              text: AppLocalizations.of(context)!.history,
             ),
             GButton(
               icon: (Icons.settings),
-              text: 'Setting',
+              text: AppLocalizations.of(context)!.settings,
             ),
             GButton(
               icon: (Icons.person),
-              text: 'MyAccount',
+              text: AppLocalizations.of(context)!.myAccount,
             ),
           ],
         ),

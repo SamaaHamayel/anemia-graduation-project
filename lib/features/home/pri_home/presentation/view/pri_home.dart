@@ -1,9 +1,10 @@
-import 'package:animeacheck/core/utils/appString/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
 import '../../data/widget/build_feature_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class PriHome extends StatelessWidget {
   const PriHome({Key? key});
@@ -28,10 +29,9 @@ class PriHome extends StatelessWidget {
             ),
             SizedBox(
               width: 351.w,
-              child: const Text(
-                AppStrings.homeScreenSubTitle,
-                style: TextStyle(
-                  color: Colors.black,
+              child:  Text(
+                AppLocalizations.of(context)!.homeScreenSubTitle,
+                style: const TextStyle(
                   fontSize: 14,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w400,
@@ -40,23 +40,23 @@ class PriHome extends StatelessWidget {
             ),
             buildFeatureCard(
               icon: Icons.camera_alt_rounded,
-              title: AppStrings.detectAnemia,
+              title: AppLocalizations.of(context)!.detectAnemia,
               description:
-                  AppStrings.detectAnemiaTitle,
+                  AppLocalizations.of(context)!.detectAnemiaTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
               icon: Icons.biotech,
-              title: AppStrings.testResults,
+              title: AppLocalizations.of(context)!.testResults,
               description:
-                  AppStrings.testResultsTitle,
+                  AppLocalizations.of(context)!.testResultsTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
               icon: Icons.person_search_rounded,
-              title: AppStrings.consultADoctor,
+              title: AppLocalizations.of(context)!.consultADoctor,
               description:
-                  AppStrings.consultADoctorTitle,
+                  AppLocalizations.of(context)!.consultADoctorTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
           ],

@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 
-  import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 Widget buildHeader(BuildContext context) {
     return Padding(
@@ -17,9 +19,9 @@ Widget buildHeader(BuildContext context) {
             },
           ),
           const SizedBox(width: 85),
-          const Text(
-            'Detect Anemia',
-            style: TextStyle(
+           Text(
+            AppLocalizations.of(context)!.detectAnemia,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 22,
               fontFamily: 'Kodchasan',
