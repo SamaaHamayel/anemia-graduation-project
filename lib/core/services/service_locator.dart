@@ -2,6 +2,7 @@ import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/person_info_cubit/personal_info_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import '../../features/auth/domain/repo/auth_repo.dart';
@@ -17,6 +18,7 @@ void initServiceLoactor(){
   sl.registerLazySingleton(()=> ForgetPasswordCubit(sl()));
   sl.registerLazySingleton(()=> SignUpCubit(sl()));
   sl.registerLazySingleton(()=> PersonalInfoCubit());
+  sl.registerLazySingleton(()=> SettingsCubit());
 
 
   //auth feature

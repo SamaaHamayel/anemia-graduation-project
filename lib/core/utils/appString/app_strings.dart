@@ -24,6 +24,11 @@ class AppStrings {
   static const String code = "Code";
   static const String yes = "Yes";
   static const String no = "No";
+  static const String country = "Country Location";
+  static const String darkMode = "Dark Mode";
+  static const String account = "Account";
+  static const String language = "Language ( Ar العربيه)";
+  static const String notifications = "Notifications";
   static const String start = "Start";
   static const String weight = "Weight:";
   static const String height = "Height:";
@@ -59,7 +64,7 @@ class AppStrings {
   static const String enterValidPasswordEqualTo = "Enter Same above Password";
   static const String enterYourPhone = "Enter your Phone";
   static const String forgetPasswordTitle =
-      "Enter your email Address or phone number to recieve a verification card";
+      "Enter your email Address or phone number to receive a verification card";
   static const String send = "Send";
   static const String verify = "Verify";
   static const String verifyTitle =
@@ -94,4 +99,7 @@ class AppStrings {
   static const String testResultsTitle = "Input the required test results to accurately determine the type of anemia you are suffering from.";
   static const String consultADoctor = "Consult a Doctor:";
   static const String consultADoctorTitle = " Enter your location to discover nearby doctors, and schedule an appointment effortlessly";
+  static const String home = " Home";
+  static const String history = " History";
+  static const String myAccount = "MyAccount";
 }

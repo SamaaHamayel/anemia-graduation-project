@@ -12,9 +12,9 @@ Widget buildDetectedInfo() {
               scale: 1,
             ),
           ),
-          SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          const SizedBox(height: 30),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: SizedBox(
               width: 333,
               child: Text(

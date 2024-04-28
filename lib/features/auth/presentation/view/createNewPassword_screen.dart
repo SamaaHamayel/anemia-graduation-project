@@ -8,11 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/common.dart';
 import '../widgets/custom_image.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_text_form_field.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
 
 class CreateNewPasswordScreen extends StatelessWidget {
   const CreateNewPasswordScreen({super.key});
@@ -33,7 +36,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          AppStrings.createNewPassword,
+          AppLocalizations.of(context)!.createNewPassword,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
               color: AppColors.primaryColor,
@@ -54,7 +57,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     child: Icon(Icons.check_sharp,
                     color: AppColors.whiteColor,),),
                   content:  Text(
-                    AppStrings.yourPasswordHasBeenChangedSuccessfully,
+                    AppLocalizations.of(context)!.yourPasswordHasBeenChangedSuccessfully,
                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
                       color: AppColors.blackColor,
                       fontSize: 16,
@@ -65,7 +68,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                       height: 10.h,
                     ),
                     CustomElevatedButton(
-                        text: AppStrings.signIn,
+                        text: AppLocalizations.of(context)!.signIn,
                         onPressed: (){
                           navigateReplacement(context: context, route: Routes.home);
                         },),
@@ -85,9 +88,9 @@ class CreateNewPasswordScreen extends StatelessWidget {
                   ),
 
                   //___newPassword_____
-                  const CustomText(
+                   CustomText(
                       alignment: Alignment.bottomLeft,
-                      text: AppStrings.newPassword),
+                      text: AppLocalizations.of(context)!.newPassword),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -95,7 +98,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     controller: BlocProvider.of<ForgetPasswordCubit>(context)
                         .newPasswordController,
                     prefixIcon: Icons.lock_outlined,
-                    hint: AppStrings.newPassword,
+                    hint: AppLocalizations.of(context)!.newPassword,
                     textInputAction: TextInputAction.next,
                     isPassword: BlocProvider.of<ForgetPasswordCubit>(context)
                         .isNewPasswordShowing,
@@ -106,7 +109,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     },
                     validate: (data) {
                       if (data!.length < 6 || data.isEmpty) {
-                        return AppStrings.enterValidPassword;
+                        return AppLocalizations.of(context)!.enterValidPassword;
                       }
                       return null;
                     },
@@ -117,9 +120,9 @@ class CreateNewPasswordScreen extends StatelessWidget {
 
 
                   //____confirm NewPassword____
-                  const CustomText(
+                   CustomText(
                       alignment: Alignment.bottomLeft,
-                      text: AppStrings.confirmNewPassword),
+                      text: AppLocalizations.of(context)!.confirmNewPassword),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -127,7 +130,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     controller: BlocProvider.of<ForgetPasswordCubit>(context)
                         .confirmPasswordController,
                     prefixIcon: Icons.lock_outlined,
-                    hint: AppStrings.confirmNewPassword,
+                    hint: AppLocalizations.of(context)!.confirmNewPassword,
                     textInputAction: TextInputAction.next,
                     isPassword: BlocProvider.of<ForgetPasswordCubit>(context)
                         .isConfirmPasswordShowing,
@@ -138,10 +141,10 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     },
                     validate: (data) {
                       if (data!.length < 6 || data.isEmpty) {
-                        return AppStrings.enterValidPassword;
+                        return AppLocalizations.of(context)!.enterValidPassword;
                       }
                       if (data!=BlocProvider.of<ForgetPasswordCubit>(context).newPasswordController.text){
-                        return AppStrings.enterValidPasswordEqualTo;
+                        return AppLocalizations.of(context)!.enterValidPasswordEqualTo;
                       }
 
                       return null;
@@ -153,9 +156,9 @@ class CreateNewPasswordScreen extends StatelessWidget {
 
 
                   //____code_____
-                  const CustomText(
+                   CustomText(
                       alignment: Alignment.bottomLeft,
-                      text: AppStrings.code),
+                      text: AppLocalizations.of(context)!.code),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -165,15 +168,15 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     controller:
                     BlocProvider.of<ForgetPasswordCubit>(context)
                         .codeController,
-                    hint: AppStrings.code,
+                    hint: AppLocalizations.of(context)!.code,
                     validate: (data) {
                       //123h ==> null
                       //123 ==> true & return 123
                       if(num.tryParse(data!)== null){
-                        return AppStrings.enterValidCode;
+                        return AppLocalizations.of(context)!.enterValidCode;
                       }
                       if (data.isEmpty) {
-                        return AppStrings.enterValidCode;
+                        return AppLocalizations.of(context)!.enterValidCode;
                       }
                       return null;
                     },
@@ -188,7 +191,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                   state is ResetPasswordLoadingState
                   ?const CircularProgressIndicator()
                   :CustomElevatedButton(
-                      text: AppStrings.save,
+                      text: AppLocalizations.of(context)!.save,
                       onPressed: () {
                         if (BlocProvider.of<ForgetPasswordCubit>(context)
                             .resetPasswordKey

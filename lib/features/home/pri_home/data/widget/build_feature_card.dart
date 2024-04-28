@@ -51,7 +51,6 @@ Widget buildFeatureCard({
               maxLines: 2,
               description,
               style: const TextStyle(
-                color: AppColors.lightBlackColor,
                 fontSize: 14,
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w500,

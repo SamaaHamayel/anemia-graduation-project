@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/appColors/app_colors.dart';
-import '../../../../core/utils/appString/app_strings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class DividerWidget extends StatelessWidget {
   const DividerWidget({
@@ -19,7 +20,7 @@ class DividerWidget extends StatelessWidget {
                 endIndent: 9,
               )
           ),
-          Text(AppStrings.or,style: Theme.of(context).textTheme.bodySmall!.copyWith(
+          Text(AppLocalizations.of(context)!.or,style: Theme.of(context).textTheme.bodySmall!.copyWith(
               color: AppColors.blackColor,
               fontSize: 13,
               fontFamily: "Kodchasan",

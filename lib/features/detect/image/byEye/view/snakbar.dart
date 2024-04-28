@@ -24,7 +24,7 @@ Widget buildSnackBar(BuildContext context) { // Pass context as a parameter
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'We can’t reach \nyour eyelid',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -44,7 +44,7 @@ Widget buildSnackBar(BuildContext context) { // Pass context as a parameter
                       onPressed: () {
                         Navigator.pop(context); // Now context is available
                       },
-                      child: Text(
+                      child: const Text(
                         'Try Again',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -69,7 +69,7 @@ Widget buildSnackBar(BuildContext context) { // Pass context as a parameter
                     ModalRoute.withName('/DetectAnemiaByEye'),
                   );
                 },
-                child: Text(
+                child: const Text(
                   ' x ',
                   style: TextStyle(
                     fontSize: 30,

@@ -5,14 +5,17 @@ import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/common.dart';
 import '../forgetPassword_cubit/forget_password_cubit.dart';
 import '../widgets/custom_image.dart';
 import '../widgets/custom_text_form_field.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
+
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -33,7 +36,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          AppStrings.forgetPassword,
+          AppLocalizations.of(context)!.forgetPassword,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
               color: AppColors.primaryColor,
@@ -66,7 +69,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     child: SizedBox(
                       width: 343.w,
                       child: Text(
-                        AppStrings.forgetPasswordTitle,
+                        AppLocalizations.of(context)!.forgetPasswordTitle,
                         style: Theme.of(context)
                             .textTheme
                             .displaySmall!
@@ -81,22 +84,22 @@ class ForgetPasswordScreen extends StatelessWidget {
                   SizedBox(height: 24.h),
 
                   //____Email____
-                  const CustomText(
+                   CustomText(
                       alignment: Alignment.bottomLeft,
-                      text: AppStrings.email),
+                      text: AppLocalizations.of(context)!.email),
                   SizedBox(
                     height: 4.h,
                   ),
                   CustomTextFormField(
                     controller: BlocProvider.of<ForgetPasswordCubit>(context)
                         .emailController,
-                    hint: AppStrings.emailHint,
+                    hint: AppLocalizations.of(context)!.emailHint,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     validate: (data) {
                       if (data!.isEmpty || !data.contains('@gmail.com')) {
-                        return AppStrings.enterValidEmail;
+                        return AppLocalizations.of(context)!.enterValidEmail;
                       }
                       return null;
                     },
@@ -106,14 +109,14 @@ class ForgetPasswordScreen extends StatelessWidget {
                   SizedBox(height: 24.h),
                   CustomText(
                       alignment: Alignment.bottomLeft,
-                      text: AppStrings.phone),
+                      text: AppLocalizations.of(context)!.phone),
                   SizedBox(
                     height: 4.h,
                   ),
                   CustomTextFormField(
                     controller: BlocProvider.of<ForgetPasswordCubit>(context)
                         .phoneController,
-                    hint: AppStrings.enterYourPhone,
+                    hint: AppLocalizations.of(context)!.enterYourPhone,
                     prefixIcon: Icons.phone_outlined,
                     keyboardType: TextInputType.phone,
                   ),
@@ -133,7 +136,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       }
 
                     },
-                      text: AppStrings.send,),
+                      text: AppLocalizations.of(context)!.send,),
 
 
 

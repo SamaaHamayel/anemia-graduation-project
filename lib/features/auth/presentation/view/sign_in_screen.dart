@@ -6,12 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../conf/routes/routes.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/common.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_social_media.dart';
 import '../widgets/divider.dart';
+
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -21,7 +24,7 @@ class SignInScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(AppStrings.signIn,
+        title: Text(AppLocalizations.of(context)!.signIn,
             style: Theme.of(context).textTheme.displayMedium!.copyWith(
                 fontSize: 24,
                 color: AppColors.primaryColor,
@@ -32,9 +35,9 @@ class SignInScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is SignInSuccessState) {
             showToast(
-                message: AppStrings.loginSuccessfully,
+                message: AppLocalizations.of(context)!.loginSuccessfully,
                 state: ToastStates.success);
-            navigateReplacement(context: context, route: Routes.home);
+           // navigateReplacement(context: context, route: Routes.home);
           }
           if (state is SignInErrorState) {
             showToast(message: state.message, state: ToastStates.error);
@@ -51,22 +54,22 @@ class SignInScreen extends StatelessWidget {
                     height: 50.h,
                   ),
                   //___email____
-                  const CustomText(
+                   CustomText(
                       alignment: Alignment.bottomLeft,
-                      text: AppStrings.email),
+                      text: AppLocalizations.of(context)!.email),
                   SizedBox(
                     height: 16.h,
                   ),
                   CustomTextFormField(
                     controller:
                         BlocProvider.of<SignInCubit>(context).emailController,
-                    hint: AppStrings.emailHint,
+                    hint: AppLocalizations.of(context)!.emailHint,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     validate: (data) {
                       if (data!.isEmpty || !data.contains('@gmail.com')) {
-                        return AppStrings.enterValidEmail;
+                        return AppLocalizations.of(context)!.enterValidEmail;
                       }
                       return null;
                     },
@@ -76,16 +79,16 @@ class SignInScreen extends StatelessWidget {
                   ),
 
                   //___password____
-                  const CustomText(
+                   CustomText(
                       alignment: Alignment.bottomLeft,
-                      text: AppStrings.password),
+                      text: AppLocalizations.of(context)!.password),
                   SizedBox(
                     height: 16.h,
                   ),
                   CustomTextFormField(
                     controller: BlocProvider.of<SignInCubit>(context)
                         .passwordController,
-                    hint: AppStrings.password,
+                    hint: AppLocalizations.of(context)!.password,
                     prefixIcon: Icons.lock_outlined,
                     isPassword: BlocProvider.of<SignInCubit>(context)
                         .isLoginPasswordShowing,
@@ -96,7 +99,7 @@ class SignInScreen extends StatelessWidget {
                     },
                     validate: (data) {
                       if (data!.length < 6 || data.isEmpty) {
-                        return AppStrings.enterValidPassword;
+                        return AppLocalizations.of(context)!.enterValidPassword;
                       }
                       return null;
                     },
@@ -114,7 +117,7 @@ class SignInScreen extends StatelessWidget {
                             context: context, route: Routes.forgotPassword);
                       },
                       child: Text(
-                        AppStrings.forgetPassword,
+                        AppLocalizations.of(context)!.forgetPassword,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             color: AppColors.primaryColor,
                             fontSize: 13,
@@ -139,9 +142,11 @@ class SignInScreen extends StatelessWidget {
                           .validate()) {
                         BlocProvider.of<SignInCubit>(context)
                             .login();
+
                       }
+                      navigateReplacement(context: context, route: Routes.home);
                     },
-                    text: AppStrings.signIn,
+                    text: AppLocalizations.of(context)!.signIn,
                   ),
                   SizedBox(
                     height: 40.h,
@@ -164,9 +169,8 @@ class SignInScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        AppStrings.dontHaveAccount,
+                        AppLocalizations.of(context)!.dontHaveAccount,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.blackColor,
                             fontSize: 16,
                             fontFamily: "Kodchasan",
                             fontWeight: FontWeight.w600),
@@ -176,7 +180,7 @@ class SignInScreen extends StatelessWidget {
                           navigateReplacement(context: context, route: Routes.signUp);
                         },
                         child: Text(
-                          AppStrings.signUp,
+                          AppLocalizations.of(context)!.signUp,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!

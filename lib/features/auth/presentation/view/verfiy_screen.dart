@@ -1,15 +1,16 @@
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_image.dart';
-import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/common.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class VerfiyScreen extends StatefulWidget {
   const VerfiyScreen({super.key});
@@ -35,7 +36,7 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
           ),
         ),
         title: Text(
-          AppStrings.verify,
+          AppLocalizations.of(context)!.verify,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
               color: AppColors.primaryColor,
@@ -56,7 +57,7 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
               child: SizedBox(
                 width: 343.w,
                 child: Text(
-                  AppStrings.verifyTitle,
+                  AppLocalizations.of(context)!.verifyTitle,
                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
                       color: AppColors.primaryColor,
                       fontSize: 16,
@@ -100,7 +101,7 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
 
             //____button____
             CustomElevatedButton(
-              text: AppStrings.verify,
+              text: AppLocalizations.of(context)!.verify,
               onPressed: () {
                 navigateReplacement(
                     context: context, route: Routes.newPassword);
@@ -128,9 +129,9 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
                   color: AppColors.lightRedColor,
                   width: 1.0, // Underline thickness
                 ),),),
-                child: const Text(
-                  AppStrings.resentCode,
-                  style: TextStyle(
+                child:  Text(
+                  AppLocalizations.of(context)!.resentCode,
+                  style: const TextStyle(
                     color: AppColors.lightRedColor,
                   ),
                 ),

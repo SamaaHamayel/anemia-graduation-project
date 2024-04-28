@@ -7,7 +7,7 @@ Widget buildHeader(BuildContext context) {
       child: Row(
         children: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_rounded,
               color: Colors.white,
               size: 25.0,
@@ -16,8 +16,8 @@ Widget buildHeader(BuildContext context) {
               Navigator.pop(context);
             },
           ),
-          SizedBox(width: 85),
-          Text(
+          const SizedBox(width: 85),
+          const Text(
             'Detect Anemia',
             style: TextStyle(
               color: Colors.white,

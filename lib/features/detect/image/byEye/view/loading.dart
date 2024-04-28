@@ -18,8 +18,8 @@ Widget buildloading(BuildContext context) {
                 Center(
           child: RotatingIcon(),
         ),
-                SizedBox(height: 32),
-                Text(
+                const SizedBox(height: 32),
+                const Text(
                   'Please wait....',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -48,7 +48,7 @@ class RotatingIconState extends State<RotatingIcon> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(milliseconds: 50), (Timer timer) {
+    timer = Timer.periodic(const Duration(milliseconds: 50), (Timer timer) {
       setState(() {
         rotationAngle += 0.05; // Adjust rotation speed as needed
       });
@@ -65,7 +65,7 @@ class RotatingIconState extends State<RotatingIcon> {
   Widget build(BuildContext context) {
     return Transform.rotate(
       angle: rotationAngle,
-      child: Icon(
+      child: const Icon(
         Icons.donut_large,
         size: 100,
         color: AppColors.lightPrimaryColor,

@@ -2,11 +2,14 @@ import 'package:animeacheck/conf/routes/routes.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/app_text_them.dart';
 import 'package:animeacheck/core/utils/common.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../../core/utils/appString/app_strings.dart';
 import '../../presentation/view/onboardininffo.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnBoardingPage extends StatelessWidget {
   final PageController controller;
@@ -23,9 +26,12 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
+    return BlocProvider(
+  create: (context) => SettingsCubit(),
+  child: Container(
       padding: const EdgeInsets.all(20),
-      color: currentIndex == 1 ? AppColors.whiteColor : AppColors.primaryColor,
+      color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+          ?AppColors.blackColor:AppColors.lightPrimaryColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -37,11 +43,10 @@ class OnBoardingPage extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => navigateReplacement(context: context, route: Routes.signIn),
                   child: Text(
-                    'Skip',
+                    AppLocalizations.of(context)!.skip,
                     style: textStyle(
-                        color: currentIndex == 1
-                            ? AppColors.primaryColor
-                            : AppColors.whiteColor,
+                        color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ?AppColors.whiteColor:AppColors.lightPrimaryColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w600),
                   ),
@@ -57,10 +62,10 @@ class OnBoardingPage extends StatelessWidget {
             children: [
               Text(
                 currentIndex == 0
-                    ? AppStrings.onBoardingTitle0
+                    ? AppLocalizations.of(context)!.onBoardingTitle0
                     : currentIndex == 1 // And here
-                    ? AppStrings.onBoardingTitle1
-                    : AppStrings.onBoardingTitle2,
+                    ? AppLocalizations.of(context)!.onBoardingTitle1
+                    : AppLocalizations.of(context)!.onBoardingTitle2,
                 style: TextStyle(
                   color: currentIndex == 1 // And here
                       ? AppColors.primaryColor
@@ -76,10 +81,10 @@ class OnBoardingPage extends StatelessWidget {
               ),
               Text(
                 currentIndex == 0 // And here
-                    ? AppStrings.onBoardingSubTitle0
+                    ? AppLocalizations.of(context)!.onBoardingSubTitle0
                     : currentIndex == 1 // And here
-                    ? AppStrings.onBoardingSubTitle1
-                    : AppStrings.onBoardingSubTitle2,
+                    ? AppLocalizations.of(context)!.onBoardingSubTitle1
+                    : AppLocalizations.of(context)!.onBoardingSubTitle2,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: currentIndex == 1 // And here
@@ -95,10 +100,10 @@ class OnBoardingPage extends StatelessWidget {
           ),
           Text(
             currentIndex == 0 // And here
-                ? AppStrings.onBoardingcounter0
+                ? AppLocalizations.of(context)!.onBoardingcounter0
                 : currentIndex == 1 // And here
-                ? AppStrings.onBoardingcounter1
-                : AppStrings.onBoardingcounter2,
+                ? AppLocalizations.of(context)!.onBoardingcounter1
+                : AppLocalizations.of(context)!.onBoardingcounter2,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: currentIndex == 1 // And here
@@ -160,6 +165,7 @@ class OnBoardingPage extends StatelessWidget {
           )
         ],
       ),
-    );
+    ),
+);
   }
 }

@@ -5,13 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/common.dart';
 import '../person_info_cubit/personal_info_cubit.dart';
 import '../person_info_cubit/personal_info_state.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/yes_no_custom_card.dart';
-import 'custom_weight_height_card.dart';
+import '../widgets/custom_weight_height_card.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class InfoTwoScreen extends StatelessWidget {
@@ -33,7 +34,7 @@ class InfoTwoScreen extends StatelessWidget {
         ),
       ),
       title: Text(
-        AppStrings.personalInformation,
+        AppLocalizations.of(context)!.personalInformation,
         style: Theme.of(context).textTheme.displaySmall!.copyWith(
             fontSize: 24,
             color: AppColors.lightPrimaryColor,
@@ -60,27 +61,27 @@ class InfoTwoScreen extends StatelessWidget {
 
                     YesNoCustomCard(
                         personalInfoCubit: personalInfoCubit,
-                        cardTitle: AppStrings.doYouSufferFromAnyChronicIllnesses),
+                        cardTitle: AppLocalizations.of(context)!.doYouSufferFromAnyChronicIllnesses),
 
                     SizedBox(
                       height: 24.h,
                     ),
 
 
-                    const WeightAndHeightCustomCard(
+                     WeightAndHeightCustomCard(
                       keyBoardType: TextInputType.text,
-                        text: AppStrings.whatChronicIllnessDoYouSufferFrom,
-                        textFieldHintText: AppStrings.writeHere),
+                        text: AppLocalizations.of(context)!.whatChronicIllnessDoYouSufferFrom,
+                        textFieldHintText: AppLocalizations.of(context)!.writeHere),
 
                     SizedBox(
                       height: 24.h,
                     ),
 
 
-                    const WeightAndHeightCustomCard(
+                     WeightAndHeightCustomCard(
                       keyBoardType: TextInputType.text,
-                        text: AppStrings.whatMedicationsAreYouTaking,
-                        textFieldHintText: AppStrings.writeHere),
+                        text: AppLocalizations.of(context)!.whatMedicationsAreYouTaking,
+                        textFieldHintText: AppLocalizations.of(context)!.writeHere),
 
                     SizedBox(
                       height: 24.h,
@@ -89,7 +90,7 @@ class InfoTwoScreen extends StatelessWidget {
 
                     YesNoCustomCard(
                       personalInfoCubit: personalInfoCubit,
-                      cardTitle: AppStrings.areYouVegetarian,
+                      cardTitle: AppLocalizations.of(context)!.areYouVegetarian,
                     ),
                     SizedBox(
                       height: 24.h,
@@ -98,7 +99,7 @@ class InfoTwoScreen extends StatelessWidget {
 
                     YesNoCustomCard(
                       personalInfoCubit: personalInfoCubit,
-                      cardTitle: AppStrings.doYouTakeVitaminB12,
+                      cardTitle:AppLocalizations.of(context)!.doYouTakeVitaminB12,
                     ),
                     SizedBox(
                       height: 10.h,
@@ -115,14 +116,14 @@ class InfoTwoScreen extends StatelessWidget {
                         const Center(
                             child: CircularProgressIndicator())
                             :CustomElevatedButton(
-                            text: AppStrings.start,
+                            text: AppLocalizations.of(context)!.start,
                             onPressed: () async{
                               if (BlocProvider.of<PersonalInfoCubit>(context)
                                   .personalInfoSecondKey
                                   .currentState!
                                   .validate()) {
                                 await sl<CacheHelper>().saveData(
-                                    key: AppStrings.personalInfoKey,
+                                    key: AppLocalizations.of(context)!.personalInfoKey,
                                     value: true).then((value) {
                                   navigateReplacement(context: context,
                                       route: Routes.home);

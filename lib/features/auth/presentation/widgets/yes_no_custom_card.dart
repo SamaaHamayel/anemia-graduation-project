@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/appColors/app_colors.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../person_info_cubit/personal_info_cubit.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class YesNoCustomCard extends StatelessWidget {
   const YesNoCustomCard({
@@ -58,34 +60,34 @@ class YesNoCustomCard extends StatelessWidget {
               children: [
                 Radio(
                   activeColor: AppColors.primaryColor,
-                  value: AppStrings.yes,
+                  value: AppLocalizations.of(context)!.yes,
                   groupValue: personalInfoCubit.yesNoGroupValue,
                   onChanged: (value) {
                     personalInfoCubit.changePeriodGroupValue(value);
                   },
                 ),
                 Text(
-                  AppStrings.yes,
+                  AppLocalizations.of(context)!.yes,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
                       .copyWith(fontSize: 15),
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Row(
                     children: [
                       Radio(
                         activeColor: AppColors.primaryColor,
-                        value: AppStrings.no,
+                        value: AppLocalizations.of(context)!.no,
                         groupValue: personalInfoCubit.yesNoGroupValue,
                         onChanged: (value) {
                           personalInfoCubit.changePeriodGroupValue(value);
                         },
                       ),
                       Text(
-                        AppStrings.no,
+                        AppLocalizations.of(context)!.no,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall!
@@ -106,7 +108,6 @@ class YesNoCustomCard extends StatelessWidget {
 
           ],
         ),
-        //color: AppColors.primaryColor,
       ),
     );
   }

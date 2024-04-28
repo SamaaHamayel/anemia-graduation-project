@@ -2,6 +2,7 @@ import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class MyThemeData {
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.whiteColor,
@@ -36,38 +37,39 @@ class MyThemeData {
     ),
   );
 
-  // static ThemeData darkTheme = ThemeData(
-  //   primaryColor: darkPrimaryColor,
-  //   scaffoldBackgroundColor: Colors.transparent,
-  //   colorScheme: ColorScheme(
-  //       brightness: Brightness.dark,
-  //       primary: darkPrimaryColor,
-  //       onPrimary: yellowColor,
-  //       secondary: darkPrimaryColor,
-  //       onSecondary: Colors.white,
-  //       error: Colors.red,
-  //       onError: Colors.white,
-  //       background: Colors.transparent,
-  //       onBackground: yellowColor,
-  //       surface: Colors.white,
-  //       onSurface: darkPrimaryColor),
-  //   appBarTheme: AppBarTheme(
-  //       titleTextStyle: GoogleFonts.elMessiri(
-  //           fontSize: 30,
-  //           fontWeight: FontWeight.bold,
-  //           color: Color(0xFF242424)),
-  //       backgroundColor: Colors.transparent,
-  //       iconTheme: IconThemeData(color: darkPrimaryColor),
-  //       elevation: 0.0,
-  //       centerTitle: true),
-  //   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-  //       type: BottomNavigationBarType.shifting,
-  //       //showSelectedLabels: false,
-  //       //showUnselectedLabels: false,
-  //       backgroundColor: darkPrimaryColor,
-  //       selectedItemColor: yellowColor,
-  //       unselectedItemColor: Colors.white,
-  //       selectedLabelStyle: GoogleFonts.quicksand(fontSize: 12),
-  //       unselectedLabelStyle: GoogleFonts.quicksand(fontSize: 12)),
-  // );
+  static ThemeData darkTheme = ThemeData(
+    primaryColor: AppColors.darkThemBlackColor,
+    scaffoldBackgroundColor: Colors.transparent,
+    colorScheme: const ColorScheme(
+        brightness: Brightness.dark,
+        primary: AppColors.whiteColor,
+        onPrimary: AppColors.lightPrimaryColor,
+        secondary: AppColors.whiteColor,
+        onSecondary: Colors.white,
+        error: Colors.red,
+        onError: Colors.white,
+        background: Colors.transparent,
+        onBackground: AppColors.lightPrimaryColor,
+        surface: Colors.white,
+        onSurface: AppColors.whiteColor),
+    appBarTheme: AppBarTheme(
+        titleTextStyle: GoogleFonts.elMessiri(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: const Color(0xFF242424)),
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.black87),
+        elevation: 0.0,
+        centerTitle: true),
+
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.shifting,
+        //showSelectedLabels: false,
+        //showUnselectedLabels: false,
+        backgroundColor: AppColors.darkThemBlackColor,
+        selectedItemColor: AppColors.lightPrimaryColor,
+        unselectedItemColor: Colors.white,
+        selectedLabelStyle: GoogleFonts.quicksand(fontSize: 12),
+        unselectedLabelStyle: GoogleFonts.quicksand(fontSize: 12)),
+  );
 }

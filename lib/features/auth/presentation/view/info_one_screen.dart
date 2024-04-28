@@ -7,12 +7,15 @@ import '../../../../conf/routes/routes.dart';
 import '../../../../core/cache_helper/cache_helper.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../../../../core/utils/common.dart';
 import '../person_info_cubit/personal_info_cubit.dart';
 import '../widgets/custom_card.dart';
 import '../widgets/yes_no_custom_card.dart';
-import 'custom_weight_height_card.dart';
+import '../widgets/custom_weight_height_card.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
 
 class InfoOneScreen extends StatelessWidget {
   const InfoOneScreen({super.key});
@@ -33,7 +36,7 @@ class InfoOneScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          AppStrings.personalInformation,
+          AppLocalizations.of(context)!.personalInformation,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
               color: AppColors.lightPrimaryColor,
@@ -57,18 +60,18 @@ class InfoOneScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomCard(personalInfoCubit: personalInfoCubit),
-                    const WeightAndHeightCustomCard(
-                      text: AppStrings.weight,
+                     WeightAndHeightCustomCard(
+                      text: AppLocalizations.of(context)!.weight,
                       keyBoardType: TextInputType.number,
-                      textFieldHintText: AppStrings.enterYourWeight,
+                      textFieldHintText: AppLocalizations.of(context)!.enterYourWeight,
                     ),
-                    const WeightAndHeightCustomCard(
-                        text: AppStrings.height,
+                     WeightAndHeightCustomCard(
+                        text: AppLocalizations.of(context)!.height,
                         keyBoardType: TextInputType.number,
-                        textFieldHintText: AppStrings.enterYourHeight),
+                        textFieldHintText: AppLocalizations.of(context)!.enterYourHeight),
                     YesNoCustomCard(
                       personalInfoCubit: personalInfoCubit,
-                      cardTitle: AppStrings.areYouOnYourPeriod,
+                      cardTitle: AppLocalizations.of(context)!.areYouOnYourPeriod,
                     ),
 
                     SizedBox(
@@ -86,14 +89,14 @@ class InfoOneScreen extends StatelessWidget {
                           const Center(
                               child: CircularProgressIndicator())
                             :CustomElevatedButton(
-                            text: AppStrings.next,
+                            text: AppLocalizations.of(context)!.next,
                             onPressed: () async{
                               if (BlocProvider.of<PersonalInfoCubit>(context)
                                   .personalInfoKey
                                   .currentState!
                                   .validate()) {
                                 await sl<CacheHelper>().saveData(
-                              key: AppStrings.personalInfoKey,
+                              key: AppLocalizations.of(context)!.personalInfoKey,
                               value: true).then((value) {
                               navigateReplacement(context: context,
                               route: Routes.infoTwo);

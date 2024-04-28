@@ -1,11 +1,13 @@
 import 'package:animeacheck/core/api/endPoints/end_point.dart';
 import 'package:animeacheck/core/cache_helper/cache_helper.dart';
-import 'package:animeacheck/core/utils/appString/app_strings.dart';
 import 'package:animeacheck/features/home/presentation/view/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import '../../../../../core/services/service_locator.dart';
 import '../../../onboarding/presentation/view/onboarding1.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 FlutterTts flutterTts = FlutterTts();
 
@@ -38,7 +40,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     return Future.delayed(
       const Duration(seconds: 2),
       () {
-        flutterTts.speak(AppStrings.eyeNemia);
+        flutterTts.speak(AppLocalizations.of(context)!.eyeNemia);
       },
     );
   }

@@ -2,6 +2,7 @@ import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/person_info_cubit/personal_info_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,6 +30,11 @@ void main() async {
         BlocProvider(
           create: (context) => sl<PersonalInfoCubit>(),
         ),
+
+        BlocProvider(
+          create: (context) => sl<SettingsCubit>()..getThem()..getLang(),
+        ),
+
       ],
       child: const MyApp(),
     ),

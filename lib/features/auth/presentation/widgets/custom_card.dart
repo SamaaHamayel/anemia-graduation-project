@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/appColors/app_colors.dart';
-import '../../../../core/utils/appString/app_strings.dart';
 import '../person_info_cubit/personal_info_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
@@ -38,7 +39,7 @@ class CustomCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(top: 9.h, left: 16.w),
                 child: Text(
-                  AppStrings.chooseYourCategory,
+                  AppLocalizations.of(context)!.chooseYourCategory,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
@@ -54,14 +55,14 @@ class CustomCard extends StatelessWidget {
               children: [
                 Radio(
                   activeColor: AppColors.primaryColor,
-                  value: AppStrings.infants,
+                  value: AppLocalizations.of(context)!.infants,
                   groupValue: personalInfoCubit.groupValue,
                   onChanged: (value) {
                     personalInfoCubit.changeGroupValue(value);
                   },
                 ),
                 Text(
-                  AppStrings.infants,
+                  AppLocalizations.of(context)!.infants,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
@@ -76,14 +77,14 @@ class CustomCard extends StatelessWidget {
               children: [
                 Radio(
                   activeColor: AppColors.primaryColor,
-                  value: AppStrings.youngChildren,
+                  value: AppLocalizations.of(context)!.youngChildren,
                   groupValue: personalInfoCubit.groupValue,
                   onChanged: (value) {
                     personalInfoCubit.changeGroupValue(value);
                   },
                 ),
                 Text(
-                  AppStrings.youngChildren,
+                  AppLocalizations.of(context)!.youngChildren,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
@@ -98,14 +99,14 @@ class CustomCard extends StatelessWidget {
               children: [
                 Radio(
                   activeColor: AppColors.primaryColor,
-                  value: AppStrings.adultMales,
+                  value: AppLocalizations.of(context)!.adultMales,
                   groupValue: personalInfoCubit.groupValue,
                   onChanged: (value) {
                     personalInfoCubit.changeGroupValue(value);
                   },
                 ),
                 Text(
-                  AppStrings.adultMales,
+                  AppLocalizations.of(context)!.adultMales,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
@@ -120,14 +121,14 @@ class CustomCard extends StatelessWidget {
               children: [
                 Radio(
                   activeColor: AppColors.primaryColor,
-                  value: AppStrings.adultFemalesPregnant,
+                  value: AppLocalizations.of(context)!.adultFemalesPregnant,
                   groupValue: personalInfoCubit.groupValue,
                   onChanged: (value) {
                     personalInfoCubit.changeGroupValue(value);
                   },
                 ),
                 Text(
-                  AppStrings.adultFemalesPregnant,
+                  AppLocalizations.of(context)!.adultFemalesPregnant,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
@@ -142,14 +143,14 @@ class CustomCard extends StatelessWidget {
               children: [
                 Radio(
                   activeColor: AppColors.primaryColor,
-                  value: AppStrings.adultFemalesNotPregnant,
+                  value: AppLocalizations.of(context)!.adultFemalesNotPregnant,
                   groupValue: personalInfoCubit.groupValue,
                   onChanged: (value) {
                     personalInfoCubit.changeGroupValue(value);
                   },
                 ),
                 Text(
-                  AppStrings.adultFemalesNotPregnant,
+                  AppLocalizations.of(context)!.adultFemalesNotPregnant,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!

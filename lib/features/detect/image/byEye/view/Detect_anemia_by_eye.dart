@@ -20,7 +20,7 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
       appBar: AppBar(
         backgroundColor: AppColors.lightPrimaryColor,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
             size: 25.0,
@@ -46,7 +46,7 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
           ),
           Container(
             height: 110,
-            color: AppColors.lightPrimaryColor,
+            //color: AppColors.lightPrimaryColor,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
