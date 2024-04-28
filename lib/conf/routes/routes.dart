@@ -31,6 +31,12 @@ class Routes {
   static const String eyelid = "/eyelid";
   static const String result = "/result";
   static const String profile = "/profile";
+    static const String explanaScreen = "/explanaScreen";
+    //CBCTest    result
+        static const String CBCTest = "/CBCTest";
+
+
+
 }
 
 class AppRoutes {

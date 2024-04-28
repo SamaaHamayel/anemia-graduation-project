@@ -9,10 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -56,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
         child: GNav(
-         // backgroundColor: AppColors.whiteColor,
-          activeColor: AppColors.whiteColor,
+          backgroundColor: Colors.white,
+          activeColor: Colors.white,
           color: const Color.fromARGB(255, 146, 146, 153),
           tabBackgroundColor: AppColors.lightPrimaryColor,
           gap: 8.h,
@@ -68,23 +64,23 @@ class _HomeScreenState extends State<HomeScreen> {
               _selectedIndex = index;
             });
           },
-          tabs:  [
+          tabs: const [
             GButton(
               icon: FontAwesomeIcons.house,
               // icon: Icon(FontAwesomeIcons.house),
-              text: AppLocalizations.of(context)!.home,
+              text: 'Home',
             ),
             GButton(
               icon: (FontAwesomeIcons.calendarDays),
-              text: AppLocalizations.of(context)!.history,
+              text: 'History',
             ),
             GButton(
               icon: (Icons.settings),
-              text: AppLocalizations.of(context)!.settings,
+              text: 'Setting',
             ),
             GButton(
               icon: (Icons.person),
-              text: AppLocalizations.of(context)!.myAccount,
+              text: 'MyAccount',
             ),
           ],
         ),

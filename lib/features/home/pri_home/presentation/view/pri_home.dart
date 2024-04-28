@@ -1,11 +1,9 @@
+import 'package:animeacheck/core/utils/appString/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
 import '../../data/widget/build_feature_card.dart';
-
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class PriHome extends StatelessWidget {
   const PriHome({Key? key});
@@ -30,10 +28,10 @@ class PriHome extends StatelessWidget {
             ),
             SizedBox(
               width: 351.w,
-              child:  Text(
-                AppLocalizations.of(context)!.homeScreenSubTitle,
-                style: const TextStyle(
-                 // color: Colors.black,
+              child: const Text(
+                AppStrings.homeScreenSubTitle,
+                style: TextStyle(
+                  color: Colors.black,
                   fontSize: 14,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w400,
@@ -42,23 +40,23 @@ class PriHome extends StatelessWidget {
             ),
             buildFeatureCard(
               icon: Icons.camera_alt_rounded,
-              title: AppLocalizations.of(context)!.detectAnemia,
+              title: AppStrings.detectAnemia,
               description:
-                  AppLocalizations.of(context)!.detectAnemiaTitle,
+                  AppStrings.detectAnemiaTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
               icon: Icons.biotech,
-              title: AppLocalizations.of(context)!.testResults,
+              title: AppStrings.testResults,
               description:
-                  AppLocalizations.of(context)!.testResultsTitle,
+                  AppStrings.testResultsTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
               icon: Icons.person_search_rounded,
-              title: AppLocalizations.of(context)!.consultADoctor,
+              title: AppStrings.consultADoctor,
               description:
-                  AppLocalizations.of(context)!.consultADoctorTitle,
+                  AppStrings.consultADoctorTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
           ],
@@ -70,7 +68,7 @@ class PriHome extends StatelessWidget {
   void _navigateToDetectedScreen(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const DetectedScreen()),
+      MaterialPageRoute(builder: (context) => DetectedScreen()),
     );
   }
 
