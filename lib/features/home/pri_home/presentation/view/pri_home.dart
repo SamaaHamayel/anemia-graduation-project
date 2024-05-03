@@ -68,7 +68,7 @@ class PriHome extends StatelessWidget {
   void _navigateToDetectedScreen(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => DetectedScreen()),
+      MaterialPageRoute(builder: (context) => const DetectedScreen()),
     );
   }
 

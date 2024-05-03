@@ -6,6 +6,7 @@ class AppStrings {
   static const String onBoardingcounter2 = "3 / 3";
 
   static const String personalInfoKey = "personalInfo";
+  static const String success = "Done Successfully";
 
   static const String onBoardingSubTitle0 =
       "Welcome to our app! Use your eyelid to detect and identify the type of anemia with high accuracy. Start now and discover your health with just one click!";

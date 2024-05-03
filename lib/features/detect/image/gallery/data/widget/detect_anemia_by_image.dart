@@ -11,7 +11,7 @@ class DetectAnemiaByImage extends StatefulWidget {
 
 class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
   File? _pickedImage;
-  Color containerColor = Color(0xFFB0B0B0); // Default color
+  Color containerColor = const Color(0xFFB0B0B0); // Default color
 
   Future<void> pickImageFromGallery() async {
     final picker = ImagePicker();
@@ -26,7 +26,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
 
   Widget buildBackButton() {
     return IconButton(
-      icon: Icon(
+      icon: const Icon(
         Icons.arrow_back_ios,
         color: AppColors.lightPrimaryColor,
         size: 25.0,
@@ -38,10 +38,10 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
   }
 
   Widget buildHeaderText() {
-    return Column(
+    return const Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Text(
             'Upload your Photo',
             style: TextStyle(
@@ -75,7 +75,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
           )
         : Center(
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 300), // Duration of color transition
+              duration: const Duration(milliseconds: 300), // Duration of color transition
               width: 203,
               height: 203,
               padding: const EdgeInsets.all(30),
@@ -95,13 +95,13 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
                     width: 64,
                     height: 64,
                     clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 56.01,
                           height: 48,
                           child: Stack(
@@ -115,7 +115,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
                     ),
                   ),
                   const SizedBox(height: 17),
-                  Text(
+                  const Text(
                     'Drag & drop  or',
                     style: TextStyle(
                       color: Color(0xFF535354),
@@ -141,7 +141,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
           clipBehavior: Clip.antiAlias,
           decoration: ShapeDecoration(
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               begin: Alignment(0.00, -1.00),
               end: Alignment(0, 1),
               colors: [AppColors.lightBlackColor, AppColors.lightPrimaryColor],
@@ -150,7 +150,7 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          child: Row(
+          child: const Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -185,14 +185,14 @@ class DetectAnemiaByImageState extends State<DetectAnemiaByImage> {
               Row(
                 children: [
                   buildBackButton(),
-                  SizedBox(
+                  const SizedBox(
                     width: 30,
                   ),
                   buildHeaderText(),
                 ],
               ),
               buildImageContainer(),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               buildChooseFileButton(),
             ],
           ),

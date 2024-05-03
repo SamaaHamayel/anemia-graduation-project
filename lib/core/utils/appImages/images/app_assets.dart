@@ -15,4 +15,5 @@ class AppAssets {
   static const String notAnemic = '${basePath}notAnematic.png';
   static const String male = '${basePath}male.png';
   static const String female = '${basePath}female.png';
+  static const String imageDetect = '${basePath}imageDetect.png';
 }
