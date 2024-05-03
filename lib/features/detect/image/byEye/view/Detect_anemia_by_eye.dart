@@ -44,7 +44,7 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: 110,
             //color: AppColors.lightPrimaryColor,
             child: Padding(

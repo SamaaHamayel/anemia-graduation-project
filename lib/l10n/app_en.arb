@@ -93,5 +93,6 @@
 "consultADoctorTitle": "Enter your location to discover nearby doctors, and schedule an appointment effortlessly",
   "home": "Home",
   "history": "History",
-  "myAccount":"MyAccount"
+  "myAccount":"MyAccount",
+  "success":"Done Successfully"
 }

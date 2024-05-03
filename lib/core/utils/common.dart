@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 import 'appColors/app_colors.dart';
 
 
@@ -58,7 +59,14 @@ Color getState(ToastStates state) {
 }
 
 
-
+ Future<XFile?> pickImage(ImageSource source) async{
+  XFile? image = await ImagePicker().pickImage(source: source);
+  if(image!=null){
+    return image;
+  }else{
+    return null;
+  }
+}
 
 
 

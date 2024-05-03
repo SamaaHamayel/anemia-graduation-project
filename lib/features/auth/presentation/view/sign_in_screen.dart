@@ -37,7 +37,7 @@ class SignInScreen extends StatelessWidget {
             showToast(
                 message: AppLocalizations.of(context)!.loginSuccessfully,
                 state: ToastStates.success);
-           // navigateReplacement(context: context, route: Routes.home);
+            navigateReplacement(context: context, route: Routes.home);
           }
           if (state is SignInErrorState) {
             showToast(message: state.message, state: ToastStates.error);
@@ -144,7 +144,7 @@ class SignInScreen extends StatelessWidget {
                             .login();
 
                       }
-                      navigateReplacement(context: context, route: Routes.home);
+                   //   navigateReplacement(context: context, route: Routes.home);
                     },
                     text: AppLocalizations.of(context)!.signIn,
                   ),
