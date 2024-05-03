@@ -33,7 +33,7 @@ class notificationScreen extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                             ),
-                            SizedBox(width: 85.w),
+                            SizedBox(width: 50.w),
                             Text(
                               'notification',
                               style: TextStyle(

@@ -22,6 +22,7 @@ class CBCInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -122,42 +123,49 @@ class CBCTestState extends State<CBCTest> {
   String dropdownPLT = "normal";
   String dropdownMCH = "normal";
   String dropdownMCHC = "normal";
+    String dropdownRDW = "normal";
+  String dropdownHct = "normal";
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_rounded,
+                color: AppColors.lightPrimaryColor,
+                size: 23.sp,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            SizedBox(width: 85.w),
+            Text(
+              'CBC Test',
+              style: TextStyle(
+                color: AppColors.lightPrimaryColor,
+                fontSize: 23.sp,
+                fontFamily: 'Kodchasan',
+                fontWeight: FontWeight.w500,
+                height: 0,
+                letterSpacing: 1.76,
+              ),
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 30.w),
+        padding: EdgeInsets.symmetric(horizontal: 30.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: AppColors.lightPrimaryColor,
-                    size: 23.sp,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                SizedBox(width: 85.w),
-                Text(
-                  'CBC Test',
-                  style: TextStyle(
-                    color: AppColors.lightPrimaryColor,
-                    fontSize: 23.sp,
-                    fontFamily: 'Kodchasan',
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                    letterSpacing: 1.76,
-                  ),
-                ),
-              ],
-            ),
             Padding(
               padding: EdgeInsets.all(9.w),
               child: SizedBox(
@@ -177,6 +185,8 @@ class CBCTestState extends State<CBCTest> {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CBCInputField(
                       label: 'RBC',
@@ -199,7 +209,7 @@ class CBCTestState extends State<CBCTest> {
                       },
                     ),
                     CBCInputField(
-                      label: 'HB',
+                      label: ' HB  ',
                       value: dropdownHB,
                       options: ['normal', 'less', 'greater'],
                       onChanged: (newValue) {
@@ -219,7 +229,7 @@ class CBCTestState extends State<CBCTest> {
                       },
                     ),
                     CBCInputField(
-                      label: 'PLT',
+                      label: 'PLT ',
                       value: dropdownPLT,
                       options: ['normal', 'less', 'greater'],
                       onChanged: (newValue) {
@@ -239,14 +249,41 @@ class CBCTestState extends State<CBCTest> {
                       },
                     ),
                     CBCInputField(
-                      label: 'MCHC',
-                      value: dropdownMCHC,
+                      label: 'RDW',
+                      value: dropdownRDW,
                       options: ['normal', 'less', 'greater'],
                       onChanged: (newValue) {
                         setState(() {
-                          dropdownMCHC = newValue;
+                          dropdownRDW = newValue;
                         });
                       },
+                    ),
+                    CBCInputField(
+                      label: 'Hct',
+                      value: dropdownHct,
+                      options: ['normal', 'less', 'greater'],
+                      onChanged: (newValue) {
+                        setState(() {
+                          dropdownHct = newValue;
+                        });
+                      },
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        CBCInputField(
+                          label: 'MCHC',
+                          value: dropdownMCHC,
+                          options: ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownMCHC = newValue;
+                            });
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -254,41 +291,44 @@ class CBCTestState extends State<CBCTest> {
             ),
             SizedBox(height: 20.h),
             Center(
-              child: Container(
-                width: 172.w,
-                height: 48.h,
-                padding: const EdgeInsets.symmetric(vertical: 13),
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment(0.00, -1.00),
-                    end: Alignment(0, 1),
-                    colors: [
-                      AppColors.lightPrimaryColor,
-                      AppColors.primaryColor
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => resultTest()),
-                    );
-                    setState(() {});
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: AppColors.whiteColor,
-                    padding: EdgeInsets.zero,
-                    textStyle: TextStyle(
-                      fontSize: 18.sp,
-                      color: AppColors.whiteColor,
-                      fontFamily: 'Kodchasan',
-                      fontWeight: FontWeight.w700,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Container(
+                  width: 172.w,
+                  height: 48.h,
+                  padding: const EdgeInsets.symmetric(vertical: 13),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [
+                        AppColors.lightPrimaryColor,
+                        AppColors.primaryColor
+                      ],
                     ),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Text('See the result'),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => resultTest()),
+                      );
+                      setState(() {});
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.whiteColor,
+                      padding: EdgeInsets.zero,
+                      textStyle: TextStyle(
+                        fontSize: 18.sp,
+                        color: AppColors.whiteColor,
+                        fontFamily: 'Kodchasan',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    child: Text('See the result'),
+                  ),
                 ),
               ),
             ),

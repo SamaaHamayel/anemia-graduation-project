@@ -1,10 +1,10 @@
+import 'package:animeacheck/features/test/view/presentation/cbc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
 import '../../data/widget/build_feature_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class PriHome extends StatelessWidget {
   const PriHome({Key? key});
@@ -13,7 +13,7 @@ class PriHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,7 +29,7 @@ class PriHome extends StatelessWidget {
             ),
             SizedBox(
               width: 351.w,
-              child:  Text(
+              child: Text(
                 AppLocalizations.of(context)!.homeScreenSubTitle,
                 style: const TextStyle(
                   fontSize: 14,
@@ -41,22 +41,21 @@ class PriHome extends StatelessWidget {
             buildFeatureCard(
               icon: Icons.camera_alt_rounded,
               title: AppLocalizations.of(context)!.detectAnemia,
-              description:
-                  AppLocalizations.of(context)!.detectAnemiaTitle,
+              description: AppLocalizations.of(context)!.detectAnemiaTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
             buildFeatureCard(
-              icon: Icons.biotech,
-              title: AppLocalizations.of(context)!.testResults,
-              description:
-                  AppLocalizations.of(context)!.testResultsTitle,
-              onTap: () => _navigateToDetectedScreen(context),
-            ),
+                icon: Icons.biotech,
+                title: AppLocalizations.of(context)!.testResults,
+                description: AppLocalizations.of(context)!.testResultsTitle,
+                onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CBCTest()),
+                    )),
             buildFeatureCard(
               icon: Icons.person_search_rounded,
               title: AppLocalizations.of(context)!.consultADoctor,
-              description:
-                  AppLocalizations.of(context)!.consultADoctorTitle,
+              description: AppLocalizations.of(context)!.consultADoctorTitle,
               onTap: () => _navigateToDetectedScreen(context),
             ),
           ],
@@ -71,5 +70,4 @@ class PriHome extends StatelessWidget {
       MaterialPageRoute(builder: (context) => DetectedScreen()),
     );
   }
-
 }

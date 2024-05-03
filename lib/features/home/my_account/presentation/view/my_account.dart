@@ -22,71 +22,72 @@ class MyAccountState extends State<MyAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildHeader(),
-              buildProfileCard(),
-              SizedBox(height: 28.h),
-              buildActionCard(
-                icon: Icons.person_2_outlined,
-                title: 'Edit Profile',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => editProfile()),
-                  );
-                },
-              ),
-              SizedBox(height: 28.h),
-              buildActionCard(
-                icon: Icons.science_outlined,
-                title: 'Test Results History',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => history()),
-                  );
-                },
-              ),
-              SizedBox(height: 28.h),
-              buildActionCard(
-                icon: Icons.storage,
-                title: 'Information',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => InfoOneScreen()),
-                  );
-                  // Navigate to information page
-                },
-              ),
-              SizedBox(height: 28.h),
-              buildNotificationCard(),
-              SizedBox(height: 45.h),
-              TextButton(
-                onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInScreen()),
-                        );
-                      },
-                child: Text(
-                  'Log out',
-                  style: TextStyle(
-                    color: Color(0xFFFF0404),
-                    fontSize: 18.sp,
-                    fontFamily: 'Kodchasan',
-                    fontWeight: FontWeight.w600,
-                    height: 0,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildHeader(),
+                buildProfileCard(),
+                SizedBox(height: 28.h),
+                buildActionCard(
+                  icon: Icons.person_2_outlined,
+                  title: 'Edit Profile',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => editProfile()),
+                    );
+                  },
+                ),
+                SizedBox(height: 28.h),
+                buildActionCard(
+                  icon: Icons.science_outlined,
+                  title: 'Test Results History',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => history()),
+                    );
+                  },
+                ),
+                SizedBox(height: 28.h),
+                buildActionCard(
+                  icon: Icons.storage,
+                  title: 'Information',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => InfoOneScreen()),
+                    );
+                    // Navigate to information page
+                  },
+                ),
+                SizedBox(height: 28.h),
+                buildNotificationCard(),
+                SizedBox(height: 45.h),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignInScreen()),
+                    );
+                  },
+                  child: Text(
+                    'Log out',
+                    style: TextStyle(
+                      color: Color(0xFFFF0404),
+                      fontSize: 18.sp,
+                      fontFamily: 'Kodchasan',
+                      fontWeight: FontWeight.w600,
+                      height: 0,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -259,7 +260,8 @@ class MyAccountState extends State<MyAccount> {
                   if (isSwitched == true)
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => notificationScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => notificationScreen()),
                     );
                   else
                     Navigator.push(

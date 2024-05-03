@@ -12,134 +12,97 @@ class resultTest extends StatefulWidget {
 }
 
 class resultState extends State<resultTest> {
-  String dropdownRBC = "normal"; //عدد كرات الدم الحمراء
-  String dropdownWCB = "normal"; //
-  String dropdownHB = "normal"; // الهيمجلوبين
-  String dropdownMCV = "normal"; // حجم كرات الدم
-  String dropdownPLT = "normal"; //
-  String dropdownMCH = "normal"; //
-  String dropdownMCHC = "normal"; //
+  String dropdownRBC = ""; //عدد كرات الدم الحمراء
+  String dropdownWCB = ""; //
+  String dropdownHB = ""; // الهيمجلوبين
+  String dropdownMCV = ""; // حجم كرات الدم
+  String dropdownPLT = ""; //
+  String dropdownMCH = ""; //
+  String dropdownMCHC = "";
+  String dropdownRDW = "";
+  String dropdownHct = "";
 
   String result = '';
 
   void calculateResult() {
-    if ((
-            // dropdownRBC == "less" && //عدد كرات الدم الحمراء
-            // dropdownWCB == "normal" && //
-            // dropdownHB == "normal" && // الهيمجلوبين
-            // dropdownMCV == "normal" && // حجم كرات الدم
-            // dropdownPLT == "normal" && //
-            // dropdownMCH == "normal" && //
-            // dropdownMCHC == "normal"
-            dropdownRBC == 'less' &&
-                dropdownHB == 'less' &&
-                dropdownMCV == 'normal' &&
-                dropdownWCB != 'greater' &&
-                dropdownPLT != 'greater' &&
-                dropdownMCH == "normal" &&
-                dropdownMCHC == "normal")
-        //لو جاى ف حادثة يبقي عندخ نزيف داخلى او لو بنت ف وقت البريود
+    //1
+    if ((dropdownWCB == 'normal' &&
+        dropdownRBC != 'greater' &&
+        dropdownHB == "less" &&
+        dropdownHct == "less" &&
+        dropdownMCV == "less" &&
+        dropdownMCH == "less" &&
+        dropdownMCHC == "less" &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == 'normal')) {
+      result = 'فقر الدم الناتج عن نقص الحديد (Iron deficiency anemia)،';
+    }
+    //2
+    else if ((dropdownWCB != "less" &&
+        dropdownRBC != 'greater' &&
+        dropdownHB != 'greater' &&
+        dropdownHct != 'greater' &&
+        dropdownMCV != 'greater' &&
+        dropdownMCH != 'greater' &&
+        dropdownMCHC != 'greater' &&
+        dropdownRDW != "less" &&
+        dropdownPLT != 'less')) {
+      result = ' انيميا البحر المتوسط (Thalassemia)';
+    }
+    //3,4
+    else if ((dropdownWCB != "less" &&
+        dropdownRBC != 'greater' &&
+        dropdownHB == "less" &&
+        dropdownHct != 'greater' &&
+        dropdownMCV == 'greater' &&
+        dropdownMCH != "greater" &&
+        dropdownMCHC != 'greater' &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == 'normal')) {
+      result =
+          'فقر الدم الناتج عن نقص حمض الفوليك (Folic acid deficiency anemia OR /n فقر الدم الناتج عن نقص فيتامين ب12 (Vitamin B12 deficiency anemia)';
+    }
 
-        ) {
-      result = 'num1';
-    } else if (dropdownRBC == 'less' &&
+    //5
+    else if ((dropdownWCB != "less" &&
+        dropdownRBC != 'greater' &&
+        dropdownHB != 'greater' &&
+        dropdownHct != 'greater' &&
+        dropdownMCV != 'greater' &&
+        dropdownMCH != 'greater' &&
+        dropdownMCHC != 'greater' &&
+        dropdownRDW == 'greater' &&
+        dropdownPLT != 'less')) {
+      result = 'انيميا السيكل الخلوي (Sickle cell anemia)';
+    }
+    //6
+    else if ((dropdownWCB != "less" &&
+        dropdownRBC != 'greater' &&
         dropdownHB == 'less' &&
-        dropdownMCV == 'normal' &&
-        dropdownWCB != 'greater' &&
-        dropdownPLT != 'greater' &&
-        dropdownMCH != "normal" &&
-        dropdownMCHC != "normal") {
-      result = "num 1";
-    } else if (dropdownRBC == 'less' &&
-        dropdownHB == 'less' &&
-        dropdownMCH == 'less' &&
-        dropdownMCHC == 'less' &&
-        dropdownMCV == 'less') {
-      //سوء تغذية او انيميا البحر المتوسط
-      result = 'سوء تغذية او انيميا البحر المتوسط';
-    } else if (dropdownRBC == 'less' &&
-        dropdownHB == 'less' &&
-        dropdownMCV == 'greater') {
-      //B12 او ان الشخص نباتي فوليك اسيك
-      result = 'num3';
-    } else if (dropdownRBC == 'less' &&
-        dropdownHB == 'less' &&
-        dropdownMCV == 'normal') {
-      //ممكن تبقي مشكلة ف الكبد
-      //انيميا تكسيرية
-
-      result = 'num4';
-    } else if (dropdownRBC != 'normal' &&
-        dropdownHB == 'less' &&
-        dropdownWCB != 'normal' &&
-        dropdownPLT == 'less') {
-      result = 'num5';
-    } else if (dropdownRBC == "normal" && //عدد كرات الدم الحمراء
-            dropdownWCB == "normal" && //
-            dropdownHB == "normal" && // الهيمجلوبين
-            dropdownMCV == "normal" && // حجم كرات الدم
-            dropdownPLT == "normal" && //
-            dropdownMCH == "normal" && //
-            dropdownMCHC == "normal" //
-        ) {
-      result = "num 6";
+        dropdownHct != 'greater' &&
+        dropdownMCV != 'greater' &&
+        dropdownMCH == "less" &&
+        dropdownMCHC != 'greater' &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == "less")) {
+      result =
+          'فقر الدم الناتج عن التهاب المفاصل الرثوي (Rheumatoid arthritis anemia)';
+    }
+    //7
+    else if ((dropdownWCB == 'normal' &&
+        dropdownRBC != 'greater' &&
+        dropdownHB == "less" &&
+        dropdownHct != 'greater' &&
+        dropdownMCV != 'greater' &&
+        dropdownMCH == "less" &&
+        dropdownMCHC != 'greater' &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == 'normal')) {
+      result = 'انيميا الفول (Iron deficiency anemia)،';
     } else {
       result = 'No specific condition met';
     }
   }
-// void calculateResult() {
-  //   switch (result) {
-  //     case "1":
-  //       (dropdownRBC == 'less' &&
-  //           dropdownHB == 'less' &&
-  //           dropdownMCV == 'normal' &&
-  //           dropdownWCB != 'greater' &&
-  //           dropdownPLT != 'greater' &&
-  //           dropdownMCH == "normal" &&
-  //           dropdownMCHC == "normal");
-  //       result = 'num1';
-  //       break;
-  //     case "6":
-  //       (dropdownRBC == 'less' &&
-  //           dropdownHB == 'less' &&
-  //           dropdownMCV == 'normal' &&
-  //           dropdownWCB != 'greater' &&
-  //           dropdownPLT != 'greater' &&
-  //           dropdownMCH != "normal" &&
-  //           dropdownMCHC != "normal");
-  //       result = 'num1';
-  //       break;
-  //     case "2":
-  //       (dropdownRBC == 'less' &&
-  //           dropdownHB == 'less' &&
-  //           dropdownMCH == 'less' &&
-  //           dropdownMCHC == 'less' &&
-  //           dropdownMCV == 'less');
-  //       result = 'سوء تغذية او انيميا البحر المتوسط';
-  //       break;
-  //     case "3":
-  //       (dropdownRBC == 'less' &&
-  //           dropdownHB == 'less' &&
-  //           dropdownMCV == 'greater');
-  //       result = 'num3';
-  //       break;
-  //     case "4":
-  //       (dropdownRBC == 'less' &&
-  //           dropdownHB == 'less' &&
-  //           dropdownMCV == 'normal');
-  //       result = 'num4';
-  //       break;
-  //     case "5":
-  //       (dropdownRBC != 'normal' &&
-  //           dropdownHB == 'less' &&
-  //           dropdownWCB != 'normal' &&
-  //           dropdownPLT == 'less');
-  //       result = 'num5';
-  //       break;
-  //     default:
-  //       result = 'No specific condition met';
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -212,51 +175,6 @@ class resultState extends State<resultTest> {
                         ],
                       ),
                       textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    width: 172,
-                    height: 48,
-                    padding: const EdgeInsets.only(
-                      top: 13,
-                      left: 28,
-                      right: 27,
-                      bottom: 12,
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    decoration: ShapeDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment(0.00, -1.00),
-                        end: Alignment(0, 1),
-                        colors: [Color(0xFF2BB598), Color(0xFF398272)],
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              calculateResult();
-                            });
-                          },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            textStyle: TextStyle(
-                                fontFamily: 'Kodchasan',
-                                fontWeight: FontWeight.w900,
-                                color: AppColors.primaryColor),
-                          ),
-                          child: Text('top to see'),
-                        ),
-                      ],
                     ),
                   ),
                 ),
