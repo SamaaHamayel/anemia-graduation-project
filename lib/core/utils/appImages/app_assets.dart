@@ -20,6 +20,8 @@ class AppAssets {
   static const String uploadImage = '$basePath.png';
   static const String Push_notifications ='${basePath}Push_notifications.png';
   static const String imageDetect = '${basePath}imageDetect.png';
+    static const String anemia = '${basePath}anemia.png';
+
 
 
 //Push notifications-rafiki 1

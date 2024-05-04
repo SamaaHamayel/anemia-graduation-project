@@ -89,10 +89,27 @@
 "detectAnemiaTitle":"You can take or upload photo for your eyelid to know whether you have anemia or not",
 "testResults": "Test Results:",
 "testResultsTitle": "Input the required test results to accurately determine the type of anemia you are suffering from.",
-"consultADoctor": "Consult a Doctor:",
-"consultADoctorTitle": "Enter your location to discover nearby doctors, and schedule an appointment effortlessly",
+"helpfulInformationTitle": "Provides concise information about anemia, including its causes, symptoms, and treatments",
   "home": "Home",
   "history": "History",
   "myAccount":"MyAccount",
-  "success":"Done Successfully"
+  "success":"Done Successfully",
+   "helpfulInformation" : "Helpful Information",
+   "buildInfoContainerTitle1":"iron deficiency anemia",
+   "buildInfoContainerTitle2":"Caribbean anemia (thalassemia)",
+   "buildInfoContainerTitle3":"vitamin B12 deficiency anemia",
+   "buildInfoContainerTitle4":"folic acid deficiency anemia",
+   "buildInfoContainerTitle5":"Cytocellular anemia (sickle cell anemia",
+   "buildInfoContainerTitle6":"anemia of rheumatoid arthritis",
+   "buildInfoContainerDescription1":"there is a deficiency of iron in the body, which affects the production of hemoglobin",
+   "buildInfoContainerDescription2":"A group of disorders that require the body to produce hemoglobin properly. Then thalassemia results in the production of incomplete or abnormal red blood cells, leading to anemia",
+   "buildInfoContainerDescription3":"there is a deficiency of vitamin B12 in the body, which affects the red blood cells.",
+   "buildInfoContainerDescription4":"there is a deficiency of folic acid in the body, which affects the red blood cells",
+   "buildInfoContainerDescription5":"An effect that affects the hemoglobin in red cells, causing them to form in the form of “flakes” and finally natural rings.",
+   "buildInfoContainerDescription6":"Anemia may occur as a result of chronic rheumatoid arthritis,",
+   "readArticle":"Read Article",
+    "watchVideo":"Watch video"
+
+
+
 }

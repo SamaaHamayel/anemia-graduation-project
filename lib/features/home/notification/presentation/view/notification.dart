@@ -1,5 +1,5 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
-import 'package:animeacheck/features/home/doctor/presentation/view/doctor.dart';
+import 'package:animeacheck/features/home/help_info/presentation/view/help_info.dart';
 import 'package:animeacheck/features/test/view/presentation/cbc_test.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -233,7 +233,7 @@ class notificationScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => doctorScreen()));
+                                builder: (context) => HelpfulInformationScreen()));
                           },
                           child: Padding(
                             padding: EdgeInsets.all(20),
@@ -342,7 +342,7 @@ class notificationScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => doctorScreen()));
+                                builder: (context) => HelpfulInformationScreen()));
                           },
                           child: Padding(
                               padding: EdgeInsets.all(20),

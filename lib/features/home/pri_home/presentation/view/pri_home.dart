@@ -1,4 +1,5 @@
-import 'package:animeacheck/features/test/view/presentation/cbc_test.dart';
+import 'package:animeacheck/features/home/help_info/presentation/view/help_info.dart';
+import 'package:animeacheck/features/test/view/presentation/explana.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,14 +51,18 @@ class PriHome extends StatelessWidget {
                 description: AppLocalizations.of(context)!.testResultsTitle,
                 onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CBCTest()),
+                      MaterialPageRoute(builder: (context) => explanaScreen()),
                     )),
             buildFeatureCard(
-              icon: Icons.person_search_rounded,
-              title: AppLocalizations.of(context)!.consultADoctor,
-              description: AppLocalizations.of(context)!.consultADoctorTitle,
-              onTap: () => _navigateToDetectedScreen(context),
-            ),
+                icon: Icons.person_search_rounded,
+                title: AppLocalizations.of(context)!.helpfulInformation,
+                description:
+                    AppLocalizations.of(context)!.helpfulInformationTitle,
+                onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HelpfulInformationScreen()),
+                    )),
           ],
         ),
       ),
