@@ -11,7 +11,6 @@ import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/history/presentation/view/history.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/edit_profile.dart';
-import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
 
 import '../../../setting/presentation/settings_cubit/settings_cubit.dart';
 
@@ -28,12 +27,8 @@ class MyAccountState extends State<MyAccount> {
     return BlocProvider(
       create: (context) => SettingsCubit(),
       child: Scaffold(
-        backgroundColor:
-            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AppColors.blackColor
-                : AppColors.whiteColor,
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image:
                   AssetImage('lib/core/utils/appImages/images/background.png'),
@@ -48,7 +43,7 @@ class MyAccountState extends State<MyAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    buildHeader(),
+                  //  buildHeader(),
                     buildProfileCard(),
                     SizedBox(height: 28.h),
                     buildActionCard(
@@ -60,7 +55,7 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => editProfile()),
+                              builder: (context) => const editProfile()),
                         );
                       },
                     ),
@@ -73,7 +68,7 @@ class MyAccountState extends State<MyAccount> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => history()),
+                          MaterialPageRoute(builder: (context) => const history()),
                         );
                       },
                     ),
@@ -87,7 +82,7 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => InfoOneScreen()),
+                              builder: (context) => const InfoOneScreen()),
                         );
                         // Navigate to information page
                       },
@@ -100,7 +95,7 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignInScreen()),
+                              builder: (context) => const SignInScreen()),
                         );
                       },
                       child: Text(
@@ -108,7 +103,7 @@ class MyAccountState extends State<MyAccount> {
                                   .logOut,
                         //logOut
                         style: TextStyle(
-                          color: Color(0xFFFF0404),
+                          color: const Color(0xFFFF0404),
                           fontSize: 18.sp,
                           fontFamily: 'Kodchasan',
                           fontWeight: FontWeight.w600,
@@ -126,39 +121,40 @@ class MyAccountState extends State<MyAccount> {
     );
   }
 
-  Widget buildHeader() {
-    return Row(
-      children: [
-        IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_rounded,
-            color: AppColors.lightPrimaryColor,
-            size: 23.sp,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PriHome()),
-            );
-          },
-        ),
-        SizedBox(width: 85.w),
-        Text(
-            AppLocalizations.of(context)!
-                                  .profile,
-          //profile
-          style: TextStyle(
-            color: AppColors.lightPrimaryColor,
-            fontSize: 23.sp,
-            fontFamily: 'Kodchasan',
-            fontWeight: FontWeight.w500,
-            height: 0,
-            letterSpacing: 1.76,
-          ),
-        ),
-      ],
-    );
-  }
+  // Widget buildHeader() {
+  //   return Row(
+  //     children: [
+  //       IconButton(
+  //         icon: Icon(
+  //           Icons.arrow_back_ios_rounded,
+  //           color: AppColors.lightPrimaryColor,
+  //           size: 23.sp,
+  //         ),
+  //         onPressed: () {
+  //           Navigator.push(
+  //             context,
+  //             MaterialPageRoute(builder: (context) => PriHome()),
+  //           );
+  //         },
+  //       ),
+  //       SizedBox(width: 85.w),
+  //       Text(
+  //         'Profile',
+  //         style: TextStyle(
+  //           color: AppColors.lightPrimaryColor,
+  //           fontSize: 23.sp,
+  //           fontFamily: 'Kodchasan',
+  //           fontWeight: FontWeight.w500,
+  //           height: 0,
+  //           letterSpacing: 1.76,
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+  //
+  //
+
 
   Widget buildProfileCard() {
     return Padding(
@@ -169,7 +165,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: Color(0xFFE6E4E4)),
+            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
             borderRadius: BorderRadius.circular(16.r),
           ),
         ),
@@ -199,7 +195,7 @@ class MyAccountState extends State<MyAccount> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => editProfile()),
+                    MaterialPageRoute(builder: (context) => const editProfile()),
                   );
                 },
                 icon: Icon(
@@ -227,7 +223,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: Color(0xFFE6E4E4)),
+            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
@@ -275,7 +271,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: Color(0xFFE6E4E4)),
+            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
             borderRadius: BorderRadius.circular(16.r),
           ),
         ),
@@ -291,18 +287,19 @@ class MyAccountState extends State<MyAccount> {
               ),
               TextButton(
                 onPressed: () {
-                  if (isSwitched == true)
+                  if (isSwitched == true) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => notificationScreen()),
+                          builder: (context) => const notificationScreen()),
                     );
-                  else
+                  } else {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => noNotificationScreen()),
+                          builder: (context) => const noNotificationScreen()),
                     );
+                  }
                 },
                 child: Text(
                   'Notifications',
