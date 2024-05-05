@@ -77,7 +77,8 @@ class DetectedScreen extends StatelessWidget {
                                 'lib/core/utils/appImages/images/detectAnemia.png'))),
 
                     Padding(
-                      padding: EdgeInsets.only(top: 50.h),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 40.h, vertical: 30.h),
                       child: Text(
                           AppLocalizations.of(context)!.detectAnemiaTitle,
                           textAlign: TextAlign.center,
@@ -85,8 +86,8 @@ class DetectedScreen extends StatelessWidget {
                               .textTheme
                               .displayMedium!
                               .copyWith(
-                                fontSize: 18,
-                                color: AppColors.whiteColor,
+                                fontSize: 20.sp,
+                                color: AppColors.primaryColor,
                                 fontFamily: 'Kodchasan',
                                 fontWeight: FontWeight.w600,
                                 height: 0,

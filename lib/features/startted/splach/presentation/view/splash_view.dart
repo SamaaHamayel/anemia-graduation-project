@@ -14,7 +14,16 @@ class SplashView extends StatelessWidget {
       child:  Scaffold(
         backgroundColor: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
             ?AppColors.darkThemBlackColor:AppColors.whiteColor,
-        body: const SplashViewBody(),
+        body: Container(
+            decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
+          ),
+          child: const SplashViewBody()),
       ),
     );
   }

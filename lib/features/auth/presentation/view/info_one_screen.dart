@@ -44,76 +44,86 @@ class InfoOneScreen extends StatelessWidget {
               fontWeight: FontWeight.w700),
         ),
       ),
-      body: SingleChildScrollView(
-        child: BlocConsumer<PersonalInfoCubit, PersonalInfoState>(
-          listener: (context, state) {
-            if (state is PersonalInfoSuccessState) {
-              navigateReplacement(context: context, route: Routes.infoTwo);
-            }
-          },
-          builder: (context, state) {
-            final personalInfoCubit =
-                BlocProvider.of<PersonalInfoCubit>(context);
-            return Center(
-              child: Form(
-                key: personalInfoCubit.personalInfoKey,
-                child: Column(
-                  children: [
-                    CustomCard(personalInfoCubit: personalInfoCubit),
-                     WeightAndHeightCustomCard(
-                      text: AppLocalizations.of(context)!.weight,
-                      keyBoardType: TextInputType.number,
-                      textFieldHintText: AppLocalizations.of(context)!.enterYourWeight,
-                    ),
-                     WeightAndHeightCustomCard(
-                        text: AppLocalizations.of(context)!.height,
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
+          ),
+        child: SingleChildScrollView(
+          child: BlocConsumer<PersonalInfoCubit, PersonalInfoState>(
+            listener: (context, state) {
+              if (state is PersonalInfoSuccessState) {
+                navigateReplacement(context: context, route: Routes.infoTwo);
+              }
+            },
+            builder: (context, state) {
+              final personalInfoCubit =
+                  BlocProvider.of<PersonalInfoCubit>(context);
+              return Center(
+                child: Form(
+                  key: personalInfoCubit.personalInfoKey,
+                  child: Column(
+                    children: [
+                      CustomCard(personalInfoCubit: personalInfoCubit),
+                       WeightAndHeightCustomCard(
+                        text: AppLocalizations.of(context)!.weight,
                         keyBoardType: TextInputType.number,
-                        textFieldHintText: AppLocalizations.of(context)!.enterYourHeight),
-                    YesNoCustomCard(
-                      personalInfoCubit: personalInfoCubit,
-                      cardTitle: AppLocalizations.of(context)!.areYouOnYourPeriod,
-                    ),
-
-                    SizedBox(
-                      height: 24.h,
-                    ),
-
-
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        width: 172.w,
-                        height: 55.h,
-                        child:
-                        state is PersonalInfoLoadingState?
-                          const Center(
-                              child: CircularProgressIndicator())
-                            :CustomElevatedButton(
-                            text: AppLocalizations.of(context)!.next,
-                            onPressed: () async{
-                              if (BlocProvider.of<PersonalInfoCubit>(context)
-                                  .personalInfoKey
-                                  .currentState!
-                                  .validate()) {
-                                await sl<CacheHelper>().saveData(
-                              key: AppLocalizations.of(context)!.personalInfoKey,
-                              value: true).then((value) {
-                              navigateReplacement(context: context,
-                              route: Routes.infoTwo);
-                              });
-                            }
-
-                            }
+                        textFieldHintText: AppLocalizations.of(context)!.enterYourWeight,
+                      ),
+                       WeightAndHeightCustomCard(
+                          text: AppLocalizations.of(context)!.height,
+                          keyBoardType: TextInputType.number,
+                          textFieldHintText: AppLocalizations.of(context)!.enterYourHeight),
+                      YesNoCustomCard(
+                        personalInfoCubit: personalInfoCubit,
+                        cardTitle: AppLocalizations.of(context)!.areYouOnYourPeriod,
+                      ),
+        
+                      SizedBox(
+                        height: 24.h,
+                      ),
+        
+        
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: 172.w,
+                          height: 55.h,
+                          child:
+                          state is PersonalInfoLoadingState?
+                            const Center(
+                                child: CircularProgressIndicator())
+                              :CustomElevatedButton(
+                              text: AppLocalizations.of(context)!.next,
+                              onPressed: () async{
+                                if (BlocProvider.of<PersonalInfoCubit>(context)
+                                    .personalInfoKey
+                                    .currentState!
+                                    .validate()) {
+                                  await sl<CacheHelper>().saveData(
+                                key: AppLocalizations.of(context)!.personalInfoKey,
+                                value: true).then((value) {
+                                navigateReplacement(context: context,
+                                route: Routes.infoTwo);
+                                });
+                              }
+        
+                              }
+                          ),
                         ),
                       ),
-                    ),
-
-
-                  ],
+        
+        
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

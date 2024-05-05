@@ -86,7 +86,7 @@
 "youAreNotAnemic": "you are: not anemic",
 "youAreAnemic":"You are: anemic",
 "detectAnemia": "Detect Anemia:",
-"detectAnemiaTitle":"You can take or upload photo for your eyelid to know whether you have anemia or not",
+"detectAnemiaTitle":"You can take or upload photo for your eyelid to know whether you have anemia or not'Make sure there is high lighting'",
 "testResults": "Test Results:",
 "testResultsTitle": "Input the required test results to accurately determine the type of anemia you are suffering from.",
 "helpfulInformationTitle": "Provides concise information about anemia, including its causes, symptoms, and treatments",
