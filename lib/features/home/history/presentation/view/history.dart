@@ -1,3 +1,4 @@
+import 'package:animeacheck/features/auth/presentation/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../conf/routes/routes.dart';
