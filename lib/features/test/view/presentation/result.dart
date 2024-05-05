@@ -143,7 +143,7 @@ class resultState extends State<resultTest> {
                       ),
                       SizedBox(width: 85.w),
                       Text(
-                        'Result',
+                        AppLocalizations.of(context)!.result,
                         style: TextStyle(
                           color: AppColors.lightPrimaryColor,
                           fontSize: 23.sp,
@@ -163,7 +163,8 @@ class resultState extends State<resultTest> {
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: 'The type of anemia you have is:\n\n',
+                              text: AppLocalizations.of(context)!
+                                  .theTypeOfAnemiaYouHaveIs,
                               style: TextStyle(
                                 color: Color(0xFF1E1E1E),
                                 fontSize: 24,
@@ -233,7 +234,8 @@ class resultState extends State<resultTest> {
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
-                            child: Text('GO back home'),
+                            child:
+                                Text(AppLocalizations.of(context)!.goBackHome),
                           ),
                         ],
                       ),
@@ -288,7 +290,7 @@ class resultState extends State<resultTest> {
                         ),
                       ),
                       child: Text(
-                        AppLocalizations.of(context)!.helpyourself,
+                        AppLocalizations.of(context)!.helpYourself,
                       ),
                     ),
                   ],

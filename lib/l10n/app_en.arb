@@ -117,7 +117,15 @@
     "content5":"Cytocellular anemia, commonly known as sickle cell anemia, is a genetic blood disorder characterized by abnormally shaped red blood cells. This condition is caused by a mutation in the gene responsible for producing hemoglobin, resulting in the production of sickle-shaped red blood cells instead of the normal disc-shaped ones. Symptoms of sickle cell anemia include chronic fatigue, pain episodes known as crises, increased risk of infections, delayed growth, and vision problems. Prevention strategies include genetic counseling, newborn screening, and early detection and management of complications. It's crucial to seek medical attention promptly for proper diagnosis, treatment, and ongoing management of sickle cell anemia to improve quality of life and reduce the risk of complications.",
     "content6":"Rheumatoid arthritis anemia is a condition that occurs as a result of rheumatoid myelitis, and causes a decrease in the number of red blood cells and/or a deficiency in the body due to the precise damage of inflammation to the bone marrow and blood production, and they may come to an agreement due to the use of certain medications such as proton pump inhibitors. Symptoms of the disease include fatigue, shortness of breath, dizziness, and headaches, and requires treatment with iron supplements and vitamins and periodic examination of hemoglobin levels, which is why a doctor sees symptoms of rheumatoid arthritis pain.",
     "watchAGeneralVideo":"Watch a general video",
-    "helpyourself" :"Help yourself"
+    "helpYourself" :"Help yourself",
+    "editProfile":"Edit Profile",
+    "goBackHome":"GO back home",
+    "theTypeOfAnemiaYouHaveIs":"The type of anemia you have is",
+    "result":"Result",
+    "testResultHistory":"Test Results History",
+    "myData":"My data",
+    "logOut":"Log out",
+    "profile":"Profile"
 
 
 

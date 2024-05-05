@@ -3,6 +3,8 @@ import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart'
 import 'package:animeacheck/features/home/notification/presentation/view/no_notification.dart';
 import 'package:animeacheck/features/home/notification/presentation/view/notification.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
@@ -51,7 +53,9 @@ class MyAccountState extends State<MyAccount> {
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.person_2_outlined,
-                      title: 'Edit Profile',
+                      title:  AppLocalizations.of(context)!
+                                  .buildInfoContainerTitle2,
+                      //goBackHome
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -63,7 +67,9 @@ class MyAccountState extends State<MyAccount> {
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.science_outlined,
-                      title: 'Test Results History',
+                      title:AppLocalizations.of(context)!
+                                  .testResultHistory,
+                      
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -74,7 +80,9 @@ class MyAccountState extends State<MyAccount> {
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.storage,
-                      title: 'My data',
+                      title:AppLocalizations.of(context)!
+                                  .myData,
+                      //myData
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -96,7 +104,9 @@ class MyAccountState extends State<MyAccount> {
                         );
                       },
                       child: Text(
-                        'Log out',
+                       AppLocalizations.of(context)!
+                                  .logOut,
+                        //logOut
                         style: TextStyle(
                           color: Color(0xFFFF0404),
                           fontSize: 18.sp,
@@ -134,7 +144,9 @@ class MyAccountState extends State<MyAccount> {
         ),
         SizedBox(width: 85.w),
         Text(
-          'Profile',
+            AppLocalizations.of(context)!
+                                  .profile,
+          //profile
           style: TextStyle(
             color: AppColors.lightPrimaryColor,
             fontSize: 23.sp,
