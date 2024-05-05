@@ -26,17 +26,19 @@ class MyAccountState extends State<MyAccount> {
     return BlocProvider(
       create: (context) => SettingsCubit(),
       child: Scaffold(
-        backgroundColor: BlocProvider
-            .of<SettingsCubit>(context)
-            .isDarkThemEnable
-            ? AppColors.blackColor : AppColors.whiteColor,
+        backgroundColor:
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.blackColor
+                : AppColors.whiteColor,
         body: Container(
-           decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
           ),
-        ),
           child: SingleChildScrollView(
             child: Center(
               child: Padding(
@@ -53,7 +55,8 @@ class MyAccountState extends State<MyAccount> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => editProfile()),
+                          MaterialPageRoute(
+                              builder: (context) => editProfile()),
                         );
                       },
                     ),
@@ -71,12 +74,12 @@ class MyAccountState extends State<MyAccount> {
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.storage,
-                      title: 'Information',
+                      title: 'My data',
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) =>
-                              InfoOneScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => InfoOneScreen()),
                         );
                         // Navigate to information page
                       },
@@ -173,7 +176,7 @@ class MyAccountState extends State<MyAccount> {
               Text(
                 'Sarah Shebl',
                 style: TextStyle(
-                 // color: Colors.black.withOpacity(0.9),
+                  // color: Colors.black.withOpacity(0.9),
                   fontSize: 16.sp,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w600,
@@ -200,9 +203,10 @@ class MyAccountState extends State<MyAccount> {
     );
   }
 
-  Widget buildActionCard({required IconData icon,
-    required String title,
-    required Function() onPressed}) {
+  Widget buildActionCard(
+      {required IconData icon,
+      required String title,
+      required Function() onPressed}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 00.0),
       child: Container(
@@ -211,8 +215,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: Color(0xFFE6E4E4)
-            ),
+            side: BorderSide(width: 1.w, color: Color(0xFFE6E4E4)),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
@@ -292,7 +295,7 @@ class MyAccountState extends State<MyAccount> {
                 child: Text(
                   'Notifications',
                   style: TextStyle(
-                //    color: Colors.black.withOpacity(0.8),
+                    //    color: Colors.black.withOpacity(0.8),
                     fontSize: 14.sp,
                     fontFamily: 'Kodchasan',
                     fontWeight: FontWeight.w600,

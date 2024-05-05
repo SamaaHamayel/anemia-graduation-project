@@ -22,31 +22,40 @@ class HelpfulInformationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios_rounded,
-                color: AppColors.lightPrimaryColor,
-                size: 23.sp,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+        title: Container(  decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
             ),
-            SizedBox(width: 30.w),
-            Text(
-              AppLocalizations.of(context)!.helpfulInformation,
-              style: TextStyle(
-                color: AppColors.lightPrimaryColor,
-                fontSize: 19.sp,
-                fontFamily: 'Kodchasan',
-                fontWeight: FontWeight.w500,
-                height: 0,
-                letterSpacing: 1.76,
+          ),
+          child: Row(
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: AppColors.lightPrimaryColor,
+                  size: 23.sp,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-            ),
-          ],
+              SizedBox(width: 30.w),
+              Text(
+                AppLocalizations.of(context)!.helpfulInformation,
+                style: TextStyle(
+                  color: AppColors.lightPrimaryColor,
+                  fontSize: 19.sp,
+                  fontFamily: 'Kodchasan',
+                  fontWeight: FontWeight.w500,
+                  height: 0,
+                  letterSpacing: 1.76,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       body: Container(

@@ -10,27 +10,26 @@ class ImagePickerButton extends StatelessWidget {
     required this.onTap,
   });
 
-
   final IconData icon;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(top: 40.h),
+      padding: EdgeInsets.only(top: 40.h),
       child: InkWell(
         onTap: onTap,
         child: Container(
           height: 65.h,
           width: 335.w,
           decoration: BoxDecoration(
-              color: AppColors.whiteColor,
-              borderRadius: BorderRadius.circular(20.r)
-          ),
-          child:  Icon(
+              color: AppColors.lightPrimaryColor,
+              borderRadius: BorderRadius.circular(20.r)),
+          child: Icon(
             icon,
-            color: AppColors.primaryColor,
-            size: 40,),
+            color: AppColors.whiteColor,
+            size: 40,
+          ),
         ),
       ),
     );

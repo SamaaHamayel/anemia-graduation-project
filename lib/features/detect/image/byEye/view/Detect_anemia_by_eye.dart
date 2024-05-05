@@ -19,15 +19,25 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
       backgroundColor: AppColors.lightBlackColor,
       appBar: AppBar(
         backgroundColor: AppColors.lightPrimaryColor,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-            size: 25.0,
+        leading: Container(
+            decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: 25.0,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: Container( decoration: BoxDecoration(

@@ -11,8 +11,6 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -22,36 +20,51 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<Widget> pages = [const PriHome(), const history(), const Setting(),  MyAccount()];
+  List<Widget> pages = [
+    const PriHome(),
+    const history(),
+    const Setting(),
+    MyAccount()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CircleAvatar(
-              backgroundColor: AppColors.lightPrimaryColor,
-              child: Image.asset(
-                AppAssets.female,
-                width: double.infinity,
+        title: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CircleAvatar(
+                backgroundColor: AppColors.lightPrimaryColor,
+                child: Image.asset(
+                  AppAssets.female,
+                  width: double.infinity,
+                ),
               ),
-            ),
-            Image.asset(
-              'lib/core/utils/appImages/images/logo (2).png',
-              scale: 2,
-            ),
-            const Icon(
-              Icons.notifications,
-              color: AppColors.primaryColor,
-              size: 30.0,
-            )
-          ],
+              Image.asset(
+                'lib/core/utils/appImages/images/logo (2).png',
+                scale: 2,
+              ),
+              const Icon(
+                Icons.notifications,
+                color: AppColors.primaryColor,
+                size: 30.0,
+              )
+            ],
+          ),
         ),
       ),
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
@@ -75,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _selectedIndex = index;
             });
           },
-          tabs:  [
+          tabs: [
             GButton(
               icon: FontAwesomeIcons.house,
               // icon: Icon(FontAwesomeIcons.house),
@@ -96,7 +109,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      
     );
   }
 }

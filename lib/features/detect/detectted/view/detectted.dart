@@ -39,12 +39,22 @@ class DetectedScreen extends StatelessWidget {
               color: AppColors.whiteColor,
             ),
           ),
-          title: Text(AppLocalizations.of(context)!.detectAnemia,
-              style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                  fontSize: 24,
-                  color: AppColors.whiteColor,
-                  fontFamily: 'Kodchasan',
-                  fontWeight: FontWeight.w700)),
+          title: Container(
+              decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
+          ),
+            child: Text(AppLocalizations.of(context)!.detectAnemia,
+                style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    fontSize: 24,
+                    color: AppColors.whiteColor,
+                    fontFamily: 'Kodchasan',
+                    fontWeight: FontWeight.w700)),
+          ),
         ),
         body: Container(
           decoration: BoxDecoration(

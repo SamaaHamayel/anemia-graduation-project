@@ -5,7 +5,16 @@ class result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
- return const Center(
-      child: Text('my account'),
-    );  }
+ return Container(  decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
+          ),
+   child: const Center(
+        child: Text('my account'),
+      ),
+ );  }
 }

@@ -132,31 +132,40 @@ class CBCTestState extends State<CBCTest> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios_rounded,
-                color: AppColors.lightPrimaryColor,
-                size: 23.sp,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+        title: Container(  decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
             ),
-            SizedBox(width: 85.w),
-            Text(
-              'CBC Test',
-              style: TextStyle(
-                color: AppColors.lightPrimaryColor,
-                fontSize: 23.sp,
-                fontFamily: 'Kodchasan',
-                fontWeight: FontWeight.w500,
-                height: 0,
-                letterSpacing: 1.76,
+          ),
+          child: Row(
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: AppColors.lightPrimaryColor,
+                  size: 23.sp,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-            ),
-          ],
+              SizedBox(width: 85.w),
+              Text(
+                'CBC Test',
+                style: TextStyle(
+                  color: AppColors.lightPrimaryColor,
+                  fontSize: 23.sp,
+                  fontFamily: 'Kodchasan',
+                  fontWeight: FontWeight.w500,
+                  height: 0,
+                  letterSpacing: 1.76,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       backgroundColor: Colors.white,
