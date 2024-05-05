@@ -74,39 +74,47 @@ class _HomeScreenState extends State<HomeScreen> {
           child: pages[_selectedIndex],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
-        child: GNav(
-          activeColor: Colors.white,
-          color: const Color.fromARGB(255, 146, 146, 153),
-          tabBackgroundColor: AppColors.lightPrimaryColor,
-          gap: 8.h,
-          padding: const EdgeInsets.all(16),
-          selectedIndex: _selectedIndex,
-          onTabChange: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          tabs: [
-            GButton(
-              icon: FontAwesomeIcons.house,
-              // icon: Icon(FontAwesomeIcons.house),
-              text: AppLocalizations.of(context)!.home,
-            ),
-            GButton(
-              icon: (FontAwesomeIcons.calendarDays),
-              text: AppLocalizations.of(context)!.history,
-            ),
-            GButton(
-              icon: (Icons.settings),
-              text: AppLocalizations.of(context)!.settings,
-            ),
-            GButton(
-              icon: (Icons.person),
-              text: AppLocalizations.of(context)!.myAccount,
-            ),
-          ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
+          child: GNav(
+            activeColor: Colors.white,
+            color: const Color.fromARGB(255, 146, 146, 153),
+            tabBackgroundColor: AppColors.lightPrimaryColor,
+            gap: 8.h,
+            padding: const EdgeInsets.all(16),
+            selectedIndex: _selectedIndex,
+            onTabChange: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            tabs: [
+              GButton(
+                icon: FontAwesomeIcons.house,
+                // icon: Icon(FontAwesomeIcons.house),
+                text: AppLocalizations.of(context)!.home,
+              ),
+              GButton(
+                icon: (FontAwesomeIcons.calendarDays),
+                text: AppLocalizations.of(context)!.history,
+              ),
+              GButton(
+                icon: (Icons.settings),
+                text: AppLocalizations.of(context)!.settings,
+              ),
+              GButton(
+                icon: (Icons.person),
+                text: AppLocalizations.of(context)!.myAccount,
+              ),
+            ],
+          ),
         ),
       ),
     );
