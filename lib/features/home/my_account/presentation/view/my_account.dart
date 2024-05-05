@@ -43,13 +43,12 @@ class MyAccountState extends State<MyAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  //  buildHeader(),
+                    //  buildHeader(),
                     buildProfileCard(),
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.person_2_outlined,
-                      title:  AppLocalizations.of(context)!
-                                  .buildInfoContainerTitle2,
+                      title: AppLocalizations.of(context)!.profile,
                       //goBackHome
                       onPressed: () {
                         Navigator.push(
@@ -62,21 +61,19 @@ class MyAccountState extends State<MyAccount> {
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.science_outlined,
-                      title:AppLocalizations.of(context)!
-                                  .testResultHistory,
-                      
+                      title: AppLocalizations.of(context)!.testResultHistory,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const history()),
+                          MaterialPageRoute(
+                              builder: (context) => const history()),
                         );
                       },
                     ),
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.storage,
-                      title:AppLocalizations.of(context)!
-                                  .myData,
+                      title: AppLocalizations.of(context)!.myData,
                       //myData
                       onPressed: () {
                         Navigator.push(
@@ -99,8 +96,7 @@ class MyAccountState extends State<MyAccount> {
                         );
                       },
                       child: Text(
-                       AppLocalizations.of(context)!
-                                  .logOut,
+                        AppLocalizations.of(context)!.logOut,
                         //logOut
                         style: TextStyle(
                           color: const Color(0xFFFF0404),
@@ -121,41 +117,6 @@ class MyAccountState extends State<MyAccount> {
     );
   }
 
-  // Widget buildHeader() {
-  //   return Row(
-  //     children: [
-  //       IconButton(
-  //         icon: Icon(
-  //           Icons.arrow_back_ios_rounded,
-  //           color: AppColors.lightPrimaryColor,
-  //           size: 23.sp,
-  //         ),
-  //         onPressed: () {
-  //           Navigator.push(
-  //             context,
-  //             MaterialPageRoute(builder: (context) => PriHome()),
-  //           );
-  //         },
-  //       ),
-  //       SizedBox(width: 85.w),
-  //       Text(
-  //         'Profile',
-  //         style: TextStyle(
-  //           color: AppColors.lightPrimaryColor,
-  //           fontSize: 23.sp,
-  //           fontFamily: 'Kodchasan',
-  //           fontWeight: FontWeight.w500,
-  //           height: 0,
-  //           letterSpacing: 1.76,
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-  //
-  //
-
-
   Widget buildProfileCard() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40.0),
@@ -165,7 +126,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
+            side: BorderSide(width: 1.w, color: AppColors.whiteColor),
             borderRadius: BorderRadius.circular(16.r),
           ),
         ),
@@ -195,7 +156,8 @@ class MyAccountState extends State<MyAccount> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const editProfile()),
+                    MaterialPageRoute(
+                        builder: (context) => const editProfile()),
                   );
                 },
                 icon: Icon(
@@ -223,7 +185,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
+            side: BorderSide(width: 1.w, color: AppColors.whiteColor),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
@@ -271,7 +233,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
+            side: BorderSide(width: 1.w, color: AppColors.whiteColor),
             borderRadius: BorderRadius.circular(16.r),
           ),
         ),
@@ -302,7 +264,7 @@ class MyAccountState extends State<MyAccount> {
                   }
                 },
                 child: Text(
-                  'Notifications',
+                  AppLocalizations.of(context)!.notifications,
                   style: TextStyle(
                     //    color: Colors.black.withOpacity(0.8),
                     fontSize: 14.sp,

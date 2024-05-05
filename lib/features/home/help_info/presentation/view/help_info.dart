@@ -21,8 +21,13 @@ class HelpfulInformationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: const Image(
+          image: AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
+        ),
         automaticallyImplyLeading: false,
-        title: Container(  decoration: BoxDecoration(
+        title: Container(
+          decoration: BoxDecoration(
             image: DecorationImage(
               image:
                   AssetImage('lib/core/utils/appImages/images/background.png'),
@@ -59,7 +64,7 @@ class HelpfulInformationScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
@@ -100,10 +105,11 @@ class HelpfulInformationScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-        
+
                   //1
                   buildInfoContainer(
-                    title: AppLocalizations.of(context)!.buildInfoContainerTitle1,
+                    title:
+                        AppLocalizations.of(context)!.buildInfoContainerTitle1,
                     description: AppLocalizations.of(context)!
                         .buildInfoContainerDescription1,
                     onPressedRead: () {
@@ -133,7 +139,8 @@ class HelpfulInformationScreen extends StatelessWidget {
                   const SizedBox(height: 10.0),
                   //2
                   buildInfoContainer(
-                    title: AppLocalizations.of(context)!.buildInfoContainerTitle2,
+                    title:
+                        AppLocalizations.of(context)!.buildInfoContainerTitle2,
                     description: AppLocalizations.of(context)!
                         .buildInfoContainerDescription2,
                     onPressedRead: () {
@@ -163,7 +170,8 @@ class HelpfulInformationScreen extends StatelessWidget {
                   const SizedBox(height: 10.0),
                   //3
                   buildInfoContainer(
-                    title: AppLocalizations.of(context)!.buildInfoContainerTitle3,
+                    title:
+                        AppLocalizations.of(context)!.buildInfoContainerTitle3,
                     description: AppLocalizations.of(context)!
                         .buildInfoContainerDescription3,
                     onPressedRead: () {
@@ -193,7 +201,8 @@ class HelpfulInformationScreen extends StatelessWidget {
                   const SizedBox(height: 10.0),
                   //4
                   buildInfoContainer(
-                    title: AppLocalizations.of(context)!.buildInfoContainerTitle4,
+                    title:
+                        AppLocalizations.of(context)!.buildInfoContainerTitle4,
                     description: AppLocalizations.of(context)!
                         .buildInfoContainerDescription4,
                     onPressedRead: () {
@@ -223,7 +232,8 @@ class HelpfulInformationScreen extends StatelessWidget {
                   const SizedBox(height: 10.0),
                   //5
                   buildInfoContainer(
-                    title: AppLocalizations.of(context)!.buildInfoContainerTitle5,
+                    title:
+                        AppLocalizations.of(context)!.buildInfoContainerTitle5,
                     description: AppLocalizations.of(context)!
                         .buildInfoContainerDescription5,
                     onPressedRead: () {
@@ -253,7 +263,8 @@ class HelpfulInformationScreen extends StatelessWidget {
                   const SizedBox(height: 10.0),
                   //6
                   buildInfoContainer(
-                    title: AppLocalizations.of(context)!.buildInfoContainerTitle6,
+                    title:
+                        AppLocalizations.of(context)!.buildInfoContainerTitle6,
                     description: AppLocalizations.of(context)!
                         .buildInfoContainerDescription6,
                     onPressedRead: () {
@@ -350,7 +361,8 @@ class HelpfulInformationScreen extends StatelessWidget {
                     ),
                     Container(
                       child: Padding(
-                        padding: EdgeInsets.all(12.0),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
                         child: Column(
                           children: [
                             Center(
@@ -384,7 +396,7 @@ class HelpfulInformationScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 24),
+                                  SizedBox(width: 10.w),
                                   Container(
                                     padding: const EdgeInsets.only(
                                       top: 8,

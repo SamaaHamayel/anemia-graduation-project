@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class CBCInputField extends StatelessWidget {
   final String label;
@@ -186,7 +188,9 @@ class CBCTestState extends State<CBCTest> {
                 padding: EdgeInsets.all(9.w),
                 child: SizedBox(
                   child: Text(
-                    'Enter the results of a CBC test on the screen to determine the type of anemia.',
+                    AppLocalizations.of(context)!
+                          .enterTheResult,
+                    //enterTheResult
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,

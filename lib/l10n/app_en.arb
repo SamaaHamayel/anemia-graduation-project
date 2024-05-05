@@ -23,7 +23,6 @@
 "darkMode": "Dark Mode",
 "account": "Account",
 "language": "Language ( Ar العربيه)",
-"notifications": "Notifications",
 "start": "Start",
 "weight": "Weight:",
 "height":"Height:",
@@ -125,7 +124,9 @@
     "testResultHistory":"Test Results History",
     "myData":"My data",
     "logOut":"Log out",
-    "profile":"Profile"
+    "profile":"Profile",
+    "notifications":"Notifications",
+    "enterTheResult":" 'Enter the results of a CBC test on the screen to determine the type of anemia.',"
 
 
 
