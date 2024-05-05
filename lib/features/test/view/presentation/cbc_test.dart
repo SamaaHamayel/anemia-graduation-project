@@ -160,179 +160,187 @@ class CBCTestState extends State<CBCTest> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(9.w),
-              child: SizedBox(
-                child: Text(
-                  'Enter the results of a CBC test on the screen to determine the type of anemia.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22.sp,
-                    fontFamily: 'Kumbh Sans',
-                    fontWeight: FontWeight.w400,
-                    height: 0.h,
+      body: Container(
+         decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(9.w),
+                child: SizedBox(
+                  child: Text(
+                    'Enter the results of a CBC test on the screen to determine the type of anemia.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22.sp,
+                      fontFamily: 'Kumbh Sans',
+                      fontWeight: FontWeight.w400,
+                      height: 0.h,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CBCInputField(
-                      label: 'RBC',
-                      value: dropdownRBC,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownRBC = newValue;
-                        });
-                      },
-                    ),
-                    CBCInputField(
-                      label: 'WCB',
-                      value: dropdownWCB,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownWCB = newValue;
-                        });
-                      },
-                    ),
-                    CBCInputField(
-                      label: ' HB  ',
-                      value: dropdownHB,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownHB = newValue;
-                        });
-                      },
-                    ),
-                    CBCInputField(
-                      label: 'MCV',
-                      value: dropdownMCV,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownMCV = newValue;
-                        });
-                      },
-                    ),
-                    CBCInputField(
-                      label: 'PLT ',
-                      value: dropdownPLT,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownPLT = newValue;
-                        });
-                      },
-                    ),
-                    CBCInputField(
-                      label: 'MCH',
-                      value: dropdownMCH,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownMCH = newValue;
-                        });
-                      },
-                    ),
-                    CBCInputField(
-                      label: 'RDW',
-                      value: dropdownRDW,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownRDW = newValue;
-                        });
-                      },
-                    ),
-                    CBCInputField(
-                      label: 'Hct',
-                      value: dropdownHct,
-                      options: ['normal', 'less', 'greater'],
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownHct = newValue;
-                        });
-                      },
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        CBCInputField(
-                          label: 'MCHC',
-                          value: dropdownMCHC,
-                          options: ['normal', 'less', 'greater'],
-                          onChanged: (newValue) {
-                            setState(() {
-                              dropdownMCHC = newValue;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Container(
-                  width: 172.w,
-                  height: 48.h,
-                  padding: const EdgeInsets.symmetric(vertical: 13),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment(0.00, -1.00),
-                      end: Alignment(0, 1),
-                      colors: [
-                        AppColors.lightPrimaryColor,
-                        AppColors.primaryColor
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => resultTest()),
-                      );
-                      setState(() {});
-                    },
-                    style: TextButton.styleFrom(
-                      foregroundColor: AppColors.whiteColor,
-                      padding: EdgeInsets.zero,
-                      textStyle: TextStyle(
-                        fontSize: 18.sp,
-                        color: AppColors.whiteColor,
-                        fontFamily: 'Kodchasan',
-                        fontWeight: FontWeight.w700,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      CBCInputField(
+                        label: 'RBC',
+                        value: dropdownRBC,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownRBC = newValue;
+                          });
+                        },
                       ),
-                    ),
-                    child: Text('See the result'),
+                      CBCInputField(
+                        label: 'WCB',
+                        value: dropdownWCB,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownWCB = newValue;
+                          });
+                        },
+                      ),
+                      CBCInputField(
+                        label: ' HB  ',
+                        value: dropdownHB,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownHB = newValue;
+                          });
+                        },
+                      ),
+                      CBCInputField(
+                        label: 'MCV',
+                        value: dropdownMCV,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownMCV = newValue;
+                          });
+                        },
+                      ),
+                      CBCInputField(
+                        label: 'PLT ',
+                        value: dropdownPLT,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownPLT = newValue;
+                          });
+                        },
+                      ),
+                      CBCInputField(
+                        label: 'MCH',
+                        value: dropdownMCH,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownMCH = newValue;
+                          });
+                        },
+                      ),
+                      CBCInputField(
+                        label: 'RDW',
+                        value: dropdownRDW,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownRDW = newValue;
+                          });
+                        },
+                      ),
+                      CBCInputField(
+                        label: 'Hct',
+                        value: dropdownHct,
+                        options: ['normal', 'less', 'greater'],
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownHct = newValue;
+                          });
+                        },
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          CBCInputField(
+                            label: 'MCHC',
+                            value: dropdownMCHC,
+                            options: ['normal', 'less', 'greater'],
+                            onChanged: (newValue) {
+                              setState(() {
+                                dropdownMCHC = newValue;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 20.h),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Container(
+                    width: 172.w,
+                    height: 48.h,
+                    padding: const EdgeInsets.symmetric(vertical: 13),
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment(0.00, -1.00),
+                        end: Alignment(0, 1),
+                        colors: [
+                          AppColors.lightPrimaryColor,
+                          AppColors.primaryColor
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => resultTest()),
+                        );
+                        setState(() {});
+                      },
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppColors.whiteColor,
+                        padding: EdgeInsets.zero,
+                        textStyle: TextStyle(
+                          fontSize: 18.sp,
+                          color: AppColors.whiteColor,
+                          fontFamily: 'Kodchasan',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      child: Text('See the result'),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -30,59 +30,66 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
           },
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 208),
-            child: Container(
-              color: AppColors.lightBlackColor,
-              child: Center(
-                child: Image.asset(
-                  'lib/core/utils/appImages/images/detect.png',
+      body: Container( decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 208),
+              child: Container(
+                color: AppColors.lightBlackColor,
+                child: Center(
+                  child: Image.asset(
+                    'lib/core/utils/appImages/images/detect.png',
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 110,
-            //color: AppColors.lightPrimaryColor,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  buildIconButton(
-                    icon: Icons.image,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetectAnemiaByImage(),
-                        ),
-                      );
-                    },
-                  ),
-                  buildIconButton(
-                    icon: Icons.circle_outlined,
-                    onPressed: () {
-                      takePicture(context);
-                      // Handle circle button press
-                    },
-                  ),
-                  buildIconButton(
-                    icon: Icons.refresh_sharp,
-                    onPressed: () {
-                      setState(() {});
-                      // Handle refresh button press
-                    },
-                  ),
-                ],
+            SizedBox(
+              height: 110,
+              //color: AppColors.lightPrimaryColor,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    buildIconButton(
+                      icon: Icons.image,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetectAnemiaByImage(),
+                          ),
+                        );
+                      },
+                    ),
+                    buildIconButton(
+                      icon: Icons.circle_outlined,
+                      onPressed: () {
+                        takePicture(context);
+                        // Handle circle button press
+                      },
+                    ),
+                    buildIconButton(
+                      icon: Icons.refresh_sharp,
+                      onPressed: () {
+                        setState(() {});
+                        // Handle refresh button press
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

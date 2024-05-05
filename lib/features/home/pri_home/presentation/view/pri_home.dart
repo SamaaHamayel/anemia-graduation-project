@@ -13,57 +13,66 @@ class PriHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'Welcome, Sarah',
-              style: TextStyle(
-                color: AppColors.lightPrimaryColor,
-                fontSize: 18,
-                fontFamily: 'Kodchasan',
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            SizedBox(
-              width: 351.w,
-              child: Text(
-                AppLocalizations.of(context)!.homeScreenSubTitle,
-                style: const TextStyle(
-                  fontSize: 14,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Welcome, Sarah',
+                style: TextStyle(
+                  color: AppColors.lightPrimaryColor,
+                  fontSize: 18,
                   fontFamily: 'Kodchasan',
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-            ),
-            buildFeatureCard(
-              icon: Icons.camera_alt_rounded,
-              title: AppLocalizations.of(context)!.detectAnemia,
-              description: AppLocalizations.of(context)!.detectAnemiaTitle,
-              onTap: () => _navigateToDetectedScreen(context),
-            ),
-            buildFeatureCard(
-                icon: Icons.biotech,
-                title: AppLocalizations.of(context)!.testResults,
-                description: AppLocalizations.of(context)!.testResultsTitle,
-                onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => explanaScreen()),
-                    )),
-            buildFeatureCard(
-                icon: Icons.person_search_rounded,
-                title: AppLocalizations.of(context)!.helpfulInformation,
-                description:
-                    AppLocalizations.of(context)!.helpfulInformationTitle,
-                onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => HelpfulInformationScreen()),
-                    )),
-          ],
+              SizedBox(
+                width: 351.w,
+                child: Text(
+                  AppLocalizations.of(context)!.homeScreenSubTitle,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontFamily: 'Kodchasan',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              buildFeatureCard(
+                icon: Icons.camera_alt_rounded,
+                title: AppLocalizations.of(context)!.detectAnemia,
+                description: AppLocalizations.of(context)!.detectAnemiaTitle,
+                onTap: () => _navigateToDetectedScreen(context),
+              ),
+              buildFeatureCard(
+                  icon: Icons.biotech,
+                  title: AppLocalizations.of(context)!.testResults,
+                  description: AppLocalizations.of(context)!.testResultsTitle,
+                  onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => explanaScreen()),
+                      )),
+              buildFeatureCard(
+                  icon: Icons.quiz,
+                  title: AppLocalizations.of(context)!.helpfulInformation,
+                  description:
+                      AppLocalizations.of(context)!.helpfulInformationTitle,
+                  onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HelpfulInformationScreen()),
+                      )),
+            ],
+          ),
         ),
       ),
     );

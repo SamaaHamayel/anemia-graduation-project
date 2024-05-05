@@ -7,29 +7,36 @@ Widget buildloading(BuildContext context) {
   // Pass context as a parameter
   return  Scaffold(
         backgroundColor: Colors.transparent,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 300.0, horizontal: 50),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(
-          child: RotatingIcon(),
+        body: Container( decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+          ),
         ),
-                const SizedBox(height: 32),
-                const Text(
-                  'Please wait....',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF2BB598),
-                    fontSize: 32,
-                    fontFamily: 'Kodchasan',
-                    fontWeight: FontWeight.w700,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 300.0, horizontal: 50),
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+            child: RotatingIcon(),
+          ),
+                  const SizedBox(height: 32),
+                  const Text(
+                    'Please wait....',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF2BB598),
+                      fontSize: 32,
+                      fontFamily: 'Kodchasan',
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

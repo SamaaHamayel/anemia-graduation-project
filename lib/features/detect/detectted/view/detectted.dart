@@ -1,4 +1,3 @@
-import 'package:animeacheck/features/home/home_widgets/custom_file_image.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_state.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
@@ -47,65 +46,75 @@ class DetectedScreen extends StatelessWidget {
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w700)),
         ),
-        body: Center(
-          child: BlocConsumer<DetectAnemiaCubit, DetectAnemiaState>(
-            listener: (context, state) {
-              if (state is DetectAnemiaSuccessState) {
-                showToast(
-                    message: AppLocalizations.of(context)!.success,
-                    state: ToastStates.success);
-              }
-            },
-            builder: (context, state) {
-              final detectAnemiaCubit=BlocProvider.of<DetectAnemiaCubit>(context);
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              fit:
+                  BoxFit.cover, // Optional: You can set the image fit as needed
+            ),
+          ),
+          child: Center(
+            child: BlocConsumer<DetectAnemiaCubit, DetectAnemiaState>(
+              listener: (context, state) {
+                if (state is DetectAnemiaSuccessState) {
+                  showToast(
+                      message: AppLocalizations.of(context)!.success,
+                      state: ToastStates.success);
+                }
+              },
+              builder: (context, state) {
+                final detectAnemiaCubit =
+                    BlocProvider.of<DetectAnemiaCubit>(context);
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                        padding: EdgeInsets.only(top: 75.h),
+                        child: Image(
+                            image: AssetImage(
+                                'lib/core/utils/appImages/images/detectAnemia.png'))),
 
-                  Padding(
-                    padding:  EdgeInsets.only(top: 75.h),
-                    child: CustomFileImage(
-                      image: detectAnemiaCubit.image,
+                    Padding(
+                      padding: EdgeInsets.only(top: 50.h),
+                      child: Text(
+                          AppLocalizations.of(context)!.detectAnemiaTitle,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(
+                                fontSize: 18,
+                                color: AppColors.whiteColor,
+                                fontFamily: 'Kodchasan',
+                                fontWeight: FontWeight.w600,
+                                height: 0,
+                                letterSpacing: 1.76,
+                              )),
                     ),
-                  ),
 
-                  Padding(
-                    padding: EdgeInsets.only(top: 50.h),
-                    child: Text(AppLocalizations.of(context)!.detectAnemiaTitle,
-                        textAlign: TextAlign.center,
-                        style:
-                            Theme.of(context).textTheme.displayMedium!.copyWith(
-                                  fontSize: 18,
-                                  color: AppColors.whiteColor,
-                                  fontFamily: 'Kodchasan',
-                                  fontWeight: FontWeight.w600,
-                                  height: 0,
-                                  letterSpacing: 1.76,
-                                )),
-                  ),
+                    //pick image from camera
+                    ImagePickerButton(
+                      icon: Icons.camera_alt_rounded,
+                      onTap: () {
+                        pickImage(ImageSource.camera).then(
+                            (value) => detectAnemiaCubit.takeImage(value));
+                      },
+                    ),
 
-                  //pick image from camera
-                  ImagePickerButton(
-                    icon: Icons.camera_alt_rounded,
-                    onTap: () {
-                      pickImage(ImageSource.camera).
-                      then((value) => detectAnemiaCubit.takeImage(value)
-                      );
-                    },
-                  ),
-
-                  //pick image from gallery
-                  ImagePickerButton(
-                    icon: Icons.image_rounded,
-                    onTap: () {
-                      pickImage(ImageSource.gallery).
-                      then((value) => detectAnemiaCubit.takeImage(value));
-                    },
-                  ),
-
-                ],
-              );
-            },
+                    //pick image from gallery
+                    ImagePickerButton(
+                      icon: Icons.image_rounded,
+                      onTap: () {
+                        pickImage(ImageSource.gallery).then(
+                            (value) => detectAnemiaCubit.takeImage(value));
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

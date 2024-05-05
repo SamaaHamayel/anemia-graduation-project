@@ -9,7 +9,6 @@ import '../../../../../core/utils/appColors/app_colors.dart';
 import '../widgets/setting_switch_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class Setting extends StatelessWidget {
   const Setting({super.key});
 
@@ -98,7 +97,6 @@ class Setting extends StatelessWidget {
                   SizedBox(
                     height: 15.h,
                   ),
-
                   SettingSwitchCard(
                     switchValue:
                         BlocProvider.of<SettingsCubit>(context).isArabicEnable,
@@ -112,36 +110,41 @@ class Setting extends StatelessWidget {
                   SizedBox(
                     height: 25.h,
                   ),
-
-                   SettingSwitchCard(
-                    onChange: (value){
-                      BlocProvider.of<SettingsCubit>(context).changeNotification(value);
+                  SettingSwitchCard(
+                    onChange: (value) {
+                      BlocProvider.of<SettingsCubit>(context)
+                          .changeNotification(value);
                     },
-                    switchValue: BlocProvider.of<SettingsCubit>(context).isNotificationEnable,
+                    switchValue: BlocProvider.of<SettingsCubit>(context)
+                        .isNotificationEnable,
                     icon: Icons.notifications_active_outlined,
-                  text: AppLocalizations.of(context)!.notifications,),
+                    text: AppLocalizations.of(context)!.notifications,
+                  ),
                   SizedBox(
                     height: 25.h,
                   ),
-                   SettingSwitchCard(
+                  SettingSwitchCard(
                     onChange: (value) {
                       BlocProvider.of<SettingsCubit>(context).changeThem(value);
                     },
-                    switchValue: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable,
+                    switchValue: BlocProvider.of<SettingsCubit>(context)
+                        .isDarkThemEnable,
                     icon: Icons.dark_mode_outlined,
-                  text: AppLocalizations.of(context)!.darkMode,),
+                    text: AppLocalizations.of(context)!.darkMode,
+                  ),
                   SizedBox(
                     height: 25.h,
                   ),
-                   SettingSwitchCard(
-                    onChange: (value){
-                      BlocProvider.of<SettingsCubit>(context).changeLocation(value);
+                  SettingSwitchCard(
+                    onChange: (value) {
+                      BlocProvider.of<SettingsCubit>(context)
+                          .changeLocation(value);
                     },
-                    switchValue: BlocProvider.of<SettingsCubit>(context).isLocationEnable,
+                    switchValue: BlocProvider.of<SettingsCubit>(context)
+                        .isLocationEnable,
                     icon: Icons.location_on_outlined,
-                  text: AppLocalizations.of(context)!.country,),
-
-
+                    text: AppLocalizations.of(context)!.country,
+                  ),
                 ],
               ),
             ),

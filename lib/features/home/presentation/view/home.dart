@@ -50,8 +50,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Center(
-        child: pages[_selectedIndex],
+      body: Container(
+         decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+          ),
+        ),
+        child: Center(
+          child: pages[_selectedIndex],
+        ),
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
