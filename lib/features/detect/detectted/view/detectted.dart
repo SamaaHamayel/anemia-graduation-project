@@ -24,10 +24,10 @@ class DetectedScreen extends StatelessWidget {
                 ? AppColors.darkThemBlackColor
                 : AppColors.lightPrimaryColor,
         appBar: AppBar(
-          backgroundColor:
-              BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? AppColors.darkThemBlackColor
-                  : AppColors.lightPrimaryColor,
+          flexibleSpace: Image(
+            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover,
+          ),
           centerTitle: true,
           leading: IconButton(
             onPressed: () {
@@ -36,7 +36,7 @@ class DetectedScreen extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back_ios,
               size: 23,
-              color: AppColors.whiteColor,
+              color: AppColors.primaryColor,
             ),
           ),
           title: Container(
@@ -51,7 +51,7 @@ class DetectedScreen extends StatelessWidget {
             child: Text(AppLocalizations.of(context)!.detectAnemia,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     fontSize: 24,
-                    color: AppColors.whiteColor,
+                    color: AppColors.primaryColor,
                     fontFamily: 'Kodchasan',
                     fontWeight: FontWeight.w700)),
           ),

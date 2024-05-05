@@ -31,40 +31,36 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
+        flexibleSpace: const Image(
+          image: AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
+        ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CircleAvatar(
+              backgroundColor: AppColors.lightPrimaryColor,
+              child: Image.asset(
+                AppAssets.female,
+                width: double.infinity,
+              ),
             ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CircleAvatar(
-                backgroundColor: AppColors.lightPrimaryColor,
-                child: Image.asset(
-                  AppAssets.female,
-                  width: double.infinity,
-                ),
-              ),
-              Image.asset(
-                'lib/core/utils/appImages/images/logo (2).png',
-                scale: 2,
-              ),
-              const Icon(
-                Icons.notifications,
-                color: AppColors.primaryColor,
-                size: 30.0,
-              )
-            ],
-          ),
+            Image.asset(
+              'lib/core/utils/appImages/images/logo (2).png',
+              scale: 2,
+            ),
+            const Icon(
+              Icons.notifications,
+              color: AppColors.primaryColor,
+              size: 30.0,
+            )
+          ],
         ),
       ),
+
+
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
@@ -74,8 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: pages[_selectedIndex],
         ),
       ),
+
+
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed

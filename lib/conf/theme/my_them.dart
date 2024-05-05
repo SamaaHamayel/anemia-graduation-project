@@ -27,6 +27,7 @@ class MyThemeData {
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: false,
       showUnselectedLabels: false,
