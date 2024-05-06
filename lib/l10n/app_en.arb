@@ -126,6 +126,8 @@
     "logOut":"Log out",
     "profile":"Profile",
     "notifications":"Notifications",
-    "enterTheResult":" 'Enter the results of a CBC test on the screen to determine the type of anemia.',"
+    "enterTheResult":" 'Enter the results of a CBC test on the screen to determine the type of anemia.',",
+    "medicineReminder":"Medicine Reminder",
+    "noMedicine":"No Medicine Added yet"
 
 }

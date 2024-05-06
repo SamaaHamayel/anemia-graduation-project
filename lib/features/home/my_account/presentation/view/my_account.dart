@@ -1,6 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
-import 'package:animeacheck/features/home/notification/presentation/view/no_notification.dart';
+import 'package:animeacheck/features/home/notification/presentation/view/no_medicine.dart';
 import 'package:animeacheck/features/home/notification/presentation/view/notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -43,13 +43,12 @@ class MyAccountState extends State<MyAccount> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  //  buildHeader(),
+                    //  buildHeader(),
                     buildProfileCard(),
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.person_2_outlined,
-                      title:  AppLocalizations.of(context)!
-                                  .profile,
+                      title: AppLocalizations.of(context)!.profile,
                       //goBackHome
                       onPressed: () {
                         Navigator.push(
@@ -62,21 +61,19 @@ class MyAccountState extends State<MyAccount> {
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.science_outlined,
-                      title:AppLocalizations.of(context)!
-                                  .testResultHistory,
-                      
+                      title: AppLocalizations.of(context)!.testResultHistory,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const history()),
+                          MaterialPageRoute(
+                              builder: (context) => const history()),
                         );
                       },
                     ),
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.storage,
-                      title:AppLocalizations.of(context)!
-                                  .myData,
+                      title: AppLocalizations.of(context)!.myData,
                       //myData
                       onPressed: () {
                         Navigator.push(
@@ -99,8 +96,7 @@ class MyAccountState extends State<MyAccount> {
                         );
                       },
                       child: Text(
-                       AppLocalizations.of(context)!
-                                  .logOut,
+                        AppLocalizations.of(context)!.logOut,
                         //logOut
                         style: TextStyle(
                           color: const Color(0xFFFF0404),
@@ -155,7 +151,6 @@ class MyAccountState extends State<MyAccount> {
   //
   //
 
-
   Widget buildProfileCard() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40.0),
@@ -195,7 +190,8 @@ class MyAccountState extends State<MyAccount> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const editProfile()),
+                    MaterialPageRoute(
+                        builder: (context) => const editProfile()),
                   );
                 },
                 icon: Icon(
@@ -297,7 +293,7 @@ class MyAccountState extends State<MyAccount> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const noNotificationScreen()),
+                          builder: (context) => const noMedicineScreen()),
                     );
                   }
                 },

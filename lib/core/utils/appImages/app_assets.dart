@@ -22,4 +22,7 @@ class AppAssets {
   static const String imageDetect = '${basePath}imageDetect.png';
   static const String anemia = '${basePath}anemia.png';
   static const String background = '${basePath}background.png';
+    static const String noMedicine = '${basePath}noMedicine.png';
+
+  //noMedicine
 }

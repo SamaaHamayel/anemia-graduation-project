@@ -129,7 +129,11 @@
   "logOut":"خروج",
   "profile":"الملف الشخصي",
   "ىotifications":"الاشعارات",
-  "enterTheResult":" 'أدخل نتيجة فحص CBC على الشاشة لتحديد نوع فقر الدم.',"
+  "enterTheResult":" 'أدخل نتيجة فحص CBC على الشاشة لتحديد نوع فقر الدم.',",
+  "medicineReminder":"تذكير الدواء",
+  "noMedicine":"لا توجد ادوية مضافة"
+
+
 
 
 

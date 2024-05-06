@@ -79,7 +79,7 @@ class explanaScreen extends StatelessWidget {
                     ),
                     SizedBox(
                       width: 347.h,
-                      child: Text.rich(
+                      child:const Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
@@ -192,7 +192,7 @@ class explanaScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
+                            const    Text(
                                   'HB:',
                                   style: TextStyle(
                                     color: Colors.black,
@@ -233,7 +233,7 @@ class explanaScreen extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                shadows: [
+                                                shadows: const [
                                                   BoxShadow(
                                                     color: AppColors.whiteColor,
                                                     blurRadius: 4,
@@ -261,7 +261,7 @@ class explanaScreen extends StatelessWidget {
                                                           CrossAxisAlignment
                                                               .center,
                                                       children: [
-                                                        Text(
+                                                   const     Text(
                                                           'Less',
                                                           style: TextStyle(
                                                             color: Colors.black,
@@ -294,7 +294,7 @@ class explanaScreen extends StatelessWidget {
                     ),
                     Container(
                       width: 375,
-                      decoration: ShapeDecoration(
+                      decoration:const ShapeDecoration(
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             width: 1,
@@ -309,7 +309,7 @@ class explanaScreen extends StatelessWidget {
                     ),
                     SizedBox(
                         width: 347.w,
-                        child: Text.rich(
+                        child:const Text.rich(
                           TextSpan(
                             children: [
                               TextSpan(
@@ -421,7 +421,7 @@ class explanaScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
+                             const   Text(
                                   'HB:',
                                   style: TextStyle(
                                     color: Colors.black,
@@ -456,13 +456,13 @@ class explanaScreen extends StatelessWidget {
                                               clipBehavior: Clip.antiAlias,
                                               decoration: ShapeDecoration(
                                                 shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
+                                                  side:const BorderSide(
                                                       width: 1,
                                                       color: Color(0xFF2BB598)),
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                shadows: [
+                                                shadows:const [
                                                   BoxShadow(
                                                     color: AppColors.whiteColor,
                                                     blurRadius: 4,
@@ -489,8 +489,8 @@ class explanaScreen extends StatelessWidget {
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
                                                               .center,
-                                                      children: [
-                                                        Text(
+                                                      children:  [
+                                                      const  Text(
                                                           'greater',
                                                           style: TextStyle(
                                                             color: Colors.black,
@@ -523,7 +523,7 @@ class explanaScreen extends StatelessWidget {
                     ),
                     Container(
                       width: 375.w,
-                      decoration: ShapeDecoration(
+                      decoration:const ShapeDecoration(
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             width: 1,
@@ -536,7 +536,7 @@ class explanaScreen extends StatelessWidget {
                     SizedBox(
                       height: 30.h,
                     ),
-                    SizedBox(
+               const     SizedBox(
                         width: 347,
                         child: Text.rich(
                           TextSpan(
@@ -620,7 +620,7 @@ class explanaScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
+                         const       Text(
                                   'HB:',
                                   style: TextStyle(
                                     color: Colors.black,
@@ -655,13 +655,13 @@ class explanaScreen extends StatelessWidget {
                                               clipBehavior: Clip.antiAlias,
                                               decoration: ShapeDecoration(
                                                 shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
+                                                  side: const BorderSide(
                                                       width: 1,
                                                       color: Color(0xFF2BB598)),
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                shadows: [
+                                                shadows:const [
                                                   BoxShadow(
                                                     color: AppColors.whiteColor,
                                                     blurRadius: 4,
