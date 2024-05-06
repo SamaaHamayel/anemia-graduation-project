@@ -1,7 +1,7 @@
 import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
-import 'package:animeacheck/features/home/notification/presentation/view/no_medicine.dart';
-import 'package:animeacheck/features/home/notification/presentation/view/medicine.dart';
+import 'package:animeacheck/features/home/medicine/presentation/view/no_medicine.dart';
+import 'package:animeacheck/features/home/medicine/presentation/view/medicine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

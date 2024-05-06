@@ -133,7 +133,10 @@
   "medicineReminder":"تذكير الدواء",
   "noMedicine":"لا توجد ادوية مضافة",
   "addNewMedicine":"اضافة دواء جديد ",
-  "add Medicine":"اضافة دواء جديد "
+  "add Medicine":"اضافة دواء جديد ",
+  "dose":"جرعة",
+  "shape":"شكل الدواء"
+
 
 
 

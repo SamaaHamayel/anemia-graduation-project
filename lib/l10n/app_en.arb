@@ -130,6 +130,8 @@
     "medicineReminder":"Medicine Reminder",
     "noMedicine":"No Medicine Added yet",
     "addNewMedicine":"Add New Medicine ",
-    "addMedicine":"Add Medicine "
+    "addMedicine":"Add Medicine ",
+    "dose":"Dose",
+    "shape":"Shape"
 
 }
