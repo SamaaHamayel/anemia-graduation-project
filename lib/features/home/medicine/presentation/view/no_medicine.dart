@@ -429,7 +429,7 @@ class noMedicineScreenState extends State<noMedicineScreen> {
 //   }
 }
 
-class MedicineTypeColumn extends StatelessWidget {
+class MedicineTypeColumn extends StatefulWidget {
   const MedicineTypeColumn(
       {Key? key,
       required this.iconValue,
@@ -441,9 +441,17 @@ class MedicineTypeColumn extends StatelessWidget {
   final MedicineType medicineType;
 
   @override
+  State<MedicineTypeColumn> createState() => _MedicineTypeColumnState();
+}
+
+class _MedicineTypeColumnState extends State<MedicineTypeColumn> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        setState(() {
+          // _selectedIndex = index;
+        });
       },
       child: Container(
         width: 48.w,
@@ -455,14 +463,14 @@ class MedicineTypeColumn extends StatelessWidget {
             side: BorderSide(
                 width: 3.r,
                 strokeAlign: BorderSide.strokeAlignOutside,
-                color: isSelected
+                color: widget.isSelected
                     ? AppColors.primaryColor
                     : AppColors.lightGrayColor),
             borderRadius: BorderRadius.circular(38.r),
           ),
         ),
         child: Image.asset(
-          iconValue,
+          widget.iconValue,
           scale: 0.5,
         ),
       ),
