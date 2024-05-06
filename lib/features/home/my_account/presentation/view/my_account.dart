@@ -1,7 +1,7 @@
 import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
 import 'package:animeacheck/features/home/notification/presentation/view/no_medicine.dart';
-import 'package:animeacheck/features/home/notification/presentation/view/notification.dart';
+import 'package:animeacheck/features/home/notification/presentation/view/medicine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -116,40 +116,6 @@ class MyAccountState extends State<MyAccount> {
       ),
     );
   }
-
-  // Widget buildHeader() {
-  //   return Row(
-  //     children: [
-  //       IconButton(
-  //         icon: Icon(
-  //           Icons.arrow_back_ios_rounded,
-  //           color: AppColors.lightPrimaryColor,
-  //           size: 23.sp,
-  //         ),
-  //         onPressed: () {
-  //           Navigator.push(
-  //             context,
-  //             MaterialPageRoute(builder: (context) => PriHome()),
-  //           );
-  //         },
-  //       ),
-  //       SizedBox(width: 85.w),
-  //       Text(
-  //         'Profile',
-  //         style: TextStyle(
-  //           color: AppColors.lightPrimaryColor,
-  //           fontSize: 23.sp,
-  //           fontFamily: 'Kodchasan',
-  //           fontWeight: FontWeight.w500,
-  //           height: 0,
-  //           letterSpacing: 1.76,
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-  //
-  //
 
   Widget buildProfileCard() {
     return Padding(
@@ -267,7 +233,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
+            side: BorderSide(width: 1.w, color:AppColors.whiteColor),
             borderRadius: BorderRadius.circular(16.r),
           ),
         ),
@@ -277,7 +243,7 @@ class MyAccountState extends State<MyAccount> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(
-                Icons.notifications_outlined,
+                Icons.assignment_add,
                 color: AppColors.lightPrimaryColor,
                 size: 30.0.sp,
               ),
@@ -286,8 +252,7 @@ class MyAccountState extends State<MyAccount> {
                   if (isSwitched == true) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const notificationScreen()),
+                      MaterialPageRoute(builder: (context) => const medicine()),
                     );
                   } else {
                     Navigator.push(
@@ -298,7 +263,7 @@ class MyAccountState extends State<MyAccount> {
                   }
                 },
                 child: Text(
-                  'Notifications',
+                  AppLocalizations.of(context)!.medicineReminder,
                   style: TextStyle(
                     //    color: Colors.black.withOpacity(0.8),
                     fontSize: 14.sp,

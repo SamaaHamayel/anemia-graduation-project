@@ -1,5 +1,6 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
+import 'package:animeacheck/features/home/notification/presentation/view/medicine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -110,7 +111,12 @@ class noMedicineScreen extends StatelessWidget {
                                         size: 30.sp,
                                       ),
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const medicine()),
+                                        );
                                       },
                                     ),
                                   ),
@@ -125,7 +131,7 @@ class noMedicineScreen extends StatelessWidget {
         ));
   }
 }
-// IconButton(
+
 //                                               icon: Icon(
                                             //     Icons.add,
                                             //     color: AppColors
