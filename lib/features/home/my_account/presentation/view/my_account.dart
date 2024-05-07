@@ -272,7 +272,7 @@ class MyAccountState extends State<MyAccount> {
                   ),
                 ), // Text to display on the button
               ),
-              SizedBox(width: 100.w),
+              SizedBox(width: 150.w),
               Switch(
                 activeColor: AppColors.lightPrimaryColor,
                 value: isSwitched,
