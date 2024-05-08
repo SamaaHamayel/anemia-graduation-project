@@ -66,7 +66,7 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const history()),
+                              builder: (context) => const History()),
                         );
                       },
                     ),
@@ -258,7 +258,7 @@ class MyAccountState extends State<MyAccount> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const noMedicineScreen()),
+                          builder: (context) => const NoMedicineScreen()),
                     );
                   }
                 },
@@ -266,13 +266,13 @@ class MyAccountState extends State<MyAccount> {
                   AppLocalizations.of(context)!.medicineReminder,
                   style: TextStyle(
                     //    color: Colors.black.withOpacity(0.8),
-                    fontSize: 14.sp,
+                    fontSize: 13.sp,
                     fontFamily: 'Kodchasan',
                     fontWeight: FontWeight.w600,
                   ),
                 ), // Text to display on the button
               ),
-              SizedBox(width: 150.w),
+              SizedBox(width: 50.w),
               Switch(
                 activeColor: AppColors.lightPrimaryColor,
                 value: isSwitched,

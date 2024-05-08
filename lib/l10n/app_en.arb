@@ -132,6 +132,10 @@
     "addNewMedicine":"Add New Medicine ",
     "addMedicine":"Add Medicine ",
     "dose":"Dose",
-    "shape":"Shape"
+    "shape":"Shape",
+ "medicineName" : "Medicine Name",
+ "medicineDose" : "Medicine Dose",
+ "medicineShape" : "Medicine Shape"
+
 
 }

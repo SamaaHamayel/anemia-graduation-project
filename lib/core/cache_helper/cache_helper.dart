@@ -1,3 +1,4 @@
+import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //CacheHelper That's Connect and Talk to local database.
 
@@ -81,4 +82,17 @@ class CacheHelper {
   Future<void> cacheLanguage(String code) async {
     await sharedPreferences.setString(_cachedCode, code);
   }
+
+
+
+  //! insert medicine
+  // Future<int> insertToDB(MedicineModel model) async {
+  //   return await db.rawInsert('''
+  //     INSERT INTO Tasks(
+  //     title ,note ,date ,startTime ,endTime ,color ,isCompleted )
+  //        VALUES
+  //        ('${model.medicineName}','${model.medicineDose}','${model
+  //       .medicineShape}')''');
+  // }
+
 }

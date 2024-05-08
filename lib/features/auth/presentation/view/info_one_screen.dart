@@ -24,17 +24,21 @@ class InfoOneScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            navigateReplacement(context: context, route: Routes.signUp);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            size: 16,
-            color: AppColors.primaryColor,
-          ),
+        flexibleSpace: const Image(
+          image: AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
         ),
+        centerTitle: true,
+        // leading: IconButton(
+        //   onPressed: () {
+        //     navigateReplacement(context: context, route: Routes.signUp);
+        //   },
+        //   icon: const Icon(
+        //     Icons.arrow_back_ios,
+        //     size: 16,
+        //     color: AppColors.primaryColor,
+        //   ),
+        // ),
         title: Text(
           AppLocalizations.of(context)!.personalInformation,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
@@ -45,7 +49,7 @@ class InfoOneScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image:
                   AssetImage('lib/core/utils/appImages/images/background.png'),

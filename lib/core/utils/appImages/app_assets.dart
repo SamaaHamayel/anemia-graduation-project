@@ -24,6 +24,7 @@ class AppAssets {
   static const String background = '${basePath}background.png';
     static const String noMedicine = '${basePath}noMedicine.png';
     static const String medicine1 = '${basePath}medicine1.png';
+    static const String medicine11 = '${basePath}medicine1.1.png';
     static const String medicine2 = '${basePath}medicine2.png';
     static const String medicine3 = '${basePath}medicine3.png';
     static const String medicine4 = '${basePath}medicine4.png';

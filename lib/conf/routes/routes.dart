@@ -1,4 +1,5 @@
 import 'package:animeacheck/features/auth/presentation/view/createNewPassword_screen.dart';
+import 'package:animeacheck/features/home/medicine/presentation/view/medicine_component.dart';
 import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +11,10 @@ import '../../features/auth/presentation/view/sign_up_screen.dart';
 import '../../features/auth/presentation/view/verfiy_screen.dart';
 import '../../features/home/presentation/view/home.dart';
 
-
 class Routes {
   static const String intialRoutes = "/";
   static const String onBoarding = "/onBoarding";
- 
+
   static const String signUp = "/signUp";
   static const String register = "/register";
   static const String signIn = "/signIn";
@@ -25,18 +25,16 @@ class Routes {
   static const String verify = "/verify";
   static const String newPassword = "/newPassword";
   static const String home = "/home";
+  static const String medicineComponent = "/medicineComponent";
   static const String camera = "/camera";
   static const String reshotting = "/Reshotting";
   static const String upLoad = "/upLoad";
   static const String eyelid = "/eyelid";
   static const String result = "/result";
   static const String profile = "/profile";
-    static const String explanaScreen = "/explanaScreen";
-    //CBCTest    result
-        static const String CBCTest = "/CBCTest";
-
-
-
+  static const String explanaScreen = "/explanaScreen";
+  //CBCTest    result
+  static const String CBCTest = "/CBCTest";
 }
 
 class AppRoutes {
@@ -46,15 +44,18 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashView());
 
       case Routes.onBoarding:
-        return MaterialPageRoute(builder: (_) =>  const OnBoardingScreen());
-
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
 
       case Routes.forgotPassword:
-        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen(),);
-
+        return MaterialPageRoute(
+          builder: (_) => const ForgetPasswordScreen(),
+        );
 
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
+
+        case Routes.medicineComponent:
+        return MaterialPageRoute(builder: (_) => const MedicineComponent());
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
@@ -62,11 +63,10 @@ class AppRoutes {
       case Routes.infoOne:
         return MaterialPageRoute(builder: (_) => const InfoOneScreen());
 
-        case Routes.infoTwo:
+      case Routes.infoTwo:
         return MaterialPageRoute(builder: (_) => const InfoTwoScreen());
 
-
-    // case Routes.wrongPassword:
+      // case Routes.wrongPassword:
       //   return MaterialPageRoute(builder: (_) => const WrongPasswordScreen());
       //
 
@@ -74,13 +74,14 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const VerfiyScreen());
 
       case Routes.newPassword:
-        return MaterialPageRoute(builder: (_) => const CreateNewPasswordScreen());
+        return MaterialPageRoute(
+            builder: (_) => const CreateNewPasswordScreen());
 
       // case Routes.camera:
       //   return MaterialPageRoute(builder: (_) => const CameraScreen());
       //
       case Routes.home:
-        return MaterialPageRoute(builder: (_) =>  const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       // case Routes.Reshotting:
       //   return MaterialPageRoute(builder: (_) => const ReshottingScreen());

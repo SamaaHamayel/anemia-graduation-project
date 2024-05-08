@@ -128,23 +128,15 @@
   "myData":"بياناتى",
   "logOut":"خروج",
   "profile":"الملف الشخصي",
-  "ىotifications":"الاشعارات",
   "enterTheResult":" 'أدخل نتيجة فحص CBC على الشاشة لتحديد نوع فقر الدم.',",
   "medicineReminder":"تذكير الدواء",
   "noMedicine":"لا توجد ادوية مضافة",
   "addNewMedicine":"اضافة دواء جديد ",
   "add Medicine":"اضافة دواء جديد ",
   "dose":"جرعة",
-  "shape":"شكل الدواء"
-
-
-
-
-
-
-
-
-
-
+  "shape":"شكل الدواء",
+  "medicineName" : "اسم الدواء",
+  "medicineDose" : "جرعه الدواء",
+  "medicineShape" : "نوع الدواء"
 
 }
