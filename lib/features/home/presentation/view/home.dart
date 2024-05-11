@@ -2,7 +2,6 @@ import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/history/presentation/view/history.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
-import 'package:animeacheck/features/home/medicine/presentation/view/no_medicine.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/my_account.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
 import 'package:animeacheck/features/home/setting/presentation/view/setting.dart';
