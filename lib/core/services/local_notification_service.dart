@@ -14,8 +14,8 @@ class LocalNotificationService {
   static StreamController<NotificationResponse> streamController =
   StreamController();
   static onTap(NotificationResponse notificationResponse) {
-    // log(notificationResponse.id!.toString());
-    // log(notificationResponse.payload!.toString());
+     log(notificationResponse.id!.toString());
+     log(notificationResponse.payload!.toString());
     streamController.add(notificationResponse);
     // Navigator.push(context, route);
   }
@@ -116,7 +116,7 @@ class LocalNotificationService {
     log(tz.local.name);
     log("After ${tz.TZDateTime.now(tz.local).hour}");
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      0,
+      medicineModel.id! ,
       medicineModel.medicineName,
       medicineModel.medicineDose.toString(),
       // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
