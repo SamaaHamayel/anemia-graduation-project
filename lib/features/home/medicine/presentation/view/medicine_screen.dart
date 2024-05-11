@@ -101,167 +101,176 @@ class MedicineScreen extends StatelessWidget {
                           topRight: Radius.circular(24.r),
                           topLeft: Radius.circular(24.r),
                         )),
-                    child: BlocBuilder<MedicineCubit, MedicineState>(
+                    child: BlocConsumer<MedicineCubit, MedicineState>(
+                      listener: (context, state) {
+                        if (state is InsertMedicineSuccessState) {
+                          showToast(
+                              message: 'Added Successfully', state: ToastStates.success);
+                          Navigator.pop(context);
+                        }                      },
                       builder: (context, state) {
                         return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
                           children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 20, left: 18),
-                                  child: Text(
-                                    AppLocalizations.of(context)!
-                                        .addNewMedicine,
-                                    style: TextStyle(
-                                      color: AppColors.lightPrimaryColor,
-                                      fontSize: 24.sp,
-                                      fontFamily: 'Kodchasan',
-                                      fontWeight: FontWeight.w700,
-                                      height: 0,
-                                    ),
-                                  ),
-                                ),
-                                const Spacer(),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 20, left: 18),
-                                  child: TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        "X",
-                                        style: TextStyle(
-                                            color: AppColors.lightPrimaryColor,
-                                            fontSize: 20.sp),
-                                      )),
-                                )
-                              ],
-                            ),
                             Padding(
-                              padding: const EdgeInsets.all(28.0),
-                              child: TextFormField(
-                                textInputAction: TextInputAction.next,
-                                controller:
-                                    BlocProvider.of<MedicineCubit>(context)
-                                        .medicineNameController,
-                                decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(),
-                                  hintText: AppLocalizations.of(context)!
-                                      .medicineName,
-                                  hintStyle: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: AppColors.grayColor),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(28.0),
-                              child: TextFormField(
-                                keyboardType: TextInputType.number,
-                                textInputAction: TextInputAction.done,
-                                controller:
-                                    BlocProvider.of<MedicineCubit>(context)
-                                        .medicineDoseController,
-                                decoration: InputDecoration(
-                                  border: const UnderlineInputBorder(),
-                                  hintText: AppLocalizations.of(context)!
-                                      .medicineDose,
-                                  hintStyle: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: AppColors.grayColor),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 20.h, left: 28),
+                              padding:
+                                  const EdgeInsets.only(top: 20, left: 18),
                               child: Text(
-                                AppLocalizations.of(context)!.medicineShape,
+                                AppLocalizations.of(context)!
+                                    .addNewMedicine,
                                 style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.grayColor),
+                                  color: AppColors.lightPrimaryColor,
+                                  fontSize: 24.sp,
+                                  fontFamily: 'Kodchasan',
+                                  fontWeight: FontWeight.w700,
+                                  height: 0,
+                                ),
                               ),
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 20.h, left: 28),
-                                child: ListView.separated(
-                                  separatorBuilder: (context, index) =>
-                                      SizedBox(
-                                    width: 50.w,
-                                  ),
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 4,
-                                  itemBuilder: (context, index) {
-                                    BlocProvider.of<MedicineCubit>(context)
-                                        .getImage(index);
-
-                                    return InkWell(
-                                      onTap: () {
-                                        BlocProvider.of<MedicineCubit>(context)
-                                            .changeCheckMarkIndex(index);
-                                        (ChangeCheckMarkIndexState());
-
-                                      },
-                                      child: Container(
-                                          width: 48.w,
-                                          height: 48.h,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(38.r)),
-                                          child: index==BlocProvider.of<MedicineCubit>(context)
-                                              .currentIndex? Stack(
-                                            children: [
-                                              BlocProvider.of<MedicineCubit>(context)
-                                                  .getImage(index),
-                                               const Icon(Icons.check,color: AppColors.blackColor,)
-                                            ],
-                                          ):BlocProvider.of<MedicineCubit>(context)
-                                              .getImage(index)
-
-                                      ),
-                                    );
+                            const Spacer(),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 20, left: 18),
+                              child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
                                   },
-                                ),
-                              ),
+                                  child: Text(
+                                    "X",
+                                    style: TextStyle(
+                                        color: AppColors.lightPrimaryColor,
+                                        fontSize: 20.sp),
+                                  )),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(28.0),
+                          child: TextFormField(
+                            textInputAction: TextInputAction.next,
+                            controller:
+                                BlocProvider.of<MedicineCubit>(context)
+                                    .medicineNameController,
+                            decoration: InputDecoration(
+                              border: const UnderlineInputBorder(),
+                              hintText: AppLocalizations.of(context)!
+                                  .medicineName,
+                              hintStyle: TextStyle(
+                                  fontSize: 20.sp,
+                                  color: AppColors.grayColor),
                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(28.0),
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.done,
+                            controller:
+                                BlocProvider.of<MedicineCubit>(context)
+                                    .medicineDoseController,
+                            decoration: InputDecoration(
+                              border: const UnderlineInputBorder(),
+                              hintText: AppLocalizations.of(context)!
+                                  .medicineDose,
+                              hintStyle: TextStyle(
+                                  fontSize: 20.sp,
+                                  color: AppColors.grayColor),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.h, left: 28),
+                          child: Text(
+                            AppLocalizations.of(context)!.medicineShape,
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.grayColor),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 20.h, left: 28),
+                            child: ListView.separated(
+                              separatorBuilder: (context, index) =>
+                                  SizedBox(
+                                width: 50.w,
+                              ),
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 4,
+                              itemBuilder: (context, index) {
+                                BlocProvider.of<MedicineCubit>(context)
+                                    .getImage(index);
+
+                                return InkWell(
+                                  onTap: () {
+                                    BlocProvider.of<MedicineCubit>(context)
+                                        .changeCheckMarkIndex(index);
+                                    (ChangeCheckMarkIndexState());
+
+                                  },
+                                  child: Container(
+                                      width: 48.w,
+                                      height: 48.h,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(38.r)),
+                                      child: index==BlocProvider.of<MedicineCubit>(context)
+                                          .currentIndex? Stack(
+                                        children: [
+                                          BlocProvider.of<MedicineCubit>(context)
+                                              .getImage(index),
+                                           const Icon(Icons.check,color: AppColors.blackColor,)
+                                        ],
+                                      ):BlocProvider.of<MedicineCubit>(context)
+                                          .getImage(index)
+
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
 
 
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 100.w,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      BlocProvider.of<MedicineCubit>(context)
-                                          .getStartTime(context);
-                                      (GetStartTimeSuccessState);
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 100.w,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  BlocProvider.of<MedicineCubit>(context)
+                                      .getStartTime(context);
+                                  (GetStartTimeSuccessState);
+                                  BlocProvider.of<MedicineCubit>(context).
+                                  insertMedicine();
+                                  (InsertMedicineSuccessState());
 
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            AppColors.primaryColor),
-                                    child: Text(
-                                      AppLocalizations.of(context)!.addMedicine,
-                                      style: TextStyle(
-                                        color: AppColors.whiteColor,
-                                        fontSize: 20.sp,
-                                        fontFamily: 'Kodchasan',
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        AppColors.primaryColor),
+                                child: Text(
+                                  AppLocalizations.of(context)!.addMedicine,
+                                  style: TextStyle(
+                                    color: AppColors.whiteColor,
+                                    fontSize: 20.sp,
+                                    fontFamily: 'Kodchasan',
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
                           ],
-                        );
+                        ),
+                      ],
+                    );
                       },
                     ),
                   ),

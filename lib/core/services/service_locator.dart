@@ -1,3 +1,4 @@
+import 'package:animeacheck/core/sqflite_helper/sqflite_helper.dart';
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/person_info_cubit/personal_info_cubit.dart';
@@ -31,6 +32,7 @@ void initServiceLoactor(){
 
   //external
   sl.registerLazySingleton(()=> CacheHelper());
+  sl.registerLazySingleton(()=> SqfliteHelper());
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
   sl.registerLazySingleton(() => Dio());
 }
