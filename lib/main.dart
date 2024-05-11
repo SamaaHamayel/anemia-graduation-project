@@ -48,7 +48,7 @@ void main() async {
         ),
 
         BlocProvider(
-          create: (context) => sl<MedicineCubit>(),
+          create: (context) => sl<MedicineCubit>()..getMedicine(),
         ),
 
       ],

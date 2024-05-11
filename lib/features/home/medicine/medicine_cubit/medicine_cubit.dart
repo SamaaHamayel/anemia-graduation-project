@@ -118,12 +118,11 @@ class MedicineCubit extends Cubit<MedicineState> {
     emit(GetMedicineLoadingState());
     await sl<SqfliteHelper>().getFromDB().then((value) {
       medicineList = value
-          .map((e) => MedicineModel.fromJson(e))
-          .toList()
+          .map((e) => MedicineModel.fromJson(e)).toList();
       //     .where(
       //       (element) => element.date == DateFormat.yMd().format(selctedDate),
       // )
-          .toList();
+         // .toList();
       emit(GetMedicineSuccessState());
     }).catchError((e) {
       print(e.toString());
@@ -147,6 +146,8 @@ class MedicineCubit extends Cubit<MedicineState> {
 
 
  //delete Medicine
+
+
   void deleteTask(id) async {
     emit(DeleteMedicineLoadingState());
 

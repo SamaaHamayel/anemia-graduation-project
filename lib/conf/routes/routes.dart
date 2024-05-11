@@ -1,5 +1,4 @@
 import 'package:animeacheck/features/auth/presentation/view/createNewPassword_screen.dart';
-import 'package:animeacheck/features/home/medicine/presentation/view/medicine_component.dart';
 import 'package:animeacheck/features/startted/onboarding/presentation/view/onboarding1.dart';
 import 'package:animeacheck/features/startted/splach/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +53,8 @@ class AppRoutes {
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
 
-        case Routes.medicineComponent:
-        return MaterialPageRoute(builder: (_) => const MedicineComponent());
+        // case Routes.medicineComponent:
+        // return MaterialPageRoute(builder: (_) =>  MedicineComponent());
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
