@@ -42,7 +42,7 @@ class SqfliteHelper {
       name ,dose ,shape ,startTime)
          VALUES
          ('${model.medicineName}','${model.medicineDose}','${model.medicineShape}'
-         )''');
+         ,'${model.startTime}')''');
   }
 
   //! update

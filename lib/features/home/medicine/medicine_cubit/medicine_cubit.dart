@@ -1,6 +1,4 @@
-import 'package:animeacheck/conf/routes/routes.dart';
 import 'package:animeacheck/core/sqflite_helper/sqflite_helper.dart';
-import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +35,9 @@ class MedicineCubit extends Cubit<MedicineState> {
       startTime = pickedStartTime.format(context);
       schduledTime = pickedStartTime;
       emit(GetStartTimeSuccessState());
-      navigateReplacement(context: context, route: Routes.medicineComponent);
+      insertMedicine();
+      emit(InsertMedicineSuccessState());
+      //navigateReplacement(context: context, route: Routes.medicineComponent);
     } else {
       print("No Time Picked");
       schduledTime =
@@ -74,6 +74,7 @@ class MedicineCubit extends Cubit<MedicineState> {
 
 
 
+  //insert Medicine
 
   List<MedicineModel> medicineList = [];
   void insertMedicine() async {
@@ -85,6 +86,7 @@ class MedicineCubit extends Cubit<MedicineState> {
           medicineName: medicineNameController.text,
           medicineDose: int.parse(medicineDoseController.text),
           medicineShape: getImage(currentIndex),
+          startTime: startTime
         ),
       );
 
@@ -95,6 +97,7 @@ class MedicineCubit extends Cubit<MedicineState> {
           medicineName: medicineNameController.text,
           medicineDose: int.parse(medicineDoseController.text),
           medicineShape: getImage(currentIndex),
+          startTime: startTime
         ),
       );
       medicineNameController.clear();
@@ -109,7 +112,7 @@ class MedicineCubit extends Cubit<MedicineState> {
 
 
 
-//!get Tasks
+//!get Medicine
 
   void getMedicine() async {
     emit(GetMedicineLoadingState());
@@ -128,7 +131,7 @@ class MedicineCubit extends Cubit<MedicineState> {
     });
   }
 
-//   //update Task
+//   //update Medicine
 //   void updateTask(id) async {
 //     emit(UpdateTaskLoadingState());
 //
@@ -141,19 +144,21 @@ class MedicineCubit extends Cubit<MedicineState> {
 //     });
 //   }
 //
-// //delete task
-//   void deleteTask(id) async {
-//     emit(DeleteTaskLoadingState());
-//
-//     await sl<SqfliteHelper>().deleteFromDB(id).then((value) {
-//       emit(DeleteTaskSucessState());
-//       getTasks();
-//     }).catchError((e) {
-//       print(e.toString());
-//       emit(DeleteTaskErrorState());
-//     });
-//   }
-//
+
+
+ //delete Medicine
+  void deleteTask(id) async {
+    emit(DeleteMedicineLoadingState());
+
+    await sl<SqfliteHelper>().deleteFromDB(id).then((value) {
+      emit(DeleteMedicineSuccessState());
+      getMedicine();
+    }).catchError((e) {
+      print(e.toString());
+      emit(DeleteMedicineErrorState());
+    });
+  }
+
 
 
     }
