@@ -1,4 +1,3 @@
-import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_cubit.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_state.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_component.dart';

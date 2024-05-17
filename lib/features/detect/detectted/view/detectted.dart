@@ -1,3 +1,4 @@
+import 'package:animeacheck/features/detect/help/help.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_state.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
@@ -40,14 +41,14 @@ class DetectedScreen extends StatelessWidget {
             ),
           ),
           title: Container(
-              decoration: BoxDecoration(
-            image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
+                fit: BoxFit
+                    .cover, // Optional: You can set the image fit as needed
+              ),
             ),
-          ),
             child: Text(AppLocalizations.of(context)!.detectAnemia,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     fontSize: 24,
@@ -55,6 +56,24 @@ class DetectedScreen extends StatelessWidget {
                     fontFamily: 'Kodchasan',
                     fontWeight: FontWeight.w700)),
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                icon: Icon(
+                  Icons.help,
+                  color: AppColors.lightPrimaryColor,
+                  size: 30.sp,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HelpDetect()),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
         body: Container(
           decoration: BoxDecoration(
