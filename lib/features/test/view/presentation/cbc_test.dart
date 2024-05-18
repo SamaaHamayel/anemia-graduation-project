@@ -57,17 +57,22 @@ class CBCInputField extends StatelessWidget {
                 ),
                 shadows: [
                   BoxShadow(
-                    color: AppColors.whiteColor,
-                    blurRadius: 4,
-                    offset: Offset(0, 0),
-                    spreadRadius: 0,
+                    color:
+                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ? AppColors.darkGreen
+                            : AppColors.lightBackgroundColor,
                   ),
                 ],
               ),
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: DropdownButton<String>(
+                  dropdownColor:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.darkGreen
+                          : AppColors.lightPrimaryColor,
                   value: value,
+                  elevation: 8,
                   icon: Icon(
                     Icons.expand_more,
                     color: AppColors.lightPrimaryColor,
@@ -78,6 +83,14 @@ class CBCInputField extends StatelessWidget {
                     fontSize: 23.h,
                     fontWeight: FontWeight.w400,
                   ),
+                  iconEnabledColor:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.darkGreen
+                          : AppColors.lightBackgroundColor,
+                  iconDisabledColor:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.lightGrayColor
+                          : AppColors.lightGrayColor,
                   underline: Container(
                     height: 0.h,
                     color: AppColors.lightPrimaryColor,
