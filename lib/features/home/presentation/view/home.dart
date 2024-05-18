@@ -46,7 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CircleAvatar(
-              backgroundColor: AppColors.lightPrimaryColor,
+              backgroundColor:
+                  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                      ? AppColors.darkGreen
+                      : AppColors.lightPrimaryColor,
               child: Image.asset(
                 AppAssets.female,
                 width: double.infinity,

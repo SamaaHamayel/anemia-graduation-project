@@ -24,53 +24,52 @@ class ArticleDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Image(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
+        ),
         automaticallyImplyLeading: false,
-        title: Container(
-            decoration: BoxDecoration(
-            image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),                 
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
+        title: Row(
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_rounded,
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
+                size: 20.sp,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-          ),
-          child: Row(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable?AppColors.whiteColor:AppColors.lightPrimaryColor,    
-                  size: 20.sp,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+            SizedBox(width: 10.w),
+            Text(
+              (article.title),
+              style: TextStyle(
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
+                fontSize: 16.sp,
+                fontFamily: 'Kodchasan',
+                fontWeight: FontWeight.w500,
+                height: 0,
+                letterSpacing: 1.0,
               ),
-              SizedBox(width: 10.w),
-              Text(
-                (article.title),
-                style: TextStyle(
-color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable?AppColors.whiteColor:AppColors.lightPrimaryColor,    
-                  fontSize: 16.sp,
-                  fontFamily: 'Kodchasan',
-                  fontWeight: FontWeight.w500,
-                  height: 0,
-                  letterSpacing: 1.0,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: SingleChildScrollView(
@@ -95,7 +94,10 @@ color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable?AppColors.whiteC
                   width: 345.w,
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
-color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable?AppColors.darkThemBlackColor:AppColors.lightBackgroundColor,    
+                    color:
+                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ? AppColors.darkThemBlackColor
+                            : AppColors.lightBackgroundColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(24.r)),
                     ),

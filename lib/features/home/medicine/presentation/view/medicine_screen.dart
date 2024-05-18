@@ -20,43 +20,45 @@ class MedicineScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         flexibleSpace:  Image(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),          fit: BoxFit.cover,
+        flexibleSpace: Image(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
         ),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
             navigateReplacement(context: context, route: Routes.home);
           },
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_ios,
-            size: 16,
-            color: AppColors.primaryColor,
+            size: 24,
+            color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.whiteColor
+                : AppColors.lightPrimaryColor,
           ),
         ),
-       
         title: Text(
           AppLocalizations.of(context)!.medicineReminder,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
-              color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? AppColors.whiteColor
+                  : AppColors.lightPrimaryColor,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w700),
         ),
       ),
       body: Stack(
         children: [
-           Image.asset(
-    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ? 
-                 (
-                    'lib/core/utils/appImages/images/backgroundDark.png')
+          Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? ('lib/core/utils/appImages/images/backgroundDark.png')
                 : ('lib/core/utils/appImages/images/background.png'),
-                           fit: BoxFit.cover,
-              width: double.infinity,
-            ),
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
           SizedBox(
             height: 30.h,
           ),
@@ -69,13 +71,11 @@ class MedicineScreen extends StatelessWidget {
                       .medicineList
                       .isEmpty
                   ? NoMedicineWidgets()
-                  :  MedicineComponent(
-                          medicineModel: BlocProvider.of<MedicineCubit>(context)
-                              .medicineList[0],
-                        );
-                      },
-
-
+                  : MedicineComponent(
+                      medicineModel: BlocProvider.of<MedicineCubit>(context)
+                          .medicineList[0],
+                    );
+            },
           ),
         ],
       ),
@@ -83,7 +83,10 @@ class MedicineScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
-        backgroundColor: AppColors.lightPrimaryColor,
+        backgroundColor:
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.lightBackgroundColor
+                : AppColors.lightPrimaryColor,
         onPressed: () {
           showModalBottomSheet(
             isScrollControlled: true,
@@ -96,7 +99,10 @@ class MedicineScreen extends StatelessWidget {
                     height: 539.h,
                     width: 375.w,
                     decoration: BoxDecoration(
-                        color: AppColors.lightBackgroundColor,
+                        color: BlocProvider.of<SettingsCubit>(context)
+                                .isDarkThemEnable
+                            ? AppColors.darkGreen
+                            : AppColors.lightBackgroundColor,
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(24.r),
                           topLeft: Radius.circular(24.r),
@@ -123,7 +129,11 @@ class MedicineScreen extends StatelessWidget {
                                     AppLocalizations.of(context)!
                                         .addNewMedicine,
                                     style: TextStyle(
-                                      color: AppColors.lightPrimaryColor,
+                                      color: BlocProvider.of<SettingsCubit>(
+                                                  context)
+                                              .isDarkThemEnable
+                                          ? AppColors.lightBackgroundColor
+                                          : AppColors.lightPrimaryColor,
                                       fontSize: 24.sp,
                                       fontFamily: 'Kodchasan',
                                       fontWeight: FontWeight.w700,
@@ -142,7 +152,11 @@ class MedicineScreen extends StatelessWidget {
                                       child: Text(
                                         "X",
                                         style: TextStyle(
-                                            color: AppColors.lightPrimaryColor,
+                                            color: BlocProvider.of<
+                                                        SettingsCubit>(context)
+                                                    .isDarkThemEnable
+                                                ? AppColors.lightBackgroundColor
+                                                : AppColors.lightPrimaryColor,
                                             fontSize: 20.sp),
                                       )),
                                 )
@@ -160,8 +174,13 @@ class MedicineScreen extends StatelessWidget {
                                   hintText: AppLocalizations.of(context)!
                                       .medicineName,
                                   hintStyle: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: AppColors.grayColor),
+                                    fontSize: 20.sp,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.lightGrayColor
+                                            : AppColors.grayColor,
+                                  ),
                                 ),
                               ),
                             ),
@@ -178,8 +197,13 @@ class MedicineScreen extends StatelessWidget {
                                   hintText: AppLocalizations.of(context)!
                                       .medicineDose,
                                   hintStyle: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: AppColors.grayColor),
+                                    fontSize: 20.sp,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.lightGrayColor
+                                            : AppColors.grayColor,
+                                  ),
                                 ),
                               ),
                             ),
@@ -188,9 +212,13 @@ class MedicineScreen extends StatelessWidget {
                               child: Text(
                                 AppLocalizations.of(context)!.medicineShape,
                                 style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.grayColor),
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.lightGrayColor
+                                      : AppColors.grayColor,
+                                ),
                               ),
                             ),
                             Expanded(
@@ -230,10 +258,16 @@ class MedicineScreen extends StatelessWidget {
                                                                 MedicineCubit>(
                                                             context)
                                                         .getImage(index),
-                                                    const Icon(
+                                                    Icon(
                                                       Icons.check,
-                                                      color:
-                                                          AppColors.blackColor,
+                                                      color: BlocProvider.of<
+                                                                      SettingsCubit>(
+                                                                  context)
+                                                              .isDarkThemEnable
+                                                          ? AppColors
+                                                              .lightBackgroundColor
+                                                          : AppColors
+                                                              .blackColor,
                                                     )
                                                   ],
                                                 )
@@ -262,12 +296,21 @@ class MedicineScreen extends StatelessWidget {
                                       (InsertMedicineSuccessState());
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            AppColors.primaryColor),
+                                      backgroundColor:
+                                          BlocProvider.of<SettingsCubit>(
+                                                      context)
+                                                  .isDarkThemEnable
+                                              ? AppColors.lightBackgroundColor
+                                              : AppColors.primaryColor,
+                                    ),
                                     child: Text(
                                       AppLocalizations.of(context)!.addMedicine,
                                       style: TextStyle(
-                                        color: AppColors.whiteColor,
+                                        color: BlocProvider.of<SettingsCubit>(
+                                                    context)
+                                                .isDarkThemEnable
+                                            ? AppColors.lightPrimaryColor
+                                            : AppColors.whiteColor,
                                         fontSize: 20.sp,
                                         fontFamily: 'Kodchasan',
                                         fontWeight: FontWeight.w600,
@@ -287,7 +330,13 @@ class MedicineScreen extends StatelessWidget {
             },
           );
         },
-        child: const Icon(Icons.add, size: 35, color: AppColors.whiteColor),
+        child: Icon(
+          Icons.add,
+          size: 35,
+          color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AppColors.lightPrimaryColor
+              : AppColors.whiteColor,
+        ),
       ),
     );
   }

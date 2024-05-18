@@ -19,7 +19,9 @@ class explanaScreen extends StatelessWidget {
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
                 : AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.fill, // Optional: You can set the image fit as needed
+            fit: BoxFit.cover,
+
+            // Optional: You can set the image fit as needed
           ),
         ),
         child: Padding(
@@ -63,7 +65,7 @@ class explanaScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 30.h,
+                      height: 50.h,
                     ),
                     SizedBox(
                       width: 343.w,
@@ -84,9 +86,12 @@ class explanaScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Container(
-                        child: Center(
-                          child: Image.asset(
-                            'lib/core/utils/appImages/images/test.png',
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Center(
+                            child: Image.asset(
+                              'lib/core/utils/appImages/images/test.png',
+                            ),
                           ),
                         ),
                       ),
@@ -272,9 +277,15 @@ class explanaScreen extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                shadows: const [
+                                                shadows: [
                                                   BoxShadow(
-                                                    color: AppColors.whiteColor,
+                                                    color: BlocProvider.of<
+                                                                    SettingsCubit>(
+                                                                context)
+                                                            .isDarkThemEnable
+                                                        ? AppColors
+                                                            .lightPrimaryColor
+                                                        : AppColors.whiteColor,
                                                     blurRadius: 4,
                                                     offset: Offset(0, 0),
                                                     spreadRadius: 0,
@@ -288,40 +299,36 @@ class explanaScreen extends StatelessWidget {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.center,
                                                 children: [
-                                                  Container(
-                                                    height: double.infinity,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          'Less',
-                                                          style: TextStyle(
-                                                            color: BlocProvider.of<
-                                                                            SettingsCubit>(
-                                                                        context)
-                                                                    .isDarkThemEnable
-                                                                ? AppColors
-                                                                    .whiteColor
-                                                                : AppColors
-                                                                    .blackColor,
-                                                            fontSize: 14,
-                                                            fontFamily:
-                                                                'Kodchasan',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        'Less',
+                                                        style: TextStyle(
+                                                          color: BlocProvider.of<
+                                                                          SettingsCubit>(
+                                                                      context)
+                                                                  .isDarkThemEnable
+                                                              ? AppColors
+                                                                  .whiteColor
+                                                              : AppColors
+                                                                  .blackColor,
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Kodchasan',
+                                                          fontWeight:
+                                                              FontWeight.w400,
                                                         ),
-                                                        SizedBox(width: 44),
-                                                        ExpandLessIcon(),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                      SizedBox(width: 44),
+                                                      ExpandLessIcon(),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
@@ -338,23 +345,26 @@ class explanaScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      width: 375,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            width: 1,
-                            strokeAlign: BorderSide.strokeAlignCenter,
-                            color: BlocProvider.of<SettingsCubit>(context)
-                                    .isDarkThemEnable
-                                ? AppColors.whiteColor
-                                : AppColors.lightPrimaryColor,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 375,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              width: 1,
+                              strokeAlign: BorderSide.strokeAlignCenter,
+                              color: BlocProvider.of<SettingsCubit>(context)
+                                      .isDarkThemEnable
+                                  ? AppColors.whiteColor
+                                  : AppColors.lightPrimaryColor,
+                            ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 30.h,
                     ),
                     SizedBox(
                         width: 347.w,
@@ -500,101 +510,99 @@ class explanaScreen extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(width: 79),
-                                Container(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  top: 12,
-                                                  left: 9,
-                                                  right: 8,
-                                                  bottom: 12),
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: ShapeDecoration(
-                                                shape: RoundedRectangleBorder(
-                                                  side: BorderSide(
-                                                    width: 1,
-                                                    color: BlocProvider.of<
-                                                                    SettingsCubit>(
-                                                                context)
-                                                            .isDarkThemEnable
-                                                        ? AppColors.whiteColor
-                                                        : AppColors.blackColor,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                shadows: const [
-                                                  BoxShadow(
-                                                    color: AppColors.whiteColor,
-                                                    blurRadius: 4,
-                                                    offset: Offset(0, 0),
-                                                    spreadRadius: 0,
-                                                  )
-                                                ],
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                              top: 12,
+                                              left: 9,
+                                              right: 8,
+                                              bottom: 12),
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: ShapeDecoration(
+                                            shape: RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                width: 1,
+                                                color: BlocProvider.of<
+                                                                SettingsCubit>(
+                                                            context)
+                                                        .isDarkThemEnable
+                                                    ? AppColors.whiteColor
+                                                    : AppColors.blackColor,
                                               ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Container(
-                                                    height: double.infinity,
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          'greater',
-                                                          style: TextStyle(
-                                                            color: BlocProvider.of<
-                                                                            SettingsCubit>(
-                                                                        context)
-                                                                    .isDarkThemEnable
-                                                                ? AppColors
-                                                                    .whiteColor
-                                                                : AppColors
-                                                                    .blackColor,
-                                                            fontSize: 14,
-                                                            fontFamily:
-                                                                'Kodchasan',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 44.w),
-                                                        ExpandLessIcon(),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
                                             ),
-                                          ],
+                                            shadows: [
+                                              BoxShadow(
+                                                color: BlocProvider.of<
+                                                                SettingsCubit>(
+                                                            context)
+                                                        .isDarkThemEnable
+                                                    ? AppColors
+                                                        .lightPrimaryColor
+                                                    : AppColors.whiteColor,
+                                                blurRadius: 4,
+                                                offset: Offset(0, 0),
+                                                spreadRadius: 0,
+                                              )
+                                            ],
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                height: double.infinity,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'greater',
+                                                      style: TextStyle(
+                                                        color: BlocProvider.of<
+                                                                        SettingsCubit>(
+                                                                    context)
+                                                                .isDarkThemEnable
+                                                            ? AppColors
+                                                                .whiteColor
+                                                            : AppColors
+                                                                .blackColor,
+                                                        fontSize: 14,
+                                                        fontFamily: 'Kodchasan',
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 44.w),
+                                                    ExpandLessIcon(),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -602,17 +610,20 @@ class explanaScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      width: 375.w,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            width: 1,
-                            strokeAlign: BorderSide.strokeAlignCenter,
-                            color: BlocProvider.of<SettingsCubit>(context)
-                                    .isDarkThemEnable
-                                ? AppColors.whiteColor
-                                : AppColors.lightPrimaryColor,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 375.w,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              width: 1,
+                              strokeAlign: BorderSide.strokeAlignCenter,
+                              color: BlocProvider.of<SettingsCubit>(context)
+                                      .isDarkThemEnable
+                                  ? AppColors.whiteColor
+                                  : AppColors.lightPrimaryColor,
+                            ),
                           ),
                         ),
                       ),
@@ -688,55 +699,57 @@ class explanaScreen extends StatelessWidget {
                             ],
                           ),
                         )),
-                    Container(
-                      width: 343.w,
-                      height: 88.h,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 20,
-                        // horizontal: 65,
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 343.w,
+                        height: 88.h,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 20,
+                          // horizontal: 65,
                         ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: double.infinity,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'HB:',
-                                  style: TextStyle(
-                                    color:
-                                        BlocProvider.of<SettingsCubit>(context)
-                                                .isDarkThemEnable
-                                            ? AppColors.whiteColor
-                                            : AppColors.blackColor,
-                                    fontSize: 20,
-                                    fontFamily: 'Kodchasan',
-                                    fontWeight: FontWeight.w400,
-                                    height: 0,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: double.infinity,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'HB:',
+                                    style: TextStyle(
+                                      color: BlocProvider.of<SettingsCubit>(
+                                                  context)
+                                              .isDarkThemEnable
+                                          ? AppColors.whiteColor
+                                          : AppColors.blackColor,
+                                      fontSize: 20,
+                                      fontFamily: 'Kodchasan',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(width: 79),
-                                Container(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        child: Row(
+                                  const SizedBox(width: 79),
+                                  Container(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
                                           mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -764,9 +777,15 @@ class explanaScreen extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                shadows: const [
+                                                shadows: [
                                                   BoxShadow(
-                                                    color: AppColors.whiteColor,
+                                                    color: BlocProvider.of<
+                                                                    SettingsCubit>(
+                                                                context)
+                                                            .isDarkThemEnable
+                                                        ? AppColors
+                                                            .lightPrimaryColor
+                                                        : AppColors.whiteColor,
                                                     blurRadius: 4,
                                                     offset: Offset(0, 0),
                                                     spreadRadius: 0,
@@ -810,7 +829,7 @@ class explanaScreen extends StatelessWidget {
                                                                 FontWeight.w400,
                                                           ),
                                                         ),
-                                                        SizedBox(width: 44.w),
+                                                        SizedBox(width: 30.w),
                                                         ExpandLessIcon(),
                                                       ],
                                                     ),
@@ -820,33 +839,36 @@ class explanaScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      width: 375.w,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            width: 1.w,
-                            strokeAlign: BorderSide.strokeAlignCenter,
-                            color: BlocProvider.of<SettingsCubit>(context)
-                                    .isDarkThemEnable
-                                ? AppColors.whiteColor
-                                : AppColors.lightPrimaryColor,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 375.w,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              width: 1.w,
+                              strokeAlign: BorderSide.strokeAlignCenter,
+                              color: BlocProvider.of<SettingsCubit>(context)
+                                      .isDarkThemEnable
+                                  ? AppColors.whiteColor
+                                  : AppColors.lightPrimaryColor,
+                            ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 30.h,
                     ),
                     Container(
                       width: 172.w,
@@ -898,6 +920,9 @@ class ExpandLessIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+          ? AppColors.lightPrimaryColor
+          : AppColors.whiteColor,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,

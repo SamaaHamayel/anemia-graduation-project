@@ -1,4 +1,5 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +17,10 @@ class AddMedicineButtonSheet extends StatelessWidget {
     super.key,
     this.suffixIcon,
     required this.readOnly,
-    this.validator,  this.title, required this.hintText, this.controller,
+    this.validator,
+    this.title,
+    required this.hintText,
+    this.controller,
   });
 
   final IconButton? suffixIcon;
@@ -34,7 +38,9 @@ class AddMedicineButtonSheet extends StatelessWidget {
         height: 539.h,
         width: 375.w,
         decoration: BoxDecoration(
-            color: AppColors.lightBackgroundColor,
+            color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.darkGreen
+                : AppColors.lightBackgroundColor,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(24.r),
               topLeft: Radius.circular(24.r),
@@ -60,7 +66,10 @@ class AddMedicineButtonSheet extends StatelessWidget {
                         child: Text(
                           AppLocalizations.of(context)!.addNewMedicine,
                           style: TextStyle(
-                            color: AppColors.lightPrimaryColor,
+                            color: BlocProvider.of<SettingsCubit>(context)
+                                    .isDarkThemEnable
+                                ? AppColors.lightBackgroundColor
+                                : AppColors.lightPrimaryColor,
                             fontSize: 24.sp,
                             fontFamily: 'Kodchasan',
                             fontWeight: FontWeight.w700,
@@ -78,13 +87,15 @@ class AddMedicineButtonSheet extends StatelessWidget {
                             child: Text(
                               "X",
                               style: TextStyle(
-                                  color: AppColors.lightPrimaryColor,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.lightBackgroundColor
+                                      : AppColors.lightPrimaryColor,
                                   fontSize: 20.sp),
                             )),
                       )
                     ],
                   ),
-
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +108,8 @@ class AddMedicineButtonSheet extends StatelessWidget {
                                 .medicineNameController,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
-                              hintText: AppLocalizations.of(context)!.medicineName,
+                              hintText:
+                                  AppLocalizations.of(context)!.medicineName,
                               hintStyle: TextStyle(
                                   fontSize: 20.sp, color: AppColors.grayColor),
                             ),
@@ -112,9 +124,15 @@ class AddMedicineButtonSheet extends StatelessWidget {
                                 .medicineDoseController,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
-                              hintText: AppLocalizations.of(context)!.medicineDose,
+                              hintText:
+                                  AppLocalizations.of(context)!.medicineDose,
                               hintStyle: TextStyle(
-                                  fontSize: 20.sp, color: AppColors.grayColor),
+                                fontSize: 20.sp,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.lightGrayColor
+                                    : AppColors.grayColor,
+                              ),
                             ),
                           ),
                         ),
@@ -136,9 +154,13 @@ class AddMedicineButtonSheet extends StatelessWidget {
                           child: Text(
                             AppLocalizations.of(context)!.medicineShape,
                             style: TextStyle(
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.grayColor),
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w600,
+                              color: BlocProvider.of<SettingsCubit>(context)
+                                      .isDarkThemEnable
+                                  ? AppColors.lightGrayColor
+                                  : AppColors.grayColor,
+                            ),
                           ),
                         ),
                         Expanded(
@@ -165,30 +187,35 @@ class AddMedicineButtonSheet extends StatelessWidget {
                                       height: 48.h,
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                          BorderRadius.circular(38.r)),
+                                              BorderRadius.circular(38.r)),
                                       child: index ==
-                                          BlocProvider.of<MedicineCubit>(
-                                              context)
-                                              .currentIndex
+                                              BlocProvider.of<MedicineCubit>(
+                                                      context)
+                                                  .currentIndex
                                           ? Stack(
-                                        children: [
-                                          BlocProvider.of<MedicineCubit>(
-                                              context)
-                                              .getImage(index),
-                                          const Icon(
-                                            Icons.check,
-                                            color: AppColors.blackColor,
-                                          )
-                                        ],
-                                      )
-                                          : BlocProvider.of<MedicineCubit>(context)
-                                          .getImage(index)),
+                                              children: [
+                                                BlocProvider.of<MedicineCubit>(
+                                                        context)
+                                                    .getImage(index),
+                                                Icon(
+                                                  Icons.check,
+                                                  color: BlocProvider.of<
+                                                                  SettingsCubit>(
+                                                              context)
+                                                          .isDarkThemEnable
+                                                      ? AppColors.darkGreen
+                                                      : AppColors.primaryColor,
+                                                )
+                                              ],
+                                            )
+                                          : BlocProvider.of<MedicineCubit>(
+                                                  context)
+                                              .getImage(index)),
                                 );
                               },
                             ),
                           ),
                         ),
-
                         Row(
                           children: [
                             SizedBox(
@@ -198,7 +225,6 @@ class AddMedicineButtonSheet extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: ElevatedButton(
                                 onPressed: () {
-
                                   if (BlocProvider.of<MedicineCubit>(context)
                                       .addMedicineKey
                                       .currentState!
@@ -214,11 +240,20 @@ class AddMedicineButtonSheet extends StatelessWidget {
                                   // (InsertMedicineSuccessState());
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.primaryColor),
+                                  backgroundColor:
+                                      BlocProvider.of<SettingsCubit>(context)
+                                              .isDarkThemEnable
+                                          ? AppColors.darkGreen
+                                          : AppColors.primaryColor,
+                                ),
                                 child: Text(
                                   AppLocalizations.of(context)!.addMedicine,
                                   style: TextStyle(
-                                    color: AppColors.whiteColor,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.lightBackgroundColor
+                                            : AppColors.whiteColor,
                                     fontSize: 20.sp,
                                     fontFamily: 'Kodchasan',
                                     fontWeight: FontWeight.w600,
@@ -228,13 +263,9 @@ class AddMedicineButtonSheet extends StatelessWidget {
                             ),
                           ],
                         ),
-
-
                       ],
                     ),
                   ),
-
-
                 ],
               ),
             );
