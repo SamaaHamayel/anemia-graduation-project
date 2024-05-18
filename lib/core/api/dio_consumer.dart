@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-
-
 import '../error/error_model.dart';
 import '../error/exceptions.dart';
 import 'api_consumer.dart';

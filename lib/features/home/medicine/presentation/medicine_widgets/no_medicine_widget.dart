@@ -13,16 +13,13 @@ class NoMedicineWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Column(
+    return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: Image.asset(
-            AppAssets.noMedicine,
-            scale: 0.5,
-          ),
+        Image.asset(
+          AppAssets.noMedicine,
+          scale: 0.5,
         ),
+
         SizedBox(
           child: Text(
             AppLocalizations.of(context)!.noMedicine,
@@ -37,6 +34,6 @@ class NoMedicineWidgets extends StatelessWidget {
           ),
         ),
       ],
-    ));
+    );
   }
 }

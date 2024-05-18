@@ -3,14 +3,17 @@ abstract class MedicineState {}
 class MedicineInitial extends MedicineState {}
 
 class MedicineShapeChangeLoadingState extends MedicineState {}
-class MedicineShapeChangeSuccessState extends MedicineState {
-
-}
+class MedicineShapeChangeSuccessState extends MedicineState {}
 class MedicineShapeChangeErrorState extends MedicineState {
   final String message;
 
   MedicineShapeChangeErrorState(this.message);
 }
+
+class AddMedicineLoadingState extends MedicineState {}
+class AddMedicineSuccessState extends MedicineState {}
+class AddMedicineErrorState extends MedicineState {}
+
 
 
 class GetStartTimeLoadingState extends MedicineState {}

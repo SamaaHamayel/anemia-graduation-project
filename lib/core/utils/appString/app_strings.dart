@@ -10,6 +10,7 @@ class AppStrings {
   static const String medicineName = "Medicine Name";
   static const String medicineDose = "Medicine Dose";
   static const String medicineShape = "Medicine Shape";
+  static const String welcome = "Welcome";
 
   static const String onBoardingSubTitle0 =
       "Welcome to our app! Use your eyelid to detect and identify the type of anemia with high accuracy. Start now and discover your health with just one click!";

@@ -137,6 +137,7 @@
  "medicineDose" : "Medicine Dose",
  "medicineShape" : "Medicine Shape",
  "help":"Help",
+ "welcome":"Welcome",
  "helpOne":"1.  Please take a picture showing your eyelid in the same shape and clarity as in this image, so we can examine it to determine whether you have anemia or not.",
  "helpTwo":" 2.  Make sure there is high lighting",
  "helpThree":" 3.  Make sure the picture isn't edited or flipped."

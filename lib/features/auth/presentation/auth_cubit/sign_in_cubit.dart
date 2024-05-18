@@ -37,9 +37,10 @@ class SignInCubit extends Cubit<SignInState> {
           (l) => emit(SignInErrorState(l)),
           (r) async {
         signInModel = r;
-        Map<String, dynamic> decodedToken = JwtDecoder.decode(r.token);
-        await sl<CacheHelper>()
-            .saveData(key: ApiKeys.id, value: decodedToken[ApiKeys.id]);
+        print('r=${ r.token}');
+        // Map<String, dynamic> decodedToken = JwtDecoder.decode(r.token);
+        // await sl<CacheHelper>()
+        //     .saveData(key: ApiKeys.id, value: decodedToken[ApiKeys.id]);
         // {
         //   "id": "65721a55170b9ecc33cca09b",
         //   "email": "hadeere378@gmail.com",

@@ -39,10 +39,10 @@ class SqfliteHelper {
   Future<int> insertToDB(MedicineModel model) async {
     return await db.rawInsert('''
       INSERT INTO Medicine( 
-      name ,dose ,shape ,startTime)
+      name ,dose ,shape ,startTime )
          VALUES
-         ('${model.medicineName}','${model.medicineDose}','${model.medicineShape}'
-         ,'${model.startTime}')''');
+         ('${model.startTime}',
+       '${model.medicineName}','${model.medicineDose}','${model.medicineShape}')''');
   }
 
   //! update

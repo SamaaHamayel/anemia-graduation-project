@@ -1,10 +1,9 @@
 import 'package:animeacheck/core/sqflite_helper/sqflite_helper.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-
-import '../../../../core/services/local_notification_service.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
 import 'medicine_state.dart';
@@ -19,9 +18,8 @@ class MedicineCubit extends Cubit<MedicineState> {
   String startTime = DateFormat('hh:mm a').format(DateTime.now());
   DateTime currentDate = DateTime.now();
   DateTime selectedDate = DateTime.now();
-
-
-  int currentIndex=0;
+  bool isComplete = false;
+  int currentIndex = 0;
 
   late TimeOfDay schduledTime;
   void getStartTime(context) async {
@@ -35,8 +33,8 @@ class MedicineCubit extends Cubit<MedicineState> {
       startTime = pickedStartTime.format(context);
       schduledTime = pickedStartTime;
       emit(GetStartTimeSuccessState());
-      insertMedicine();
-      emit(InsertMedicineSuccessState());
+      // insertMedicine();
+      //emit(InsertMedicineSuccessState());
       //navigateReplacement(context: context, route: Routes.medicineComponent);
     } else {
       print("No Time Picked");
@@ -51,78 +49,93 @@ class MedicineCubit extends Cubit<MedicineState> {
     emit(ChangeCheckMarkIndexState());
   }
 
-
   Image getImage(index) {
     switch (index) {
       case 0:
-        return Image.asset(
-            AppAssets.medicine11);
+        return Image.asset(AppAssets.medicine11);
       case 1:
-        return Image.asset(
-            AppAssets.medicine2);
+        return Image.asset(AppAssets.medicine2);
       case 2:
-        return Image.asset(
-            AppAssets.medicine3);
+        return Image.asset(AppAssets.medicine3);
       case 3:
-        return Image.asset(
-            AppAssets.medicine4);
+        return Image.asset(AppAssets.medicine4);
       default:
-        return Image.asset(
-            AppAssets.medicine1);
+        return Image.asset(AppAssets.medicine1);
     }
   }
-
-
 
   //insert Medicine
 
   List<MedicineModel> medicineList = [];
-  void insertMedicine() async {
+
+  void insertMedicine() {
     emit(InsertMedicineLoadingState());
-
     try {
-      await sl<SqfliteHelper>().insertToDB(
+      medicineList.add(
         MedicineModel(
+          id: 1,
           medicineName: medicineNameController.text,
           medicineDose: int.parse(medicineDoseController.text),
-          medicineShape: getImage(currentIndex),
-          startTime: startTime
+          medicineShape: currentIndex,
+          startTime: startTime,
+          isComplete: isComplete,
         ),
       );
-
-      LocalNotificationService.showSchduledNotification(
-        curretDate: currentDate,
-        schduledTime:schduledTime,
-        medicineModel: MedicineModel(
-          medicineName: medicineNameController.text,
-          medicineDose: int.parse(medicineDoseController.text),
-          medicineShape: getImage(currentIndex),
-          startTime: startTime
-        ),
-      );
-      medicineNameController.clear();
-      medicineDoseController.clear();
       emit(InsertMedicineSuccessState());
-      getMedicine();
     } catch (e) {
       emit(InsertMedicineErrorState());
     }
   }
 
-
-
+  // void insertMedicine() async {
+  //   emit(InsertMedicineLoadingState());
+  //
+  //   try {
+  //     await sl<SqfliteHelper>().insertToDB(
+  //       MedicineModel(
+  //         medicineName: medicineNameController.text,
+  //         medicineDose: int.parse(medicineDoseController.text),
+  //         medicineShape: getImage(currentIndex),
+  //         startTime: startTime,
+  //           isComplete: isComplete
+  //       ),
+  //     );
+  //     getMedicine();
+  //     emit(GetMedicineSuccessState());
+  //
+  //
+  //     // LocalNotificationService.showSchduledNotification(
+  //     //   curretDate: currentDate,
+  //     //   schduledTime:schduledTime,
+  //     //   medicineModel: MedicineModel(
+  //     //     medicineName: medicineNameController.text,
+  //     //     medicineDose: int.parse(medicineDoseController.text),
+  //     //     medicineShape: getImage(currentIndex),
+  //     //     startTime: startTime,
+  //     //     isComplete: isComplete
+  //     //   ),
+  //     // );
+  //     // medicineNameController.clear();
+  //     // medicineDoseController.clear();
+  //     // emit(InsertMedicineSuccessState());
+  //     // getMedicine();
+  //     // emit(GetMedicineSuccessState());
+  //   } catch (e) {
+  //     emit(InsertMedicineErrorState());
+  //   }
+  // }
+  //
 
 //!get Medicine
 
   void getMedicine() async {
     emit(GetMedicineLoadingState());
     await sl<SqfliteHelper>().getFromDB().then((value) {
-      medicineList = value
-          .map((e) => MedicineModel.fromJson(e)).toList();
+      medicineList = value.map((e) => MedicineModel.fromJson(e)).toList();
       //     .where(
       //       (element) => element.date == DateFormat.yMd().format(selctedDate),
       // )
-         // .toList();
+      // .toList();
       emit(GetMedicineSuccessState());
     }).catchError((e) {
       print(e.toString());
@@ -144,9 +157,7 @@ class MedicineCubit extends Cubit<MedicineState> {
 //   }
 //
 
-
- //delete Medicine
-
+  //delete Medicine
 
   void deleteTask(id) async {
     emit(DeleteMedicineLoadingState());
@@ -159,7 +170,4 @@ class MedicineCubit extends Cubit<MedicineState> {
       emit(DeleteMedicineErrorState());
     });
   }
-
-
-
-    }
+}

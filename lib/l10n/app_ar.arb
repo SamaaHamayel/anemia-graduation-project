@@ -135,6 +135,7 @@
   "add Medicine":"اضافة دواء جديد ",
   "dose":"جرعة",
   "shape":"شكل الدواء",
+  "welcome":"مرحبا",
   "medicineName" : "اسم الدواء",
   "medicineDose" : "جرعه الدواء",
   "medicineShape" : "نوع الدواء",

@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:animeacheck/features/detect/help/help.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_state.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +28,7 @@ class DetectedScreen extends StatelessWidget {
                 ? AppColors.darkThemBlackColor
                 : AppColors.lightPrimaryColor,
         appBar: AppBar(
-          flexibleSpace: Image(
+          flexibleSpace: const Image(
             image: AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
@@ -41,7 +44,7 @@ class DetectedScreen extends StatelessWidget {
             ),
           ),
           title: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
                     'lib/core/utils/appImages/images/background.png'),
@@ -68,7 +71,7 @@ class DetectedScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HelpDetect()),
+                    MaterialPageRoute(builder: (context) => const HelpDetect()),
                   );
                 },
               ),
@@ -76,7 +79,7 @@ class DetectedScreen extends StatelessWidget {
           ],
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image:
                   AssetImage('lib/core/utils/appImages/images/background.png'),
@@ -99,11 +102,17 @@ class DetectedScreen extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                        padding: EdgeInsets.only(top: 75.h),
-                        child: Image(
-                            image: AssetImage(
-                                'lib/core/utils/appImages/images/detectAnemia.png'))),
+                    Container(
+                      width: 350.w,
+                      height: 250.h,
+                      padding: EdgeInsets.only(top: 40.h),
+                      child: state is ClassifyImageLoadingState
+                          ? CircularProgressIndicator()
+                          : detectAnemiaCubit.image == null
+                          ? Image.asset(
+                          'lib/core/utils/appImages/images/detectAnemia.png')
+                          : Image.file(File(detectAnemiaCubit.image!.path)),
+                    ),
 
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -141,6 +150,16 @@ class DetectedScreen extends StatelessWidget {
                             (value) => detectAnemiaCubit.takeImage(value));
                       },
                     ),
+
+                    TextButton(
+                        onPressed: (){
+                          detectAnemiaCubit.classifyImage(
+                              detectAnemiaCubit.image!
+                          );
+                        },
+                        child: Text("Classification"))
+
+
                   ],
                 );
               },

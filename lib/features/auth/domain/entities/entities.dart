@@ -15,7 +15,7 @@ class SignInModel {
   factory SignInModel.fromJson(Map<String, dynamic> jsonData) {
     return SignInModel(
       message: jsonData[ApiKeys.message],
-      token: jsonData[ApiKeys.token],
+      token: 'Route__ ${jsonData[ApiKeys.token]}',
     );
   }
 }

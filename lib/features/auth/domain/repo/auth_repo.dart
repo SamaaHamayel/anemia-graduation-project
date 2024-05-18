@@ -14,7 +14,7 @@ class AuthRepository {
   }) async {
     try {
       final response = await sl<ApiConsumer>().post(
-        EndPoint.chefSignIn,
+        EndPoint.userLogin,
         data: {
           ApiKeys.email: email,
           ApiKeys.password: password,
@@ -29,17 +29,17 @@ class AuthRepository {
 
   //!!! signUp
 Future<Either<String, SignUpModel>> signUp({
-  required String name,
+  required String userName,
   required String email,
     required String password,
     required String confirmPassword,
   }) async {
     try {
       final response = await sl<ApiConsumer>().post(
-        EndPoint.chefSignUp,
+        EndPoint.userSignUp,
         data: {
           ApiKeys.email: email,
-          ApiKeys.name: name,
+          ApiKeys.userName: userName,
           ApiKeys.password: password,
           ApiKeys.confirmPassword: confirmPassword,
         },
@@ -71,6 +71,7 @@ Future<Either<String, SignUpModel>> signUp({
 
 
   //!!! resetPassword
+
   Future<Either<String, String>> resetPassword({
     required String email,
     required String password,
@@ -79,12 +80,12 @@ Future<Either<String, SignUpModel>> signUp({
   }) async {
     try {
       final response = await sl<ApiConsumer>().patch(
-        EndPoint.changeForgottenPassword,
+        EndPoint.resetPassword,
         data: {
           ApiKeys.email: email,
           ApiKeys.password: password,
           ApiKeys.confirmPassword: confirmPassword,
-          ApiKeys.code: code,
+          ApiKeys.forgetCode: code,
         },
       );
       return Right(response[ApiKeys.message]);

@@ -73,7 +73,7 @@ class SignUpScreen extends StatelessWidget {
                     hint: AppLocalizations.of(context)!.nameHint,
                     textInputAction: TextInputAction.next,
                     validate: (data) {
-                      if (data!.length < 2 || data.isEmpty) {
+                      if (data!.length < 3 || data.isEmpty) {
                         return AppLocalizations.of(context)!.nameHint;
                       }
                       return null;
@@ -128,7 +128,7 @@ class SignUpScreen extends StatelessWidget {
                           .changeLoginPasswordSuffixIcon();
                     },
                     validate: (data) {
-                      if (data!.length < 6 || data.isEmpty) {
+                      if (data!.length < 3 || data.isEmpty) {
                         return AppLocalizations.of(context)!.enterValidPassword;
                       }
                       return null;
@@ -157,7 +157,7 @@ class SignUpScreen extends StatelessWidget {
                           .changeLoginPasswordSuffixIcon();
                     },
                     validate: (data) {
-                      if (data!.length < 6 || data.isEmpty) {
+                      if (data!.length < 3 || data.isEmpty) {
                         return AppLocalizations.of(context)!.enterValidPassword;
                       }
                       return null;
