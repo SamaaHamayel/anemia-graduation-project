@@ -2,6 +2,7 @@ import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 
@@ -10,6 +11,8 @@ import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/common.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../home/setting/presentation/settings_cubit/settings_cubit.dart';
 
 
 class VerfiyScreen extends StatefulWidget {
@@ -24,22 +27,23 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shadowColor: BlocProvider.of<SettingsCubit>(context).isArabicEnable? AppColors.blackColor: AppColors.lightBackgroundColor,
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
             navigateReplacement(context: context, route: Routes.forgotPassword);
           },
-          icon: const Icon(
+          icon:  Icon(
             Icons.arrow_back_ios,
             size: 16,
-            color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
           ),
         ),
         title: Text(
           AppLocalizations.of(context)!.verify,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
-              color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w700),
         ),
@@ -59,7 +63,7 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
                 child: Text(
                   AppLocalizations.of(context)!.verifyTitle,
                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                       fontSize: 16,
                       fontFamily: "Kodchasan",
                       fontWeight: FontWeight.w400),
@@ -76,11 +80,12 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
               textStyle:
                   const TextStyle(fontSize: 20.0, color: AppColors.blackColor),
               keyboardType: TextInputType.number,
-              underlineColor: AppColors
-                  .primaryColor, // If this is null it will use primaryColor: Colors.red from Theme
+              underlineColor:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.primaryColor,
+ // If this is null it will use primaryColor: Colors.red from Theme
               length: 4,
-              cursorColor: AppColors
-                  .primaryColor, // If this is null it will default to the ambient
+              cursorColor  : BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.primaryColor,
+
+                   // If this is null it will default to the ambient
               // clearAll is NOT required, you can delete it
               // takes any widget, so you can implement your design
               onCompleted: (String value) {

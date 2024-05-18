@@ -1,5 +1,7 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,8 +12,9 @@ class HelpDetect extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: const Image(
-          image: AssetImage('lib/core/utils/appImages/images/background.png'),
+        flexibleSpace:  Image(
+                   image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+
           fit: BoxFit.cover,
         ),
         centerTitle: true,
@@ -19,26 +22,27 @@ class HelpDetect extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
+          icon:  Icon(
             Icons.arrow_back_ios,
             size: 23,
-            color: AppColors.primaryColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
           ),
         ),
         title: Text(
           AppLocalizations.of(context)!.help,
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
                 fontSize: 24.sp,
-                color: AppColors.primaryColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w700,
               ),
         ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+                    image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+
             fit: BoxFit.cover,
           ),
         ),
@@ -68,8 +72,8 @@ class HelpDetect extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Colors.black,
+        style:  TextStyle(
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.blackColor,
           fontSize: 24,
           fontFamily: 'Inter',
           fontWeight: FontWeight.w400,

@@ -1,6 +1,8 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../home/setting/presentation/settings_cubit/settings_cubit.dart';
 import '../../gallery/data/widget/detect_anemia_by_image.dart';
 import '../data/widget/build_icon_button.dart';
 import '../data/widget/take_packer.dart';
@@ -18,20 +20,21 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
     return Scaffold(
       backgroundColor: AppColors.lightBlackColor,
       appBar: AppBar(
-        backgroundColor: AppColors.lightPrimaryColor,
+        backgroundColor:   BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.darkThemBlackColor : AppColors.lightBackgroundColor,
+
         leading: Container(
             decoration: BoxDecoration(
             image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
+                       image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
             ),
           ),
           child: IconButton(
-            icon: const Icon(
+            icon:  Icon(
               Icons.arrow_back_ios,
-              color: Colors.white,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.whiteColor,
               size: 25.0,
             ),
             onPressed: () {
@@ -42,7 +45,7 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
       ),
       body: Container( decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -52,7 +55,7 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 208),
               child: Container(
-                color: AppColors.lightBlackColor,
+                color: AppColors.lightGrayColor,
                 child: Center(
                   child: Image.asset(
                     'lib/core/utils/appImages/images/detect.png',

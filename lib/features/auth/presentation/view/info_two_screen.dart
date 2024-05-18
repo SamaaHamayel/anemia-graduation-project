@@ -6,6 +6,7 @@ import '../../../../conf/routes/routes.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/common.dart';
+import '../../../home/setting/presentation/settings_cubit/settings_cubit.dart';
 import '../person_info_cubit/personal_info_cubit.dart';
 import '../person_info_cubit/personal_info_state.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -27,17 +28,17 @@ class InfoTwoScreen extends StatelessWidget {
         onPressed: () {
           navigateReplacement(context: context, route: Routes.infoOne);
         },
-        icon: const Icon(
+        icon:  Icon(
           Icons.arrow_back_ios,
           size: 16,
-          color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
         ),
       ),
       title: Text(
         AppLocalizations.of(context)!.personalInformation,
         style: Theme.of(context).textTheme.displaySmall!.copyWith(
             fontSize: 24,
-            color: AppColors.lightPrimaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
             fontFamily: 'Kodchasan',
             fontWeight: FontWeight.w700),
       ),
@@ -46,8 +47,8 @@ class InfoTwoScreen extends StatelessWidget {
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
+                       image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
             ),

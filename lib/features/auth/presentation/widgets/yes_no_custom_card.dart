@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/appColors/app_colors.dart';
+import '../../../home/setting/presentation/settings_cubit/settings_cubit.dart';
 import '../person_info_cubit/personal_info_cubit.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -25,7 +27,7 @@ class YesNoCustomCard extends StatelessWidget {
       width: 343.w,
       height: 118.h,
       child: Card(
-        color: AppColors.whiteColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.darkThemBlackColor : AppColors.whiteColor,
         child: Column(
           children: [
             Container(
@@ -49,7 +51,7 @@ class YesNoCustomCard extends StatelessWidget {
                       .textTheme
                       .bodySmall!
                       .copyWith(
-                      color: AppColors.whiteColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.darkThemBlackColor : AppColors.whiteColor,
                       fontFamily: "Kodchasan",
                       fontSize: 16,
                       fontWeight: FontWeight.w700),

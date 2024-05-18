@@ -1,5 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/person_info_cubit/personal_info_state.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,8 +25,10 @@ class InfoOneScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: const Image(
-          image: AssetImage('lib/core/utils/appImages/images/background.png'),
+        flexibleSpace:  Image(
+
+         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+          // AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         centerTitle: true,
@@ -43,16 +46,16 @@ class InfoOneScreen extends StatelessWidget {
           AppLocalizations.of(context)!.personalInformation,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
-              color: AppColors.lightPrimaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w700),
         ),
       ),
       body: Container(
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
+                      image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
             ),

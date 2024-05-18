@@ -14,6 +14,8 @@ import '../../../../core/utils/common.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../home/setting/presentation/settings_cubit/settings_cubit.dart';
+
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -27,17 +29,17 @@ class SignUpScreen extends StatelessWidget {
           onPressed: () {
             navigateReplacement(context: context, route: Routes.signIn);
           },
-          icon: const Icon(
+          icon:  Icon(
             Icons.arrow_back_ios,
             size: 16,
-            color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
           ),
         ),
         title: Text(
           AppLocalizations.of(context)!.signUp,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
-              color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w700),
         ),
@@ -227,7 +229,7 @@ class SignUpScreen extends StatelessWidget {
                               .textTheme
                               .bodySmall!
                               .copyWith(
-                              color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                               fontSize: 16,
                               fontFamily: "Kodchasan",
                               fontWeight: FontWeight.w600),

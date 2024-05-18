@@ -1,6 +1,7 @@
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_state.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,23 +24,27 @@ class CreateNewPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
+        
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
             navigateReplacement(context: context, route: Routes.verify);
           },
-          icon: const Icon(
+          icon:  Icon(
             Icons.arrow_back_ios,
             size: 16,
-            color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
           ),
+          //              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AssetImage('lib/core/utils/appImages/images/backgroundDark.png'): AssetImage('lib/core/utils/appImages/images/background.png'),
+
         ),
         title: Text(
           AppLocalizations.of(context)!.createNewPassword,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
-              color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w700),
         ),
@@ -52,14 +57,17 @@ class CreateNewPasswordScreen extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: const CircleAvatar(
-                    backgroundColor: AppColors.lightPrimaryColor,
+                  title:  CircleAvatar(
+                    backgroundColor:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
+
                     child: Icon(Icons.check_sharp,
-                    color: AppColors.whiteColor,),),
+                    color: AppColors.whiteColor,
+                    ),
+                    ),
                   content:  Text(
                     AppLocalizations.of(context)!.yourPasswordHasBeenChangedSuccessfully,
                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      color: AppColors.blackColor,
+                      color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.blackColor,
                       fontSize: 16,
                       fontFamily: "Kodchasan",),
                   ),

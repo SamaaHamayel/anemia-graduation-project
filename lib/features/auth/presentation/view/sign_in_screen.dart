@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/common.dart';
+import '../../../home/setting/presentation/settings_cubit/settings_cubit.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_social_media.dart';
@@ -27,7 +28,7 @@ class SignInScreen extends StatelessWidget {
         title: Text(AppLocalizations.of(context)!.signIn,
             style: Theme.of(context).textTheme.displayMedium!.copyWith(
                 fontSize: 24,
-                color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w700)),
       ),
@@ -119,7 +120,7 @@ class SignInScreen extends StatelessWidget {
                       child: Text(
                         AppLocalizations.of(context)!.forgetPassword,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                             fontSize: 13,
                             fontFamily: "Kodchasan",
                             fontWeight: FontWeight.w600),
@@ -185,7 +186,7 @@ class SignInScreen extends StatelessWidget {
                               .textTheme
                               .bodySmall!
                               .copyWith(
-                                  color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                                   fontSize: 16,
                                   fontFamily: "Kodchasan",
                                   fontWeight: FontWeight.w600),

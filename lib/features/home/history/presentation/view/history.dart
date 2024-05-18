@@ -1,4 +1,6 @@
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
@@ -21,7 +23,7 @@ class History extends StatelessWidget {
     return Scaffold(
       body: Stack(
           children:[
-            Image.asset("lib/core/utils/appImages/images/background.png",
+            Image.asset(BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?('lib/core/utils/appImages/images/backgroundDark.png') :('lib/core/utils/appImages/images/background.png'),
               fit: BoxFit.cover,
               width: double.infinity,
             ),

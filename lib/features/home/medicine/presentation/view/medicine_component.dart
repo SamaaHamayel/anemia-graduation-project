@@ -1,10 +1,10 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
-import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/core/utils/appString/app_strings.dart';
 import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_cubit.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_state.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +33,7 @@ class MedicineComponent extends StatelessWidget {
         builder: (context, state) {
           return Stack(
             children: [
-              Image.asset(AppAssets.background,
+              Image.asset(BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?('lib/core/utils/appImages/images/backgroundDark.png') :('lib/core/utils/appImages/images/background.png'),
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),

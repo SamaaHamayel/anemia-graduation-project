@@ -1,3 +1,4 @@
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +28,8 @@ class WeightAndHeightCustomCard extends StatelessWidget {
       height: 118.h,
       width: 343.w,
       child: Card(
-        color: AppColors.whiteColor,
+                color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.darkThemBlackColor : AppColors.whiteColor,
+
         child: Column(
           children: [
             Container(

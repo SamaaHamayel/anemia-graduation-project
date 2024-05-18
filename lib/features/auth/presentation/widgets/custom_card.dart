@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/appColors/app_colors.dart';
+import '../../../home/setting/presentation/settings_cubit/settings_cubit.dart';
 import '../person_info_cubit/personal_info_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,10 +19,11 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      
       width: 343.w,
       height: 320.h,
       child: Card(
-        color: AppColors.whiteColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.darkThemBlackColor : AppColors.whiteColor,
         child: Column(
           children: [
             Container(

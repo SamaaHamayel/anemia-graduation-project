@@ -2,6 +2,7 @@ import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_state.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,17 +30,17 @@ class ForgetPasswordScreen extends StatelessWidget {
           onPressed: () {
             navigateReplacement(context: context, route: Routes.signIn);
           },
-          icon: const Icon(
+          icon:  Icon(
             Icons.arrow_back_ios,
             size: 16,
-            color: AppColors.primaryColor,
+            color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
           ),
         ),
         title: Text(
           AppLocalizations.of(context)!.forgetPassword,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
               fontSize: 24,
-              color: AppColors.primaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
               fontFamily: 'Kodchasan',
               fontWeight: FontWeight.w700),
         ),
@@ -74,7 +75,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                             .textTheme
                             .displaySmall!
                             .copyWith(
-                                color: AppColors.primaryColor,
+                                 color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
                                 fontSize: 16,
                                 fontFamily: "Kodchasan",
                                 fontWeight: FontWeight.w400),

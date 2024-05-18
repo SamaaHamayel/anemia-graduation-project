@@ -28,8 +28,8 @@ class DetectedScreen extends StatelessWidget {
                 ? AppColors.darkThemBlackColor
                 : AppColors.lightPrimaryColor,
         appBar: AppBar(
-          flexibleSpace: const Image(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+          flexibleSpace:  Image(
+         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
           centerTitle: true,
@@ -37,17 +37,17 @@ class DetectedScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(
+            icon:  Icon(
               Icons.arrow_back_ios,
               size: 23,
-              color: AppColors.primaryColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
             ),
           ),
           title: Container(
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                    'lib/core/utils/appImages/images/background.png'),
+                        image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+
                 fit: BoxFit
                     .cover, // Optional: You can set the image fit as needed
               ),
@@ -55,7 +55,7 @@ class DetectedScreen extends StatelessWidget {
             child: Text(AppLocalizations.of(context)!.detectAnemia,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     fontSize: 24,
-                    color: AppColors.primaryColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                     fontFamily: 'Kodchasan',
                     fontWeight: FontWeight.w700)),
           ),
@@ -65,7 +65,7 @@ class DetectedScreen extends StatelessWidget {
               child: IconButton(
                 icon: Icon(
                   Icons.help,
-                  color: AppColors.lightPrimaryColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                   size: 30.sp,
                 ),
                 onPressed: () {
@@ -125,7 +125,7 @@ class DetectedScreen extends StatelessWidget {
                               .displayMedium!
                               .copyWith(
                                 fontSize: 20.sp,
-                                color: AppColors.primaryColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                                 fontFamily: 'Kodchasan',
                                 fontWeight: FontWeight.w600,
                                 height: 0,

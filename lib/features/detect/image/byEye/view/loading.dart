@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Widget buildloading(BuildContext context) {
   // Pass context as a parameter
@@ -25,11 +27,11 @@ Widget buildloading(BuildContext context) {
             child: RotatingIcon(),
           ),
                   const SizedBox(height: 32),
-                  const Text(
+                   Text(
                     'Please wait....',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFF2BB598),
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
                       fontSize: 32,
                       fontFamily: 'Kodchasan',
                       fontWeight: FontWeight.w700,
@@ -72,10 +74,10 @@ class RotatingIconState extends State<RotatingIcon> {
   Widget build(BuildContext context) {
     return Transform.rotate(
       angle: rotationAngle,
-      child: const Icon(
+      child:  Icon(
         Icons.donut_large,
         size: 100,
-        color: AppColors.lightPrimaryColor,
+        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
       ),
     );
   }
