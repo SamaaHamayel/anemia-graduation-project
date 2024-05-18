@@ -1,8 +1,7 @@
 import 'package:animeacheck/conf/routes/routes.dart';
 import 'package:animeacheck/conf/theme/my_them.dart';
-import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
-import 'package:animeacheck/features/auth/presentation/view/sign_up_screen.dart';
 import 'package:animeacheck/features/home/presentation/view/home.dart';
+
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_state.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
                 ? ThemeMode.dark
                 : ThemeMode.light,
 
-            home: const SignInScreen(),
+            home: const HomeScreen(),
           );
         },
       ),

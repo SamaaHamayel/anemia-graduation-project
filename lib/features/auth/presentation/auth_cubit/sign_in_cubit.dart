@@ -1,7 +1,6 @@
 import 'package:animeacheck/features/auth/domain/entities/entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../../../../core/api/endPoints/end_point.dart';
 import '../../../../core/cache_helper/cache_helper.dart';
