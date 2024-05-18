@@ -39,7 +39,8 @@ class MedicineComponent extends StatelessWidget {
         builder: (context, state) {
           return Stack(
             children: [
-              Image.asset(BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?('lib/core/utils/appImages/images/backgroundDark.png') :('lib/core/utils/appImages/images/background.png'),
+              Image.asset(BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?('lib/core/utils/appImages/images/backgroundDark.png') 
+              :('lib/core/utils/appImages/images/background.png'),
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),

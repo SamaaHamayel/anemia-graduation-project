@@ -36,11 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        flexibleSpace:  Image(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover,
+        flexibleSpace: Image(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,11 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Image.asset(
-              'lib/core/utils/appImages/images/logo (2).png',
-              scale: 2,
-            ),
+                BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? ('lib/core/utils/appImages/images/logoDark.png')
+                    : ('lib/core/utils/appImages/images/logo.png'),
+                scale: 2),
             IconButton(
-              icon: Icon(Icons.assignment_add), // Icon to display
+              icon: Icon(
+                Icons.assignment_add,
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
+              ), // Icon to display
               onPressed: () {
                 Navigator.push(
                   context,
@@ -69,12 +75,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),              fit: BoxFit.cover, // Optional: You can set the image fit as needed
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: Center(
@@ -82,12 +89,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),              fit: BoxFit.cover, // Optional: You can set the image fit as needed
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: Padding(
@@ -95,7 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: GNav(
             activeColor: Colors.white,
             color: const Color.fromARGB(255, 146, 146, 153),
-            tabBackgroundColor: AppColors.lightPrimaryColor,
+            tabBackgroundColor:
+                BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? Color.fromARGB(255, 32, 84, 69)
+                    : AppColors.lightPrimaryColor,
             gap: 8.h,
             padding: const EdgeInsets.all(16),
             selectedIndex: _selectedIndex,

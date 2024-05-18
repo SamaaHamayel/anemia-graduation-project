@@ -1,4 +1,6 @@
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/appColors/app_colors.dart';
@@ -55,8 +57,11 @@ class SettingSwitchCard extends StatelessWidget {
           const Spacer(),
           Switch(
             value: switchValue,
-            activeColor: AppColors.lightPrimaryColor,
-            onChanged: onChange!
+ activeColor: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.lightPrimaryColor,    
+                                      onChanged: onChange!
           )
         ],
       ),

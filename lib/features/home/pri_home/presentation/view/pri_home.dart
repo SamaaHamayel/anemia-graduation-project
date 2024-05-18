@@ -45,8 +45,11 @@ class PriHome extends StatelessWidget {
                         BlocProvider.of<SignUpCubit>(context)
                             .nameController
                             .text,
-                    style: const TextStyle(
-                      color: AppColors.lightPrimaryColor,
+                    style: TextStyle(
+                      color: BlocProvider.of<SettingsCubit>(context)
+                              .isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                       fontSize: 18,
                       fontFamily: 'Kodchasan',
                       fontWeight: FontWeight.w600,

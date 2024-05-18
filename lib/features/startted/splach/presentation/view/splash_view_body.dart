@@ -1,7 +1,9 @@
 import 'package:animeacheck/core/api/endPoints/end_point.dart';
 import 'package:animeacheck/core/cache_helper/cache_helper.dart';
 import 'package:animeacheck/features/home/presentation/view/home.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import '../../../../../core/services/service_locator.dart';
 import '../../../onboarding/presentation/view/onboarding1.dart';
@@ -67,8 +69,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
           ScaleTransition(
             scale: _scaleAnimation,
             child:
-                Image.asset('lib/core/utils/appImages/images/splash.png'),
-          ),
+ Image.asset(
+    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ? 
+                 ('lib/core/utils/appImages/images/logoDark.png')
+                : ('lib/core/utils/appImages/images/logo.png'),
+                           fit: BoxFit.cover,
+              width: double.infinity,
+            ),          ),
           const SizedBox(height: 10),
           FadeTransition(
             opacity: _opacityAnimation,

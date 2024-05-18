@@ -115,7 +115,6 @@ class resultState extends State<resultTest> {
       calculateResult();
     });
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -139,7 +138,10 @@ class resultState extends State<resultTest> {
                       IconButton(
                         icon: Icon(
                           Icons.arrow_back_ios_rounded,
-                          color: AppColors.lightPrimaryColor,
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.lightPrimaryColor,
                           size: 23.sp,
                         ),
                         onPressed: () {
@@ -150,7 +152,10 @@ class resultState extends State<resultTest> {
                       Text(
                         AppLocalizations.of(context)!.result,
                         style: TextStyle(
-                          color: AppColors.lightPrimaryColor,
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.lightPrimaryColor,
                           fontSize: 23.sp,
                           fontFamily: 'Kodchasan',
                           fontWeight: FontWeight.w500,
@@ -171,7 +176,10 @@ class resultState extends State<resultTest> {
                               text: AppLocalizations.of(context)!
                                   .theTypeOfAnemiaYouHaveIs,
                               style: TextStyle(
-                                color: Color(0xFF1E1E1E),
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontSize: 24,
                                 fontFamily: 'Kodchasan',
                                 fontWeight: FontWeight.w400,
@@ -179,7 +187,7 @@ class resultState extends State<resultTest> {
                               ),
                             ),
                             TextSpan(
-                              text: "$result",
+                              text: "$result" ,
                               style: TextStyle(
                                 color: Color(0xFFFF0100),
                                 fontSize: 24,
@@ -194,6 +202,25 @@ class resultState extends State<resultTest> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: SizedBox(
+                      width: 325,
+                      child: Text(
+                        "The result isnot final, and there are other conditions that can affect these levels, so it is necessary to consult a doctor.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.lightPrimaryColor,
+                          fontSize: 16,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
               Spacer(),
@@ -213,8 +240,13 @@ class resultState extends State<resultTest> {
                       clipBehavior: Clip.antiAlias,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
-                          side:
-                              BorderSide(width: 1.50, color: Color(0xFF2BB598)),
+                          side: BorderSide(
+                            width: 1.50,
+                            color: BlocProvider.of<SettingsCubit>(context)
+                                    .isDarkThemEnable
+                                ? AppColors.whiteColor
+                                : AppColors.lightPrimaryColor,
+                          ),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -232,7 +264,11 @@ class resultState extends State<resultTest> {
                               );
                             },
                             style: TextButton.styleFrom(
-                              foregroundColor: AppColors.lightPrimaryColor,
+                              foregroundColor:
+                                  BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.lightPrimaryColor,
                               padding: EdgeInsets.zero,
                               textStyle: TextStyle(
                                 fontFamily: 'Kodchasan',

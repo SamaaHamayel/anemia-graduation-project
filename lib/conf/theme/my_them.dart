@@ -46,7 +46,7 @@ class MyThemeData {
         primary: AppColors.whiteColor,
         onPrimary: AppColors.lightPrimaryColor,
         secondary: AppColors.whiteColor,
-        onSecondary: Colors.white,
+        onSecondary: Color(0xff052F28),
         error: Colors.red,
         onError: Colors.white,
         background: Colors.transparent,
@@ -58,6 +58,7 @@ class MyThemeData {
             fontSize: 30,
             fontWeight: FontWeight.bold,
             color: const Color(0xFF242424)),
+            
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.black87),
         elevation: 0.0,

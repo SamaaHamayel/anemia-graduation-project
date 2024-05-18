@@ -15,4 +15,7 @@ class AppColors {
   static const Color settingIconColor = Color(0xFFD9F2EC);
   static const Color whiteColor = Color(0xFFFFFFFF);
   static const Color lightBackgroundColor = Color.fromARGB(255, 240, 254, 250);
+  static const Color darkGreen = Color(0xff052F28);
+
+  //Color(0xff052F28),
 }

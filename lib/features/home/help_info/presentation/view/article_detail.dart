@@ -41,7 +41,7 @@ class ArticleDetailScreen extends StatelessWidget {
               IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_rounded,
-                  color: AppColors.lightPrimaryColor,
+color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable?AppColors.whiteColor:AppColors.lightPrimaryColor,    
                   size: 20.sp,
                 ),
                 onPressed: () {
@@ -52,7 +52,7 @@ class ArticleDetailScreen extends StatelessWidget {
               Text(
                 (article.title),
                 style: TextStyle(
-                  color: AppColors.lightPrimaryColor,
+color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable?AppColors.whiteColor:AppColors.lightPrimaryColor,    
                   fontSize: 16.sp,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w500,
@@ -95,7 +95,7 @@ class ArticleDetailScreen extends StatelessWidget {
                   width: 345.w,
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
-                    color: AppColors.lightBackgroundColor,
+color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable?AppColors.darkThemBlackColor:AppColors.lightBackgroundColor,    
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(24.r)),
                     ),

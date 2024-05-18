@@ -18,10 +18,11 @@ class Setting extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),              fit: BoxFit.cover, // Optional: You can set the image fit as needed
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: BlocConsumer<SettingsCubit, SettingsState>(
@@ -38,7 +39,10 @@ class Setting extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.account,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: AppColors.lightPrimaryColor,
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.lightPrimaryColor,
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           fontFamily: "Kodchasan"),
@@ -82,9 +86,12 @@ class Setting extends StatelessWidget {
                             const Spacer(),
                             IconButton(
                               onPressed: () {},
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.arrow_forward_ios,
-                                color: AppColors.lightPrimaryColor,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.lightPrimaryColor,
                                 size: 20,
                               ),
                             )
@@ -98,7 +105,10 @@ class Setting extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.settings,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: AppColors.lightPrimaryColor,
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.lightPrimaryColor,
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           fontFamily: "Kodchasan"),

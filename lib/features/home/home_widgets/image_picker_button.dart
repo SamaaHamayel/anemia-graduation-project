@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/utils/appColors/app_colors.dart';
+import '../setting/presentation/settings_cubit/settings_cubit.dart';
 
 class ImagePickerButton extends StatelessWidget {
   const ImagePickerButton({
@@ -23,7 +25,9 @@ class ImagePickerButton extends StatelessWidget {
           height: 65.h,
           width: 335.w,
           decoration: BoxDecoration(
-              color: AppColors.lightPrimaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? AppColors.whiteColor
+                  : AppColors.lightPrimaryColor,
               borderRadius: BorderRadius.circular(20.r)),
           child: Icon(
             icon,

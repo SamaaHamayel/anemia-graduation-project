@@ -1,4 +1,6 @@
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/appColors/app_colors.dart';
@@ -16,8 +18,8 @@ class NoMedicineWidgets extends StatelessWidget {
     return Column(
       children: [
         Image.asset(
-          AppAssets.noMedicine,
-          scale: 0.5,
+BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ? AppAssets.noMedicine : AppAssets.noMedicineDark,
+      scale: 0.5,
         ),
 
         SizedBox(

@@ -15,10 +15,11 @@ class explanaScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),              fit: BoxFit.cover, // Optional: You can set the image fit as needed
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.fill, // Optional: You can set the image fit as needed
           ),
         ),
         child: Padding(
@@ -34,7 +35,10 @@ class explanaScreen extends StatelessWidget {
                         IconButton(
                           icon: Icon(
                             Icons.arrow_back_ios_rounded,
-                            color: AppColors.lightPrimaryColor,
+                            color: BlocProvider.of<SettingsCubit>(context)
+                                    .isDarkThemEnable
+                                ? AppColors.whiteColor
+                                : AppColors.lightPrimaryColor,
                             size: 25.0.sp,
                           ),
                           onPressed: () {
@@ -45,7 +49,10 @@ class explanaScreen extends StatelessWidget {
                         Text(
                           'CBC Test',
                           style: TextStyle(
-                            color: AppColors.lightPrimaryColor,
+                            color: BlocProvider.of<SettingsCubit>(context)
+                                    .isDarkThemEnable
+                                ? AppColors.whiteColor
+                                : AppColors.lightPrimaryColor,
                             fontSize: 22,
                             fontFamily: 'Kodchasan',
                             fontWeight: FontWeight.w500,
@@ -63,7 +70,10 @@ class explanaScreen extends StatelessWidget {
                       child: Text(
                         'This is the form that the lab results will come on:',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.blackColor,
                           fontSize: 18,
                           fontFamily: 'Kumbh Sans',
                           fontWeight: FontWeight.w400,
@@ -83,13 +93,16 @@ class explanaScreen extends StatelessWidget {
                     ),
                     SizedBox(
                       width: 347.h,
-                      child:const Text.rich(
+                      child: Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
                               text: 'If the',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontSize: 16,
                                 fontFamily: 'Kumbh Sans',
                                 fontWeight: FontWeight.w400,
@@ -120,7 +133,10 @@ class explanaScreen extends StatelessWidget {
                               text:
                                   ' is “lower than” the minimum number in the range(',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontSize: 16,
                                 fontFamily: 'Kumbh Sans',
                                 fontWeight: FontWeight.w400,
@@ -130,7 +146,10 @@ class explanaScreen extends StatelessWidget {
                             TextSpan(
                               text: '13.5',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontSize: 14,
                                 fontFamily: 'Kumbh Sans',
                                 fontWeight: FontWeight.w400,
@@ -140,7 +159,10 @@ class explanaScreen extends StatelessWidget {
                             TextSpan(
                               text: '), choose "',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontSize: 16,
                                 fontFamily: 'Kumbh Sans',
                                 fontWeight: FontWeight.w400,
@@ -160,7 +182,10 @@ class explanaScreen extends StatelessWidget {
                             TextSpan(
                               text: '" by clicking on the arrow below.',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontSize: 16,
                                 fontFamily: 'Kumbh Sans',
                                 fontWeight: FontWeight.w400,
@@ -196,10 +221,14 @@ class explanaScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                            const    Text(
+                                Text(
                                   'HB:',
                                   style: TextStyle(
-                                    color: Colors.black,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.whiteColor
+                                            : AppColors.blackColor,
                                     fontSize: 20,
                                     fontFamily: 'Kodchasan',
                                     fontWeight: FontWeight.w400,
@@ -232,8 +261,14 @@ class explanaScreen extends StatelessWidget {
                                               decoration: ShapeDecoration(
                                                 shape: RoundedRectangleBorder(
                                                   side: BorderSide(
-                                                      width: 1,
-                                                      color: Color(0xFF2BB598)),
+                                                    width: 1,
+                                                    color: BlocProvider.of<
+                                                                    SettingsCubit>(
+                                                                context)
+                                                            .isDarkThemEnable
+                                                        ? AppColors.whiteColor
+                                                        : AppColors.blackColor,
+                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
@@ -265,10 +300,17 @@ class explanaScreen extends StatelessWidget {
                                                           CrossAxisAlignment
                                                               .center,
                                                       children: [
-                                                   const     Text(
+                                                        Text(
                                                           'Less',
                                                           style: TextStyle(
-                                                            color: Colors.black,
+                                                            color: BlocProvider.of<
+                                                                            SettingsCubit>(
+                                                                        context)
+                                                                    .isDarkThemEnable
+                                                                ? AppColors
+                                                                    .whiteColor
+                                                                : AppColors
+                                                                    .blackColor,
                                                             fontSize: 14,
                                                             fontFamily:
                                                                 'Kodchasan',
@@ -298,12 +340,15 @@ class explanaScreen extends StatelessWidget {
                     ),
                     Container(
                       width: 375,
-                      decoration:const ShapeDecoration(
+                      decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             width: 1,
                             strokeAlign: BorderSide.strokeAlignCenter,
-                            color: Color(0xFF2BB598),
+                            color: BlocProvider.of<SettingsCubit>(context)
+                                    .isDarkThemEnable
+                                ? AppColors.whiteColor
+                                : AppColors.lightPrimaryColor,
                           ),
                         ),
                       ),
@@ -313,13 +358,16 @@ class explanaScreen extends StatelessWidget {
                     ),
                     SizedBox(
                         width: 347.w,
-                        child:const Text.rich(
+                        child: Text.rich(
                           TextSpan(
                             children: [
                               TextSpan(
                                 text: 'If the',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 16,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -350,7 +398,10 @@ class explanaScreen extends StatelessWidget {
                                 text:
                                     ' is “higher than” the maximum number in the range(',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 16,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -360,7 +411,10 @@ class explanaScreen extends StatelessWidget {
                               TextSpan(
                                 text: '17.5',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 14,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -370,7 +424,10 @@ class explanaScreen extends StatelessWidget {
                               TextSpan(
                                 text: '), choose "',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 16,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -390,7 +447,10 @@ class explanaScreen extends StatelessWidget {
                               TextSpan(
                                 text: '" by clicking on the arrow above.',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 16,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -425,10 +485,14 @@ class explanaScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                             const   Text(
+                                Text(
                                   'HB:',
                                   style: TextStyle(
-                                    color: Colors.black,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.whiteColor
+                                            : AppColors.blackColor,
                                     fontSize: 20,
                                     fontFamily: 'Kodchasan',
                                     fontWeight: FontWeight.w400,
@@ -460,13 +524,19 @@ class explanaScreen extends StatelessWidget {
                                               clipBehavior: Clip.antiAlias,
                                               decoration: ShapeDecoration(
                                                 shape: RoundedRectangleBorder(
-                                                  side:const BorderSide(
-                                                      width: 1,
-                                                      color: Color(0xFF2BB598)),
+                                                  side: BorderSide(
+                                                    width: 1,
+                                                    color: BlocProvider.of<
+                                                                    SettingsCubit>(
+                                                                context)
+                                                            .isDarkThemEnable
+                                                        ? AppColors.whiteColor
+                                                        : AppColors.blackColor,
+                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                shadows:const [
+                                                shadows: const [
                                                   BoxShadow(
                                                     color: AppColors.whiteColor,
                                                     blurRadius: 4,
@@ -493,11 +563,18 @@ class explanaScreen extends StatelessWidget {
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
                                                               .center,
-                                                      children:  [
-                                                      const  Text(
+                                                      children: [
+                                                        Text(
                                                           'greater',
                                                           style: TextStyle(
-                                                            color: Colors.black,
+                                                            color: BlocProvider.of<
+                                                                            SettingsCubit>(
+                                                                        context)
+                                                                    .isDarkThemEnable
+                                                                ? AppColors
+                                                                    .whiteColor
+                                                                : AppColors
+                                                                    .blackColor,
                                                             fontSize: 14,
                                                             fontFamily:
                                                                 'Kodchasan',
@@ -527,12 +604,15 @@ class explanaScreen extends StatelessWidget {
                     ),
                     Container(
                       width: 375.w,
-                      decoration:const ShapeDecoration(
+                      decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             width: 1,
                             strokeAlign: BorderSide.strokeAlignCenter,
-                            color: Color(0xFF2BB598),
+                            color: BlocProvider.of<SettingsCubit>(context)
+                                    .isDarkThemEnable
+                                ? AppColors.whiteColor
+                                : AppColors.lightPrimaryColor,
                           ),
                         ),
                       ),
@@ -540,7 +620,7 @@ class explanaScreen extends StatelessWidget {
                     SizedBox(
                       height: 30.h,
                     ),
-               const     SizedBox(
+                    SizedBox(
                         width: 347,
                         child: Text.rich(
                           TextSpan(
@@ -548,7 +628,10 @@ class explanaScreen extends StatelessWidget {
                               TextSpan(
                                 text: 'If the ',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 16,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -569,7 +652,10 @@ class explanaScreen extends StatelessWidget {
                                 text:
                                     ' is “between” the minimum and maximum values of the range, it will be "',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 16,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -589,7 +675,10 @@ class explanaScreen extends StatelessWidget {
                               TextSpan(
                                 text: '"',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 16,
                                   fontFamily: 'Kumbh Sans',
                                   fontWeight: FontWeight.w400,
@@ -624,10 +713,14 @@ class explanaScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                         const       Text(
+                                Text(
                                   'HB:',
                                   style: TextStyle(
-                                    color: Colors.black,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.whiteColor
+                                            : AppColors.blackColor,
                                     fontSize: 20,
                                     fontFamily: 'Kodchasan',
                                     fontWeight: FontWeight.w400,
@@ -659,13 +752,19 @@ class explanaScreen extends StatelessWidget {
                                               clipBehavior: Clip.antiAlias,
                                               decoration: ShapeDecoration(
                                                 shape: RoundedRectangleBorder(
-                                                  side: const BorderSide(
-                                                      width: 1,
-                                                      color: Color(0xFF2BB598)),
+                                                  side: BorderSide(
+                                                    width: 1,
+                                                    color: BlocProvider.of<
+                                                                    SettingsCubit>(
+                                                                context)
+                                                            .isDarkThemEnable
+                                                        ? AppColors.whiteColor
+                                                        : AppColors.blackColor,
+                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                shadows:const [
+                                                shadows: const [
                                                   BoxShadow(
                                                     color: AppColors.whiteColor,
                                                     blurRadius: 4,
@@ -696,7 +795,14 @@ class explanaScreen extends StatelessWidget {
                                                         Text(
                                                           'Normal',
                                                           style: TextStyle(
-                                                            color: Colors.black,
+                                                            color: BlocProvider.of<
+                                                                            SettingsCubit>(
+                                                                        context)
+                                                                    .isDarkThemEnable
+                                                                ? AppColors
+                                                                    .whiteColor
+                                                                : AppColors
+                                                                    .blackColor,
                                                             fontSize: 14.sp,
                                                             fontFamily:
                                                                 'Kodchasan',
@@ -731,7 +837,10 @@ class explanaScreen extends StatelessWidget {
                           side: BorderSide(
                             width: 1.w,
                             strokeAlign: BorderSide.strokeAlignCenter,
-                            color: Color(0xFF2BB598),
+                            color: BlocProvider.of<SettingsCubit>(context)
+                                    .isDarkThemEnable
+                                ? AppColors.whiteColor
+                                : AppColors.lightPrimaryColor,
                           ),
                         ),
                       ),
@@ -804,7 +913,10 @@ class ExpandLessIcon extends StatelessWidget {
                 Icon(
                   Icons.expand_more,
                   size: 16.sp,
-                  color: Colors.black,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.blackColor,
                 ),
               ],
             ),
@@ -819,7 +931,10 @@ class ExpandLessIcon extends StatelessWidget {
               children: [
                 Icon(
                   Icons.expand_less,
-                  color: Colors.black,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.blackColor,
                   size: 16.sp,
                 ),
               ],

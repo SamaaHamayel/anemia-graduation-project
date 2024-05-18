@@ -139,7 +139,10 @@ class MyAccountState extends State<MyAccount> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CircleAvatar(
-                backgroundColor: AppColors.lightPrimaryColor,
+                backgroundColor:
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? AppColors.whiteColor
+                        : AppColors.lightPrimaryColor,
                 child: Image.asset(
                   AppAssets.female,
                   width: double.infinity,
@@ -165,7 +168,10 @@ class MyAccountState extends State<MyAccount> {
                 },
                 icon: Icon(
                   Icons.border_color_outlined,
-                  color: AppColors.lightPrimaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                   size: 30.0.sp,
                 ),
               )
@@ -199,7 +205,9 @@ class MyAccountState extends State<MyAccount> {
             children: [
               Icon(
                 icon,
-                color: AppColors.lightPrimaryColor,
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
                 size: 30.0.sp,
               ),
               Text(
@@ -216,7 +224,10 @@ class MyAccountState extends State<MyAccount> {
                 onPressed: onPressed,
                 icon: Icon(
                   Icons.arrow_forward_ios_outlined,
-                  color: AppColors.lightPrimaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                   size: 20.0.sp,
                 ),
               )
@@ -247,7 +258,9 @@ class MyAccountState extends State<MyAccount> {
             children: [
               Icon(
                 Icons.assignment_add,
-                color: AppColors.lightPrimaryColor,
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
                 size: 30.0.sp,
               ),
               TextButton(

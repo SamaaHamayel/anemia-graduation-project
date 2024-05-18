@@ -15,14 +15,19 @@ class AppAssets {
   static const String notAnemic = '${basePath}notAnematic.png';
   static const String male = '${basePath}male.png';
   static const String female = '${basePath}female.png';
-  static const String logo = '${basePath}logo(2).png';
+  static const String logo = '${basePath}logo.png';
   static const String detect = '${basePath}detect.png';
   static const String uploadImage = '$basePath.png';
   static const String Push_notifications = '${basePath}Push_notifications.png';
   static const String imageDetect = '${basePath}imageDetect.png';
   static const String anemia = '${basePath}anemia.png';
   static const String background = '${basePath}background.png';
+    static const String backgroundDark = '${basePath}backgroundDark.png';
+
     static const String noMedicine = '${basePath}noMedicine.png';
+        static const String noMedicineDark = '${basePath}noMedicineDark.png.png';
+        static const String logoDark = '${basePath}logoDark.png.png';
+//logoDark
     static const String medicine1 = '${basePath}medicine1.png';
     static const String medicine11 = '${basePath}medicine1.1.png';
     static const String medicine2 = '${basePath}medicine2.png';

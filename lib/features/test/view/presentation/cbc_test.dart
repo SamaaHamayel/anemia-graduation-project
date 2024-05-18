@@ -1,11 +1,12 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/features/test/view/presentation/result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class CBCInputField extends StatelessWidget {
   final String label;
@@ -35,7 +36,10 @@ class CBCInputField extends StatelessWidget {
               child: Text(
                 '$label:',
                 style: TextStyle(
-                  color: AppColors.blackColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.blackColor,
                   fontSize: 25.sp,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w400,
@@ -99,7 +103,10 @@ class CBCInputField extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   width: 1.w,
-                  color: AppColors.primaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                 ),
               ),
             ),
@@ -125,29 +132,30 @@ class CBCTestState extends State<CBCTest> {
   String dropdownPLT = "normal";
   String dropdownMCH = "normal";
   String dropdownMCHC = "normal";
-    String dropdownRDW = "normal";
+  String dropdownRDW = "normal";
   String dropdownHct = "normal";
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Image(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
+        ),
         automaticallyImplyLeading: false,
-        title: Container(  decoration: BoxDecoration(
-            image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
-            ),
-          ),
+        title: Container(
           child: Row(
             children: [
               IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_rounded,
-                  color: AppColors.lightPrimaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                   size: 23.sp,
                 ),
                 onPressed: () {
@@ -158,7 +166,10 @@ class CBCTestState extends State<CBCTest> {
               Text(
                 'CBC Test',
                 style: TextStyle(
-                  color: AppColors.lightPrimaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                   fontSize: 23.sp,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w500,
@@ -170,11 +181,13 @@ class CBCTestState extends State<CBCTest> {
           ),
         ),
       ),
-      backgroundColor: Colors.white,
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -188,12 +201,14 @@ class CBCTestState extends State<CBCTest> {
                 padding: EdgeInsets.all(9.w),
                 child: SizedBox(
                   child: Text(
-                    AppLocalizations.of(context)!
-                          .enterTheResult,
+                    AppLocalizations.of(context)!.enterTheResult,
                     //enterTheResult
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.black,
+                      color: BlocProvider.of<SettingsCubit>(context)
+                              .isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.blackColor,
                       fontSize: 22.sp,
                       fontFamily: 'Kumbh Sans',
                       fontWeight: FontWeight.w400,

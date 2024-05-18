@@ -23,28 +23,23 @@ class HelpfulInformationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace:  Image(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),          fit: BoxFit.cover,
+        flexibleSpace: Image(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
         ),
         automaticallyImplyLeading: false,
         title: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
-            ),
-          ),
           child: Row(
             children: [
               IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_rounded,
-                  color: AppColors.lightPrimaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                   size: 23.sp,
                 ),
                 onPressed: () {
@@ -55,7 +50,10 @@ class HelpfulInformationScreen extends StatelessWidget {
               Text(
                 AppLocalizations.of(context)!.helpfulInformation,
                 style: TextStyle(
-                  color: AppColors.lightPrimaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightBackgroundColor,
                   fontSize: 19.sp,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w500,
@@ -70,10 +68,11 @@ class HelpfulInformationScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: Expanded(
@@ -96,7 +95,10 @@ class HelpfulInformationScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         side: BorderSide(
                           width: 1.50.w,
-                          color: AppColors.lightPrimaryColor,
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.lightPrimaryColor,
                         ),
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -320,7 +322,9 @@ class HelpfulInformationScreen extends StatelessWidget {
           width: 345.w,
           clipBehavior: Clip.antiAlias,
           decoration: ShapeDecoration(
-            color: AppColors.lightBackgroundColor,
+            color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.darkGreen
+                : AppColors.lightBackgroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(24.r)),
             ),
@@ -344,7 +348,10 @@ class HelpfulInformationScreen extends StatelessWidget {
                     Text(
                       title,
                       style: TextStyle(
-                        color: AppColors.primaryColor,
+                        color: BlocProvider.of<SettingsCubit>(context)
+                                .isDarkThemEnable
+                            ? AppColors.whiteColor
+                            : AppColors.primaryColor,
                         fontSize: 18.sp,
                         fontFamily: 'Kumbh Sans',
                         fontWeight: FontWeight.w600,
@@ -357,7 +364,10 @@ class HelpfulInformationScreen extends StatelessWidget {
                       child: Text(
                         description,
                         style: TextStyle(
-                          color: AppColors.grayColor,
+                          color: BlocProvider.of<SettingsCubit>(context)
+                                  .isDarkThemEnable
+                              ? AppColors.whiteColor.withOpacity(0.5)
+                              : AppColors.grayColor,
                           fontSize: 14.sp,
                           fontFamily: 'Kumbh Sans',
                           fontWeight: FontWeight.w400,
@@ -389,7 +399,11 @@ class HelpfulInformationScreen extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         side: BorderSide(
                                           width: 1.50.w,
-                                          color: AppColors.lightPrimaryColor,
+                                          color: BlocProvider.of<SettingsCubit>(
+                                                      context)
+                                                  .isDarkThemEnable
+                                              ? AppColors.whiteColor
+                                              : AppColors.lightPrimaryColor,
                                         ),
                                         borderRadius: BorderRadius.circular(20),
                                       ),
