@@ -1,6 +1,7 @@
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_state.dart';
 import 'package:animeacheck/features/home/help_info/presentation/view/help_info.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/features/test/view/presentation/explana.dart';
 import 'package:flutter/material.dart';
 import 'package:animeacheck/features/detect/detectted/view/detectted.dart';
@@ -11,15 +12,20 @@ import '../../data/widget/build_feature_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PriHome extends StatelessWidget {
-  const PriHome({super.key,});
+  const PriHome({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),

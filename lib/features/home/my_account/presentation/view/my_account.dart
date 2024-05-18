@@ -28,10 +28,13 @@ class MyAccountState extends State<MyAccount> {
       create: (context) => SettingsCubit(),
       child: Scaffold(
         body: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
+              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? AssetImage(
+                      'lib/core/utils/appImages/images/backgroundDark.png')
+                  : AssetImage(
+                      'lib/core/utils/appImages/images/background.png'),
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
             ),
@@ -233,7 +236,7 @@ class MyAccountState extends State<MyAccount> {
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color:AppColors.whiteColor),
+            side: BorderSide(width: 1.w, color: AppColors.whiteColor),
             borderRadius: BorderRadius.circular(16.r),
           ),
         ),

@@ -20,6 +20,12 @@ class MedicineComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         flexibleSpace:  Image(
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),          fit: BoxFit.cover,
+        ),
         automaticallyImplyLeading: false,
       ),
       body: BlocConsumer<MedicineCubit, MedicineState>(

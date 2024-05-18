@@ -6,11 +6,14 @@ import 'package:animeacheck/features/home/my_account/presentation/view/my_accoun
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
 import 'package:animeacheck/features/home/setting/presentation/view/setting.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../setting/presentation/settings_cubit/settings_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,9 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        flexibleSpace: const Image(
-          image: AssetImage('lib/core/utils/appImages/images/background.png'),
-          fit: BoxFit.cover,
+        flexibleSpace:  Image(
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover,
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,10 +69,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),              fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: Center(
@@ -75,10 +82,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),              fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: Padding(

@@ -13,8 +13,10 @@ class HelpDetect extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace:  Image(
-                   image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
-
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         centerTitle: true,
@@ -41,8 +43,10 @@ class HelpDetect extends StatelessWidget {
       body: Container(
         decoration:  BoxDecoration(
           image: DecorationImage(
-                    image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
-
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
         ),

@@ -29,8 +29,10 @@ class DetectedScreen extends StatelessWidget {
                 : AppColors.lightPrimaryColor,
         appBar: AppBar(
           flexibleSpace:  Image(
-         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover,
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover,
           ),
           centerTitle: true,
           leading: IconButton(
@@ -79,10 +81,12 @@ class DetectedScreen extends StatelessWidget {
           ],
         ),
         body: Container(
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             image: DecorationImage(
-              image:
-                  AssetImage('lib/core/utils/appImages/images/background.png'),
+               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
             ),

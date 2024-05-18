@@ -23,9 +23,11 @@ class HelpfulInformationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: const Image(
-          image: AssetImage('lib/core/utils/appImages/images/background.png'),
-          fit: BoxFit.cover,
+        flexibleSpace:  Image(
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),          fit: BoxFit.cover,
         ),
         automaticallyImplyLeading: false,
         title: Container(
@@ -68,8 +70,10 @@ class HelpfulInformationScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: Expanded(

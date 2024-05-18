@@ -1,6 +1,7 @@
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_cubit.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_state.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_component.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,6 +20,12 @@ class MedicineScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         flexibleSpace:  Image(
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),          fit: BoxFit.cover,
+        ),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
@@ -30,10 +37,7 @@ class MedicineScreen extends StatelessWidget {
             color: AppColors.primaryColor,
           ),
         ),
-        flexibleSpace: const Image(
-          image: AssetImage('lib/core/utils/appImages/images/background.png'),
-          fit: BoxFit.cover,
-        ),
+       
         title: Text(
           AppLocalizations.of(context)!.medicineReminder,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
@@ -45,11 +49,14 @@ class MedicineScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Image.asset(
-            "lib/core/utils/appImages/images/background.png",
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
+           Image.asset(
+    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ? 
+                 (
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : ('lib/core/utils/appImages/images/background.png'),
+                           fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           SizedBox(
             height: 30.h,
           ),

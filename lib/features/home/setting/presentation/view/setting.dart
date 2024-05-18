@@ -18,8 +18,10 @@ class Setting extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+ image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage('lib/core/utils/appImages/images/background.png'),              fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
         child: BlocConsumer<SettingsCubit, SettingsState>(
