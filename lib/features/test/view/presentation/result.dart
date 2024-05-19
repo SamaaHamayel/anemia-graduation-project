@@ -32,7 +32,7 @@ class resultState extends State<resultTest> {
   void calculateResult() {
     //1
     if ((dropdownWCB == 'normal' &&
-        dropdownRBC != 'greater' &&
+        dropdownRBC == 'normal' &&
         dropdownHB == "less" &&
         dropdownHct == "less" &&
         dropdownMCV == "less" &&
@@ -45,23 +45,23 @@ class resultState extends State<resultTest> {
     //2
     else if ((dropdownWCB != "less" &&
         dropdownRBC != 'greater' &&
-        dropdownHB != 'greater' &&
-        dropdownHct != 'greater' &&
-        dropdownMCV != 'greater' &&
-        dropdownMCH != 'greater' &&
+        dropdownHB == 'less' &&
+        dropdownHct == 'less' &&
+        dropdownMCV == 'less' &&
+        dropdownMCH == 'less' &&
         dropdownMCHC != 'greater' &&
-        dropdownRDW != "less" &&
+        dropdownRDW != "greater" &&
         dropdownPLT != 'less')) {
       result = ' انيميا البحر المتوسط (Thalassemia)';
     }
     //3,4
-    else if ((dropdownWCB != "less" &&
-        dropdownRBC != 'greater' &&
+    else if ((dropdownWCB == "normal" &&
+        dropdownRBC == 'normal' &&
         dropdownHB == "less" &&
-        dropdownHct != 'greater' &&
+        dropdownHct == 'less' &&
         dropdownMCV == 'greater' &&
-        dropdownMCH != "greater" &&
-        dropdownMCHC != 'greater' &&
+        dropdownMCH == "less" &&
+        dropdownMCHC == 'normal' &&
         dropdownRDW == "greater" &&
         dropdownPLT == 'normal')) {
       result =
@@ -69,15 +69,15 @@ class resultState extends State<resultTest> {
     }
 
     //5
-    else if ((dropdownWCB != "less" &&
-        dropdownRBC != 'greater' &&
-        dropdownHB != 'greater' &&
-        dropdownHct != 'greater' &&
-        dropdownMCV != 'greater' &&
-        dropdownMCH != 'greater' &&
-        dropdownMCHC != 'greater' &&
+    else if ((dropdownWCB == "normal" &&
+        dropdownRBC == 'less' &&
+        dropdownHB == 'less' &&
+        dropdownHct == 'less' &&
+        dropdownMCV == 'less' &&
+        dropdownMCH == 'less' &&
+        dropdownMCHC == 'less' &&
         dropdownRDW == 'greater' &&
-        dropdownPLT != 'less')) {
+        dropdownPLT == 'normal')) {
       result = 'انيميا السيكل الخلوي (Sickle cell anemia)';
     }
     //6
@@ -95,16 +95,19 @@ class resultState extends State<resultTest> {
     }
     //7
     else if ((dropdownWCB == 'normal' &&
-        dropdownRBC != 'greater' &&
+        dropdownRBC == 'normal' &&
         dropdownHB == "less" &&
-        dropdownHct != 'greater' &&
-        dropdownMCV != 'greater' &&
+        dropdownHct == 'less' &&
+        dropdownMCV == 'greater' &&
         dropdownMCH == "less" &&
-        dropdownMCHC != 'greater' &&
+        dropdownMCHC == 'normal' &&
         dropdownRDW == "greater" &&
         dropdownPLT == 'normal')) {
-      result = 'انيميا الفول (Iron deficiency anemia)،';
-    } else {
+      result = 'انيميا فول الدم (Sickle cell anemia)';
+    }
+   
+     
+    else {
       result = 'No specific condition met';
     }
   }

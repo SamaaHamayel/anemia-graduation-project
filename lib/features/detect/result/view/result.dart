@@ -2,8 +2,8 @@ import 'package:animeacheck/features/home/setting/presentation/settings_cubit/se
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class result extends StatelessWidget {
-  const result({super.key});
+class results extends StatelessWidget {
+  const results({super.key});
 
   @override
   Widget build(BuildContext context) {
