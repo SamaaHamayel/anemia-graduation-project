@@ -99,7 +99,10 @@ class ResultScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               side: BorderSide(
                                   width: 1.50,
-                                  color: AppColors.lightPrimaryColor),
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.lightPrimaryColor),
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
@@ -115,11 +118,18 @@ class ResultScreen extends StatelessWidget {
                                 );
                               },
                               style: TextButton.styleFrom(
-                                foregroundColor: AppColors.lightPrimaryColor,
+                                foregroundColor:
+                                    BlocProvider.of<SettingsCubit>(context)
+                                            .isDarkThemEnable
+                                        ? AppColors.whiteColor
+                                        : AppColors.lightPrimaryColor,
                                 padding: EdgeInsets.zero,
                                 textStyle: TextStyle(
                                   fontSize: 18.sp,
-                                  color: AppColors.lightPrimaryColor,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.lightPrimaryColor,
                                   fontFamily: 'Kodchasan',
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -176,7 +186,6 @@ class ResultScreen extends StatelessWidget {
                         ),
                     ],
                   ),
-                  
                 ],
               ),
             ),
