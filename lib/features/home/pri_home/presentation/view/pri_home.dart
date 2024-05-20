@@ -1,5 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_state.dart';
+import 'package:animeacheck/features/detect/help/error/error.dart';
 import 'package:animeacheck/features/home/help_info/presentation/view/help_info.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/features/test/view/presentation/explana.dart';
@@ -10,11 +11,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
 import '../../data/widget/build_feature_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+
 
 class PriHome extends StatelessWidget {
   const PriHome({
     super.key,
   });
+  Future<bool> _isConnected() async {
+  var connectivityResult = await (Connectivity().checkConnectivity());
+  return connectivityResult != ConnectivityResult.none;
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -103,10 +111,23 @@ class PriHome extends StatelessWidget {
     );
   }
 
-  void _navigateToDetectedScreen(BuildContext context) {
+void _navigateToDetectedScreen(BuildContext context) async {
+  bool isConnected = await _isConnected();
+
+  if (isConnected) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const DetectedScreen()),
     );
+  } else {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ErrorScreen(
+          onRetry: () => _navigateToDetectedScreen(context),
+        ),
+      ),
+    );
   }
+}
 }
