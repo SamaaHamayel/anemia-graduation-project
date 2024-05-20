@@ -28,27 +28,34 @@ class DetectedScreen extends StatelessWidget {
                 ? AppColors.darkThemBlackColor
                 : AppColors.lightPrimaryColor,
         appBar: AppBar(
-          flexibleSpace:  Image(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+          flexibleSpace: Image(
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover,
+                : AssetImage('lib/core/utils/appImages/images/background.png'),
+            fit: BoxFit.cover,
           ),
           centerTitle: true,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon:  Icon(
+            icon: Icon(
               Icons.arrow_back_ios,
               size: 23,
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? AppColors.whiteColor
+                  : AppColors.lightPrimaryColor,
             ),
           ),
           title: Container(
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                        image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+                image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AssetImage(
+                        'lib/core/utils/appImages/images/backgroundDark.png')
+                    : AssetImage(
+                        'lib/core/utils/appImages/images/background.png'),
 
                 fit: BoxFit
                     .cover, // Optional: You can set the image fit as needed
@@ -57,7 +64,10 @@ class DetectedScreen extends StatelessWidget {
             child: Text(AppLocalizations.of(context)!.detectAnemia,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     fontSize: 24,
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+                    color:
+                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ? AppColors.whiteColor
+                            : AppColors.lightPrimaryColor,
                     fontFamily: 'Kodchasan',
                     fontWeight: FontWeight.w700)),
           ),
@@ -67,7 +77,10 @@ class DetectedScreen extends StatelessWidget {
               child: IconButton(
                 icon: Icon(
                   Icons.help,
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
                   size: 30.sp,
                 ),
                 onPressed: () {
@@ -81,12 +94,13 @@ class DetectedScreen extends StatelessWidget {
           ],
         ),
         body: Container(
-          decoration:  BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? AssetImage(
+                      'lib/core/utils/appImages/images/backgroundDark.png')
+                  : AssetImage(
+                      'lib/core/utils/appImages/images/background.png'),
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
             ),
@@ -113,9 +127,9 @@ class DetectedScreen extends StatelessWidget {
                       child: state is ClassifyImageLoadingState
                           ? CircularProgressIndicator()
                           : detectAnemiaCubit.image == null
-                          ? Image.asset(
-                          'lib/core/utils/appImages/images/detectAnemia.png')
-                          : Image.file(File(detectAnemiaCubit.image!.path)),
+                              ? Image.asset(
+                                  'lib/core/utils/appImages/images/detectAnemia.png')
+                              : Image.file(File(detectAnemiaCubit.image!.path)),
                     ),
 
                     Padding(
@@ -129,7 +143,10 @@ class DetectedScreen extends StatelessWidget {
                               .displayMedium!
                               .copyWith(
                                 fontSize: 20.sp,
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.lightPrimaryColor,
                                 fontFamily: 'Kodchasan',
                                 fontWeight: FontWeight.w600,
                                 height: 0,
@@ -154,16 +171,15 @@ class DetectedScreen extends StatelessWidget {
                             (value) => detectAnemiaCubit.takeImage(value));
                       },
                     ),
-
-                    TextButton(
-                        onPressed: (){
-                          detectAnemiaCubit.classifyImage(
-                              detectAnemiaCubit.image!
-                          );
-                        },
-                        child: Text("Classification"))
-
-
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            detectAnemiaCubit
+                                .classifyImage(detectAnemiaCubit.image!);
+                          },
+                          child: Text("Classification")),
+                    )
                   ],
                 );
               },

@@ -24,7 +24,7 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
     }
   }
 
-  Future<Image> classifyImage(XFile imageFile) async {
+  Future<dynamic> classifyImage(XFile imageFile) async {
     final dio = Dio();
     emit(ClassifyImageLoadingState());
     try {
@@ -42,7 +42,15 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
       if (response.statusCode == 200) {
         emit(ClassifyImageSuccessState());
         final message = response.data['message'];
-        return Image(image: AssetImage(message));
+        if (message == "anemia detected ") {
+          return Scaffold(
+            body: Text("anemia detected"),
+          );
+        } else {
+          return Scaffold(
+            body: Text("not anemia detected"),
+          );
+        }
       } else {
         emit(ClassifyImageErrorState('Failed to classify image'));
         throw Exception('Failed to classify image');
