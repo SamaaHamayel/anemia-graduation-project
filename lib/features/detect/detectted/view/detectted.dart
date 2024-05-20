@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:animeacheck/features/detect/detectted/view/detected_result.dart';
 import 'package:animeacheck/features/detect/help/help.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_state.dart';
@@ -13,8 +14,6 @@ import '../../../../core/utils/common.dart';
 import '../../../home/home_widgets/image_picker_button.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'detected_result.dart';
 
 class DetectedScreen extends StatelessWidget {
   const DetectedScreen({Key? key}) : super(key: key);
@@ -114,12 +113,12 @@ class DetectedScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return DetectedImage(
+                        return ResultScreen(
                           message: BlocProvider.of<DetectAnemiaCubit>(context)
                               .data['message'],
-                          predictedClass:
-                              BlocProvider.of<DetectAnemiaCubit>(context)
-                                  .data['metadata']['predicted_classes'][0],
+                          // predictedClass:
+                          //     BlocProvider.of<DetectAnemiaCubit>(context)
+                          //         .data['metadata']['predicted_classes'][0],
                         );
                       },
                     ),
@@ -172,8 +171,13 @@ class DetectedScreen extends StatelessWidget {
                     //pick image from camera
                     ImagePickerButton(
                       icon: Icons.camera_alt_rounded,
-                      onTap: () {
-                        // pickImage(ImageSource.camera).then(
+                      onTap: () async {
+                        detectAnemiaCubit.image =
+                            await pickImage(ImageSource.camera);
+                        print(detectAnemiaCubit.image!.path);
+                        detectAnemiaCubit
+                            .classifyImage(detectAnemiaCubit.image!);
+                        // pickImage(ImageSource.gallery).then(
                         //     (value) => detectAnemiaCubit.takeImage(value));
                       },
                     ),
@@ -191,15 +195,6 @@ class DetectedScreen extends StatelessWidget {
                         //     (value) => detectAnemiaCubit.takeImage(value));
                       },
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            // detectAnemiaCubit
-                            //     .classifyImage(detectAnemiaCubit.image!);
-                          },
-                          child: Text("Classification")),
-                    )
                   ],
                 );
               },
