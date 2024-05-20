@@ -81,7 +81,7 @@ class PriHome extends StatelessWidget {
                       onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const explanaScreen()),
+                                builder: (context) => const ExplanaScreen()),
                           )),
                   buildFeatureCard(
                       icon: Icons.quiz,

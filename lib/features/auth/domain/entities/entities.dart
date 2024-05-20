@@ -32,7 +32,7 @@ class SignUpModel {
   factory SignUpModel.fromJson(Map<String, dynamic> jsonData) {
     return SignUpModel(
       message: jsonData[ApiKeys.message],
-      token: jsonData[ApiKeys.token],
+      token: 'Route__ ${jsonData[ApiKeys.token]}',
     );
   }
 }

@@ -1,9 +1,7 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/features/test/view/presentation/result.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,7 +12,7 @@ class CBCInputField extends StatelessWidget {
   final List<String> options;
   final Function(String) onChanged;
 
-  const CBCInputField({
+  const CBCInputField({super.key,
     required this.label,
     required this.value,
     required this.options,
@@ -32,7 +30,7 @@ class CBCInputField extends StatelessWidget {
           children: [
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
+                   EdgeInsets.symmetric(vertical: 8.w, horizontal: 30.h),
               child: Text(
                 '$label:',
                 style: TextStyle(
@@ -110,7 +108,7 @@ class CBCInputField extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
+          padding:  EdgeInsets.symmetric(vertical: 20.0.w),
           child: Container(
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
@@ -147,6 +145,7 @@ class CBCTestState extends State<CBCTest> {
   String dropdownMCHC = "normal";
   String dropdownRDW = "normal";
   String dropdownHct = "normal";
+  String result = '';
 
   @override
   Widget build(BuildContext context) {
@@ -154,53 +153,51 @@ class CBCTestState extends State<CBCTest> {
       appBar: AppBar(
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              : AssetImage('lib/core/utils/appImages/images/background.png'),
+              ? const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : const AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         automaticallyImplyLeading: false,
-        title: Container(
-          child: Row(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.lightPrimaryColor,
-                  size: 23.sp,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+        title: Row(
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_rounded,
+                color:
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? AppColors.whiteColor
+                        : AppColors.lightPrimaryColor,
+                size: 23.sp,
               ),
-              SizedBox(width: 85.w),
-              Text(
-                'CBC Test',
-                style: TextStyle(
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.lightPrimaryColor,
-                  fontSize: 23.sp,
-                  fontFamily: 'Kodchasan',
-                  fontWeight: FontWeight.w500,
-                  height: 0,
-                  letterSpacing: 1.76,
-                ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            SizedBox(width: 85.w),
+            Text(
+              'CBC Test',
+              style: TextStyle(
+                color:
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? AppColors.whiteColor
+                        : AppColors.lightPrimaryColor,
+                fontSize: 23.sp,
+                fontFamily: 'Kodchasan',
+                fontWeight: FontWeight.w500,
+                height: 0,
+                letterSpacing: 1.76,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -239,67 +236,73 @@ class CBCTestState extends State<CBCTest> {
                       CBCInputField(
                         label: 'RBC',
                         value: dropdownRBC,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownRBC = newValue;
+
                           });
                         },
                       ),
                       CBCInputField(
                         label: 'WCB',
                         value: dropdownWCB,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownWCB = newValue;
+
                           });
                         },
                       ),
                       CBCInputField(
                         label: ' HB  ',
                         value: dropdownHB,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownHB = newValue;
+
                           });
                         },
                       ),
                       CBCInputField(
                         label: 'MCV',
                         value: dropdownMCV,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownMCV = newValue;
+
                           });
                         },
                       ),
                       CBCInputField(
                         label: 'PLT ',
                         value: dropdownPLT,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownPLT = newValue;
+
                           });
                         },
                       ),
                       CBCInputField(
                         label: 'MCH',
                         value: dropdownMCH,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownMCH = newValue;
+
                           });
                         },
                       ),
                       CBCInputField(
                         label: 'RDW',
                         value: dropdownRDW,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownRDW = newValue;
@@ -309,22 +312,23 @@ class CBCTestState extends State<CBCTest> {
                       CBCInputField(
                         label: 'Hct',
                         value: dropdownHct,
-                        options: ['normal', 'less', 'greater'],
+                        options: const ['normal', 'less', 'greater'],
                         onChanged: (newValue) {
                           setState(() {
                             dropdownHct = newValue;
+
                           });
                         },
                       ),
                       Row(
                         children: [
-                          SizedBox(
-                            width: 20,
+                           SizedBox(
+                            width: 20.w,
                           ),
                           CBCInputField(
                             label: 'MCHC',
                             value: dropdownMCHC,
-                            options: ['normal', 'less', 'greater'],
+                            options: const ['normal', 'less', 'greater'],
                             onChanged: (newValue) {
                               setState(() {
                                 dropdownMCHC = newValue;
@@ -347,7 +351,7 @@ class CBCTestState extends State<CBCTest> {
                     padding: const EdgeInsets.symmetric(vertical: 13),
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         begin: Alignment(0.00, -1.00),
                         end: Alignment(0, 1),
                         colors: [
@@ -359,9 +363,10 @@ class CBCTestState extends State<CBCTest> {
                     ),
                     child: TextButton(
                       onPressed: () {
+                        calculateResult();
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => resultTest()),
+                          MaterialPageRoute(builder: (context) => ResultTest(result: result),),
                         );
                         setState(() {});
                       },
@@ -375,7 +380,7 @@ class CBCTestState extends State<CBCTest> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      child: Text('See the result'),
+                      child: const Text('See the result'),
                     ),
                   ),
                 ),
@@ -386,4 +391,86 @@ class CBCTestState extends State<CBCTest> {
       ),
     );
   }
+
+  void calculateResult() {
+    //1
+    if ((dropdownWCB == 'normal' &&
+        dropdownRBC == 'normal' &&
+        dropdownHB == "less" &&
+        dropdownHct == "less" &&
+        dropdownMCV == "less" &&
+        dropdownMCH == "less" &&
+        dropdownMCHC == "less" &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == 'normal')) {
+      result = 'فقر الدم الناتج عن نقص الحديد (Iron deficiency anemia)،';
+    }
+    //2
+    else if ((dropdownWCB != "less" &&
+        dropdownRBC != 'greater' &&
+        dropdownHB == 'less' &&
+        dropdownHct == 'less' &&
+        dropdownMCV == 'less' &&
+        dropdownMCH == 'less' &&
+        dropdownMCHC != 'greater' &&
+        dropdownRDW != "greater" &&
+        dropdownPLT != 'less')) {
+      result = ' انيميا البحر المتوسط (Thalassemia)';
+    }
+    //3,4
+    else if ((dropdownWCB == "normal" &&
+        dropdownRBC == 'normal' &&
+        dropdownHB == "less" &&
+        dropdownHct == 'less' &&
+        dropdownMCV == 'greater' &&
+        dropdownMCH == "less" &&
+        dropdownMCHC == 'normal' &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == 'normal')) {
+      result =
+      'فقر الدم الناتج عن نقص حمض الفوليك (Folic acid deficiency anemia OR /n فقر الدم الناتج عن نقص فيتامين ب12 (Vitamin B12 deficiency anemia)';
+    }
+
+    //5
+    else if ((dropdownWCB == "normal" &&
+        dropdownRBC == 'less' &&
+        dropdownHB == 'less' &&
+        dropdownHct == 'less' &&
+        dropdownMCV == 'less' &&
+        dropdownMCH == 'less' &&
+        dropdownMCHC == 'less' &&
+        dropdownRDW == 'greater' &&
+        dropdownPLT == 'normal')) {
+      result = 'انيميا السيكل الخلوي (Sickle cell anemia)';
+    }
+    //6
+    else if ((dropdownWCB != "less" &&
+        dropdownRBC != 'greater' &&
+        dropdownHB == 'less' &&
+        dropdownHct != 'greater' &&
+        dropdownMCV != 'greater' &&
+        dropdownMCH == "less" &&
+        dropdownMCHC != 'greater' &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == "less")) {
+      result =
+      'فقر الدم الناتج عن التهاب المفاصل الرثوي (Rheumatoid arthritis anemia)';
+    }
+    //7
+    else if ((dropdownWCB == 'normal' &&
+        dropdownRBC == 'normal' &&
+        dropdownHB == "less" &&
+        dropdownHct == 'less' &&
+        dropdownMCV == 'greater' &&
+        dropdownMCH == "less" &&
+        dropdownMCHC == 'normal' &&
+        dropdownRDW == "greater" &&
+        dropdownPLT == 'normal')) {
+      result = 'انيميا فول الدم (Sickle cell anemia)';
+    }
+    else {
+      result = 'No specific condition met';
+    }
+  }
 }
+

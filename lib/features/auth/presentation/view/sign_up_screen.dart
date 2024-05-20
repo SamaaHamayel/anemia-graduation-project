@@ -185,10 +185,7 @@ class SignUpScreen extends StatelessWidget {
                           BlocProvider.of<SignUpCubit>(context)
                               .signUp();
                         }
-
                         //navigateReplacement(context: context, route: Routes.infoOne);
-
-
                       },),
                   SizedBox(
                     height: 41.h,

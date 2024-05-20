@@ -37,8 +37,8 @@ void showToast({
 }) {
   Fluttertoast.showToast(
       msg: message,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.CENTER,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
       backgroundColor: getState(state),
       textColor: Colors.white,
@@ -62,6 +62,7 @@ Color getState(ToastStates state) {
  Future<XFile?> pickImage(ImageSource source) async{
   XFile? image = await ImagePicker().pickImage(source: source);
   if(image!=null){
+    print(image.path);
     return image;
   }else{
     return null;

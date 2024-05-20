@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -10,7 +11,7 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
   DetectAnemiaCubit() : super(DetectAnemiaInitial());
 
   XFile? image;
-
+   dynamic data;
   // Take image from user
   void takeImage(value) {
     image = value;
@@ -30,32 +31,23 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
     try {
       String fileName = imageFile.path.split('/').last;
       FormData formData = FormData.fromMap({
-        "file":
+        "image":
             await MultipartFile.fromFile(imageFile.path, filename: fileName),
       });
-
       final response = await dio.post(
         EndPoint.anemiaModel,
         data: formData,
       );
-
       if (response.statusCode == 200) {
         emit(ClassifyImageSuccessState());
-        final message = response.data['message'];
-        if (message == "anemia detected ") {
-          return Scaffold(
-            body: Text("anemia detected"),
-          );
-        } else {
-          return Scaffold(
-            body: Text("not anemia detected"),
-          );
-        }
+        data = response.data;
+        print(data);
       } else {
         emit(ClassifyImageErrorState('Failed to classify image'));
         throw Exception('Failed to classify image');
       }
     } catch (e) {
+      log(e.toString());
       emit(ClassifyImageErrorState('Failed to classify image: $e'));
       throw Exception('Failed to classify image: $e');
     }

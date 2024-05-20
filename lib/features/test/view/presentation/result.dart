@@ -9,122 +9,26 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 //resultTest
 
-class resultTest extends StatefulWidget {
-  const resultTest({Key? key}) : super(key: key);
+class ResultTest extends StatefulWidget {
+  final String result;
+  const ResultTest({Key? key, required this.result}) : super(key: key);
 
   @override
-  State<resultTest> createState() => resultState();
+  State<ResultTest> createState() => ResultState();
 }
 
-class resultState extends State<resultTest> {
-  String dropdownRBC = ""; //عدد كرات الدم الحمراء
-  String dropdownWCB = ""; //
-  String dropdownHB = ""; // الهيمجلوبين
-  String dropdownMCV = ""; // حجم كرات الدم
-  String dropdownPLT = ""; //
-  String dropdownMCH = ""; //
-  String dropdownMCHC = "";
-  String dropdownRDW = "";
-  String dropdownHct = "";
-
-  String result = '';
-
-  void calculateResult() {
-    //1
-    if ((dropdownWCB == 'normal' &&
-        dropdownRBC == 'normal' &&
-        dropdownHB == "less" &&
-        dropdownHct == "less" &&
-        dropdownMCV == "less" &&
-        dropdownMCH == "less" &&
-        dropdownMCHC == "less" &&
-        dropdownRDW == "greater" &&
-        dropdownPLT == 'normal')) {
-      result = 'فقر الدم الناتج عن نقص الحديد (Iron deficiency anemia)،';
-    }
-    //2
-    else if ((dropdownWCB != "less" &&
-        dropdownRBC != 'greater' &&
-        dropdownHB == 'less' &&
-        dropdownHct == 'less' &&
-        dropdownMCV == 'less' &&
-        dropdownMCH == 'less' &&
-        dropdownMCHC != 'greater' &&
-        dropdownRDW != "greater" &&
-        dropdownPLT != 'less')) {
-      result = ' انيميا البحر المتوسط (Thalassemia)';
-    }
-    //3,4
-    else if ((dropdownWCB == "normal" &&
-        dropdownRBC == 'normal' &&
-        dropdownHB == "less" &&
-        dropdownHct == 'less' &&
-        dropdownMCV == 'greater' &&
-        dropdownMCH == "less" &&
-        dropdownMCHC == 'normal' &&
-        dropdownRDW == "greater" &&
-        dropdownPLT == 'normal')) {
-      result =
-          'فقر الدم الناتج عن نقص حمض الفوليك (Folic acid deficiency anemia OR /n فقر الدم الناتج عن نقص فيتامين ب12 (Vitamin B12 deficiency anemia)';
-    }
-
-    //5
-    else if ((dropdownWCB == "normal" &&
-        dropdownRBC == 'less' &&
-        dropdownHB == 'less' &&
-        dropdownHct == 'less' &&
-        dropdownMCV == 'less' &&
-        dropdownMCH == 'less' &&
-        dropdownMCHC == 'less' &&
-        dropdownRDW == 'greater' &&
-        dropdownPLT == 'normal')) {
-      result = 'انيميا السيكل الخلوي (Sickle cell anemia)';
-    }
-    //6
-    else if ((dropdownWCB != "less" &&
-        dropdownRBC != 'greater' &&
-        dropdownHB == 'less' &&
-        dropdownHct != 'greater' &&
-        dropdownMCV != 'greater' &&
-        dropdownMCH == "less" &&
-        dropdownMCHC != 'greater' &&
-        dropdownRDW == "greater" &&
-        dropdownPLT == "less")) {
-      result =
-          'فقر الدم الناتج عن التهاب المفاصل الرثوي (Rheumatoid arthritis anemia)';
-    }
-    //7
-    else if ((dropdownWCB == 'normal' &&
-        dropdownRBC == 'normal' &&
-        dropdownHB == "less" &&
-        dropdownHct == 'less' &&
-        dropdownMCV == 'greater' &&
-        dropdownMCH == "less" &&
-        dropdownMCHC == 'normal' &&
-        dropdownRDW == "greater" &&
-        dropdownPLT == 'normal')) {
-      result = 'انيميا فول الدم (Sickle cell anemia)';
-    }
-   
-     
-    else {
-      result = 'No specific condition met';
-    }
-  }
+class ResultState extends State<ResultTest> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      calculateResult();
-    });
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -190,8 +94,8 @@ class resultState extends State<resultTest> {
                               ),
                             ),
                             TextSpan(
-                              text: "$result" ,
-                              style: TextStyle(
+                              text:widget.result,
+                              style: const TextStyle(
                                 color: Color(0xFFFF0100),
                                 fontSize: 24,
                                 fontFamily: 'Kodchasan',
@@ -226,9 +130,9 @@ class resultState extends State<resultTest> {
                   )
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
                     Container(
@@ -263,7 +167,7 @@ class resultState extends State<resultTest> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => PriHome()),
+                                    builder: (context) => const PriHome()),
                               );
                             },
                             style: TextButton.styleFrom(
@@ -273,7 +177,7 @@ class resultState extends State<resultTest> {
                                       ? AppColors.whiteColor
                                       : AppColors.lightPrimaryColor,
                               padding: EdgeInsets.zero,
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                 fontFamily: 'Kodchasan',
                                 fontWeight: FontWeight.w700,
                               ),
@@ -285,7 +189,7 @@ class resultState extends State<resultTest> {
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 30.h,
                     ),
                   ],
                 ),
@@ -301,7 +205,7 @@ class resultState extends State<resultTest> {
                 ),
                 clipBehavior: Clip.antiAlias,
                 decoration: ShapeDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     begin: Alignment(0.00, -1.00),
                     end: Alignment(0, 1),
                     colors: [Color(0xFF2BB598), Color(0xFF398272)],
@@ -320,7 +224,7 @@ class resultState extends State<resultTest> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HelpfulInformationScreen()),
+                              builder: (context) => const HelpfulInformationScreen()),
                         );
                       },
                       style: TextButton.styleFrom(
