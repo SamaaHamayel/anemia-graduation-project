@@ -1,6 +1,8 @@
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
+import 'package:animeacheck/features/detect/help/error/error.dart';
 import 'package:animeacheck/features/home/help_info/presentation/view/article_detail.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,6 +19,11 @@ class HelpfulInformationScreen extends StatelessWidget {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  Future<bool> _isConnected() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    return connectivityResult != ConnectivityResult.none;
   }
 
   @override
@@ -105,8 +112,23 @@ class HelpfulInformationScreen extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () async {
-                        await launchURL(
-                            'https://www.youtube.com/watch?v=ZaOhQ1C8dtg&t=160s&pp=ygUt2KfZitmF2KfZhiDYp9mE2KfZhdin2YUg2KfZhNin2LPYqNiq2KfZhNmK2Kkg');
+                      
+                        bool isConnected = await _isConnected();
+
+                        if (isConnected) {
+                          await launchURL(
+                              'https://www.youtube.com/watch?v=ZaOhQ1C8dtg&t=160s&pp=ygUt2KfZitmF2KfZhiDYp9mE2KfZhdin2YUg2KfZhNin2LPYqNiq2KfZhNmK2Kkg');
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ErrorScreen(
+                                  onRetry: () => launchURL(
+                                      'https://www.youtube.com/watch?v=ZaOhQ1C8dtg&t=160s&pp=ygUt2KfZitmF2KfZhiDYp9mE2KfZhdin2YUg2KfZhNin2LPYqNiq2KfZhNmK2Kkg')),
+                            ),
+                          );
+                        }
+//}
                       },
                       child: Text(
                         AppLocalizations.of(context)!.watchAGeneralVideo,

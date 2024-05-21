@@ -110,7 +110,9 @@ class PriHome extends StatelessWidget {
       ),
     );
   }
-
+// Future<bool> _isConnected() async {
+  // var connectivityResult = await (Connectivity().checkConnectivity());
+  // return connectivityResult != ConnectivityResult.none;
 void _navigateToDetectedScreen(BuildContext context) async {
   bool isConnected = await _isConnected();
 
@@ -130,4 +132,5 @@ void _navigateToDetectedScreen(BuildContext context) async {
     );
   }
 }
+
 }
