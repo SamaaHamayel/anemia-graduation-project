@@ -13,15 +13,18 @@ class ErrorScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => SettingsCubit(),
       child: Scaffold(
-        backgroundColor: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-            ? AppColors.darkThemBlackColor
-            : AppColors.lightPrimaryColor,
+        backgroundColor:
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.darkThemBlackColor
+                : AppColors.lightPrimaryColor,
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-                  : AssetImage('lib/core/utils/appImages/images/background.png'),
+                  ? AssetImage(
+                      'lib/core/utils/appImages/images/backgroundDark.png')
+                  : AssetImage(
+                      'lib/core/utils/appImages/images/background.png'),
               fit: BoxFit.cover,
             ),
           ),
@@ -31,10 +34,11 @@ class ErrorScreen extends StatelessWidget {
               children: [
                 Icon(
                   Icons.wifi_off,
-                  size: 100,
-                  color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                      ? AppColors.whiteColor
-                      : AppColors.darkThemBlackColor,
+                  size: 200,
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.darkThemBlackColor,
                 ),
                 SizedBox(height: 20),
                 Text(
@@ -42,24 +46,27 @@ class ErrorScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                        ? AppColors.whiteColor
-                        : AppColors.darkThemBlackColor,
+                    color:
+                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ? AppColors.whiteColor
+                            : AppColors.darkThemBlackColor,
                   ),
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: onRetry,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                        ? AppColors.lightPrimaryColor
-                        : AppColors.darkThemBlackColor,
+                    backgroundColor:
+                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ? AppColors.lightPrimaryColor
+                            : AppColors.darkThemBlackColor,
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   ),
                   child: Text(
                     'Try Again',
                     style: TextStyle(
-                      color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                      color: BlocProvider.of<SettingsCubit>(context)
+                              .isDarkThemEnable
                           ? AppColors.darkThemBlackColor
                           : AppColors.whiteColor,
                       fontSize: 16,
