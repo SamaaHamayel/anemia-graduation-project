@@ -10,39 +10,41 @@ class SqfliteHelper {
   //! initDatabase
   void intiDB() async {
     //step 1 => Create database
-    await openDatabase(
+    db = await openDatabase(
       'medicine.db',
       version: 1,
       onCreate: (Database db, int v) async {
         //step 2 => create table
         return await db.execute('''
-      CREATE TABLE Tasks (
-        id INTEGER PRIMARY KEY AUTOINCREMENT ,
+        CREATE TABLE Medicine (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         dose INTEGER,
-        shape IMAGE,
-        startTime TEXT,)
+        shape INTEGER,
+        startTime TEXT)
       ''').then(
-              (value) => print('DB created successfully'),
+          (value) => print('DB created successfully'),
         );
       },
       onOpen: (db) => print('Database opened'),
     ).then((value) => db = value);
   }
 
+  //! insert
+  Future<int> insertToDB({required MedicineModel model}) async {
+    return await db.rawInsert('''
+    INSERT INTO Medicine(name, dose, shape, startTime)
+    VALUES(?, ?, ?, ?)''', [
+      model.medicineName,
+      model.medicineDose,
+      model.medicineShape,
+      model.startTime,
+    ]);
+  }
+
   //!get
   Future<List<Map<String, dynamic>>> getFromDB() async {
     return await db.rawQuery('SELECT * FROM Medicine');
-  }
-
-  //! insert
-  Future<int> insertToDB(MedicineModel model) async {
-    return await db.rawInsert('''
-      INSERT INTO Medicine( 
-      name ,dose ,shape ,startTime )
-         VALUES
-         ('${model.startTime}',
-       '${model.medicineName}','${model.medicineDose}','${model.medicineShape}')''');
   }
 
   //! update

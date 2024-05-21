@@ -136,6 +136,7 @@ class AddMedicineButtonSheet extends StatelessWidget {
                             ),
                           ),
                         ),
+                        // Text("data"),
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
@@ -232,12 +233,6 @@ class AddMedicineButtonSheet extends StatelessWidget {
                                     BlocProvider.of<MedicineCubit>(context)
                                         .insertMedicine();
                                   }
-                                  // BlocProvider.of<MedicineCubit>(context)
-                                  //     .getStartTime(context);
-                                  // (GetStartTimeSuccessState);
-                                  // BlocProvider.of<MedicineCubit>(context)
-                                  //     .insertMedicine();
-                                  // (InsertMedicineSuccessState());
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
@@ -274,18 +269,4 @@ class AddMedicineButtonSheet extends StatelessWidget {
       ),
     );
   }
-
-  // void chooseDateTime(context) async {
-  //   DateTime? chooseDate = await showDatePicker(
-  //       context: context,
-  //       initialDate: selectedDate,
-  //       firstDate: DateTime.now(),
-  //       lastDate: DateTime.now().add(const Duration(days: 365)));
-  //
-  //   if (chooseDate != null) {
-  //     selectedDate = chooseDate;
-  //     //setState(() {});
-  //   }
-  // }
-  //
 }

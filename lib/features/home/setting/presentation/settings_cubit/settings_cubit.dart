@@ -21,7 +21,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void getLang() async{
-    isArabicEnable= await sl<CacheHelper>().getData(key: "isArabicEnable");
+    isArabicEnable= await sl<CacheHelper>().getData(key: "isArabicEnable") ?? false;
     emit(GetLangState());
   }
 
@@ -40,7 +40,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void getThem() async{
-    isDarkThemEnable= await sl<CacheHelper>().getData(key: "isDarkThemEnable");
+    isDarkThemEnable= await sl<CacheHelper>().getData(key: "isDarkThemEnable") ?? false;
     emit(GetThemState());
   }
 

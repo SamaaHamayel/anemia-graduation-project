@@ -26,9 +26,9 @@ class ResultScreen extends StatelessWidget {
         appBar: AppBar(
           flexibleSpace: Image(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
           centerTitle: true,
@@ -49,9 +49,9 @@ class ResultScreen extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? AssetImage(
+                  ? const AssetImage(
                       'lib/core/utils/appImages/images/backgroundDark.png')
-                  : AssetImage(
+                  : const AssetImage(
                       'lib/core/utils/appImages/images/background.png'),
               fit: BoxFit.cover,
             ),
@@ -149,7 +149,7 @@ class ResultScreen extends StatelessWidget {
                             decoration: ShapeDecoration(
                               color: AppColors.lightPrimaryColor,
                               shape: RoundedRectangleBorder(
-                                side: BorderSide(
+                                side: const BorderSide(
                                     width: 1.50, color: Color(0xFF2BB598)),
                                 borderRadius: BorderRadius.circular(30),
                               ),

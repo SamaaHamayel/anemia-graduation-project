@@ -1,3 +1,4 @@
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,8 +19,8 @@ class NoMedicineWidgets extends StatelessWidget {
       children: [
         Image.asset(
           BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? ("lib/core/utils/appImages/images/noMedicineDark.png")
-              : ("lib/coreutils/appImages/images/noMedicine.png"),
+              ? (AppAssets.noMedicineDark)
+              : (AppAssets.noMedicine),
           scale: 0.5,
         ),
         SizedBox(

@@ -38,8 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              : AssetImage('lib/core/utils/appImages/images/background.png'),
+              ? const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : const AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         title: Row(
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MedicineScreen()),
+                  MaterialPageRoute(builder: (context) => const MedicineScreen()),
                 );
               },
             ),
@@ -81,9 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -95,9 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
             color: const Color.fromARGB(255, 146, 146, 153),
             tabBackgroundColor:
                 BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                    ? Color.fromARGB(255, 32, 84, 69)
+                    ? const Color.fromARGB(255, 32, 84, 69)
                     : AppColors.lightPrimaryColor,
             gap: 8.h,
             padding: const EdgeInsets.all(16),

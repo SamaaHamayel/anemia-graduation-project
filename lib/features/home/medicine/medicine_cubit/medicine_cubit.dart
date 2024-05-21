@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:animeacheck/core/sqflite_helper/sqflite_helper.dart';
+import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/services/service_locator.dart';
@@ -15,31 +17,27 @@ class MedicineCubit extends Cubit<MedicineState> {
   TextEditingController medicineNameController = TextEditingController();
   TextEditingController medicineDoseController = TextEditingController();
 
-  String startTime = DateFormat('hh:mm a').format(DateTime.now());
+  String startTime = DateFormat("hh:mm:a").format(DateTime.now());
   DateTime currentDate = DateTime.now();
   DateTime selectedDate = DateTime.now();
-  bool isComplete = false;
+  // int isComplete = 0;
   int currentIndex = 0;
 
-  late TimeOfDay schduledTime;
   void getStartTime(context) async {
     emit(GetStartTimeLoadingState());
-
     TimeOfDay? pickedStartTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.fromDateTime(DateTime.now()),
     );
     if (pickedStartTime != null) {
       startTime = pickedStartTime.format(context);
-      schduledTime = pickedStartTime;
+
       emit(GetStartTimeSuccessState());
       // insertMedicine();
       //emit(InsertMedicineSuccessState());
       //navigateReplacement(context: context, route: Routes.medicineComponent);
     } else {
-      print("No Time Picked");
-      schduledTime =
-          TimeOfDay(hour: currentDate.hour, minute: currentDate.minute);
+      showToast(message: "No Time Picked", state: ToastStates.success);
       emit(GetStartTimeErrorState());
     }
   }
@@ -68,42 +66,30 @@ class MedicineCubit extends Cubit<MedicineState> {
 
   List<MedicineModel> medicineList = [];
 
-  void insertMedicine() {
+  void insertMedicine() async {
     emit(InsertMedicineLoadingState());
     try {
-      medicineList.add(
-        MedicineModel(
-          id: 1,
+      int medicineDose = int.parse(medicineDoseController.text);
+      sl<SqfliteHelper>().insertToDB(
+        model: MedicineModel(
           medicineName: medicineNameController.text,
-          medicineDose: int.parse(medicineDoseController.text),
+          medicineDose: medicineDose,
           medicineShape: currentIndex,
           startTime: startTime,
-          isComplete: isComplete,
         ),
       );
+      print(medicineList.length);
+      getMedicine();
+      medicineNameController.clear();
+      medicineDoseController.clear();
+      startTime = DateFormat("hh:mm:a").format(DateTime.now());
       emit(InsertMedicineSuccessState());
     } catch (e) {
+      log(e.toString());
       emit(InsertMedicineErrorState());
     }
   }
 
-  // void insertMedicine() async {
-  //   emit(InsertMedicineLoadingState());
-  //
-  //   try {
-  //     await sl<SqfliteHelper>().insertToDB(
-  //       MedicineModel(
-  //         medicineName: medicineNameController.text,
-  //         medicineDose: int.parse(medicineDoseController.text),
-  //         medicineShape: getImage(currentIndex),
-  //         startTime: startTime,
-  //           isComplete: isComplete
-  //       ),
-  //     );
-  //     getMedicine();
-  //     emit(GetMedicineSuccessState());
-  //
-  //
   //     // LocalNotificationService.showSchduledNotification(
   //     //   curretDate: currentDate,
   //     //   schduledTime:schduledTime,
@@ -115,27 +101,13 @@ class MedicineCubit extends Cubit<MedicineState> {
   //     //     isComplete: isComplete
   //     //   ),
   //     // );
-  //     // medicineNameController.clear();
-  //     // medicineDoseController.clear();
-  //     // emit(InsertMedicineSuccessState());
-  //     // getMedicine();
-  //     // emit(GetMedicineSuccessState());
-  //   } catch (e) {
-  //     emit(InsertMedicineErrorState());
-  //   }
-  // }
-  //
 
 //!get Medicine
-
   void getMedicine() async {
+    //list of map to our empty list
     emit(GetMedicineLoadingState());
     await sl<SqfliteHelper>().getFromDB().then((value) {
       medicineList = value.map((e) => MedicineModel.fromJson(e)).toList();
-      //     .where(
-      //       (element) => element.date == DateFormat.yMd().format(selctedDate),
-      // )
-      // .toList();
       emit(GetMedicineSuccessState());
     }).catchError((e) {
       print(e.toString());
@@ -161,7 +133,6 @@ class MedicineCubit extends Cubit<MedicineState> {
 
   void deleteTask(id) async {
     emit(DeleteMedicineLoadingState());
-
     await sl<SqfliteHelper>().deleteFromDB(id).then((value) {
       emit(DeleteMedicineSuccessState());
       getMedicine();

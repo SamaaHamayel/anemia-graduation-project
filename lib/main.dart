@@ -9,15 +9,18 @@ import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cu
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'core/cache_helper/cache_helper.dart';
 import 'core/services/service_locator.dart';
+import 'core/sqflite_helper/sqflite_helper.dart';
+import 'core/utils/bloc_observer/bloc_observer.dart';
 import 'my_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initServiceLoactor();
+  Bloc.observer = SimpleBlocObserver();
   await sl<CacheHelper>().init();
+   sl<SqfliteHelper>().intiDB();
   await Future.wait([
     LocalNotificationService.init(),
     WorkManagerService().init(),
