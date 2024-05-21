@@ -57,7 +57,7 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const editProfile()),
+                              builder: (context) =>  EditProfileScreen()),
                         );
                       },
                     ),
@@ -163,7 +163,7 @@ class MyAccountState extends State<MyAccount> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const editProfile()),
+                        builder: (context) =>  EditProfileScreen()),
                   );
                 },
                 icon: Icon(

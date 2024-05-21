@@ -1,76 +1,13 @@
-// import 'package:animeacheck/core/utils/appColors/app_colors.dart';
-// import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-// class editProfile extends StatelessWidget {
-//   const editProfile({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         backgroundColor: Colors.white,
-//         body: Container(
-//           decoration: BoxDecoration(
-//             image: DecorationImage(
-//               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-//                   ? AssetImage(
-//                       'lib/core/utils/appImages/images/backgroundDark.png')
-//                   : AssetImage(
-//                       'lib/core/utils/appImages/images/background.png'),
-//               fit:
-//                   BoxFit.cover, // Optional: You can set the image fit as needed
-//             ),
-//           ),
-//           child: Padding(
-//             padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 40.w),
-//             child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Row(
-//                           children: [
-//                             IconButton(
-//                               icon: Icon(
-//                                 Icons.arrow_back_ios_rounded,
-//                                 color: BlocProvider.of<SettingsCubit>(context)
-//                                         .isDarkThemEnable
-//                                     ? AppColors.whiteColor
-//                                     : AppColors.lightPrimaryColor,
-//                                 size: 23.sp,
-//                               ),
-//                               onPressed: () {
-//                                 Navigator.pop(context);
-//                               },
-//                             ),
-//                             SizedBox(width: 85.w),
-//                             Text(
-//                               'Result',
-//                               style: TextStyle(
-//                                 color: BlocProvider.of<SettingsCubit>(context)
-//                                         .isDarkThemEnable
-//                                     ? AppColors.whiteColor
-//                                     : AppColors.lightPrimaryColor,
-//                                 fontSize: 23.sp,
-//                                 fontFamily: 'Kodchasan',
-//                                 fontWeight: FontWeight.w500,
-//                                 height: 0,
-//                                 letterSpacing: 1.76,
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ])
-//                 ]),
-//           ),
-//         ));
-//   }
-// }
-
+import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
+import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
+import 'package:animeacheck/features/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:animeacheck/features/home/presentation/view/home.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileScreen extends StatefulWidget {
   @override
@@ -78,87 +15,254 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _nameController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
 
   bool isEditing = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+          ? AppColors.darkThemBlackColor
+          : AppColors.lightPrimaryColor,
       appBar: AppBar(
-        title: Text('Edit profile'),
-        backgroundColor: Colors.teal,
+        flexibleSpace: Image(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              : AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover,
+        ),
+        title: Text(
+          AppLocalizations.of(context)!.editProfile,
+          style: TextStyle(
+            fontSize: 23.sp,
+            color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.whiteColor
+                : AppColors.lightPrimaryColor,
+          ),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            size: 23.sp,
+            color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.whiteColor
+                : AppColors.lightPrimaryColor,
+          ),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            CircleAvatar(
-              radius: 50,
-              child: Icon(Icons.person, size: 50),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-              ),
-              enabled: isEditing,
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
-              enabled: isEditing,
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.visibility),
-              ),
-              enabled: isEditing,
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AssetImage(
+                    'lib/core/utils/appImages/images/backgroundDark.png')
+                : AssetImage(
+                    'lib/core/utils/appImages/images/background.png',
+                  ),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
               children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      isEditing = !isEditing;
-                    });
-                  },
-                  child: Text(isEditing ? 'Save' : 'Edit'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: isEditing ? Colors.green : Colors.teal,
-                  ),
+                CircleAvatar(
+                  radius: 50,
+                  child: Icon(Icons.person, size: 50),
                 ),
-                if (isEditing)
-                  ElevatedButton(
-                    onPressed: () {
-                      // Function to save the changes
-                      setState(() {
-                        isEditing = false;
-                      });
-                    },
-                    child: Text('Save'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
+                SizedBox(
+                  height: 20.h,
+                ),
+                CustomTextFormField(
+                  controller:
+                      BlocProvider.of<SignUpCubit>(context).nameController,
+                  prefixIcon: Icons.person_outlined,
+                  hint: AppLocalizations.of(context)!.nameHint,
+                  textInputAction: TextInputAction.next,
+                  validate: (data) {
+                    if (data!.length < 3 || data.isEmpty) {
+                      return AppLocalizations.of(context)!.nameHint;
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 24.h,
+                ),
+
+                //____email____
+                CustomText(
+                    alignment: Alignment.bottomLeft,
+                    text: AppLocalizations.of(context)!.email),
+                SizedBox(
+                  height: 4.h,
+                ),
+                CustomTextFormField(
+                  controller: BlocProvider.of<SignUpCubit>(context)
+                      .signUpEmailController,
+                  prefixIcon: Icons.email_outlined,
+                  hint: AppLocalizations.of(context)!.emailHint,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  validate: (data) {
+                    if (data!.isEmpty || !data.contains('@gmail.com')) {
+                      return AppLocalizations.of(context)!.enterValidEmail;
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 24.h,
+                ),
+
+                //___password_____
+                CustomText(
+                    alignment: Alignment.bottomLeft,
+                    text: AppLocalizations.of(context)!.password),
+                SizedBox(
+                  height: 4.h,
+                ),
+                CustomTextFormField(
+                  controller: BlocProvider.of<SignUpCubit>(context)
+                      .signUpPasswordController,
+                  prefixIcon: Icons.lock_outlined,
+                  hint: AppLocalizations.of(context)!.passwordHint,
+                  textInputAction: TextInputAction.next,
+                  isPassword: BlocProvider.of<SignUpCubit>(context)
+                      .isSignUpPasswordShowing,
+                  icon: BlocProvider.of<SignUpCubit>(context).suffixIcon,
+                  suffixIconOnPressed: () {
+                    BlocProvider.of<SignUpCubit>(context)
+                        .changeLoginPasswordSuffixIcon();
+                  },
+                  validate: (data) {
+                    if (data!.length < 3 || data.isEmpty) {
+                      return AppLocalizations.of(context)!.enterValidPassword;
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 24.h,
+                ),
+
+                //____confirm password____
+                SizedBox(
+                  height: 230.h,
+                ),
+                Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          isEditing = true; // تفعيل وضع التعديل
+                        });
+                      },
+                      child: Text(
+                        'Edit',
+                        style: TextStyle(
+                            color: AppColors.whiteColor, fontSize: 20.sp),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isEditing
+                            ? AppColors.grayColor
+                            : AppColors.primaryColor,
+                      ),
                     ),
-                  ),
+                    ElevatedButton(
+                      onPressed: isEditing
+                          ? () {
+                              setState(() {
+                                isEditing = false; // إلغاء تفعيل وضع التعديل
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomeScreen()),
+                                );
+                              });
+                            }
+                          : null, // تعطيل زر Save حتى يتم تفعيل وضع التعديل
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                            color: AppColors.whiteColor, fontSize: 20.sp),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isEditing
+                            ? AppColors.primaryColor
+                            : AppColors.grayColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: <Widget>[
+                //       ElevatedButton(
+                //         onPressed: () {
+                //           setState(() {
+                //             isEditing = !isEditing;
+                //           });
+                //         },
+                //         child: Text(
+                //           'Edit',
+                //           style: textStyle(
+                //               color: AppColors.whiteColor,
+                //               fontSize: 24,
+                //               fontWeight: FontWeight.w500),
+                //         ),
+                //         style: ElevatedButton.styleFrom(
+                //           backgroundColor: AppColors.lightPrimaryColor,
+                //         ),
+                //       ),
+                //       ElevatedButton(
+                //         onPressed: () {
+                //           // Function to save the changes
+                //           setState(() {
+                //             isEditing = false;
+                //             Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                   builder: (context) => const HomeScreen()),
+                //             );
+                //           });
+                //         },
+                //         child: Text(
+                //           'Save',
+                //           style: textStyle(
+                //               color: AppColors.whiteColor,
+                //               fontSize: 24,
+                //               fontWeight: FontWeight.w500),
+                //         ),
+                //         style: ElevatedButton.styleFrom(
+                //           backgroundColor: isEditing
+                //               ? AppColors.lightPrimaryColor
+                //               : AppColors.grayColor,
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

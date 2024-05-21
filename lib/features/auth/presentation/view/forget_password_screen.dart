@@ -114,9 +114,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
-                  CustomTextFormField(
-                    controller: BlocProvider.of<ForgetPasswordCubit>(context)
-                        .phoneController,
+                  CustomTextFormField(controller: BlocProvider.of<ForgetPasswordCubit>(context).phoneController,
                     hint: AppLocalizations.of(context)!.enterYourPhone,
                     prefixIcon: Icons.phone_outlined,
                     keyboardType: TextInputType.phone,
