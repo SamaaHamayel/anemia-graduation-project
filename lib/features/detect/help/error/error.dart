@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ErrorScreen extends StatelessWidget {
   final VoidCallback onRetry;
@@ -42,7 +44,7 @@ class ErrorScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Failed to load, please check your\ninternet connection before proceeding',
+                  AppLocalizations.of(context)!.failedToLoad,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,

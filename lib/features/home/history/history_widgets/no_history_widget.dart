@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NoHistoryWidget extends StatelessWidget {
   const NoHistoryWidget({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class NoHistoryWidget extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'No history available',
+            AppLocalizations.of(context)!.noHistory,
             style: TextStyle(
               fontSize: 24,
               color: Colors.grey,

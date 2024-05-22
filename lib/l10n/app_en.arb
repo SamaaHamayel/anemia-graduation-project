@@ -140,5 +140,8 @@
  "welcome":"Welcome",
  "helpOne":"1.  Please take a picture showing your eyelid in the same shape and clarity as in this image, so we can examine it to determine whether you have anemia or not.",
  "helpTwo":" 2.  Make sure there is high lighting",
- "helpThree":" 3.  Make sure the picture isn't edited or flipped."
+ "helpThree":" 3.  Make sure the picture isn't edited or flipped.",
+ "failedToLoad":"Failed to load, please check your\ninternet connection before proceeding",
+ "thisResult":"The result isnot final, and there are other conditions that can affect these levels, so it is necessary to consult a doctor.",
+ "noHistory":"No history available"
 }

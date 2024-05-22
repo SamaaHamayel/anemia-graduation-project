@@ -21,7 +21,8 @@ class Setting extends StatelessWidget {
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -80,7 +81,7 @@ class Setting extends StatelessWidget {
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600),
                                 ),
-                                const Text("personal info")
+                                Text(AppLocalizations.of(context)!.profile)
                               ],
                             ),
                             const Spacer(),

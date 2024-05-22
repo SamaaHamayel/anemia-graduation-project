@@ -114,7 +114,7 @@ class ResultState extends State<ResultTest> {
                     child: SizedBox(
                       width: 325,
                       child: Text(
-                        "The result isnot final, and there are other conditions that can affect these levels, so it is necessary to consult a doctor.",
+                        AppLocalizations.of(context)!.thisResult,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: BlocProvider.of<SettingsCubit>(context)
