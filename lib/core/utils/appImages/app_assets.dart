@@ -27,7 +27,9 @@ class AppAssets {
   static const String noMedicine = '${basePath}noMedicine.png';
   static const String noMedicineDark = '${basePath}noMedicineDark.png.png';
   static const String logoDark = '${basePath}logoDark.png.png';
-//notAnemiaDetect
+    static const String symptoms = '${basePath}symptoms.jpg';
+
+//symptoms
   static const String medicine1 = '${basePath}medicine1.png';
   static const String medicine11 = '${basePath}medicine1.1.png';
   static const String medicine2 = '${basePath}medicine2.png';

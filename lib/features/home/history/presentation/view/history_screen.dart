@@ -106,14 +106,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                               final detectAnemiaCubit =
                                   BlocProvider.of<DetectAnemiaCubit>(context);
                                   //!دى اللى فيها الايرووووور يارب نشوفها 
+  // detectAnemiaCubit.image = BlocProvider.of<HistoryCubit>(context)
+  //                             .historyList[index];
 
-
-                                  
-                              //       detectAnemiaCubit.image = BlocProvider.of<HistoryCubit>(context)
-                              // .historyList[index];
-
-                              //    detectAnemiaCubit
-                              // .classifyImage(detectAnemiaCubit.image!);
+                                 detectAnemiaCubit
+                              .classifyImage(detectAnemiaCubit.image!);
                               // );
                               final history =
                                   BlocProvider.of<HistoryCubit>(context)

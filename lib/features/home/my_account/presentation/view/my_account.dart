@@ -1,8 +1,8 @@
 import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
 import 'package:animeacheck/features/home/history/presentation/view/history_screen.dart';
+import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/no_medicine.dart';
-import 'package:animeacheck/features/home/medicine/presentation/view/medicine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -268,7 +268,7 @@ class MyAccountState extends State<MyAccount> {
                   if (isSwitched == true) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const medicine()),
+                      MaterialPageRoute(builder: (context) => const MedicineScreen()),
                     );
                   } else {
                     Navigator.push(

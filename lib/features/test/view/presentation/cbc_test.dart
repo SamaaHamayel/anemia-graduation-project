@@ -376,7 +376,7 @@ class CBCTestState extends State<CBCTest> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      child: const Text('See the result'),
+                      child:  Text(AppLocalizations.of(context)!.seeTheResult),
                     ),
                   ),
                 ),
@@ -399,7 +399,8 @@ class CBCTestState extends State<CBCTest> {
         dropdownMCHC == "less" &&
         dropdownRDW == "greater" &&
         dropdownPLT == 'normal')) {
-      result = 'فقر الدم الناتج عن نقص الحديد (Iron deficiency anemia)،';
+      result =
+          '\n  \n فقر الدم الناتج عن نقص الحديد  \n (Iron deficiency anemia)،\n \n \n ';
     }
     //2
     else if ((dropdownWCB != "less" &&
@@ -411,7 +412,7 @@ class CBCTestState extends State<CBCTest> {
         dropdownMCHC != 'greater' &&
         dropdownRDW != "greater" &&
         dropdownPLT != 'less')) {
-      result = ' انيميا البحر المتوسط (Thalassemia)';
+      result = ' \n  \n  انيميا البحر المتوسط (Thalassemia) \n \n \n ';
     }
     //3,4
     else if ((dropdownWCB == "normal" &&
@@ -424,11 +425,10 @@ class CBCTestState extends State<CBCTest> {
         dropdownRDW == "greater" &&
         dropdownPLT == 'normal')) {
       result =
-          'فقر الدم الناتج عن نقص حمض الفوليك (Folic acid deficiency anemia \n'
+          '\n  \n فقر الدم الناتج عن نقص حمض الفوليك \n  (Folic acid deficiency anemia \n'
           "\n"
-          'OR \n'
-          "\n"
-          ' فقر الدم الناتج عن نقص فيتامين ب12 (Vitamin B12 deficiency anemia)';
+          'OR '
+          '\n   فقر الدم الناتج عن نقص فيتامين ب12 \n  (Vitamin B12 deficiency anemia)\n ';
     }
 
     //5
@@ -441,7 +441,7 @@ class CBCTestState extends State<CBCTest> {
         dropdownMCHC == 'less' &&
         dropdownRDW == 'greater' &&
         dropdownPLT == 'normal')) {
-      result = 'انيميا السيكل الخلوي (Sickle cell anemia)';
+      result = '\n  \n انيميا السيكل الخلوي \n (Sickle cell anemia) \n \n \n ';
     }
     //6
     else if ((dropdownWCB != "less" &&
@@ -454,7 +454,7 @@ class CBCTestState extends State<CBCTest> {
         dropdownRDW == "greater" &&
         dropdownPLT == "less")) {
       result =
-          'فقر الدم الناتج عن التهاب المفاصل الرثوي (Rheumatoid arthritis anemia)';
+          '\n \n  فقر الدم الناتج عن التهاب المفاصل الرثوي  \n (Rheumatoid arthritis anemia) \n \n \n ';
     }
     //7
     else if ((dropdownWCB == 'normal' &&
@@ -466,9 +466,9 @@ class CBCTestState extends State<CBCTest> {
         dropdownMCHC == 'normal' &&
         dropdownRDW == "greater" &&
         dropdownPLT == 'normal')) {
-      result = 'انيميا فول الدم (Sickle cell anemia)';
+      result = '\n \n  انيميا فول الدم \n  (Sickle cell anemia) \n \n \n ';
     } else {
-      result = 'No specific condition met';
+      result = '\n  \n  No specific condition met \n \n \n ';
     }
   }
 }
