@@ -6,63 +6,82 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Component extends StatelessWidget {
-  const Component({super.key, required this.medicineModel});
+    const Component(this.index,{super.key, required this.medicineModel});
 
   final MedicineModel medicineModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 16.w, right: 10),
-      child: Container(
-        height: 178.h,
-        width: 164.w,
-        decoration: BoxDecoration(
-            border: Border.all(color: AppColors.grayColor),
-            borderRadius: BorderRadius.circular(16.r)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 8.h,
-            ),
-            CircleAvatar(
-              child: BlocProvider.of<MedicineCubit>(context).getImage(
-                medicineModel.medicineShape,
+      child: Stack(
+        children: [
+          Container(
+          height: 178.h,
+          width: 164.w,
+          decoration: BoxDecoration(
+              border: Border.all(
+                width: 1.5.w,
+                  color: AppColors.greenColor
+              ),
+              borderRadius: BorderRadius.only(
+                topLeft: const Radius.circular(25),
+                topRight: const Radius.circular(25),
+                bottomRight: index.isEven ? const Radius.circular(25) : Radius.zero,
+                bottomLeft: index.isOdd ? const Radius.circular(25) : Radius.zero,
+
+              )
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 8.h,
+              ),
+              CircleAvatar(
+                child: BlocProvider.of<MedicineCubit>(context).getImage(
+                  medicineModel.medicineShape,
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                medicineModel.medicineName,
+                style: const TextStyle(
+                  color: AppColors.greenColor
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              Text('${medicineModel.medicineDose}'),
+              Text(medicineModel.startTime,
+                style: const TextStyle(
+                    color: AppColors.greenColor
+                ),
+              ),
+
+            ],
+          ),
+
+        ),
+          Positioned(
+            right: index.isOdd ? -5 : 100 ,
+            left: index.isEven ? -5 : 100,
+            bottom: 2,
+            child: IconButton(
+              onPressed: () {
+                BlocProvider.of<MedicineCubit>(context).deleteMedicine(medicineModel.id);
+              },
+              icon: const Icon(
+                Icons.delete_forever_outlined,
+                color: AppColors.redColor,
               ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              medicineModel.medicineName,
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            Text('${medicineModel.medicineDose}'),
-            Text(medicineModel.startTime),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.delete_rounded,
-                    color: AppColors.redColor,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.edit_calendar_rounded,
-                    color: AppColors.lightPrimaryColor,
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
+          ),
+        ]
       ),
     );
   }

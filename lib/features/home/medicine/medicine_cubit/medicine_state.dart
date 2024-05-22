@@ -34,11 +34,13 @@ class GetMedicineLoadingState extends MedicineState {}
 class GetMedicineSuccessState extends MedicineState {}
 
 class GetMedicineErrorState extends MedicineState {}
-class UpdateMedicineLoadingState extends MedicineState {}
 
-class UpdateMedicineSuccessState extends MedicineState {}
+class EditMedicineLoadingState extends MedicineState {}
 
-class UpdateMedicineErrorState extends MedicineState {}
+class EditMedicineSuccessState extends MedicineState {}
+
+class EditMedicineErrorState extends MedicineState {}
+
 class DeleteMedicineLoadingState extends MedicineState {}
 
 class DeleteMedicineSuccessState extends MedicineState {}

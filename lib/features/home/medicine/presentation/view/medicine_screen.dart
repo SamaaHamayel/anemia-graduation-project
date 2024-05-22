@@ -91,6 +91,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                                 .length,
                             itemBuilder: (context, index) {
                               return Component(
+                                index,
                                 medicineModel:
                                     BlocProvider.of<MedicineCubit>(context)
                                         .medicineList[index],

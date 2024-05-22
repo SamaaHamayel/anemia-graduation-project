@@ -1,13 +1,12 @@
 class EndPoint {
-  static const String baseUrl = 'https://tommy-two.vercel.app/';
+  static const String baseUrl = 'https://graduation-project-bay-one.vercel.app/';
 
   static const String userLogin = 'auth/login';
   static const String userSignUp = 'auth/register';
   static const String forgetPassword = 'auth/forgetPassword';
   static const String resetPassword = 'auth/resetPassword';
   static const String confirmEmail = 'auth/confirmEmail';
-  static const String anemiaModel = 'https://tommy-two.vercel.app/model';
-
+  static const String anemiaModel = 'https://graduation-project-bay-one.vercel.app/model';
 
 
 

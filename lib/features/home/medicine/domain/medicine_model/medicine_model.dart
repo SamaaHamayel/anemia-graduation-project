@@ -4,21 +4,20 @@ class MedicineModel {
   final int medicineDose;
   final int medicineShape;
   final String startTime;
-  //final int isComplete;
-  // final String endTime;
+ // final bool isEditing;
   MedicineModel({
     this.id,
     required this.medicineName,
     required this.medicineDose,
     required this.medicineShape,
     required this.startTime,
-    //required this.isComplete,
+   // required this.isEditing,
   });
 
   factory MedicineModel.fromJson(Map<String, dynamic> jsonData) {
     return MedicineModel(
       id: jsonData["id"],
-      //isComplete: jsonData["isComplete"],
+     // isEditing: jsonData["isEditing"],
       medicineName: jsonData["name"],
       medicineDose: jsonData["dose"],
       medicineShape: jsonData["shape"],
@@ -32,6 +31,7 @@ class MedicineModel {
       'medicineDose': medicineDose,
       'medicineShape': medicineShape,
       'startTime': startTime,
+     // 'isEditing': isEditing,
     };
   }
 }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:animeacheck/core/sqflite_helper/sqflite_helper.dart';
 import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
+import 'package:animeacheck/features/home/medicine/presentation/medicine_widgets/add_medicine_button_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -20,7 +21,7 @@ class MedicineCubit extends Cubit<MedicineState> {
   String startTime = DateFormat("hh:mm:a").format(DateTime.now());
   DateTime currentDate = DateTime.now();
   DateTime selectedDate = DateTime.now();
-  // int isComplete = 0;
+  int isEditing = 0;
   int currentIndex = 0;
 
   void getStartTime(context) async {
@@ -72,6 +73,7 @@ class MedicineCubit extends Cubit<MedicineState> {
       int medicineDose = int.parse(medicineDoseController.text);
       sl<SqfliteHelper>().insertMedicine(
         model: MedicineModel(
+          //isEditing: isEditing,
           medicineName: medicineNameController.text,
           medicineDose: medicineDose,
           medicineShape: currentIndex,
@@ -115,23 +117,21 @@ class MedicineCubit extends Cubit<MedicineState> {
     });
   }
 
-//   //update Medicine
-//   void updateTask(id) async {
-//     emit(UpdateTaskLoadingState());
-//
-//     await sl<SqfliteHelper>().updatedDB(id).then((value) {
-//       emit(UpdateTaskSucessState());
-//       getTasks();
-//     }).catchError((e) {
-//       print(e.toString());
-//       emit(UpdateTaskErrorState());
-//     });
-//   }
-//
+//   //edit Medicine
+  void editMedicine(id) async {
+    emit(EditMedicineLoadingState());
+
+    await sl<SqfliteHelper>().editMedicineFromDB(id).then((value) {
+      emit(EditMedicineSuccessState());
+      AddMedicineButtonSheet(readOnly: false, hintText: "edit");
+    }).catchError((e) {
+      print(e.toString());
+      emit(EditMedicineErrorState());
+    });
+  }
 
   //delete Medicine
-
-  void deleteTask(id) async {
+  void deleteMedicine(id) async {
     emit(DeleteMedicineLoadingState());
     await sl<SqfliteHelper>().deleteMedicine(id).then((value) {
       emit(DeleteMedicineSuccessState());

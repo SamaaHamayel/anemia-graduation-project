@@ -16,6 +16,7 @@ class AppColors {
   static const Color whiteColor = Color(0xFFFFFFFF);
   static const Color lightBackgroundColor = Color.fromARGB(255, 240, 254, 250);
   static const Color darkGreen = Color(0xff052F28);
+  static const Color medicineNameColor = Color(0xff07816F);
 
   //Color(0xff052F28),
 }

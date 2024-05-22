@@ -59,16 +59,21 @@ class SqfliteHelper {
     return await db.rawQuery('SELECT * FROM Medicine');
   }
 
+
+
+
   // Get all History records from the database
   Future<List<Map<String, dynamic>>> getHistoryFromDB() async {
     return await db.rawQuery('SELECT * FROM History');
   }
 
+
+
   // Update Medicine record in the database
-  Future<int> updateMedicine(int id) async {
+  Future<int> editMedicineFromDB(int id) async {
     return await db.rawUpdate('''
     UPDATE Medicine
-    SET isCompleted = ?
+    SET isEditing = ?
     WHERE id = ?
    ''', [1, id]);
   }
@@ -80,6 +85,11 @@ class SqfliteHelper {
       [id],
     );
   }
+
+
+
+
+
 
   // Delete History record from the database
   Future<int> deleteHistory(int id) async {
