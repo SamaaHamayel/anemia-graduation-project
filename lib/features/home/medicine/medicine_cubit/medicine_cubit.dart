@@ -70,7 +70,7 @@ class MedicineCubit extends Cubit<MedicineState> {
     emit(InsertMedicineLoadingState());
     try {
       int medicineDose = int.parse(medicineDoseController.text);
-      sl<SqfliteHelper>().insertToDB(
+      sl<SqfliteHelper>().insertMedicine(
         model: MedicineModel(
           medicineName: medicineNameController.text,
           medicineDose: medicineDose,
@@ -106,7 +106,7 @@ class MedicineCubit extends Cubit<MedicineState> {
   void getMedicine() async {
     //list of map to our empty list
     emit(GetMedicineLoadingState());
-    await sl<SqfliteHelper>().getFromDB().then((value) {
+    await sl<SqfliteHelper>().getMedicinesFromDB().then((value) {
       medicineList = value.map((e) => MedicineModel.fromJson(e)).toList();
       emit(GetMedicineSuccessState());
     }).catchError((e) {
@@ -133,7 +133,7 @@ class MedicineCubit extends Cubit<MedicineState> {
 
   void deleteTask(id) async {
     emit(DeleteMedicineLoadingState());
-    await sl<SqfliteHelper>().deleteFromDB(id).then((value) {
+    await sl<SqfliteHelper>().deleteMedicine(id).then((value) {
       emit(DeleteMedicineSuccessState());
       getMedicine();
     }).catchError((e) {

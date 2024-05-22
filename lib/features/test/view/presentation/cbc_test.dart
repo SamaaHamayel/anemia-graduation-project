@@ -12,7 +12,8 @@ class CBCInputField extends StatelessWidget {
   final List<String> options;
   final Function(String) onChanged;
 
-  const CBCInputField({super.key,
+  const CBCInputField({
+    super.key,
     required this.label,
     required this.value,
     required this.options,
@@ -29,8 +30,7 @@ class CBCInputField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding:
-                   EdgeInsets.symmetric(vertical: 8.w, horizontal: 30.h),
+              padding: EdgeInsets.symmetric(vertical: 8.w, horizontal: 30.h),
               child: Text(
                 '$label:',
                 style: TextStyle(
@@ -68,7 +68,7 @@ class CBCInputField extends StatelessWidget {
                   dropdownColor:
                       BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                           ? AppColors.darkGreen
-                          : AppColors.lightPrimaryColor,
+                          : AppColors.whiteColor,
                   value: value,
                   elevation: 8,
                   icon: Icon(
@@ -108,7 +108,7 @@ class CBCInputField extends StatelessWidget {
           ],
         ),
         Padding(
-          padding:  EdgeInsets.symmetric(vertical: 20.0.w),
+          padding: EdgeInsets.symmetric(vertical: 20.0.w),
           child: Container(
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
@@ -153,8 +153,10 @@ class CBCTestState extends State<CBCTest> {
       appBar: AppBar(
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              : const AssetImage('lib/core/utils/appImages/images/background.png'),
+              ? const AssetImage(
+                  'lib/core/utils/appImages/images/backgroundDark.png')
+              : const AssetImage(
+                  'lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         automaticallyImplyLeading: false,
@@ -163,10 +165,9 @@ class CBCTestState extends State<CBCTest> {
             IconButton(
               icon: Icon(
                 Icons.arrow_back_ios_rounded,
-                color:
-                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                        ? AppColors.whiteColor
-                        : AppColors.lightPrimaryColor,
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
                 size: 23.sp,
               ),
               onPressed: () {
@@ -177,10 +178,9 @@ class CBCTestState extends State<CBCTest> {
             Text(
               'CBC Test',
               style: TextStyle(
-                color:
-                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                        ? AppColors.whiteColor
-                        : AppColors.lightPrimaryColor,
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
                 fontSize: 23.sp,
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w500,
@@ -197,7 +197,8 @@ class CBCTestState extends State<CBCTest> {
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -240,7 +241,6 @@ class CBCTestState extends State<CBCTest> {
                         onChanged: (newValue) {
                           setState(() {
                             dropdownRBC = newValue;
-
                           });
                         },
                       ),
@@ -251,7 +251,6 @@ class CBCTestState extends State<CBCTest> {
                         onChanged: (newValue) {
                           setState(() {
                             dropdownWCB = newValue;
-
                           });
                         },
                       ),
@@ -262,7 +261,6 @@ class CBCTestState extends State<CBCTest> {
                         onChanged: (newValue) {
                           setState(() {
                             dropdownHB = newValue;
-
                           });
                         },
                       ),
@@ -273,7 +271,6 @@ class CBCTestState extends State<CBCTest> {
                         onChanged: (newValue) {
                           setState(() {
                             dropdownMCV = newValue;
-
                           });
                         },
                       ),
@@ -284,7 +281,6 @@ class CBCTestState extends State<CBCTest> {
                         onChanged: (newValue) {
                           setState(() {
                             dropdownPLT = newValue;
-
                           });
                         },
                       ),
@@ -295,7 +291,6 @@ class CBCTestState extends State<CBCTest> {
                         onChanged: (newValue) {
                           setState(() {
                             dropdownMCH = newValue;
-
                           });
                         },
                       ),
@@ -316,13 +311,12 @@ class CBCTestState extends State<CBCTest> {
                         onChanged: (newValue) {
                           setState(() {
                             dropdownHct = newValue;
-
                           });
                         },
                       ),
                       Row(
                         children: [
-                           SizedBox(
+                          SizedBox(
                             width: 20.w,
                           ),
                           CBCInputField(
@@ -366,7 +360,9 @@ class CBCTestState extends State<CBCTest> {
                         calculateResult();
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ResultTest(result: result),),
+                          MaterialPageRoute(
+                            builder: (context) => ResultTest(result: result),
+                          ),
                         );
                         setState(() {});
                       },
@@ -428,7 +424,11 @@ class CBCTestState extends State<CBCTest> {
         dropdownRDW == "greater" &&
         dropdownPLT == 'normal')) {
       result =
-      'فقر الدم الناتج عن نقص حمض الفوليك (Folic acid deficiency anemia OR /n فقر الدم الناتج عن نقص فيتامين ب12 (Vitamin B12 deficiency anemia)';
+          'فقر الدم الناتج عن نقص حمض الفوليك (Folic acid deficiency anemia \n'
+          "\n"
+          'OR \n'
+          "\n"
+          ' فقر الدم الناتج عن نقص فيتامين ب12 (Vitamin B12 deficiency anemia)';
     }
 
     //5
@@ -454,7 +454,7 @@ class CBCTestState extends State<CBCTest> {
         dropdownRDW == "greater" &&
         dropdownPLT == "less")) {
       result =
-      'فقر الدم الناتج عن التهاب المفاصل الرثوي (Rheumatoid arthritis anemia)';
+          'فقر الدم الناتج عن التهاب المفاصل الرثوي (Rheumatoid arthritis anemia)';
     }
     //7
     else if ((dropdownWCB == 'normal' &&
@@ -467,10 +467,8 @@ class CBCTestState extends State<CBCTest> {
         dropdownRDW == "greater" &&
         dropdownPLT == 'normal')) {
       result = 'انيميا فول الدم (Sickle cell anemia)';
-    }
-    else {
+    } else {
       result = 'No specific condition met';
     }
   }
 }
-

@@ -1,6 +1,6 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
-import 'package:animeacheck/features/home/history/presentation/view/history.dart';
+import 'package:animeacheck/features/home/history/history_widgets/no_history_widget.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/my_account.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Widget> pages = [
     const PriHome(),
-    const History(),
+    const NoHistoryWidget(),
     const Setting(),
     MyAccount()
   ];
@@ -38,8 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              : const AssetImage('lib/core/utils/appImages/images/background.png'),
+              ? const AssetImage(
+                  'lib/core/utils/appImages/images/backgroundDark.png')
+              : const AssetImage(
+                  'lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         title: Row(
@@ -70,7 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MedicineScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const MedicineScreen()),
                 );
               },
             ),
@@ -83,7 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -97,7 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
+import 'package:animeacheck/features/home/history/presentation/view/history_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/no_medicine.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
-import 'package:animeacheck/features/home/history/presentation/view/history.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/edit_profile.dart';
 
 import '../../../setting/presentation/settings_cubit/settings_cubit.dart';
@@ -69,7 +69,7 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const History()),
+                              builder: (context) => const HistoryScreen()),
                         );
                       },
                     ),

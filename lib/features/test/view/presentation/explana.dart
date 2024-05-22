@@ -18,7 +18,8 @@ class ExplanaScreen extends StatelessWidget {
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
 
             // Optional: You can set the image fit as needed
@@ -201,7 +202,7 @@ class ExplanaScreen extends StatelessWidget {
                   Container(
                     width: 343.w,
                     height: 88.h,
-                    padding:  EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       vertical: 20.w,
                       // horizontal: 65,
                     ),
@@ -226,11 +227,10 @@ class ExplanaScreen extends StatelessWidget {
                               Text(
                                 'HB:',
                                 style: TextStyle(
-                                  color:
-                                      BlocProvider.of<SettingsCubit>(context)
-                                              .isDarkThemEnable
-                                          ? AppColors.whiteColor
-                                          : AppColors.blackColor,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 20,
                                   fontFamily: 'Kodchasan',
                                   fontWeight: FontWeight.w400,
@@ -241,13 +241,11 @@ class ExplanaScreen extends StatelessWidget {
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
@@ -278,8 +276,7 @@ class ExplanaScreen extends StatelessWidget {
                                                               SettingsCubit>(
                                                           context)
                                                       .isDarkThemEnable
-                                                  ? AppColors
-                                                      .lightPrimaryColor
+                                                  ? AppColors.lightPrimaryColor
                                                   : AppColors.whiteColor,
                                               blurRadius: 4,
                                               offset: const Offset(0, 0),
@@ -295,13 +292,11 @@ class ExplanaScreen extends StatelessWidget {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Row(
-                                              mainAxisSize:
-                                                  MainAxisSize.min,
+                                              mainAxisSize: MainAxisSize.min,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment
-                                                      .center,
+                                                  CrossAxisAlignment.center,
                                               children: [
                                                 Text(
                                                   'Less',
@@ -310,15 +305,11 @@ class ExplanaScreen extends StatelessWidget {
                                                                     SettingsCubit>(
                                                                 context)
                                                             .isDarkThemEnable
-                                                        ? AppColors
-                                                            .whiteColor
-                                                        : AppColors
-                                                            .blackColor,
+                                                        ? AppColors.whiteColor
+                                                        : AppColors.blackColor,
                                                     fontSize: 14,
-                                                    fontFamily:
-                                                        'Kodchasan',
-                                                    fontWeight:
-                                                        FontWeight.w400,
+                                                    fontFamily: 'Kodchasan',
+                                                    fontWeight: FontWeight.w400,
                                                   ),
                                                 ),
                                                 SizedBox(width: 44.w),
@@ -466,7 +457,7 @@ class ExplanaScreen extends StatelessWidget {
                   Container(
                     width: 343.w,
                     height: 88.h,
-                    padding:  EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       vertical: 20.w,
                       // horizontal: 65,
                     ),
@@ -491,18 +482,17 @@ class ExplanaScreen extends StatelessWidget {
                               Text(
                                 'HB:',
                                 style: TextStyle(
-                                  color:
-                                      BlocProvider.of<SettingsCubit>(context)
-                                              .isDarkThemEnable
-                                          ? AppColors.whiteColor
-                                          : AppColors.blackColor,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.blackColor,
                                   fontSize: 20,
                                   fontFamily: 'Kodchasan',
                                   fontWeight: FontWeight.w400,
                                   height: 0,
                                 ),
                               ),
-                               SizedBox(width: 79.w),
+                              SizedBox(width: 79.w),
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -510,8 +500,7 @@ class ExplanaScreen extends StatelessWidget {
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
@@ -542,8 +531,7 @@ class ExplanaScreen extends StatelessWidget {
                                                               SettingsCubit>(
                                                           context)
                                                       .isDarkThemEnable
-                                                  ? AppColors
-                                                      .lightPrimaryColor
+                                                  ? AppColors.lightPrimaryColor
                                                   : AppColors.whiteColor,
                                               blurRadius: 4,
                                               offset: const Offset(0, 0),
@@ -561,8 +549,7 @@ class ExplanaScreen extends StatelessWidget {
                                             SizedBox(
                                               height: double.infinity,
                                               child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.min,
+                                                mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
                                                 crossAxisAlignment:
@@ -575,8 +562,7 @@ class ExplanaScreen extends StatelessWidget {
                                                                       SettingsCubit>(
                                                                   context)
                                                               .isDarkThemEnable
-                                                          ? AppColors
-                                                              .whiteColor
+                                                          ? AppColors.whiteColor
                                                           : AppColors
                                                               .blackColor,
                                                       fontSize: 14,
@@ -722,11 +708,11 @@ class ExplanaScreen extends StatelessWidget {
                                 Text(
                                   'HB:',
                                   style: TextStyle(
-                                    color: BlocProvider.of<SettingsCubit>(
-                                                context)
-                                            .isDarkThemEnable
-                                        ? AppColors.whiteColor
-                                        : AppColors.blackColor,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.whiteColor
+                                            : AppColors.blackColor,
                                     fontSize: 20,
                                     fontFamily: 'Kodchasan',
                                     fontWeight: FontWeight.w400,
@@ -736,10 +722,8 @@ class ExplanaScreen extends StatelessWidget {
                                 const SizedBox(width: 79),
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -797,11 +781,9 @@ class ExplanaScreen extends StatelessWidget {
                                                   mainAxisSize:
                                                       MainAxisSize.min,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .start,
+                                                      MainAxisAlignment.start,
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .center,
+                                                      CrossAxisAlignment.center,
                                                   children: [
                                                     Text(
                                                       'Normal',
@@ -815,8 +797,7 @@ class ExplanaScreen extends StatelessWidget {
                                                             : AppColors
                                                                 .blackColor,
                                                         fontSize: 14.sp,
-                                                        fontFamily:
-                                                            'Kodchasan',
+                                                        fontFamily: 'Kodchasan',
                                                         fontWeight:
                                                             FontWeight.w400,
                                                       ),
@@ -878,7 +859,8 @@ class ExplanaScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const CBCTest()),
+                          MaterialPageRoute(
+                              builder: (context) => const CBCTest()),
                         );
                       },
                       style: TextButton.styleFrom(
@@ -916,7 +898,6 @@ class ExpandLessIcon extends StatelessWidget {
           ? AppColors.lightPrimaryColor
           : AppColors.whiteColor,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -925,17 +906,12 @@ class ExpandLessIcon extends StatelessWidget {
             height: 8.h,
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(),
-            child: Stack(
-              children: [
-                Icon(
-                  Icons.expand_more,
-                  size: 16.sp,
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.blackColor,
-                ),
-              ],
+            child: Icon(
+              Icons.expand_more,
+              size: 10.sp,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? AppColors.whiteColor
+                  : AppColors.blackColor,
             ),
           ),
           // SizedBox(height: 8),
@@ -944,17 +920,12 @@ class ExpandLessIcon extends StatelessWidget {
             height: 12.h,
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(),
-            child: Stack(
-              children: [
-                Icon(
-                  Icons.expand_less,
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.blackColor,
-                  size: 16.sp,
-                ),
-              ],
+            child: Icon(
+              Icons.expand_less,
+              size: 10.sp,
+              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? AppColors.whiteColor
+                  : AppColors.blackColor,
             ),
           ),
         ],

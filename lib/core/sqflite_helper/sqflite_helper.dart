@@ -1,37 +1,44 @@
+import 'package:animeacheck/features/home/history/data/history_model.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart'; // استيراد مكتبة path
 
 class SqfliteHelper {
   late Database db;
-  //1. create DB
-  //2.create table
-  //3.CRUD => create - read - update - delete
 
-  //! initDatabase
-  void intiDB() async {
-    //step 1 => Create database
+  // Initialize the database
+  Future<void> initDB() async {
+    String dbPath = await getDatabasesPath();
+    String path = join(dbPath, 'medicine.db');
+    
     db = await openDatabase(
-      'medicine.db',
+      path,
       version: 1,
-      onCreate: (Database db, int v) async {
-        //step 2 => create table
-        return await db.execute('''
+      onCreate: (Database db, int version) async {
+        // Create Medicine table
+        await db.execute('''
         CREATE TABLE Medicine (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        dose INTEGER,
-        shape INTEGER,
-        startTime TEXT)
-      ''').then(
-          (value) => print('DB created successfully'),
-        );
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name TEXT,
+          dose INTEGER,
+          shape INTEGER,
+          startTime TEXT)
+      ''');
+        // Create History table
+        await db.execute('''
+        CREATE TABLE History (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          date TEXT,
+          result TEXT,
+          image BLOB)
+      ''');
       },
       onOpen: (db) => print('Database opened'),
-    ).then((value) => db = value);
+    );
   }
 
-  //! insert
-  Future<int> insertToDB({required MedicineModel model}) async {
+  // Insert MedicineModel into the database
+  Future<int> insertMedicine({required MedicineModel model}) async {
     return await db.rawInsert('''
     INSERT INTO Medicine(name, dose, shape, startTime)
     VALUES(?, ?, ?, ?)''', [
@@ -42,13 +49,23 @@ class SqfliteHelper {
     ]);
   }
 
-  //!get
-  Future<List<Map<String, dynamic>>> getFromDB() async {
+  // Insert HistoryModel into the database
+  Future<int> insertHistory({required HistoryModel model}) async {
+    return await db.insert('History', model.toJson());
+  }
+
+  // Get all Medicine records from the database
+  Future<List<Map<String, dynamic>>> getMedicinesFromDB() async {
     return await db.rawQuery('SELECT * FROM Medicine');
   }
 
-  //! update
-  Future<int> updatedDB(int id) async {
+  // Get all History records from the database
+  Future<List<Map<String, dynamic>>> getHistoryFromDB() async {
+    return await db.rawQuery('SELECT * FROM History');
+  }
+
+  // Update Medicine record in the database
+  Future<int> updateMedicine(int id) async {
     return await db.rawUpdate('''
     UPDATE Medicine
     SET isCompleted = ?
@@ -56,10 +73,18 @@ class SqfliteHelper {
    ''', [1, id]);
   }
 
-  //! delete
-  Future<int> deleteFromDB(int id) async {
+  // Delete Medicine record from the database
+  Future<int> deleteMedicine(int id) async {
     return await db.rawDelete(
       '''DELETE FROM Medicine WHERE id = ?''',
+      [id],
+    );
+  }
+
+  // Delete History record from the database
+  Future<int> deleteHistory(int id) async {
+    return await db.rawDelete(
+      '''DELETE FROM History WHERE id = ?''',
       [id],
     );
   }

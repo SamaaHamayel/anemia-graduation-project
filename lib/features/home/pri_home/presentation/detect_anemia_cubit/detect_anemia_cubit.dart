@@ -1,6 +1,6 @@
-import 'dart:developer';
-
+import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'detect_anemia_state.dart';
@@ -11,7 +11,7 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
   DetectAnemiaCubit() : super(DetectAnemiaInitial());
 
   XFile? image;
-   dynamic data;
+  dynamic data;
   // Take image from user
   void takeImage(value) {
     image = value;
@@ -44,12 +44,33 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
         print(data);
       } else {
         emit(ClassifyImageErrorState('Failed to classify image'));
-        throw Exception('Failed to classify image');
+        void showToast() {
+          Fluttertoast.showToast(
+            msg: 'Try Again in another Time!',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: AppColors.grayColor,
+            textColor: AppColors.whiteColor,
+            fontSize: 16.0,
+          );
+        }
       }
     } catch (e) {
-      log(e.toString());
-      emit(ClassifyImageErrorState('Failed to classify image: $e'));
-      throw Exception('Failed to classify image: $e');
+      void showToast() {
+        Fluttertoast.showToast(
+          msg: 'Try Again in another Time!',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: AppColors.grayColor,
+          textColor: AppColors.whiteColor,
+          fontSize: 16.0,
+        );
+      }
+      // log(e.toString());
+      // emit(ClassifyImageErrorState('Failed to classify image: $e'));
+      // throw Exception('Failed to classify image: $e');
     }
   }
 }

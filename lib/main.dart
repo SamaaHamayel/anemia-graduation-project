@@ -20,7 +20,7 @@ void main() async {
   initServiceLoactor();
   Bloc.observer = SimpleBlocObserver();
   await sl<CacheHelper>().init();
-   sl<SqfliteHelper>().intiDB();
+   sl<SqfliteHelper>().initDB();
   await Future.wait([
     LocalNotificationService.init(),
     WorkManagerService().init(),
