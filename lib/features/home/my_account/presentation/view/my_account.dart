@@ -1,6 +1,6 @@
+import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
-import 'package:animeacheck/features/home/chatBot/chat_bot_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/no_medicine.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +12,12 @@ import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/edit_profile.dart';
 
+import '../../../chatBot/chat_bot_view.dart';
 import '../../../setting/presentation/settings_cubit/settings_cubit.dart';
 
 class MyAccount extends StatefulWidget {
+  const MyAccount({super.key});
+
   @override
   State<MyAccount> createState() => MyAccountState();
 }
@@ -31,9 +34,9 @@ class MyAccountState extends State<MyAccount> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? AssetImage(
+                  ? const AssetImage(
                       'lib/core/utils/appImages/images/backgroundDark.png')
-                  : AssetImage(
+                  : const AssetImage(
                       'lib/core/utils/appImages/images/background.png'),
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
@@ -57,18 +60,18 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EditProfileScreen()),
+                              builder: (context) => const EditProfileScreen()),
                         );
                       },
                     ),
                     SizedBox(height: 28.h),
                     buildActionCard(
-                      icon: Icons.science_outlined,
+                      icon: Icons.chat_outlined,
                       title: AppLocalizations.of(context)!.chat,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ChatScreen()),
+                          MaterialPageRoute(builder: (context) => const ChatBotView()),
                         );
                       },
                     ),
@@ -148,7 +151,7 @@ class MyAccountState extends State<MyAccount> {
                 ),
               ),
               Text(
-                'Sarah Shebl',
+                BlocProvider.of<SignUpCubit>(context).nameController.text,
                 style: TextStyle(
                   // color: Colors.black.withOpacity(0.9),
                   fontSize: 16.sp,
@@ -162,7 +165,7 @@ class MyAccountState extends State<MyAccount> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => EditProfileScreen()),
+                        builder: (context) => const EditProfileScreen()),
                   );
                 },
                 icon: Icon(

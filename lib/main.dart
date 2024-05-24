@@ -1,3 +1,4 @@
+import 'package:animeacheck/core/consts/consts.dart';
 import 'package:animeacheck/core/services/local_notification_service.dart';
 import 'package:animeacheck/core/services/work_manager_service.dart';
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cu
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'core/cache_helper/cache_helper.dart';
 import 'core/services/service_locator.dart';
 import 'core/sqflite_helper/sqflite_helper.dart';
@@ -20,6 +22,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initServiceLoactor();
   Bloc.observer = SimpleBlocObserver();
+  Gemini.init(apiKey: Consts.geminiApiKey);
   await sl<CacheHelper>().init();
    sl<SqfliteHelper>().initDB();
   await Future.wait([

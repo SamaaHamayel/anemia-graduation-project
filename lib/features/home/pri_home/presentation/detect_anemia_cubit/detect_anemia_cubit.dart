@@ -39,14 +39,14 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
         data: formData,
       );
       if (response.statusCode == 200) {
-        emit(ClassifyImageSuccessState());
         data = response.data;
+        emit(ClassifyImageSuccessState());
         //print(data);
-      } else {
+      }else if(response.statusCode == 500){
         emit(ClassifyImageErrorState('Failed to classify image'));
         void showToast() {
           Fluttertoast.showToast(
-            msg: 'Try Again in another Time!',
+            msg: "Server Error...! Try Again in another Time!",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 1,
@@ -55,19 +55,40 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
             fontSize: 16.0,
           );
         }
+        showToast();
+      }
+      else {
+        emit(ClassifyImageErrorState('Failed to classify image'));
+        void showToast() {
+          Fluttertoast.showToast(
+            msg: "Server Error...! Try Again in another Time!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: AppColors.greenColor,
+            textColor: AppColors.whiteColor,
+            fontSize: 16.0,
+          );
+        }
+        showToast();
       }
     } catch (e) {
+      emit(ClassifyImageErrorState('Failed to classify image'));
       void showToast() {
         Fluttertoast.showToast(
-          msg: 'Try Again in another Time!',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
+          msg: 'this not image for eye...Enter correct Image',
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: AppColors.grayColor,
+          backgroundColor: AppColors.greenColor,
           textColor: AppColors.whiteColor,
           fontSize: 16.0,
         );
       }
+      showToast();
+
+
+
       // log(e.toString());
       // emit(ClassifyImageErrorState('Failed to classify image: $e'));
       // throw Exception('Failed to classify image: $e');

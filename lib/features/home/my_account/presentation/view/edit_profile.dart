@@ -1,12 +1,10 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
-import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:animeacheck/features/home/my_account/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:animeacheck/features/home/presentation/view/home.dart';
-import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,11 +23,9 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  // final TextEditingController _nameController = TextEditingController();
-  // final TextEditingController _emailController = TextEditingController();
-  // final TextEditingController _passwordController = TextEditingController();
 
-  bool isEditing = false;
+    bool isEditing = false;
+    bool isReadOnly = true;
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +147,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     }
                     return null;
                   },
+                  readOnly: isEditing==false?true:false,
                 ),
                 SizedBox(
                   height: 24.h,
@@ -176,6 +173,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     }
                     return null;
                   },
+                  readOnly: isEditing==false?true:false,
                 ),
                 SizedBox(
                   height: 24.h,
@@ -207,6 +205,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     }
                     return null;
                   },
+                  readOnly: isEditing==false?true:false,
                 ),
                 SizedBox(
                   height: 24.h,
@@ -224,6 +223,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         onPressed: () {
                           setState(() {
                             isEditing = true; // تفعيل وضع التعديل
+                            isReadOnly = false;
                           });
                         },
                         style: ElevatedButton.styleFrom(
@@ -266,56 +266,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 ),
 
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: <Widget>[
-                //       ElevatedButton(
-                //         onPressed: () {
-                //           setState(() {
-                //             isEditing = !isEditing;
-                //           });
-                //         },
-                //         child: Text(
-                //           'Edit',
-                //           style: textStyle(
-                //               color: AppColors.whiteColor,
-                //               fontSize: 24,
-                //               fontWeight: FontWeight.w500),
-                //         ),
-                //         style: ElevatedButton.styleFrom(
-                //           backgroundColor: AppColors.lightPrimaryColor,
-                //         ),
-                //       ),
-                //       ElevatedButton(
-                //         onPressed: () {
-                //           // Function to save the changes
-                //           setState(() {
-                //             isEditing = false;
-                //             Navigator.push(
-                //               context,
-                //               MaterialPageRoute(
-                //                   builder: (context) => const HomeScreen()),
-                //             );
-                //           });
-                //         },
-                //         child: Text(
-                //           'Save',
-                //           style: textStyle(
-                //               color: AppColors.whiteColor,
-                //               fontSize: 24,
-                //               fontWeight: FontWeight.w500),
-                //         ),
-                //         style: ElevatedButton.styleFrom(
-                //           backgroundColor: isEditing
-                //               ? AppColors.lightPrimaryColor
-                //               : AppColors.grayColor,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
               ],
             ),
           ),

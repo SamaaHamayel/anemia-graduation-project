@@ -49,12 +49,15 @@ class SqfliteHelper {
   }
 
   // Insert HistoryModel into the database
+
   Future<int> insertHistory({required HistoryModel model}) async {
     return await db.rawInsert('''
-    INSERT INTO History(date, result)
-    VALUES(?, ?)''', [
+    INSERT INTO History(id,image,date, result)
+    VALUES(?, ?, ?, ?)''', [
       model.date,
       model.result,
+      model.id,
+      model.image,
     ]);
   }
 

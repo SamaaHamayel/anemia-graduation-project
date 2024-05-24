@@ -36,6 +36,7 @@ void showToast({
   required ToastStates state,
 }) {
   Fluttertoast.showToast(
+    webPosition: "center",
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,

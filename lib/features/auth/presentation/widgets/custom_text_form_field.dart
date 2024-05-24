@@ -16,7 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.prefixIcon,
     this.errorText,
-    this.textInputAction,
+    this.textInputAction, this.readOnly,
 
   });
   final TextEditingController controller;
@@ -29,12 +29,14 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validate;
   final bool isPassword;
   final IconData? icon;
+  final bool? readOnly;
   final VoidCallback? suffixIconOnPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8),
       child: TextFormField(
+        readOnly: readOnly!,
         style: const TextStyle(color: AppColors.primaryColor),
         keyboardType: keyboardType,
         textInputAction: textInputAction,

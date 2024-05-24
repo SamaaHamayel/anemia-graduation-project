@@ -1,98 +1,125 @@
+import 'dart:developer';
+import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ChatScreen extends StatefulWidget {
+import '../../../core/utils/appImages/app_assets.dart';
+import '../setting/presentation/settings_cubit/settings_cubit.dart';
+
+class ChatBotViewBody extends StatefulWidget {
+  const ChatBotViewBody({super.key});
+
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  State<ChatBotViewBody> createState() => _ChatBotViewBodyState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
-  final TextEditingController _controller = TextEditingController();
-  final List<Map<String, String>> _messages = [];
-  final String projectId = 'YOUR_PROJECT_ID';
-  final String sessionId = 'YOUR_SESSION_ID';
-  final String accessToken = 'YOUR_ACCESS_TOKEN';
-
-  Future<void> _sendMessage(String message) async {
-    final url = Uri.parse(
-        'https://dialogflow.googleapis.com/v2/projects/$projectId/agent/sessions/$sessionId:detectIntent');
-    final headers = {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': 'Bearer $accessToken',
-    };
-    final body = json.encode({
-      'queryInput': {
-        'text': {
-          'text': message,
-          'languageCode': 'en',
-        },
-      },
-    });
-
-    try {
-      final response = await http.post(url, headers: headers, body: body);
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final botMessage = data['queryResult']['fulfillmentText'];
-
-        setState(() {
-          _messages.add({'sender': 'user', 'text': message});
-          _messages.add({'sender': 'bot', 'text': botMessage});
-        });
-
-        _controller.clear();
-      } else {
-        print('Failed to get response from Dialogflow: ${response.statusCode}');
-      }
-    } catch (error) {
-      print('Error sending message: $error');
-    }
+class _ChatBotViewBodyState extends State<ChatBotViewBody> {
+  final Gemini gemini = Gemini.instance;
+  List<ChatMessage> chatMessagesList = [];
+  ChatUser currentUser = ChatUser(id: '1', firstName: 'Hadeer');
+  ChatUser geminiUser =
+  ChatUser(id: '0', firstName: 'EyeNemia');
+  @override
+  void initState() {
+    super.initState();
+    chatMessagesList = [
+      ChatMessage(
+        text: "Hello!! How can I help you today?",
+        user: geminiUser,
+        createdAt: DateTime.now(),
+      ),
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Chatbot'),
-      ),
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                final message = _messages[index];
-                return ListTile(
-                  title: Text(message['text']!),
-                  subtitle: Text(message['sender']!),
-                );
-              },
+          Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
+          DashChat(
+          currentUser: currentUser,
+          onSend: sendMessage,
+          messages: chatMessagesList,
+          inputOptions: InputOptions(
+            inputDecoration: InputDecoration(
+              contentPadding: const EdgeInsets.all(12),
+              hintText: 'Type a message...',
+              hintStyle: const TextStyle(color: Colors.grey),
+              prefixIcon: const Icon(FontAwesomeIcons.message,
+                  color: AppColors.medicineNameColor, size: 20),
+              enabledBorder: outlineInputBorder(),
+              focusedBorder: outlineInputBorder(),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(hintText: 'Type a message'),
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () {
-                    if (_controller.text.isNotEmpty) {
-                      _sendMessage(_controller.text);
-                    }
-                  },
-                ),
-              ],
-            ),
+          messageOptions: const MessageOptions(
+            showOtherUsersAvatar: false,
+            messagePadding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            borderRadius: 16,
+            textColor: Colors.white,
+            currentUserTextColor: Colors.white,
+            containerColor: Colors.green,
+            currentUserContainerColor: AppColors.darkGreen,
           ),
-        ],
+          messageListOptions: const MessageListOptions(
+            scrollPhysics: BouncingScrollPhysics(),
+          ),
+        )],
       ),
     );
+  }
+
+  OutlineInputBorder outlineInputBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(
+        color: AppColors.darkGreen,
+        width: 1.8,
+      ),
+    );
+  }
+
+  void sendMessage(ChatMessage chatMessage) {
+    setState(() {
+      chatMessagesList = [chatMessage, ...chatMessagesList];
+    });
+    try {
+      String question = chatMessage.text;
+      gemini.streamGenerateContent(question).listen((event) {
+        String response = event.content?.parts
+            ?.fold("", (previous, current) => "$previous${current.text}") ??
+            '';
+        if (chatMessagesList.isNotEmpty &&
+            chatMessagesList.first.user == geminiUser) {
+          setState(() {
+            chatMessagesList[0] = ChatMessage(
+              user: geminiUser,
+              createdAt: DateTime.now(),
+              text: chatMessagesList[0].text + response,
+            );
+          });
+        } else {
+          ChatMessage message = ChatMessage(
+            user: geminiUser,
+            createdAt: DateTime.now(),
+            text: response,
+          );
+          setState(() {
+            chatMessagesList = [message, ...chatMessagesList];
+          });
+        }
+      });
+    } catch (ex) {
+      log(ex.toString());
+    }
   }
 }

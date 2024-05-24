@@ -66,6 +66,8 @@ dependencies:
 #  tflite_flutter: ^0.10.4
 #  tflite: ^1.1.2
   sqflite: ^2.3.3+1
+  flutter_gemini: ^2.0.4
+  dash_chat_2: ^0.0.20
 
 
 dev_dependencies:

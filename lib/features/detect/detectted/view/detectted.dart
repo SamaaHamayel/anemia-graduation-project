@@ -30,9 +30,9 @@ class DetectedScreen extends StatelessWidget {
         appBar: AppBar(
           flexibleSpace: Image(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
           centerTitle: true,
@@ -52,9 +52,9 @@ class DetectedScreen extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                    ? AssetImage(
+                    ? const AssetImage(
                         'lib/core/utils/appImages/images/backgroundDark.png')
-                    : AssetImage(
+                    : const AssetImage(
                         'lib/core/utils/appImages/images/background.png'),
 
                 fit: BoxFit
@@ -97,9 +97,9 @@ class DetectedScreen extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? AssetImage(
+                  ? const AssetImage(
                       'lib/core/utils/appImages/images/backgroundDark.png')
-                  : AssetImage(
+                  : const AssetImage(
                       'lib/core/utils/appImages/images/background.png'),
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
@@ -108,6 +108,11 @@ class DetectedScreen extends StatelessWidget {
           child: Center(
             child: BlocConsumer<DetectAnemiaCubit, DetectAnemiaState>(
               listener: (context, state) {
+                if (state is ClassifyImageLoadingState){
+                  showToast(
+                      message: "Just Wait a minute",
+                      state: ToastStates.success);
+                }
                 if (state is ClassifyImageSuccessState) {
                   Navigator.pushReplacement(
                     context,
@@ -123,9 +128,7 @@ class DetectedScreen extends StatelessWidget {
                       },
                     ),
                   );
-                  // showToast(
-                  //     message: AppLocalizations.of(context)!.success,
-                  //     state: ToastStates.success);
+
                 }
               },
               builder: (context, state) {
