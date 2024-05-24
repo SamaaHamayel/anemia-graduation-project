@@ -2,6 +2,7 @@ import 'package:animeacheck/conf/routes/routes.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/core/utils/common.dart';
+import 'package:animeacheck/features/home/history/data/history_model.dart';
 import 'package:animeacheck/features/home/history/history_widgets/history_cubit.dart';
 import 'package:animeacheck/features/home/history/history_widgets/history_state.dart';
 import 'package:animeacheck/features/home/history/history_widgets/no_history_widget.dart';
@@ -94,7 +95,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 child: Column(
                                   children: [
                                     Text(history.date),
-                                    Text(history.result),
+
+                                    // HistoryModel(date: '',
+                                    //   result: BlocProvider.of<DetectAnemiaCubit>(context)
+                                    //     .data['message'],),
+
+
+
+
+
                                     IconButton(
                                       icon: Icon(Icons.delete),
                                       onPressed: () {

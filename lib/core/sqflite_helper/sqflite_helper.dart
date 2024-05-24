@@ -52,14 +52,18 @@ class SqfliteHelper {
 
   // Insert HistoryModel into the database
   Future<int> insertHistory({required HistoryModel model}) async {
-    return await db.insert('History', model.toJson());
+    return await db.rawInsert('''
+    INSERT INTO History(date, result)
+    VALUES(?, ?)''', [
+      model.date,
+      model.result,
+    ]);
   }
 
   // Get all Medicine records from the database
   Future<List<Map<String, dynamic>>> getMedicinesFromDB() async {
     return await db.rawQuery('SELECT * FROM Medicine');
   }
-
 
 
 

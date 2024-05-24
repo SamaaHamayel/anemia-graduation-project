@@ -4,6 +4,7 @@ import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forg
 import 'package:animeacheck/features/auth/presentation/person_info_cubit/personal_info_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_cubit.dart';
+import 'package:animeacheck/features/home/my_account/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:dio/dio.dart';
@@ -24,6 +25,7 @@ void initServiceLoactor(){
   sl.registerLazySingleton(()=> SettingsCubit());
   sl.registerLazySingleton(()=> DetectAnemiaCubit());
   sl.registerLazySingleton(()=> MedicineCubit());
+  sl.registerLazySingleton(()=> EditProfileCubit());
 
 
   //auth feature

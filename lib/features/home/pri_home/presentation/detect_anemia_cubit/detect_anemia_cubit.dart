@@ -1,9 +1,8 @@
-
-import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../core/utils/appColors/app_colors.dart';
 import 'detect_anemia_state.dart';
 import 'package:dio/dio.dart';
 import 'package:animeacheck/core/api/endPoints/end_point.dart';
@@ -42,7 +41,7 @@ class DetectAnemiaCubit extends Cubit<DetectAnemiaState> {
       if (response.statusCode == 200) {
         emit(ClassifyImageSuccessState());
         data = response.data;
-        print(data);
+        //print(data);
       } else {
         emit(ClassifyImageErrorState('Failed to classify image'));
         void showToast() {

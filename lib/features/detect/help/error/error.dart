@@ -23,9 +23,9 @@ class ErrorScreen extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? AssetImage(
+                  ? const AssetImage(
                       'lib/core/utils/appImages/images/backgroundDark.png')
-                  : AssetImage(
+                  : const AssetImage(
                       'lib/core/utils/appImages/images/background.png'),
               fit: BoxFit.cover,
             ),
@@ -42,7 +42,7 @@ class ErrorScreen extends StatelessWidget {
                           ? AppColors.whiteColor
                           : AppColors.darkThemBlackColor,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   AppLocalizations.of(context)!.failedToLoad,
                   textAlign: TextAlign.center,
@@ -54,7 +54,7 @@ class ErrorScreen extends StatelessWidget {
                             : AppColors.darkThemBlackColor,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: onRetry,
                   style: ElevatedButton.styleFrom(
@@ -62,7 +62,7 @@ class ErrorScreen extends StatelessWidget {
                         BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                             ? AppColors.lightPrimaryColor
                             : AppColors.darkThemBlackColor,
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   ),
                   child: Text(
                     'Try Again',

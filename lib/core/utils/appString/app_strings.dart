@@ -106,6 +106,9 @@ class AppStrings {
   static const String consultADoctor = "Consult a Doctor:";
   static const String consultADoctorTitle = " Enter your location to discover nearby doctors, and schedule an appointment effortlessly";
   static const String home = " Home";
+  static const String edit = " Edit";
+  static const String gallery = " Gallery";
+  static const String camera = " Camera";
   static const String history = " History";
   static const String myAccount = "MyAccount";
   static const String addNewMedicine = "Add New Medicine";

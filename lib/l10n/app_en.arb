@@ -145,6 +145,8 @@
  "thisResult":"The result isnot final, and there are other conditions that can affect these levels, so it is necessary to consult a doctor.",
  "noHistory":"No history available",
  "seeTheResult":"See The Result",
-
+ "camera":"Camera",
+ "gallery":"Gallery",
+ "edit":"Edit",
  "chat":"Chat Bot"
 }
