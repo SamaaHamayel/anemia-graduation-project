@@ -29,9 +29,7 @@ class SqfliteHelper {
         CREATE TABLE History (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           date TEXT,
-          result TEXT,
-          // image BLOB
-          )
+          result TEXT)
       ''');
       },
       onOpen: (db) => print('Database opened'),

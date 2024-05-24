@@ -3,9 +3,7 @@ import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/help_info/presentation/view/help_info.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -120,7 +118,7 @@ class ResultState extends State<ResultTest> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(20.0),
                 child: SizedBox(
                   width: 325,
                   child: Text(

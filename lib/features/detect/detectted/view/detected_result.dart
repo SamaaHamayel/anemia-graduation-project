@@ -110,7 +110,7 @@ class ResultScreen extends StatelessWidget {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 28.0, vertical: 8),
+                                  horizontal: 25.0, vertical: 8),
                               child: TextButton(
                                 onPressed: () {
                                   Navigator.push(

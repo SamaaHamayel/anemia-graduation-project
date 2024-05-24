@@ -12,11 +12,12 @@ class HelpDetect extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace:  Image(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+        flexibleSpace: Image(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? const AssetImage(
+                  'lib/core/utils/appImages/images/backgroundDark.png')
+              : const AssetImage(
+                  'lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         centerTitle: true,
@@ -24,29 +25,34 @@ class HelpDetect extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon:  Icon(
+          icon: Icon(
             Icons.arrow_back_ios,
             size: 23,
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+            color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? AppColors.whiteColor
+                : AppColors.lightPrimaryColor,
           ),
         ),
         title: Text(
           AppLocalizations.of(context)!.help,
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
                 fontSize: 24.sp,
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? AppColors.whiteColor
+                    : AppColors.lightPrimaryColor,
                 fontFamily: 'Kodchasan',
                 fontWeight: FontWeight.w700,
               ),
         ),
       ),
       body: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -76,8 +82,10 @@ class HelpDetect extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style:  TextStyle(
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.blackColor,
+        style: TextStyle(
+          color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ? AppColors.whiteColor
+              : AppColors.blackColor,
           fontSize: 24,
           fontFamily: 'Inter',
           fontWeight: FontWeight.w400,
