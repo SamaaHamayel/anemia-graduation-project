@@ -119,7 +119,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 Navigator.pop(context);
                                 await pickImage(ImageSource.gallery).then(
                                     (value) =>
-                                        editProfileCubit.editImage(value));
+                                        editProfileCubit.uploadImage(value));
                               },
                             );
                           },

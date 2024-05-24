@@ -7,6 +7,7 @@ import 'package:animeacheck/features/home/medicine/presentation/medicine_widgets
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import '../../../../core/services/local_notification_service.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
 import 'medicine_state.dart';
@@ -24,6 +25,9 @@ class MedicineCubit extends Cubit<MedicineState> {
   int isEditing = 0;
   int currentIndex = 0;
 
+
+  late TimeOfDay schduledTime;
+
   void getStartTime(context) async {
     emit(GetStartTimeLoadingState());
     TimeOfDay? pickedStartTime = await showTimePicker(
@@ -32,13 +36,16 @@ class MedicineCubit extends Cubit<MedicineState> {
     );
     if (pickedStartTime != null) {
       startTime = pickedStartTime.format(context);
-
+      schduledTime = pickedStartTime;
       emit(GetStartTimeSuccessState());
       // insertMedicine();
       //emit(InsertMedicineSuccessState());
       //navigateReplacement(context: context, route: Routes.medicineComponent);
     } else {
       showToast(message: "No Time Picked", state: ToastStates.success);
+      schduledTime =
+          TimeOfDay(hour: currentDate.hour, minute: currentDate.minute);
+
       emit(GetStartTimeErrorState());
     }
   }
@@ -80,6 +87,15 @@ class MedicineCubit extends Cubit<MedicineState> {
           startTime: startTime,
         ),
       );
+      LocalNotificationService.showSchduledNotification(
+        curretDate: currentDate,
+        schduledTime:schduledTime,
+        medicineModel: MedicineModel(
+          medicineName: medicineNameController.text,
+          medicineDose: int.parse(medicineDoseController.text),
+          startTime: startTime,
+        ),
+      );
       print(medicineList.length);
       getMedicine();
       medicineNameController.clear();
@@ -92,17 +108,6 @@ class MedicineCubit extends Cubit<MedicineState> {
     }
   }
 
-  //     // LocalNotificationService.showSchduledNotification(
-  //     //   curretDate: currentDate,
-  //     //   schduledTime:schduledTime,
-  //     //   medicineModel: MedicineModel(
-  //     //     medicineName: medicineNameController.text,
-  //     //     medicineDose: int.parse(medicineDoseController.text),
-  //     //     medicineShape: getImage(currentIndex),
-  //     //     startTime: startTime,
-  //     //     isComplete: isComplete
-  //     //   ),
-  //     // );
 
 //!get Medicine
   void getMedicine() async {
@@ -123,7 +128,7 @@ class MedicineCubit extends Cubit<MedicineState> {
 
     await sl<SqfliteHelper>().editMedicineFromDB(id).then((value) {
       emit(EditMedicineSuccessState());
-      AddMedicineButtonSheet(readOnly: false, hintText: "edit");
+      const AddMedicineButtonSheet(readOnly: false, hintText: "edit");
     }).catchError((e) {
       print(e.toString());
       emit(EditMedicineErrorState());

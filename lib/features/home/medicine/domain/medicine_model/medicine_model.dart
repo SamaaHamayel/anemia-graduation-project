@@ -2,14 +2,14 @@ class MedicineModel {
   final int? id;
   final String medicineName;
   final int medicineDose;
-  final int medicineShape;
+  final int? medicineShape;
   final String startTime;
  // final bool isEditing;
   MedicineModel({
     this.id,
     required this.medicineName,
     required this.medicineDose,
-    required this.medicineShape,
+     this.medicineShape,
     required this.startTime,
    // required this.isEditing,
   });

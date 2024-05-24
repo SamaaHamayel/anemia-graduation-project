@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const PriHome(),
     const NoHistoryWidget(),
     const Setting(),
-    MyAccount()
+    const MyAccount()
   ];
 
   @override
