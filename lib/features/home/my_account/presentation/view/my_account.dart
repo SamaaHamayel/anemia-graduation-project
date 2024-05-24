@@ -1,6 +1,6 @@
 import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart';
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
-import 'package:animeacheck/features/home/history/presentation/view/history_screen.dart';
+import 'package:animeacheck/features/home/chatBot/chat_bot_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/no_medicine.dart';
 import 'package:flutter/material.dart';
@@ -57,19 +57,18 @@ class MyAccountState extends State<MyAccount> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  EditProfileScreen()),
+                              builder: (context) => EditProfileScreen()),
                         );
                       },
                     ),
                     SizedBox(height: 28.h),
                     buildActionCard(
                       icon: Icons.science_outlined,
-                      title: AppLocalizations.of(context)!.testResultHistory,
+                      title: AppLocalizations.of(context)!.chat,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const HistoryScreen()),
+                          MaterialPageRoute(builder: (context) => ChatScreen()),
                         );
                       },
                     ),
@@ -163,7 +162,7 @@ class MyAccountState extends State<MyAccount> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>  EditProfileScreen()),
+                        builder: (context) => EditProfileScreen()),
                   );
                 },
                 icon: Icon(
@@ -268,7 +267,8 @@ class MyAccountState extends State<MyAccount> {
                   if (isSwitched == true) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const MedicineScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const MedicineScreen()),
                     );
                   } else {
                     Navigator.push(

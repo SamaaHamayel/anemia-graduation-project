@@ -30,7 +30,8 @@ class SqfliteHelper {
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           date TEXT,
           result TEXT,
-          image BLOB)
+          // image BLOB
+          )
       ''');
       },
       onOpen: (db) => print('Database opened'),

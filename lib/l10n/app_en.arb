@@ -144,5 +144,7 @@
  "failedToLoad":"Failed to load, please check your\ninternet connection before proceeding",
  "thisResult":"The result isnot final, and there are other conditions that can affect these levels, so it is necessary to consult a doctor.",
  "noHistory":"No history available",
- "seeTheResult":"See The Result"
+ "seeTheResult":"See The Result",
+
+ "chat":"Chat Bot"
 }

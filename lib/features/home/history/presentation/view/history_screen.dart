@@ -5,7 +5,6 @@ import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/history/history_widgets/history_cubit.dart';
 import 'package:animeacheck/features/home/history/history_widgets/history_state.dart';
 import 'package:animeacheck/features/home/history/history_widgets/no_history_widget.dart';
-import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,23 +63,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
       ),
       body: BlocConsumer<HistoryCubit, HistoryState>(
-        listener: (context, state) {
-          // if (state is GetHistorySuccessState) {
-
-          //   // البيانات تم جلبها بنجاح
-          // } else if (state is GetHistoryErrorState) {
-          //   // التعامل مع خطأ الجلب
-          //   print('Error fetching history data');
-          // } else if (state is InsertHistorySuccessState) {
-          //   BlocProvider.of<HistoryCubit>(context).getHistory();
-          // }
-        },
+        listener: (context, state) {},
         builder: (context, state) {
-          // if (state is GetHistoryLoadingState) {
-          //   return const Center(child: CircularProgressIndicator());
-          // } else if (state is GetHistoryErrorState) {
-          //   return const Center(child: Text('Error loading history data'));
-          // }
           return Stack(
             children: [
               Image.asset(
@@ -96,30 +80,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     height: 30.h,
                   ),
                   BlocProvider.of<HistoryCubit>(context).historyList.isEmpty
-                      ? const NoHistoryWidget() // استدعاء الويدجت الصحيح
+                      ? const NoHistoryWidget()
                       : Expanded(
                           child: ListView.builder(
                             itemCount: BlocProvider.of<HistoryCubit>(context)
                                 .historyList
                                 .length,
                             itemBuilder: (context, index) {
-                              final detectAnemiaCubit =
-                                  BlocProvider.of<DetectAnemiaCubit>(context);
-                                  //!دى اللى فيها الايرووووور يارب نشوفها 
-  // detectAnemiaCubit.image = BlocProvider.of<HistoryCubit>(context)
-  //                             .historyList[index];
-
-                                 detectAnemiaCubit
-                              .classifyImage(detectAnemiaCubit.image!);
-                              // );
                               final history =
                                   BlocProvider.of<HistoryCubit>(context)
                                       .historyList[index];
                               return Card(
                                 child: Column(
                                   children: [
-                                    Image.memory(history
-                                        .image), // assuming `image` is a `Uint8List`
                                     Text(history.date),
                                     Text(history.result),
                                     IconButton(

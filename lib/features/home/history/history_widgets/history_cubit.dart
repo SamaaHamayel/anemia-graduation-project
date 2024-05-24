@@ -24,7 +24,7 @@ class HistoryCubit extends Cubit<HistoryState> {
   Future<void> insertHistory(HistoryModel model) async {
     emit(InsertHistoryLoadingState());
     try {
-      await sl<SqfliteHelper>().initDB();
+      await sl<SqfliteHelper>().insertHistory(model: model);
       getHistory();
       emit(InsertHistorySuccessState());
     } catch (e) {
