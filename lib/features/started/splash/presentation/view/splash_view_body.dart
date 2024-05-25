@@ -126,7 +126,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       const Duration(seconds: 4),
       ()  async {
         await sl<CacheHelper>().getData(key: ApiKeys.token)==null
-        ?Navigator.of(context).pushReplacement(
+        ? Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => const OnBoardingScreen(),
           ),

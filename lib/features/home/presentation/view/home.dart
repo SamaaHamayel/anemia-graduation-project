@@ -1,6 +1,5 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
-import 'package:animeacheck/features/home/history/history_widgets/no_history_widget.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/my_account.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
@@ -13,6 +12,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../history/presentation/view/history_screen.dart';
 import '../../setting/presentation/settings_cubit/settings_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Widget> pages = [
     const PriHome(),
-    const NoHistoryWidget(),
+    const HistoryScreen(),
     const Setting(),
     const MyAccount()
   ];

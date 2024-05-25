@@ -1,4 +1,4 @@
-import 'package:animeacheck/core/consts/consts.dart';
+import 'package:animeacheck/core/const/const.dart';
 import 'package:animeacheck/core/services/local_notification_service.dart';
 import 'package:animeacheck/core/services/work_manager_service.dart';
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.dart';
@@ -22,19 +22,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initServiceLoactor();
   Bloc.observer = SimpleBlocObserver();
-  Gemini.init(apiKey: Consts.geminiApiKey);
+  Gemini.init(apiKey: Const.geminiApiKey);
   await sl<CacheHelper>().init();
-   sl<SqfliteHelper>().initDB();
+  sl<SqfliteHelper>().initDB();
   await Future.wait([
     LocalNotificationService.init(),
     WorkManagerService().init(),
   ]);
-
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => sl<SignInCubit>(),
+          create: (context) => sl<SignIn
+          Cubit>(),
         ),
         BlocProvider(
           create: (context) => sl<ForgetPasswordCubit>(),
@@ -45,26 +45,22 @@ void main() async {
         BlocProvider(
           create: (context) => sl<PersonalInfoCubit>(),
         ),
-
         BlocProvider(
-          create: (context) => sl<SettingsCubit>()..getThem()..getLang(),
+          create: (context) => sl<SettingsCubit>()
+            ..getThem()
+            ..getLang(),
         ),
-
         BlocProvider(
           create: (context) => sl<DetectAnemiaCubit>(),
         ),
-
         BlocProvider(
           create: (context) => sl<MedicineCubit>()..getMedicine(),
         ),
-
         BlocProvider(
           create: (context) => sl<EditProfileCubit>(),
         ),
-
       ],
       child: const MyApp(),
     ),
   );
 }
-

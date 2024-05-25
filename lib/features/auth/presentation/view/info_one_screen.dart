@@ -27,7 +27,7 @@ class InfoOneScreen extends StatelessWidget {
       appBar: AppBar(
         flexibleSpace:  Image(
 
-         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?const AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :const AssetImage('lib/core/utils/appImages/images/background.png'),
           // AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
@@ -54,7 +54,7 @@ class InfoOneScreen extends StatelessWidget {
       body: Container(
           decoration:  BoxDecoration(
             image: DecorationImage(
-                      image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :AssetImage('lib/core/utils/appImages/images/background.png'),
+                      image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?const AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :const AssetImage('lib/core/utils/appImages/images/background.png'),
 
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed

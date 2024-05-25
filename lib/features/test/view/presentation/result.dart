@@ -25,8 +25,8 @@ class ResultState extends State<ResultTest> {
       appBar: AppBar(
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              : AssetImage('lib/core/utils/appImages/images/background.png'),
+              ?const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              :const AssetImage('lib/core/utils/appImages/images/background.png'),
           // AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),

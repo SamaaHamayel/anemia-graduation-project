@@ -24,7 +24,7 @@ Widget buildActionButton({
           width: 40,
           height: 40,
           clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(),
+          decoration:const BoxDecoration(),
           child: Icon(
             iconData,
             color: AppColors.lightPrimaryColor,

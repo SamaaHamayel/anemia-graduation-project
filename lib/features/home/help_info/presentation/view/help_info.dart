@@ -32,8 +32,10 @@ class HelpfulInformationScreen extends StatelessWidget {
       appBar: AppBar(
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              : AssetImage('lib/core/utils/appImages/images/background.png'),
+              ? const AssetImage(
+                  'lib/core/utils/appImages/images/backgroundDark.png')
+              : const AssetImage(
+                  'lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         automaticallyImplyLeading: false,
@@ -76,9 +78,10 @@ class HelpfulInformationScreen extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),
@@ -112,21 +115,22 @@ class HelpfulInformationScreen extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () async {
-                      
                         bool isConnected = await _isConnected();
 
                         if (isConnected) {
                           await launchURL(
                               'https://www.youtube.com/watch?v=ZaOhQ1C8dtg&t=160s&pp=ygUt2KfZitmF2KfZhiDYp9mE2KfZhdin2YUg2KfZhNin2LPYqNiq2KfZhNmK2Kkg');
                         } else {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ErrorScreen(
-                                  onRetry: () => launchURL(
-                                      'https://www.youtube.com/watch?v=ZaOhQ1C8dtg&t=160s&pp=ygUt2KfZitmF2KfZhiDYp9mE2KfZhdin2YUg2KfZhNin2LPYqNiq2KfZhNmK2Kkg')),
-                            ),
-                          );
+                          if (context.mounted) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ErrorScreen(
+                                    onRetry: () => launchURL(
+                                        'https://www.youtube.com/watch?v=ZaOhQ1C8dtg&t=160s&pp=ygUt2KfZitmF2KfZhiDYp9mE2KfZhdin2YUg2KfZhNin2LPYqNiq2KfZhNmK2Kkg')),
+                              ),
+                            );
+                          }
                         }
 //}
                       },
@@ -339,7 +343,7 @@ class HelpfulInformationScreen extends StatelessWidget {
   }) {
     return Builder(builder: (context) {
       return Padding(
-        padding: EdgeInsets.symmetric(vertical: 00.0),
+        padding: const EdgeInsets.symmetric(vertical: 00.0),
         child: Container(
           width: 345.w,
           clipBehavior: Clip.antiAlias,
@@ -357,14 +361,14 @@ class HelpfulInformationScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 10.0),
+                padding: const EdgeInsets.only(bottom: 10.0),
                 child: Image.asset(
                   'lib/core/utils/appImages/images/anemia.png',
                   width: double.infinity,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Column(
                   children: [
                     Text(
@@ -381,8 +385,8 @@ class HelpfulInformationScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8),
                       child: Text(
                         description,
                         style: TextStyle(
@@ -397,124 +401,119 @@ class HelpfulInformationScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
-                        child: Column(
-                          children: [
-                            Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.only(
-                                      top: 8,
-                                      left: 19.50,
-                                      right: 19.50,
-                                      bottom: 7,
-                                    ),
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: ShapeDecoration(
-                                      shape: RoundedRectangleBorder(
-                                        side: BorderSide(
-                                          width: 1.50.w,
-                                          color: BlocProvider.of<SettingsCubit>(
-                                                      context)
-                                                  .isDarkThemEnable
-                                              ? AppColors.whiteColor
-                                              : AppColors.lightPrimaryColor,
-                                        ),
-                                        borderRadius: BorderRadius.circular(20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 12),
+                      child: Column(
+                        children: [
+                          Center(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                    top: 8,
+                                    left: 19.50,
+                                    right: 19.50,
+                                    bottom: 7,
+                                  ),
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: ShapeDecoration(
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        width: 1.50.w,
+                                        color: BlocProvider.of<SettingsCubit>(
+                                                    context)
+                                                .isDarkThemEnable
+                                            ? AppColors.whiteColor
+                                            : AppColors.lightPrimaryColor,
                                       ),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: onPressedRead,
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .readArticle,
-                                      ),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
-                                  SizedBox(width: 10.w),
-                                  Container(
-                                    padding: const EdgeInsets.only(
-                                      top: 8,
-                                      left: 19.50,
-                                      right: 18.50,
-                                      bottom: 7,
-                                    ),
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: ShapeDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment(0.00, -1.00),
-                                        end: Alignment(0, 1),
-                                        colors: [
-                                          AppColors.lightPrimaryColor,
-                                          AppColors.primaryColor
-                                        ],
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                    ),
-                                    child: TextButton(
-                                      style: ButtonStyle(
-                                        foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                AppColors.whiteColor),
-                                      ),
-                                      onPressed: onPressedWatch,
-                                      child: Text(
-                                        AppLocalizations.of(context)!
-                                            .watchVideo,
-                                      ),
+                                  child: TextButton(
+                                    onPressed: onPressedRead,
+                                    child: Text(
+                                      AppLocalizations.of(context)!.readArticle,
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                SizedBox(width: 10.w),
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                    top: 8,
+                                    left: 19.50,
+                                    right: 18.50,
+                                    bottom: 7,
+                                  ),
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: ShapeDecoration(
+                                    gradient:const LinearGradient(
+                                      begin: Alignment(0.00, -1.00),
+                                      end: Alignment(0, 1),
+                                      colors: [
+                                        AppColors.lightPrimaryColor,
+                                        AppColors.primaryColor
+                                      ],
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                  child: TextButton(
+                                    style: ButtonStyle(
+                                      foregroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              AppColors.whiteColor),
+                                    ),
+                                    onPressed: onPressedWatch,
+                                    child: Text(
+                                      AppLocalizations.of(context)!.watchVideo,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 10.0),
-                              child: Container(
-                                padding: const EdgeInsets.only(
-                                  top: 8,
-                                  left: 19.50,
-                                  right: 18.50,
-                                  bottom: 7,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                top: 8,
+                                left: 19.50,
+                                right: 18.50,
+                                bottom: 7,
+                              ),
+                              clipBehavior: Clip.antiAlias,
+                              decoration: ShapeDecoration(
+                                gradient:const LinearGradient(
+                                  begin: Alignment(0.00, -1.00),
+                                  end: Alignment(0, 1),
+                                  colors: [
+                                    AppColors.whiteColor,
+                                    AppColors.lightPrimaryColor
+                                  ],
                                 ),
-                                clipBehavior: Clip.antiAlias,
-                                decoration: ShapeDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment(0.00, -1.00),
-                                    end: Alignment(0, 1),
-                                    colors: [
-                                      AppColors.whiteColor,
-                                      AppColors.lightPrimaryColor
-                                    ],
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: TextButton(
-                                  style: ButtonStyle(
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            AppColors.whiteColor),
-                                  ),
-                                  onPressed: onPressedReadMore,
-                                  child: Text(
-                                    AppLocalizations.of(context)!.readMore,
-                                  ),
+                              ),
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          AppColors.whiteColor),
+                                ),
+                                onPressed: onPressedReadMore,
+                                child: Text(
+                                  AppLocalizations.of(context)!.readMore,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

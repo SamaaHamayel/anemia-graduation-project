@@ -11,9 +11,9 @@ Widget buildSnackBar(BuildContext context) {
       decoration: BoxDecoration(
         image: DecorationImage(
  image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ?const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),          fit: BoxFit.cover, // Optional: You can set the image fit as needed
+                :const AssetImage('lib/core/utils/appImages/images/background.png'),          fit: BoxFit.cover, // Optional: You can set the image fit as needed
         ),
       ),
       child: Center(

@@ -3,14 +3,15 @@ import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicin
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart'; // استيراد مكتبة path
 
-class SqfliteHelper {
+class SqfliteHelper 
+{
   late Database db;
 
   // Initialize the database
   Future<void> initDB() async {
     String dbPath = await getDatabasesPath();
     String path = join(dbPath, 'medicine.db');
-    
+
     db = await openDatabase(
       path,
       version: 1,
@@ -57,7 +58,6 @@ class SqfliteHelper {
       model.date,
       model.result,
       model.id,
-      model.image,
     ]);
   }
 
@@ -66,14 +66,10 @@ class SqfliteHelper {
     return await db.rawQuery('SELECT * FROM Medicine');
   }
 
-
-
   // Get all History records from the database
   Future<List<Map<String, dynamic>>> getHistoryFromDB() async {
     return await db.rawQuery('SELECT * FROM History');
   }
-
-
 
   // Update Medicine record in the database
   Future<int> editMedicineFromDB(int id) async {
@@ -91,11 +87,6 @@ class SqfliteHelper {
       [id],
     );
   }
-
-
-
-
-
 
   // Delete History record from the database
   Future<int> deleteHistory(int id) async {

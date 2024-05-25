@@ -25,9 +25,9 @@ class NoMedicineScreenState extends State<NoMedicineScreen> {
           decoration:  BoxDecoration(
             image: DecorationImage(
               image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ?const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),  
+                :const AssetImage('lib/core/utils/appImages/images/background.png'),  
               fit:
                   BoxFit.cover, // Optional: You can set the image fit as needed
             ),
@@ -182,7 +182,7 @@ class NoMedicineScreenState extends State<NoMedicineScreen> {
                                                                     ),
                                                                   ),
                                                                 ),
-                                                                Spacer(),
+                                                             const   Spacer(),
                                                                 TextButton(
                                                                   onPressed: () {
                                                                     Navigator.pop(
@@ -212,7 +212,7 @@ class NoMedicineScreenState extends State<NoMedicineScreen> {
                                                                 decoration:
                                                                     InputDecoration(
                                                                   border:
-                                                                      UnderlineInputBorder(),
+                                                             const         UnderlineInputBorder(),
                                                                   hintText:
                                                                       AppLocalizations.of(
                                                                               context)!
@@ -238,7 +238,7 @@ class NoMedicineScreenState extends State<NoMedicineScreen> {
                                                                 decoration:
                                                                     InputDecoration(
                                                                   border:
-                                                                      UnderlineInputBorder(),
+                                                          const            UnderlineInputBorder(),
                                                                   hintText:
                                                                       AppLocalizations.of(
                                                                               context)!
@@ -272,7 +272,7 @@ class NoMedicineScreenState extends State<NoMedicineScreen> {
                                                                           FontWeight
                                                                               .w600),
                                                                 )),
-                                                            SizedBox(height: 23),
+                                                          const  SizedBox(height: 23),
                                                             StreamBuilder(
                                                               builder: (context,
                                                                   snapshot) {

@@ -106,23 +106,23 @@ Widget buildContainerWithHB(String labelText) {
           fontWeight: FontWeight.w400,
         ),
         Container(
-          padding:const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: Color(0xFF2BB598),
+              color: const Color(0xFF2BB598),
             ),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Row(
             children: [
-           const   CustomText(
+              const CustomText(
                 text: 'Less',
                 color: Color(0xFF2BB598),
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
-          const     SizedBox(width: 44),
+              const SizedBox(width: 44),
               ExpandLessIcon(),
             ],
           ),
@@ -142,30 +142,30 @@ Widget build(BuildContext context) {
             'If the result is “lower than” the minimum number in the range (13.5), choose "less" by clicking on the arrow below.',
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         buildContainerWithHB('HB:'),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         SizedBox(
           width: 347,
           child: buildInstructionText(
             'If the result is “higher than” the maximum number in the range(17.5), choose "greater" by clicking on the arrow above.',
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         buildContainerWithHB('HB:'),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         SizedBox(
           width: 347,
           child: buildInstructionText(
             'If the result is “between” the minimum and maximum values of the range, it will be "normal".',
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         CustomContainer(
-          child: buildContainerWithHB('HB:'),
           borderColor: Colors.green,
+          child: buildContainerWithHB('HB:'),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
       ],
     ),
   );

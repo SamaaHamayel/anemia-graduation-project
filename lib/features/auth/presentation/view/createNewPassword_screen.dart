@@ -60,7 +60,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                   title:  CircleAvatar(
                     backgroundColor:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
 
-                    child: Icon(Icons.check_sharp,
+                    child:const Icon(Icons.check_sharp,
                     color: AppColors.whiteColor,
                     ),
                     ),

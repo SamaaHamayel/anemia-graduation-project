@@ -1,12 +1,15 @@
+import 'dart:math';
+
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/help_info/presentation/view/help_info.dart';
+import 'package:animeacheck/features/home/history/data/history_model.dart';
 import 'package:animeacheck/features/home/presentation/view/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class ResultScreen extends StatelessWidget {
   final String message;
@@ -16,7 +19,13 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isAnemic = message == "anemia detected ";
-
+    HistoryModel.historyList.add(
+      HistoryModel(
+          id: Random().nextInt(50),
+          date: DateFormat('MM/dd/yyyy hh:mm a').toString(),
+          result: isAnemic ? 'Has anemia' : 'Doesn\'t have anemia'),
+    );
+    HistoryService.saveHistoryList(HistoryModel.historyList);
     return BlocProvider(
       create: (context) => SettingsCubit(),
       child: Scaffold(
@@ -29,7 +38,8 @@ class ResultScreen extends StatelessWidget {
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
           centerTitle: true,
@@ -101,10 +111,11 @@ class ResultScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 side: BorderSide(
                                     width: 1.50,
-                                    color: BlocProvider.of<SettingsCubit>(context)
-                                            .isDarkThemEnable
-                                        ? AppColors.whiteColor
-                                        : AppColors.lightPrimaryColor),
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.whiteColor
+                                            : AppColors.lightPrimaryColor),
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
@@ -116,7 +127,8 @@ class ResultScreen extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const HomeScreen()),
+                                        builder: (context) =>
+                                            const HomeScreen()),
                                   );
                                 },
                                 style: TextButton.styleFrom(
@@ -128,10 +140,11 @@ class ResultScreen extends StatelessWidget {
                                   padding: EdgeInsets.zero,
                                   textStyle: TextStyle(
                                     fontSize: 18.sp,
-                                    color: BlocProvider.of<SettingsCubit>(context)
-                                            .isDarkThemEnable
-                                        ? AppColors.whiteColor
-                                        : AppColors.lightPrimaryColor,
+                                    color:
+                                        BlocProvider.of<SettingsCubit>(context)
+                                                .isDarkThemEnable
+                                            ? AppColors.whiteColor
+                                            : AppColors.lightPrimaryColor,
                                     fontFamily: 'Kodchasan',
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -169,7 +182,8 @@ class ResultScreen extends StatelessWidget {
                                     );
                                   },
                                   style: TextButton.styleFrom(
-                                    backgroundColor: AppColors.lightPrimaryColor,
+                                    backgroundColor:
+                                        AppColors.lightPrimaryColor,
                                     foregroundColor: AppColors.whiteColor,
                                     padding: EdgeInsets.zero,
                                     textStyle: TextStyle(

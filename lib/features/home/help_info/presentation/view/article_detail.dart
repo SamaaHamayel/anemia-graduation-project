@@ -26,8 +26,8 @@ class ArticleDetailScreen extends StatelessWidget {
       appBar: AppBar(
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              : AssetImage('lib/core/utils/appImages/images/background.png'),
+              ?const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              :const AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
         automaticallyImplyLeading: false,
@@ -66,9 +66,9 @@ class ArticleDetailScreen extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
+                ?const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),
+                :const AssetImage('lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover, // Optional: You can set the image fit as needed
           ),
         ),

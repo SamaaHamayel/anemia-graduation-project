@@ -63,7 +63,6 @@ Color getState(ToastStates state) {
  Future<XFile?> pickImage(ImageSource source) async{
   XFile? image = await ImagePicker().pickImage(source: source);
   if(image!=null){
-    print(image.path);
     return image;
   }else{
     return null;

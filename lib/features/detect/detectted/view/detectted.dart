@@ -32,7 +32,8 @@ class DetectedScreen extends StatelessWidget {
             image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? const AssetImage(
                     'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
+                : const AssetImage(
+                    'lib/core/utils/appImages/images/background.png'),
             fit: BoxFit.cover,
           ),
           centerTitle: true,
@@ -108,7 +109,7 @@ class DetectedScreen extends StatelessWidget {
           child: Center(
             child: BlocConsumer<DetectAnemiaCubit, DetectAnemiaState>(
               listener: (context, state) {
-                if (state is ClassifyImageLoadingState){
+                if (state is ClassifyImageLoadingState) {
                   showToast(
                       message: "Just Wait a minute",
                       state: ToastStates.success);
@@ -128,7 +129,6 @@ class DetectedScreen extends StatelessWidget {
                       },
                     ),
                   );
-
                 }
               },
               builder: (context, state) {
@@ -177,7 +177,7 @@ class DetectedScreen extends StatelessWidget {
                       onTap: () async {
                         detectAnemiaCubit.image =
                             await pickImage(ImageSource.camera);
-                        print(detectAnemiaCubit.image!.path);
+
                         detectAnemiaCubit
                             .classifyImage(detectAnemiaCubit.image!);
                         // pickImage(ImageSource.gallery).then(
@@ -191,7 +191,7 @@ class DetectedScreen extends StatelessWidget {
                       onTap: () async {
                         detectAnemiaCubit.image =
                             await pickImage(ImageSource.gallery);
-                        print(detectAnemiaCubit.image!.path);
+
                         detectAnemiaCubit
                             .classifyImage(detectAnemiaCubit.image!);
                         // pickImage(ImageSource.gallery).then(

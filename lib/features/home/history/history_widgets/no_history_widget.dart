@@ -10,15 +10,15 @@ class NoHistoryWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+      const    Icon(
             Icons.history,
             size: 80,
             color: Colors.grey,
           ),
-          SizedBox(height: 20),
+      const    SizedBox(height: 20),
           Text(
             AppLocalizations.of(context)!.noHistory,
-            style: TextStyle(
+            style:const TextStyle(
               fontSize: 24,
               color: Colors.grey,
             ),

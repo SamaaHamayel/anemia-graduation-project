@@ -1,4 +1,4 @@
-import 'package:animeacheck/features/startted/onboarding/presentation/view/onboardininffo.dart';
+import 'package:animeacheck/features/started/onboarding/presentation/view/onboardininffo.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/models/on_boarding_page_widget.dart';

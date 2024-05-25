@@ -5,46 +5,50 @@ import 'package:animeacheck/features/home/setting/presentation/settings_cubit/se
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Widget buildloading(BuildContext context) {
+Widget buildLoading(BuildContext context) {
   // Pass context as a parameter
-  return  Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Container( decoration: BoxDecoration(
-          image: DecorationImage(
- image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : AssetImage('lib/core/utils/appImages/images/background.png'),            fit: BoxFit.cover, // Optional: You can set the image fit as needed
-          ),
+  return Scaffold(
+    backgroundColor: Colors.transparent,
+    body: Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+              ?const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
+              :const AssetImage('lib/core/utils/appImages/images/background.png'),
+          fit: BoxFit.cover, // Optional: You can set the image fit as needed
         ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 300.0, horizontal: 50),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Center(
-            child: RotatingIcon(),
-          ),
-                  const SizedBox(height: 32),
-                   Text(
-                    'Please wait....',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
-                      fontSize: 32,
-                      fontFamily: 'Kodchasan',
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 300.0, horizontal: 50),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                child: RotatingIcon(),
               ),
-            ),
+              const SizedBox(height: 32),
+              Text(
+                'Please wait....',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color:
+                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
+                  fontSize: 32,
+                  fontFamily: 'Kodchasan',
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
           ),
         ),
-      );
+      ),
+    ),
+  );
 }
 
 class RotatingIcon extends StatefulWidget {
@@ -76,15 +80,13 @@ class RotatingIconState extends State<RotatingIcon> {
   Widget build(BuildContext context) {
     return Transform.rotate(
       angle: rotationAngle,
-      child:  Icon(
+      child: Icon(
         Icons.donut_large,
         size: 100,
-        color:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+        color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            ? AppColors.whiteColor
+            : AppColors.lightPrimaryColor,
       ),
     );
   }
 }
-
-  
-
-
