@@ -87,7 +87,7 @@
 "detectAnemia": "Detect Anemia:",
 "detectAnemiaTitle":"You can take or upload photo for your eyelid to know whether you have anemia or not'Make sure there is high lighting'",
 "testResults": "Test Results:",
-"testResultsTitle": "Input the required test results to accurately determine the type of anemia you are suffering from.",
+"testResultsTitle": "Please get a CBC test done at a laboratory, then input the results to  determine the type of anemia you have.",
 "helpfulInformationTitle": "Provides concise information about anemia, including its causes, symptoms, and treatments",
   "home": "Home",
   "history": "History",

@@ -18,7 +18,7 @@ class AppAssets {
   static const String fmale = '${basePath}fmale.png';
   static const String logo = '${basePath}logo.png';
   static const String detect = '${basePath}detect.png';
-  static const String uploadImage = '$basePath.png';
+  static const String uploadImage = '${basePath}uploadImage.png';
   static const String pushNotifications = '${basePath}Push_notifications.png';
   static const String imageDetect = '${basePath}imageDetect.png';
   static const String anemia = '${basePath}anemia.png';
@@ -27,8 +27,8 @@ class AppAssets {
   static const String backgroundDark = '${basePath}backgroundDark.png';
 
   static const String noMedicine = '${basePath}noMedicine.png';
-  static const String noMedicineDark = '${basePath}noMedicineDark.png.png';
-  static const String logoDark = '${basePath}logoDark.png.png';
+  static const String noMedicineDark = '${basePath}noMedicineDark.png';
+  static const String logoDark = '${basePath}logoDark.png';
     static const String symptoms = '${basePath}symptoms.jpg';
 
 //symptoms

@@ -1,4 +1,6 @@
+import 'package:animeacheck/core/services/notification.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
+import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_cubit.dart';
 import 'package:animeacheck/features/home/medicine/medicine_cubit/medicine_state.dart';
 import 'package:animeacheck/features/home/medicine/presentation/medicine_widgets/add_medicine_button_sheet.dart';
@@ -44,7 +46,13 @@ class _MedicineScreenState extends State<MedicineScreen> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            navigateReplacement(context: context, route: Routes.home);
+            NotificationService().scheduleNotification(
+              medicineModel: MedicineModel(
+                  medicineName: "tt", medicineDose: 2, startTime: "26/8"),
+              scheduledNotificationDateTime: DateTime.now().add(Duration(seconds: 10)),
+            );
+
+            // navigateReplacement(context: context, route: Routes.home);
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -67,7 +75,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
       ),
       body: Stack(
         children: [
-            Image.asset(
+          Image.asset(
             BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? (AppAssets.backgroundDark)
                 : (AppAssets.background),
@@ -91,13 +99,16 @@ class _MedicineScreenState extends State<MedicineScreen> {
                       SizedBox(
                         height: 30.h,
                       ),
-                      BlocProvider.of<MedicineCubit>(context).medicineList.isEmpty
+                      BlocProvider.of<MedicineCubit>(context)
+                              .medicineList
+                              .isEmpty
                           ? const NoMedicineWidgets()
                           : Expanded(
                               child: GridView.builder(
-                                itemCount: BlocProvider.of<MedicineCubit>(context)
-                                    .medicineList
-                                    .length,
+                                itemCount:
+                                    BlocProvider.of<MedicineCubit>(context)
+                                        .medicineList
+                                        .length,
                                 itemBuilder: (context, index) {
                                   return Component(
                                     index,
@@ -166,13 +177,16 @@ class _MedicineScreenState extends State<MedicineScreen> {
       ),
     );
   }
+
+  DateTime futureTime = DateTime.now().add(Duration(seconds: 10));
+
+  Future<DateTime> getTwoMinutesAhead() => Future.delayed(
+        Duration(seconds: 10),
+        () => DateTime.now().add(
+          Duration(seconds: 10),
+        ),
+      );
 }
-
-
-
-
-
-
 
 // import 'package:animeacheck/features/home/medicine/presentation/view/medicine_component.dart';
 // import 'package:flutter/material.dart';

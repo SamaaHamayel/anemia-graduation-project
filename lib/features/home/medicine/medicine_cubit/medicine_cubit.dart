@@ -89,27 +89,35 @@ class MedicineCubit extends Cubit<MedicineState> {
         ),
       );
       LocalNotificationService.showSchduledNotification(
-        currentDate: currentDate,
-        schduledTime:schduledTime,
+        currentDate: DateTime.now(),
+        schduledTime: TimeOfDay.now(),
         medicineModel: MedicineModel(
-          medicineName: medicineNameController.text,
-          medicineDose: medicineDose,
-          medicineShape: currentIndex,
-          startTime: startTime,
-        ),
+          medicineName: 'test',
+          medicineDose: 2,
+          startTime: startTime,),
 
-      );
-      if (kDebugMode) {
-        print(medicineList.length);
-      }
-      getMedicine();
-      medicineNameController.clear();
-      medicineDoseController.clear();
-      startTime = DateFormat("hh:mm:a").format(DateTime.now());
-      emit(InsertMedicineSuccessState());
+        // currentDate: currentDate,
+        // schduledTime:schduledTime,
+        // medicineModel: MedicineModel(
+        //   medicineName: medicineNameController.text,
+        //   medicineDose: medicineDose,
+        //   medicineShape: currentIndex,
+        //   startTime: startTime,
+      //)
+
+
+    );
+    if (kDebugMode) {
+    print(medicineList.length);
+    }
+    getMedicine();
+    medicineNameController.clear();
+    medicineDoseController.clear();
+    startTime = DateFormat("hh:mm:a").format(DateTime.now());
+    emit(InsertMedicineSuccessState());
     } catch (e) {
-      log(e.toString());
-      emit(InsertMedicineErrorState());
+    log(e.toString());
+    emit(InsertMedicineErrorState());
     }
   }
 

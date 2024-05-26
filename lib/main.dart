@@ -13,10 +13,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'core/cache_helper/cache_helper.dart';
+import 'core/services/notification.dart';
 import 'core/services/service_locator.dart';
 import 'core/sqflite_helper/sqflite_helper.dart';
 import 'core/utils/bloc_observer/bloc_observer.dart';
 import 'my_app.dart';
+import 'package:timezone/data/latest.dart' as tz;
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,10 +28,12 @@ void main() async {
   Gemini.init(apiKey: Const.geminiApiKey);
   await sl<CacheHelper>().init();
   sl<SqfliteHelper>().initDB();
-  await Future.wait([
-    LocalNotificationService.init(),
-    WorkManagerService().init(),
-  ]);
+  NotificationService().initNotification();
+  tz.initializeTimeZones();
+  // await Future.wait([
+  //   // LocalNotificationService.init(),
+  //   // WorkManagerService().init(),
+  // ]);
   runApp(
     MultiBlocProvider(
       providers: [

@@ -65,7 +65,7 @@ Widget buildFeatureCard({
                       ? AppColors.whiteColor
                       : AppColors.blackColor.withOpacity(0.7),
 
-                  fontSize: 14,
+                  fontSize: 12,
                   fontFamily: 'Kodchasan',
                   fontWeight: FontWeight.w500,
                 ),

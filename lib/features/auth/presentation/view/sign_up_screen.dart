@@ -69,7 +69,7 @@ class SignUpScreen extends StatelessWidget {
               if (state is SignUpLoadingState){
                 void showToast() {
                   Fluttertoast.showToast(
-                    msg: "Email is already exist",
+                    msg: "Wait a second",
                     toastLength: Toast.LENGTH_SHORT,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIosWeb: 1,
@@ -79,7 +79,7 @@ class SignUpScreen extends StatelessWidget {
                   );
                 }
                 showToast();
-                navigateReplacement(context: context, route: Routes.signIn);
+              //  navigateReplacement(context: context, route: Routes.signIn);
               }
               if (state is SignUpSuccessState) {
                 showToast(

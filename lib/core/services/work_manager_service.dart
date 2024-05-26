@@ -33,7 +33,7 @@ class WorkManagerService {
 @pragma('vm-entry-point')
 void actionTask() {
   //show notification
-  Workmanager().executeTask((medicineName, inputData) {
+  Workmanager().executeTask((medicineModel, inputData) {
     LocalNotificationService.showDailySchduledNotification();
     return Future.value(true);
   });
