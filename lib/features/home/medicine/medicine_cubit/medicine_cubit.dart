@@ -8,7 +8,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../../../../core/services/local_notification_service.dart';
 import '../../../../core/services/notification.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
@@ -26,7 +25,6 @@ class MedicineCubit extends Cubit<MedicineState> {
   DateTime selectedDate = DateTime.now();
   int isEditing = 0;
   int currentIndex = 0;
-
 
   late TimeOfDay schduledTime;
 
@@ -96,25 +94,23 @@ class MedicineCubit extends Cubit<MedicineState> {
             medicineName: medicineNameController.text,
             medicineDose: medicineDose,
             startTime: startTime),
-        scheduledNotificationDateTime: DateTime.parse("hh:mm")
-            .add(const Duration(seconds: 10)),
+        scheduledNotificationDateTime: DateTime.now().add(const Duration(seconds: 10))
+          
       );
 
-
-    if (kDebugMode) {
-    print(medicineList.length);
-    }
-    getMedicine();
-    medicineNameController.clear();
-    medicineDoseController.clear();
-    startTime = DateFormat("hh:mm:a").format(DateTime.now());
-    emit(InsertMedicineSuccessState());
+      if (kDebugMode) {
+        print(medicineList.length);
+      }
+      getMedicine();
+      medicineNameController.clear();
+      medicineDoseController.clear();
+      startTime = DateFormat("hh:mm:a").format(DateTime.now());
+      emit(InsertMedicineSuccessState());
     } catch (e) {
-    log(e.toString());
-    emit(InsertMedicineErrorState());
+      log(e.toString());
+      emit(InsertMedicineErrorState());
     }
   }
-
 
 //!get Medicine
   void getMedicine() async {
