@@ -1,5 +1,7 @@
+import 'package:animeacheck/conf/routes/routes.dart';
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
+import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/my_account.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
@@ -47,14 +49,19 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
-              backgroundColor:
-                  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                      ? AppColors.darkGreen
-                      : AppColors.lightPrimaryColor,
-              child: Image.asset(
-                AppAssets.female,
-                width: double.infinity,
+            InkWell(
+              onTap: () {
+               navigateReplacement(context: context, route: Routes.myAccount);
+              },
+              child: CircleAvatar(
+                backgroundColor:
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? AppColors.darkGreen
+                        : AppColors.lightPrimaryColor,
+                child: Image.asset(
+                  AppAssets.female,
+                  width: double.infinity,
+                ),
               ),
             ),
             Image.asset(

@@ -33,8 +33,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => sl<SignIn
-          Cubit>(),
+          create: (context) => sl<SignInCubit>(),
         ),
         BlocProvider(
           create: (context) => sl<ForgetPasswordCubit>(),

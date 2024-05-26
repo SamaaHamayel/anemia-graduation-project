@@ -1,3 +1,4 @@
+import 'package:animeacheck/features/home/history/history_widgets/test_history_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/history_model.dart';
@@ -29,24 +30,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
         : ListView.builder(
             itemCount: historyList.length,
             itemBuilder: (BuildContext context, int index) {
-              return Item(historyModel: historyList[index]);
+              return Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: TestHistoryCard(historyModel: historyList[index],),
+              );
             },
           );
   }
 }
 
-class Item extends StatelessWidget {
-  final HistoryModel historyModel;
-  const Item({super.key, required this.historyModel});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('${historyModel.id}'),
-        Text('${historyModel.result}'),
-        Text('${historyModel.date}'),
-      ],
-    );
-  }
-}

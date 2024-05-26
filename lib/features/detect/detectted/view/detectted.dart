@@ -162,7 +162,7 @@ class DetectedScreen extends StatelessWidget {
                                 fontSize: 20.sp,
                                 color: BlocProvider.of<SettingsCubit>(context)
                                         .isDarkThemEnable
-                                    ? AppColors.lightBackgroundColor
+                                    ? AppColors.whiteColor
                                     : AppColors.lightPrimaryColor,
                                 fontFamily: 'Kodchasan',
                                 fontWeight: FontWeight.w600,

@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/appColors/app_colors.dart';
+import '../../../../auth/presentation/signUp_cubit/sign_up_cubit.dart';
+import '../../../my_account/presentation/view/edit_profile.dart';
 import '../widgets/setting_switch_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -73,8 +75,7 @@ class Setting extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  "Sara Shebl",
-                                  style: Theme.of(context)
+                                  BlocProvider.of<SignUpCubit>(context).nameController.text,                                  style: Theme.of(context)
                                       .textTheme
                                       .bodyMedium!
                                       .copyWith(
@@ -86,7 +87,13 @@ class Setting extends StatelessWidget {
                             ),
                             const Spacer(),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const EditProfileScreen()),
+                                );
+                              },
                               icon: Icon(
                                 Icons.arrow_forward_ios,
                                 color: BlocProvider.of<SettingsCubit>(context)

@@ -468,7 +468,9 @@ class CBCTestState extends State<CBCTest> {
         dropdownPLT == 'normal')) {
       result = '\n \n  انيميا فول الدم \n  (Sickle cell anemia) \n \n \n ';
     } else {
-      result = '\n  \n  No specific condition met \n \n \n ';
+      result = '\n  \n  No specific condition met \n '
+          'لم يتم التطابق '
+          '\n \n ';
     }
   }
 }

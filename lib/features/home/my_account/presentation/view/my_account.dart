@@ -66,7 +66,7 @@ class MyAccountState extends State<MyAccount> {
                     ),
                     SizedBox(height: 28.h),
                     buildActionCard(
-                      icon: Icons.chat_outlined,
+                      icon: Icons.smart_toy_outlined,
                       title: AppLocalizations.of(context)!.chat,
                       onPressed: () {
                         Navigator.push(
@@ -146,6 +146,7 @@ class MyAccountState extends State<MyAccount> {
                         ? AppColors.whiteColor
                         : AppColors.lightPrimaryColor,
                 child: Image.asset(
+
                   AppAssets.female,
                   width: double.infinity,
                 ),

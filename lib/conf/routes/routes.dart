@@ -8,6 +8,7 @@ import '../../features/auth/presentation/view/info_two_screen.dart';
 import '../../features/auth/presentation/view/sign_in_screen.dart';
 import '../../features/auth/presentation/view/sign_up_screen.dart';
 import '../../features/auth/presentation/view/verify_screen.dart';
+import '../../features/home/my_account/presentation/view/my_account.dart';
 import '../../features/home/presentation/view/home.dart';
 
 class Routes {
@@ -34,6 +35,8 @@ class Routes {
   static const String explainScreen = "/explainScreen";
   //CBCTest    result
   static const String cBCTest = "/CBCTest";
+  static const String myAccount = "/MyAccount";
+
 }
 
 class AppRoutes {
@@ -64,6 +67,8 @@ class AppRoutes {
 
       case Routes.infoTwo:
         return MaterialPageRoute(builder: (_) => const InfoTwoScreen());
+      case Routes.myAccount:
+        return MaterialPageRoute(builder: (_) => const MyAccount());
 
       // case Routes.wrongPassword:
       //   return MaterialPageRoute(builder: (_) => const WrongPasswordScreen());

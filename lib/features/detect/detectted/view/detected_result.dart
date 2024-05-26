@@ -22,8 +22,8 @@ class ResultScreen extends StatelessWidget {
     HistoryModel.historyList.add(
       HistoryModel(
           id: Random().nextInt(50),
-          date: DateFormat('MM/dd/yyyy hh:mm a').toString(),
-          result: isAnemic ? 'Has anemia' : 'Doesn\'t have anemia'),
+          date: DateFormat('MM/dd/yyyy').format(DateTime.now()),
+          result: isAnemic ? 'Anemic' : 'Not-Anemic'),
     );
     HistoryService.saveHistoryList(HistoryModel.historyList);
     return BlocProvider(

@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/appColors/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ExplanaScreen extends StatelessWidget {
   const ExplanaScreen({super.key});
@@ -656,7 +658,7 @@ class ExplanaScreen extends StatelessWidget {
                               text: 'normal',
                               style: TextStyle(
                                 color: Color(0xFF2BB598),
-                                fontSize: 16,
+                                fontSize: 12,
                                 fontFamily: 'Kumbh Sans',
                                 fontWeight: FontWeight.w400,
                                 height: 0,
@@ -873,8 +875,8 @@ class ExplanaScreen extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      child: const Text(
-                        'Start',
+                      child:  Text(
+                       AppLocalizations.of(context)!.start ,
                       ),
                     ),
                   )
@@ -908,7 +910,7 @@ class ExpandLessIcon extends StatelessWidget {
             decoration: const BoxDecoration(),
             child: Icon(
               Icons.expand_more,
-              size: 10.sp,
+              size: 8.sp,
               color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                   ? AppColors.whiteColor
                   : AppColors.blackColor,
@@ -916,13 +918,13 @@ class ExpandLessIcon extends StatelessWidget {
           ),
           // SizedBox(height: 8),
           Container(
-            width: 8.w,
-            height: 12.h,
+            width: 6.w,
+            height: 10.h,
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(),
             child: Icon(
               Icons.expand_less,
-              size: 10.sp,
+              size: 8.sp,
               color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                   ? AppColors.whiteColor
                   : AppColors.blackColor,

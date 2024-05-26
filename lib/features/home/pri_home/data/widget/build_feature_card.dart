@@ -1,4 +1,7 @@
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/appColors/app_colors.dart';
@@ -45,18 +48,30 @@ Widget buildFeatureCard({
             ],
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0.h),
-          child: Text(
-            maxLines: 2,
-            description,
-            style: TextStyle(
-              color: AppColors.blackColor.withOpacity(0.7),
-              fontSize: 14,
-              fontFamily: 'Kodchasan',
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+        BlocConsumer<SettingsCubit, SettingsState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0.h),
+              child: Text(
+                maxLines: 2,
+                description,
+                style: TextStyle(
+                  color: BlocProvider
+                      .of<SettingsCubit>(context)
+                      .isDarkThemEnable
+                      ? AppColors.whiteColor
+                      : AppColors.blackColor.withOpacity(0.7),
+
+                  fontSize: 14,
+                  fontFamily: 'Kodchasan',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            );
+          },
         ),
         const Spacer(),
         Align(

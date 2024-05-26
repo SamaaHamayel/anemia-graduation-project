@@ -78,7 +78,7 @@ class PriHome extends StatelessWidget {
                     icon: Icons.camera_alt_rounded,
                     title: AppLocalizations.of(context)!.detectAnemia,
                     description:
-                        AppLocalizations.of(context)!.detectAnemiaTitle,
+                        AppLocalizations.of(context)!.homeScreenTitle,
                     onTap: () => _navigateToDetectedScreen(context),
                   ),
                   buildFeatureCard(
