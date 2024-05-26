@@ -34,7 +34,12 @@ class EditProfileScreenState extends State<EditProfileScreen> {
     return BlocConsumer<EditProfileCubit, EditProfileState>(
       listener: (context, state) {
         if (state is EditProfileImageSuccessState) {
+          // EditProfileImageSuccessState;
           editProfileCubit.image;
+          CustomEditProfileFileImage(
+            image: editProfileCubit.image,
+            fit: BoxFit.fill,
+          );
         }
       },
       builder: (context, state) {
