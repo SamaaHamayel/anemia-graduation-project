@@ -1,6 +1,5 @@
 import 'package:animeacheck/core/const/const.dart';
-import 'package:animeacheck/core/services/local_notification_service.dart';
-import 'package:animeacheck/core/services/work_manager_service.dart';
+
 import 'package:animeacheck/features/auth/presentation/auth_cubit/sign_in_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/person_info_cubit/personal_info_cubit.dart';

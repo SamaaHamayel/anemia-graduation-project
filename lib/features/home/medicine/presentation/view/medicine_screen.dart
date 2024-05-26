@@ -9,9 +9,7 @@ import 'package:animeacheck/features/home/setting/presentation/settings_cubit/se
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../conf/routes/routes.dart';
 import '../../../../../core/utils/appColors/app_colors.dart';
-import '../../../../../core/utils/common.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
