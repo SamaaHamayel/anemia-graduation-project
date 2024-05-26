@@ -44,13 +44,12 @@ class _MedicineScreenState extends State<MedicineScreen> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            NotificationService().scheduleNotification(
-              medicineModel: MedicineModel(
-                  medicineName: "tt", medicineDose: 2, startTime: "26/8"),
-              scheduledNotificationDateTime: DateTime.now().add(Duration(seconds: 10)),
-            );
-
-            // navigateReplacement(context: context, route: Routes.home);
+            // NotificationService().scheduleNotification(
+            //   medicineModel: MedicineModel(
+            //       medicineName: "tt", medicineDose: 2, startTime: "26/8"),
+            //   scheduledNotificationDateTime: DateTime.now().add(Duration(seconds: 10)),
+            // );
+             navigateReplacement(context: context, route: Routes.home);
           },
           icon: Icon(
             Icons.arrow_back_ios,
