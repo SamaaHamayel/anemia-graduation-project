@@ -3,6 +3,8 @@ import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
+import 'package:animeacheck/features/home/my_account/edit_profile_cubit/edit_profile_cubit.dart';
+import 'package:animeacheck/features/home/my_account/edit_profile_cubit/edit_profile_state.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/my_account.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_state.dart';
@@ -16,6 +18,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../history/presentation/view/history_screen.dart';
+import '../../my_account/my_account_widgets/custom_edit_profile_image_widget.dart';
 import '../../setting/presentation/settings_cubit/settings_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,6 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
         // TODO: implement listener
       },
       builder: (context, state) {
+        final editProfileCubit = BlocProvider.of<EditProfileCubit>(context);
+
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -55,21 +60,30 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () {
-                    navigateReplacement(
-                        context: context, route: Routes.myAccount);
+                BlocConsumer<EditProfileCubit, EditProfileState>(
+                  listener: (context, state) {
+                    if (state is EditProfileImageSuccessState){
+                      CustomEditProfileFileImage(
+                        image: editProfileCubit.image,
+                        fit: BoxFit.fill,
+                      );
+                    }
                   },
-                  child: CircleAvatar(
-                    backgroundColor:
-                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                            ? AppColors.darkGreen
-                            : AppColors.lightPrimaryColor,
-                    child: Image.asset(
-                      AppAssets.female,
-                      width: double.infinity,
-                    ),
-                  ),
+                  builder: (context, state) {
+                    return InkWell(
+                      onTap: () {
+                        navigate(context: context, route: Routes.myAccount);
+                      },
+                      child: CircleAvatar(
+                        radius: 25.r,
+                        child: CustomEditProfileFileImage(
+                          image: editProfileCubit.image,
+
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 Image.asset(
                     BlocProvider.of<SettingsCubit>(context).isDarkThemEnable

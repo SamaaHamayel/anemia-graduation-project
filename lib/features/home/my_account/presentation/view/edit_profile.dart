@@ -35,7 +35,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       listener: (context, state) {
         if (state is EditProfileImageSuccessState) {
           // EditProfileImageSuccessState;
-          editProfileCubit.image;
+          // editProfileCubit.image;
           CustomEditProfileFileImage(
             image: editProfileCubit.image,
             fit: BoxFit.fill,
@@ -94,19 +94,16 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
-                      Stack(children: [
-                        Container(
-                          height: 96.h,
+                      Stack(
+                          children: [
+                        SizedBox(
                           width: 96.w,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.green,
-                              ),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(72.r))),
+                          height: 100.h,
                           child: CustomEditProfileFileImage(
                             image: editProfileCubit.image,
-                            fit: BoxFit.fill,
+                            // width: 50.w,
+                            // height: 70.h,
+                            fit: BoxFit.cover,
                           ),
                         ),
                         Positioned(
@@ -135,6 +132,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               );
                             },
                             icon: const Icon(
+                              size: 27,
                               Icons.add_circle_outline,
                               color: AppColors.medicineNameColor,
                             ),

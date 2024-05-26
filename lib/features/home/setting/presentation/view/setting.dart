@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/appColors/app_colors.dart';
 import '../../../../auth/presentation/signUp_cubit/sign_up_cubit.dart';
+import '../../../my_account/my_account_widgets/custom_edit_profile_image_widget.dart';
 import '../../../my_account/presentation/view/edit_profile.dart';
 import '../widgets/setting_switch_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,6 +19,8 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final editProfileCubit = BlocProvider.of<EditProfileCubit>(context);
+
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
         // TODO: implement listener
@@ -62,49 +65,28 @@ class Setting extends StatelessWidget {
                           SizedBox(
                             height: 16.h,
                           ),
-                          Container(
-                            height: 80.h,
-                            width: 343.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16.h),
-                              border: Border.all(color: AppColors.grayColor),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 16, top: 20, bottom: 10),
-                              child: Row(
-                                children: [
-                                   Text(
-                                        BlocProvider.of<SignUpCubit>(context)
-                                            .nameController
-                                            .text,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
-                                      ),
-                                    
-                                  BlocBuilder<EditProfileCubit,
-                                      EditProfileState>(
-                                    builder: (context, state) {
-                                      if (state
-                                          is EditProfileImageSuccessState) {
-                                        return CircleAvatar(
-                                          radius: 50,
-                                          backgroundImage: state.image
-                                          // ?? AppAssets.fmale
-                                        );
-                                      } else {
-                                        return const CircularProgressIndicator();
-                                      }
-                                    },
-                                  ),
-                                  SizedBox(
-                                    width: 25.w,
-                                  ),
-                                  Column(
+                          BlocConsumer<EditProfileCubit, EditProfileState>(
+                            listener: (context, state) {
+                              if (state is EditProfileImageSuccessState){
+                                CustomEditProfileFileImage(
+                                  image: editProfileCubit.image,
+                                  fit: BoxFit.fill,
+                                );
+                              }
+                            },
+                            builder: (context, state) {
+                              return Container(
+                                height: 80.h,
+                                width: 343.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16.h),
+                                  border:
+                                      Border.all(color: AppColors.grayColor),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                     left: 20 ,top: 20, bottom: 10),
+                                  child: Row(
                                     children: [
                                       Text(
                                         BlocProvider.of<SignUpCubit>(context)
@@ -117,33 +99,57 @@ class Setting extends StatelessWidget {
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w600),
                                       ),
-                                      Text(
-                                          AppLocalizations.of(context)!.profile)
+                                CustomEditProfileFileImage(
+                                  image: editProfileCubit.image,
+                                  fit: BoxFit.cover,
+                                ),
+                                      SizedBox(
+                                        width: 25.w,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            BlocProvider.of<SignUpCubit>(
+                                                    context)
+                                                .nameController
+                                                .text,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                          ),
+                                          Text(AppLocalizations.of(context)!
+                                              .profile)
+                                        ],
+                                      ),
+                                      const Spacer(),
+                                      IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const EditProfileScreen()),
+                                          );
+                                        },
+                                        icon: Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: BlocProvider.of<SettingsCubit>(
+                                                      context)
+                                                  .isDarkThemEnable
+                                              ? AppColors.whiteColor
+                                              : AppColors.lightPrimaryColor,
+                                          size: 20,
+                                        ),
+                                      )
                                     ],
                                   ),
-                                  const Spacer(),
-                                  IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const EditProfileScreen()),
-                                      );
-                                    },
-                                    icon: Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: BlocProvider.of<SettingsCubit>(
-                                                  context)
-                                              .isDarkThemEnable
-                                          ? AppColors.whiteColor
-                                          : AppColors.lightPrimaryColor,
-                                      size: 20,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
+                                ),
+                              );
+                            },
                           ),
                           SizedBox(
                             height: 35.h,

@@ -3,6 +3,8 @@ import 'package:animeacheck/features/auth/presentation/view/info_one_screen.dart
 import 'package:animeacheck/features/auth/presentation/view/sign_in_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/no_medicine.dart';
+import 'package:animeacheck/features/home/my_account/edit_profile_cubit/edit_profile_cubit.dart';
+import 'package:animeacheck/features/home/my_account/edit_profile_cubit/edit_profile_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,6 +16,7 @@ import 'package:animeacheck/features/home/my_account/presentation/view/edit_prof
 
 import '../../../chatBot/chat_bot_view.dart';
 import '../../../setting/presentation/settings_cubit/settings_cubit.dart';
+import '../../my_account_widgets/custom_edit_profile_image_widget.dart';
 
 class MyAccount extends StatefulWidget {
   const MyAccount({super.key});
@@ -32,17 +35,18 @@ class MyAccountState extends State<MyAccount> {
       child: Scaffold(
         body: Stack(
           children: [
-              Image.asset(
-            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? (AppAssets.backgroundDark)
-                : (AppAssets.background),
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
+            Image.asset(
+              BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? (AppAssets.backgroundDark)
+                  : (AppAssets.background),
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
             SingleChildScrollView(
               child: Center(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -57,7 +61,8 @@ class MyAccountState extends State<MyAccount> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const EditProfileScreen()),
+                                builder: (context) =>
+                                    const EditProfileScreen()),
                           );
                         },
                       ),
@@ -68,7 +73,8 @@ class MyAccountState extends State<MyAccount> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const ChatBotView()),
+                            MaterialPageRoute(
+                                builder: (context) => const ChatBotView()),
                           );
                         },
                       ),
@@ -121,64 +127,74 @@ class MyAccountState extends State<MyAccount> {
   }
 
   Widget buildProfileCard() {
+    final editProfileCubit = BlocProvider.of<EditProfileCubit>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40.0),
-      child: Container(
-        width: 345.w,
-        height: 80.h,
-        clipBehavior: Clip.antiAlias,
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CircleAvatar(
-                backgroundColor:
-                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                        ? AppColors.whiteColor
-                        : AppColors.lightPrimaryColor,
-                child: Image.asset(
-
-                  AppAssets.female,
-                  width: double.infinity,
-                ),
+      child: BlocConsumer<EditProfileCubit, EditProfileState>(
+        listener: (context, state) {
+          if (state is EditProfileImageSuccessState){
+            CustomEditProfileFileImage(
+              image: editProfileCubit.image,
+              fit: BoxFit.fill,
+            );
+          }
+        },
+        builder: (context, state) {
+          return Container(
+            width: 345.w,
+            height: 80.h,
+            clipBehavior: Clip.antiAlias,
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(width: 1.w, color: const Color(0xFFE6E4E4)),
+                borderRadius: BorderRadius.circular(16.r),
               ),
-              Text(
-                BlocProvider.of<SignUpCubit>(context).nameController.text,
-                style: TextStyle(
-                  // color: Colors.black.withOpacity(0.9),
-                  fontSize: 16.sp,
-                  fontFamily: 'Kodchasan',
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              SizedBox(width: 100.w),
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen()),
-                  );
-                },
-                icon: Icon(
-                  Icons.border_color_outlined,
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomEditProfileFileImage(
+                      image: editProfileCubit.image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text(
+                    BlocProvider.of<SignUpCubit>(context).nameController.text,
+                    style: TextStyle(
+                      // color: Colors.black.withOpacity(0.9),
+                      fontSize: 16.sp,
+                      fontFamily: 'Kodchasan',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(width: 100.w),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EditProfileScreen()),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.border_color_outlined,
+                      color: BlocProvider.of<SettingsCubit>(context)
+                              .isDarkThemEnable
                           ? AppColors.whiteColor
                           : AppColors.lightPrimaryColor,
-                  size: 30.0.sp,
-                ),
-              )
-            ],
-          ),
-        ),
+                      size: 30.0.sp,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -20,7 +20,9 @@ class CustomEditProfileFileImage extends StatelessWidget {
     return image != null
         ? Image.file(
         File(image!.path)
-    )
-        : const CustomImage(imagePath: AppAssets.fmale);
+    ): const CustomImage(imagePath: AppAssets.fmale);
+
+
+
   }
 }
