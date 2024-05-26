@@ -1,6 +1,6 @@
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
@@ -42,15 +42,18 @@ class NotificationService {
       {int id = 0,
        required MedicineModel medicineModel,
         String? payLoad,
+        required TimeOfDay schduledTime,
+
         required DateTime scheduledNotificationDateTime}) async {
     return notificationsPlugin.zonedSchedule(
         2,
         medicineModel.medicineName,
         medicineModel.medicineDose.toString(),
-        tz.TZDateTime.from(
-          scheduledNotificationDateTime,
+        tz.TZDateTime(
           tz.local,
-        ),
+          schduledTime.hour,
+          schduledTime.minute,
+        ).subtract(const Duration(minutes: 1)),
         await notificationDetails(),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:

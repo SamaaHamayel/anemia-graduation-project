@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/services/local_notification_service.dart';
+import '../../../../core/services/notification.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
 import 'medicine_state.dart';
@@ -88,25 +89,18 @@ class MedicineCubit extends Cubit<MedicineState> {
           startTime: startTime,
         ),
       );
-      LocalNotificationService.showSchduledNotification(
-        currentDate: DateTime.now(),
-        schduledTime: TimeOfDay.now(),
+
+      NotificationService().scheduleNotification(
+        schduledTime: schduledTime,
         medicineModel: MedicineModel(
-          medicineName: 'test',
-          medicineDose: 2,
-          startTime: startTime,),
-
-        // currentDate: currentDate,
-        // schduledTime:schduledTime,
-        // medicineModel: MedicineModel(
-        //   medicineName: medicineNameController.text,
-        //   medicineDose: medicineDose,
-        //   medicineShape: currentIndex,
-        //   startTime: startTime,
-      //)
+            medicineName: medicineNameController.text,
+            medicineDose: medicineDose,
+            startTime: startTime),
+        scheduledNotificationDateTime: DateTime.parse("hh:mm")
+            .add(const Duration(seconds: 10)),
+      );
 
 
-    );
     if (kDebugMode) {
     print(medicineList.length);
     }

@@ -83,7 +83,7 @@ class SignUpScreen extends StatelessWidget {
               }
               if (state is SignUpSuccessState) {
                 showToast(
-                    message: AppLocalizations.of(context)!.loginSuccessfully,
+                    message: AppLocalizations.of(context)!.checkYourEmail,
                     state: ToastStates.success);
                 navigateReplacement(context: context, route: Routes.infoOne);
               }
