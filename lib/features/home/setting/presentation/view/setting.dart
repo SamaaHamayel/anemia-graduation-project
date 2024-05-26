@@ -16,6 +16,11 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<SettingsCubit, SettingsState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
     return Scaffold(
       body: Stack(
         children: [
@@ -180,5 +185,7 @@ class Setting extends StatelessWidget {
         ],
       ),
     );
+  },
+);
   }
 }

@@ -3,12 +3,12 @@ import 'package:workmanager/workmanager.dart';
 import 'local_notification_service.dart';
 // steps
 //1.init work manager
-//2.excute our task.
+//2.excute our medicine.
 //3.register our task in work manager
 
 class WorkManagerService {
-  void registerMyTask() async {
-    //register my task
+  void registerMyMedicine() async {
+    //register my medicine
     await Workmanager().registerPeriodicTask(
       'id1',
       'show simple notification',
@@ -22,7 +22,7 @@ class WorkManagerService {
       actionTask,
       isInDebugMode: true,
     );
-    registerMyTask();
+    registerMyMedicine();
   }
 
   void cancelTask(String id) {
@@ -33,7 +33,7 @@ class WorkManagerService {
 @pragma('vm-entry-point')
 void actionTask() {
   //show notification
-  Workmanager().executeTask((taskName, inputData) {
+  Workmanager().executeTask((medicineName, inputData) {
     LocalNotificationService.showDailySchduledNotification();
     return Future.value(true);
   });

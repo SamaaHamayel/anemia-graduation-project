@@ -5,6 +5,7 @@ import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/presentation/view/medicine_screen.dart';
 import 'package:animeacheck/features/home/my_account/presentation/view/my_account.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/view/pri_home.dart';
+import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_state.dart';
 import 'package:animeacheck/features/home/setting/presentation/view/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,122 +36,132 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        flexibleSpace: Image(
-          image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ? const AssetImage(
-                  'lib/core/utils/appImages/images/backgroundDark.png')
-              : const AssetImage(
-                  'lib/core/utils/appImages/images/background.png'),
-          fit: BoxFit.cover,
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-              onTap: () {
-                navigateReplacement(context: context, route: Routes.myAccount);
-              },
-              child: CircleAvatar(
-                backgroundColor:
-                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                        ? AppColors.darkGreen
-                        : AppColors.lightPrimaryColor,
-                child: Image.asset(
-                  AppAssets.female,
-                  width: double.infinity,
+    return BlocConsumer<SettingsCubit, SettingsState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            flexibleSpace: Image(
+              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? const AssetImage(
+                      'lib/core/utils/appImages/images/backgroundDark.png')
+                  : const AssetImage(
+                      'lib/core/utils/appImages/images/background.png'),
+              fit: BoxFit.cover,
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    navigateReplacement(
+                        context: context, route: Routes.myAccount);
+                  },
+                  child: CircleAvatar(
+                    backgroundColor:
+                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ? AppColors.darkGreen
+                            : AppColors.lightPrimaryColor,
+                    child: Image.asset(
+                      AppAssets.female,
+                      width: double.infinity,
+                    ),
+                  ),
                 ),
-              ),
+                Image.asset(
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? ('lib/core/utils/appImages/images/logoDark.png')
+                        : ('lib/core/utils/appImages/images/logo.png'),
+                    scale: 2),
+                IconButton(
+                  icon: Icon(
+                    Icons.assignment_add,
+                    color:
+                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                            ? AppColors.whiteColor
+                            : AppColors.lightPrimaryColor,
+                  ), // Icon to display
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MedicineScreen()),
+                    );
+                  },
+                ),
+              ],
             ),
-            Image.asset(
+          ),
+          body: Stack(
+            children: [
+              Image.asset(
                 BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                    ? ('lib/core/utils/appImages/images/logoDark.png')
-                    : ('lib/core/utils/appImages/images/logo.png'),
-                scale: 2),
-            IconButton(
-              icon: Icon(
-                Icons.assignment_add,
-                color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                    ? AppColors.whiteColor
-                    : AppColors.lightPrimaryColor,
-              ), // Icon to display
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MedicineScreen()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-      body: Stack(
-        children: [
-          Image.asset(
-            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? (AppAssets.backgroundDark)
-                : (AppAssets.background),
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
-          Center(
-            child: pages[_selectedIndex],
-          ),
-        ],
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage(
-                    'lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
-          ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
-          child: GNav(
-            activeColor: Colors.white,
-            color: const Color.fromARGB(255, 146, 146, 153),
-            tabBackgroundColor:
-                BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                    ? const Color.fromARGB(255, 32, 84, 69)
-                    : AppColors.lightPrimaryColor,
-            gap: 8.h,
-            padding: const EdgeInsets.all(16),
-            selectedIndex: _selectedIndex,
-            onTabChange: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            tabs: [
-              GButton(
-                icon: FontAwesomeIcons.house,
-                // icon: Icon(FontAwesomeIcons.house),
-                text: AppLocalizations.of(context)!.home,
+                    ? (AppAssets.backgroundDark)
+                    : (AppAssets.background),
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
-              GButton(
-                icon: (FontAwesomeIcons.calendarDays),
-                text: AppLocalizations.of(context)!.history,
-              ),
-              GButton(
-                icon: (Icons.settings),
-                text: AppLocalizations.of(context)!.settings,
-              ),
-              GButton(
-                icon: (Icons.person),
-                text: AppLocalizations.of(context)!.myAccount,
+              Center(
+                child: pages[_selectedIndex],
               ),
             ],
           ),
-        ),
-      ),
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                    ? const AssetImage(
+                        'lib/core/utils/appImages/images/backgroundDark.png')
+                    : const AssetImage(
+                        'lib/core/utils/appImages/images/background.png'),
+                fit: BoxFit
+                    .cover, // Optional: You can set the image fit as needed
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 20.w),
+              child: GNav(
+                activeColor: Colors.white,
+                color: const Color.fromARGB(255, 146, 146, 153),
+                tabBackgroundColor:
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? const Color.fromARGB(255, 32, 84, 69)
+                        : AppColors.lightPrimaryColor,
+                gap: 8.h,
+                padding: const EdgeInsets.all(16),
+                selectedIndex: _selectedIndex,
+                onTabChange: (index) {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
+                tabs: [
+                  GButton(
+                    icon: FontAwesomeIcons.house,
+                    // icon: Icon(FontAwesomeIcons.house),
+                    text: AppLocalizations.of(context)!.home,
+                  ),
+                  GButton(
+                    icon: (FontAwesomeIcons.calendarDays),
+                    text: AppLocalizations.of(context)!.history,
+                  ),
+                  GButton(
+                    icon: (Icons.settings),
+                    text: AppLocalizations.of(context)!.settings,
+                  ),
+                  GButton(
+                    icon: (Icons.person),
+                    text: AppLocalizations.of(context)!.myAccount,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

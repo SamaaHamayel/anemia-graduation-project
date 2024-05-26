@@ -35,7 +35,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     final result = await authRepo.signUp(
       email: signUpEmailController.text,
       password: signUpPasswordController.text,
-      userName: nameController.text,
+      userName: nameController.text ,
       confirmPassword: confirmPasswordController.text,
     );
     result.fold(

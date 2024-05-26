@@ -24,12 +24,10 @@ class PriHome extends StatelessWidget {
   return connectivityResult != ConnectivityResult.none;
 }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        
         children: [
            Image.asset(
             BlocProvider.of<SettingsCubit>(context).isDarkThemEnable

@@ -88,13 +88,15 @@ class MedicineCubit extends Cubit<MedicineState> {
         ),
       );
       LocalNotificationService.showSchduledNotification(
-        curretDate: currentDate,
+        currentDate: currentDate,
         schduledTime:schduledTime,
         medicineModel: MedicineModel(
           medicineName: medicineNameController.text,
-          medicineDose: int.parse(medicineDoseController.text),
+          medicineDose: medicineDose,
+          medicineShape: currentIndex,
           startTime: startTime,
         ),
+
       );
       print(medicineList.length);
       getMedicine();

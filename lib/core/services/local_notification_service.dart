@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -95,9 +94,12 @@ class LocalNotificationService {
 
   //showSchduledNotification
   static void showSchduledNotification(
-      {required DateTime curretDate,
-        required TimeOfDay schduledTime,
-        required MedicineModel medicineModel}) async {
+       {
+         required DateTime currentDate,
+         required TimeOfDay schduledTime,
+         required MedicineModel medicineModel
+     }
+      ) async {
     const AndroidNotificationDetails android = AndroidNotificationDetails(
       'schduled notification',
       'id 3',
@@ -116,20 +118,21 @@ class LocalNotificationService {
     log(tz.local.name);
     log("After ${tz.TZDateTime.now(tz.local).hour}");
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      medicineModel.id! ,
+      2,
       medicineModel.medicineName,
       medicineModel.medicineDose.toString(),
       // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
       tz.TZDateTime(
         tz.local,
-        curretDate.year,
-        curretDate.month,
-        curretDate.day,
+        currentDate.year,
+        currentDate.month,
+        currentDate.day,
         schduledTime.hour,
         schduledTime.minute,
-      ).subtract(const Duration(minutes: 2)),
+      ).subtract(const Duration(minutes: 1)),
       details,
-      payload: 'Name: ${medicineModel.medicineName}  , Dose: "${medicineModel.medicineDose}',
+      payload: 'Medicine Name: ${medicineModel.medicineName} ,'
+          'Medicine Dose: ${medicineModel.medicineDose}' ,
       uiLocalNotificationDateInterpretation:
       UILocalNotificationDateInterpretation.absoluteTime,
     );
