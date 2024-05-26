@@ -1,4 +1,5 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,66 +46,70 @@ class DetectAnemiaByEyeState extends State<DetectAnemiaByEye> {
           ),
         ),
       ),
-      body: Container( decoration: BoxDecoration(
-          image: DecorationImage(
-         image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?const AssetImage('lib/core/utils/appImages/images/backgroundDark.png') :const AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+      body: Stack(
+        children: [
+            Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 208),
-              child: Container(
-                color: AppColors.lightGrayColor,
-                child: Center(
-                  child: Image.asset(
-                    'lib/core/utils/appImages/images/detect.png',
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 208),
+                child: Container(
+                  color: AppColors.lightGrayColor,
+                  child: Center(
+                    child: Image.asset(
+                      'lib/core/utils/appImages/images/detect.png',
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 110,
-              //color: AppColors.lightPrimaryColor,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    buildIconButton(
-                      icon: Icons.image,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetectAnemiaByImage(),
-                          ),
-                        );
-                      },
-                    ),
-                    buildIconButton(
-                      icon: Icons.circle_outlined,
-                      onPressed: () {
-                        takePicture(context);
-                        // Handle circle button press
-                      },
-                    ),
-                    buildIconButton(
-                      icon: Icons.refresh_sharp,
-                      onPressed: () {
-                        setState(() {});
-                        // Handle refresh button press
-                      },
-                    ),
-                  ],
+              SizedBox(
+                height: 110,
+                //color: AppColors.lightPrimaryColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      buildIconButton(
+                        icon: Icons.image,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetectAnemiaByImage(),
+                            ),
+                          );
+                        },
+                      ),
+                      buildIconButton(
+                        icon: Icons.circle_outlined,
+                        onPressed: () {
+                          takePicture(context);
+                          // Handle circle button press
+                        },
+                      ),
+                      buildIconButton(
+                        icon: Icons.refresh_sharp,
+                        onPressed: () {
+                          setState(() {});
+                          // Handle refresh button press
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ],
-        ),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }

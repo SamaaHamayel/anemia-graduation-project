@@ -1,3 +1,4 @@
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_state.dart';
 import 'package:animeacheck/features/detect/help/error/error.dart';
@@ -27,86 +28,87 @@ class PriHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage('lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+      body: Stack(
+        
+        children: [
+           Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
-          child: BlocConsumer<SignUpCubit, SignUpState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
-            builder: (context, state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.welcome +
-                        BlocProvider.of<SignUpCubit>(context)
-                            .nameController
-                            .text,
-                    style: TextStyle(
-                      color: BlocProvider.of<SettingsCubit>(context)
-                              .isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.lightPrimaryColor,
-                      fontSize: 18,
-                      fontFamily: 'Kodchasan',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 351.w,
-                    child: Text(
-                      AppLocalizations.of(context)!.homeScreenSubTitle,
-                      style: const TextStyle(
-                        fontSize: 14,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
+            child: BlocConsumer<SignUpCubit, SignUpState>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.welcome +
+                          BlocProvider.of<SignUpCubit>(context)
+                              .nameController
+                              .text,
+                      style: TextStyle(
+                        color: BlocProvider.of<SettingsCubit>(context)
+                                .isDarkThemEnable
+                            ? AppColors.whiteColor
+                            : AppColors.lightPrimaryColor,
+                        fontSize: 18,
                         fontFamily: 'Kodchasan',
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
-                  buildFeatureCard(
-                    icon: Icons.camera_alt_rounded,
-                    title: AppLocalizations.of(context)!.detectAnemia,
-                    description:
-                        AppLocalizations.of(context)!.homeScreenTitle,
-                    onTap: () => _navigateToDetectedScreen(context),
-                  ),
-                  buildFeatureCard(
-                      icon: Icons.biotech,
-                      title: AppLocalizations.of(context)!.testResults,
+                    SizedBox(
+                      width: 351.w,
+                      child: Text(
+                        AppLocalizations.of(context)!.homeScreenSubTitle,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Kodchasan',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    buildFeatureCard(
+                      icon: Icons.camera_alt_rounded,
+                      title: AppLocalizations.of(context)!.detectAnemia,
                       description:
-                          AppLocalizations.of(context)!.testResultsTitle,
-                      onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ExplanaScreen()),
-                          )),
-                  buildFeatureCard(
-                      icon: Icons.quiz,
-                      title: AppLocalizations.of(context)!.helpfulInformation,
-                      description:
-                          AppLocalizations.of(context)!.helpfulInformationTitle,
-                      onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const HelpfulInformationScreen()),
-                          )),
-                ],
-              );
-            },
+                          AppLocalizations.of(context)!.homeScreenTitle,
+                      onTap: () => _navigateToDetectedScreen(context),
+                    ),
+                    buildFeatureCard(
+                        icon: Icons.biotech,
+                        title: AppLocalizations.of(context)!.testResults,
+                        description:
+                            AppLocalizations.of(context)!.testResultsTitle,
+                        onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ExplanaScreen()),
+                            )),
+                    buildFeatureCard(
+                        icon: Icons.quiz,
+                        title: AppLocalizations.of(context)!.helpfulInformation,
+                        description:
+                            AppLocalizations.of(context)!.helpfulInformationTitle,
+                        onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const HelpfulInformationScreen()),
+                            )),
+                  ],
+                );
+              },
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

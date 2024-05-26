@@ -1,4 +1,5 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:animeacheck/features/test/view/presentation/result.dart';
 import 'package:flutter/material.dart';
@@ -191,199 +192,198 @@ class CBCTestState extends State<CBCTest> {
           ],
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage(
-                    'lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+      body: Stack(
+        children: [
+          Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(9.w),
-                child: SizedBox(
-                  child: Text(
-                    AppLocalizations.of(context)!.enterTheResult,
-                    //enterTheResult
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: BlocProvider.of<SettingsCubit>(context)
-                              .isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.blackColor,
-                      fontSize: 22.sp,
-                      fontFamily: 'Kumbh Sans',
-                      fontWeight: FontWeight.w400,
-                      height: 0.h,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(9.w),
+                  child: SizedBox(
+                    child: Text(
+                      AppLocalizations.of(context)!.enterTheResult,
+                      //enterTheResult
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: BlocProvider.of<SettingsCubit>(context)
+                                .isDarkThemEnable
+                            ? AppColors.whiteColor
+                            : AppColors.blackColor,
+                        fontSize: 22.sp,
+                        fontFamily: 'Kumbh Sans',
+                        fontWeight: FontWeight.w400,
+                        height: 0.h,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CBCInputField(
-                        label: 'RBC',
-                        value: dropdownRBC,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownRBC = newValue;
-                          });
-                        },
-                      ),
-                      CBCInputField(
-                        label: 'WCB',
-                        value: dropdownWCB,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownWCB = newValue;
-                          });
-                        },
-                      ),
-                      CBCInputField(
-                        label: ' HB  ',
-                        value: dropdownHB,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownHB = newValue;
-                          });
-                        },
-                      ),
-                      CBCInputField(
-                        label: 'MCV',
-                        value: dropdownMCV,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownMCV = newValue;
-                          });
-                        },
-                      ),
-                      CBCInputField(
-                        label: 'PLT ',
-                        value: dropdownPLT,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownPLT = newValue;
-                          });
-                        },
-                      ),
-                      CBCInputField(
-                        label: 'MCH',
-                        value: dropdownMCH,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownMCH = newValue;
-                          });
-                        },
-                      ),
-                      CBCInputField(
-                        label: 'RDW',
-                        value: dropdownRDW,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownRDW = newValue;
-                          });
-                        },
-                      ),
-                      CBCInputField(
-                        label: 'Hct',
-                        value: dropdownHct,
-                        options: const ['normal', 'less', 'greater'],
-                        onChanged: (newValue) {
-                          setState(() {
-                            dropdownHct = newValue;
-                          });
-                        },
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          CBCInputField(
-                            label: 'MCHC',
-                            value: dropdownMCHC,
-                            options: const ['normal', 'less', 'greater'],
-                            onChanged: (newValue) {
-                              setState(() {
-                                dropdownMCHC = newValue;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.h),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Container(
-                    width: 172.w,
-                    height: 48.h,
-                    padding: const EdgeInsets.symmetric(vertical: 13),
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment(0.00, -1.00),
-                        end: Alignment(0, 1),
-                        colors: [
-                          AppColors.lightPrimaryColor,
-                          AppColors.primaryColor
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        calculateResult();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ResultTest(result: result),
-                          ),
-                        );
-                        setState(() {});
-                      },
-                      style: TextButton.styleFrom(
-                        foregroundColor: AppColors.whiteColor,
-                        padding: EdgeInsets.zero,
-                        textStyle: TextStyle(
-                          fontSize: 18.sp,
-                          color: AppColors.whiteColor,
-                          fontFamily: 'Kodchasan',
-                          fontWeight: FontWeight.w700,
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CBCInputField(
+                          label: 'RBC',
+                          value: dropdownRBC,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownRBC = newValue;
+                            });
+                          },
                         ),
-                      ),
-                      child:  Text(AppLocalizations.of(context)!.seeTheResult),
+                        CBCInputField(
+                          label: 'WCB',
+                          value: dropdownWCB,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownWCB = newValue;
+                            });
+                          },
+                        ),
+                        CBCInputField(
+                          label: ' HB  ',
+                          value: dropdownHB,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownHB = newValue;
+                            });
+                          },
+                        ),
+                        CBCInputField(
+                          label: 'MCV',
+                          value: dropdownMCV,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownMCV = newValue;
+                            });
+                          },
+                        ),
+                        CBCInputField(
+                          label: 'PLT ',
+                          value: dropdownPLT,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownPLT = newValue;
+                            });
+                          },
+                        ),
+                        CBCInputField(
+                          label: 'MCH',
+                          value: dropdownMCH,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownMCH = newValue;
+                            });
+                          },
+                        ),
+                        CBCInputField(
+                          label: 'RDW',
+                          value: dropdownRDW,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownRDW = newValue;
+                            });
+                          },
+                        ),
+                        CBCInputField(
+                          label: 'Hct',
+                          value: dropdownHct,
+                          options: const ['normal', 'less', 'greater'],
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownHct = newValue;
+                            });
+                          },
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 20.w,
+                            ),
+                            CBCInputField(
+                              label: 'MCHC',
+                              value: dropdownMCHC,
+                              options: const ['normal', 'less', 'greater'],
+                              onChanged: (newValue) {
+                                setState(() {
+                                  dropdownMCHC = newValue;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height: 20.h),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Container(
+                      width: 172.w,
+                      height: 48.h,
+                      padding: const EdgeInsets.symmetric(vertical: 13),
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          begin: Alignment(0.00, -1.00),
+                          end: Alignment(0, 1),
+                          colors: [
+                            AppColors.lightPrimaryColor,
+                            AppColors.primaryColor
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          calculateResult();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ResultTest(result: result),
+                            ),
+                          );
+                          setState(() {});
+                        },
+                        style: TextButton.styleFrom(
+                          foregroundColor: AppColors.whiteColor,
+                          padding: EdgeInsets.zero,
+                          textStyle: TextStyle(
+                            fontSize: 18.sp,
+                            color: AppColors.whiteColor,
+                            fontFamily: 'Kodchasan',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        child: Text(AppLocalizations.of(context)!.seeTheResult),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

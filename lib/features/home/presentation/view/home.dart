@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             InkWell(
               onTap: () {
-               navigateReplacement(context: context, route: Routes.myAccount);
+                navigateReplacement(context: context, route: Routes.myAccount);
               },
               child: CircleAvatar(
                 backgroundColor:
@@ -87,20 +87,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage(
-                    'lib/core/utils/appImages/images/background.png'),
-            fit: BoxFit.cover, // Optional: You can set the image fit as needed
+      body: Stack(
+        children: [
+          Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-        ),
-        child: Center(
-          child: pages[_selectedIndex],
-        ),
+          Center(
+            child: pages[_selectedIndex],
+          ),
+        ],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(

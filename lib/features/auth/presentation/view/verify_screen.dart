@@ -48,102 +48,113 @@ class _VerfiyScreenState extends State<VerfiyScreen> {
               fontWeight: FontWeight.w700),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            //___image___
-            const CustomImage(imagePath: AppAssets.verify),
-
-            //___title___
-            Align(
-              alignment: Alignment.center,
-              child: SizedBox(
-                width: 343.w,
-                child: Text(
-                  AppLocalizations.of(context)!.verifyTitle,
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-              color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
-                      fontSize: 16,
-                      fontFamily: "Kodchasan",
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 32.h,
-            ),
-
-            //___write code____
-            VerificationCode(
-              fullBorder: true,
-              textStyle:
-                  const TextStyle(fontSize: 20.0, color: AppColors.blackColor),
-              keyboardType: TextInputType.number,
-              underlineColor:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.primaryColor,
- // If this is null it will use primaryColor: Colors.red from Theme
-              length: 4,
-              cursorColor  : BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.primaryColor,
-
-                   // If this is null it will default to the ambient
-              // clearAll is NOT required, you can delete it
-              // takes any widget, so you can implement your design
-              onCompleted: (String value) {
-                setState(() {
-                  // _code = value;
-                });
-              },
-              onEditing: (bool value) {
-                setState(() {
-                  // _onEditing = value;
-                });
-                //if (!_onEditing) FocusScope.of(context).unfocus();
-              },
-            ),
-            SizedBox(
-              height: 50.h,
-            ),
-
-            //____button____
-            CustomElevatedButton(
-              text: AppLocalizations.of(context)!.verify,
-              onPressed: () {
-                navigateReplacement(
-                    context: context, route: Routes.newPassword);
-              },
-            ),
-
-
-            SizedBox(
-              height: 50.h,
-            ),
-
-
-
-
-            //___text____
-            InkWell(
-              onTap: (){},
-              child: Container(
-                padding: const EdgeInsets.only(
-                  bottom: 2, // Space between underline and text
-                ),
-                decoration: const BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                  color: AppColors.lightRedColor,
-                  width: 1.0, // Underline thickness
-                ),),),
-                child:  Text(
-                  AppLocalizations.of(context)!.resentCode,
-                  style: const TextStyle(
-                    color: AppColors.lightRedColor,
+      body: Stack(
+        children: [
+            Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                //___image___
+                const CustomImage(imagePath: AppAssets.verify),
+          
+                //___title___
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    width: 343.w,
+                    child: Text(
+                      AppLocalizations.of(context)!.verifyTitle,
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                  color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.lightPrimaryColor,
+                          fontSize: 16,
+                          fontFamily: "Kodchasan",
+                          fontWeight: FontWeight.w400),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(
+                  height: 32.h,
+                ),
+          
+                //___write code____
+                VerificationCode(
+                  fullBorder: true,
+                  textStyle:
+                      const TextStyle(fontSize: 20.0, color: AppColors.blackColor),
+                  keyboardType: TextInputType.number,
+                  underlineColor:  BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.primaryColor,
+           // If this is null it will use primaryColor: Colors.red from Theme
+                  length: 4,
+                  cursorColor  : BlocProvider.of<SettingsCubit>(context).isDarkThemEnable? AppColors.whiteColor : AppColors.primaryColor,
+          
+                       // If this is null it will default to the ambient
+                  // clearAll is NOT required, you can delete it
+                  // takes any widget, so you can implement your design
+                  onCompleted: (String value) {
+                    setState(() {
+                      // _code = value;
+                    });
+                  },
+                  onEditing: (bool value) {
+                    setState(() {
+                      // _onEditing = value;
+                    });
+                    //if (!_onEditing) FocusScope.of(context).unfocus();
+                  },
+                ),
+                SizedBox(
+                  height: 50.h,
+                ),
+          
+                //____button____
+                CustomElevatedButton(
+                  text: AppLocalizations.of(context)!.verify,
+                  onPressed: () {
+                    navigateReplacement(
+                        context: context, route: Routes.newPassword);
+                  },
+                ),
+          
+          
+                SizedBox(
+                  height: 50.h,
+                ),
+          
+          
+          
+          
+                //___text____
+                InkWell(
+                  onTap: (){},
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      bottom: 2, // Space between underline and text
+                    ),
+                    decoration: const BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                      color: AppColors.lightRedColor,
+                      width: 1.0, // Underline thickness
+                    ),),),
+                    child:  Text(
+                      AppLocalizations.of(context)!.resentCode,
+                      style: const TextStyle(
+                        color: AppColors.lightRedColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

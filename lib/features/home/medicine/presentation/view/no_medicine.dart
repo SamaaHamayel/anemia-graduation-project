@@ -21,404 +21,398 @@ class NoMedicineScreenState extends State<NoMedicineScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Container(
-          decoration:  BoxDecoration(
-            image: DecorationImage(
-              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ?const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                :const AssetImage('lib/core/utils/appImages/images/background.png'),  
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
+        body: Stack(
+          children: [
+            Image.asset(
+              BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                  ? (AppAssets.backgroundDark)
+                  : (AppAssets.background),
+              fit: BoxFit.cover,
+              width: double.infinity,
             ),
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                              icon: Icon(
-                                Icons.arrow_back_ios_rounded,
-                                color: AppColors.lightPrimaryColor,
-                                size: 23.sp,
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                            SizedBox(width: 25.w),
-                            Text(
-                              AppLocalizations.of(context)!.medicineReminder,
-                              style: TextStyle(
-                                color: AppColors.lightPrimaryColor,
-                                fontSize: 23.sp,
-                                fontFamily: 'Kodchasan',
-                                fontWeight: FontWeight.w500,
-                                height: 0,
-                                letterSpacing: 1.76,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: Image.asset(
-                            AppAssets.noMedicine,
-                            scale: 0.5,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 351,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
                             children: [
-                              const SizedBox(height: 56),
-                              SizedBox(
-                                width: 351.w,
-                                child: Text(
-                                  AppLocalizations.of(context)!.noMedicine,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: AppColors.blackColor,
-                                    fontSize: 20.sp,
-                                    fontFamily: 'Kodchasan',
-                                    fontWeight: FontWeight.w600,
-                                    height: 0.07.h,
-                                  ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.arrow_back_ios_rounded,
+                                  color: AppColors.lightPrimaryColor,
+                                  size: 23.sp,
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              SizedBox(width: 25.w),
+                              Text(
+                                AppLocalizations.of(context)!.medicineReminder,
+                                style: TextStyle(
+                                  color: AppColors.lightPrimaryColor,
+                                  fontSize: 23.sp,
+                                  fontFamily: 'Kodchasan',
+                                  fontWeight: FontWeight.w500,
+                                  height: 0,
+                                  letterSpacing: 1.76,
                                 ),
                               ),
-                              SizedBox(
-                                height: 150.h,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    width: 64.w,
-                                    height: 64.h,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: ShapeDecoration(
-                                      color: AppColors.lightPrimaryColor,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(60),
-                                      ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: Image.asset(
+                              AppAssets.noMedicine,
+                              scale: 0.5,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 351,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 56),
+                                SizedBox(
+                                  width: 351.w,
+                                  child: Text(
+                                    AppLocalizations.of(context)!.noMedicine,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: AppColors.blackColor,
+                                      fontSize: 20.sp,
+                                      fontFamily: 'Kodchasan',
+                                      fontWeight: FontWeight.w600,
+                                      height: 0.07.h,
                                     ),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.add,
-                                        color: AppColors.whiteColor,
-                                        size: 30.sp,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 150.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      width: 64.w,
+                                      height: 64.h,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: ShapeDecoration(
+                                        color: AppColors.lightPrimaryColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(60),
+                                        ),
                                       ),
-                                      onPressed: () {
-                                        showModalBottomSheet(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return SingleChildScrollView(
-                                                child: Container(
-                                                  width: 375.w,
-                                                  height: 539.h,
-                                                  clipBehavior: Clip.antiAlias,
-                                                  decoration: ShapeDecoration(
-                                                    color: AppColors
-                                                        .lightBackgroundColor,
-                                                    shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        topLeft:
-                                                            Radius.circular(24.r),
-                                                        topRight:
-                                                            Radius.circular(24.r),
+                                      child: IconButton(
+                                        icon: Icon(
+                                          Icons.add,
+                                          color: AppColors.whiteColor,
+                                          size: 30.sp,
+                                        ),
+                                        onPressed: () {
+                                          showModalBottomSheet(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return SingleChildScrollView(
+                                                  child: Container(
+                                                    width: 375.w,
+                                                    height: 539.h,
+                                                    clipBehavior:
+                                                        Clip.antiAlias,
+                                                    decoration: ShapeDecoration(
+                                                      color: AppColors
+                                                          .lightBackgroundColor,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  24.r),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  24.r),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  child: Stack(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets.all(
-                                                                15.0),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: const EdgeInsets
-                                                                      .symmetric(
-                                                                      horizontal:
-                                                                          30.0),
-                                                                  child: Text(
-                                                                    AppLocalizations.of(
-                                                                            context)!
-                                                                        .addNewMedicine,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: AppColors
-                                                                          .lightPrimaryColor,
-                                                                      fontSize:
-                                                                          24.sp,
-                                                                      fontFamily:
-                                                                          'Kodchasan',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700,
-                                                                      height: 0,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                             const   Spacer(),
-                                                                TextButton(
-                                                                  onPressed: () {
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                  },
-                                                                  child: Text(
-                                                                    'X',
-                                                                    style: TextStyle(
+                                                    child: Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(15.0),
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            30.0),
+                                                                    child: Text(
+                                                                      AppLocalizations.of(
+                                                                              context)!
+                                                                          .addNewMedicine,
+                                                                      style:
+                                                                          TextStyle(
                                                                         color: AppColors
                                                                             .lightPrimaryColor,
                                                                         fontSize:
-                                                                            20.sp),
+                                                                            24.sp,
+                                                                        fontFamily:
+                                                                            'Kodchasan',
+                                                                        fontWeight:
+                                                                            FontWeight.w700,
+                                                                        height:
+                                                                            0,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  const Spacer(),
+                                                                  TextButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    },
+                                                                    child: Text(
+                                                                      'X',
+                                                                      style: TextStyle(
+                                                                          color: AppColors
+                                                                              .lightPrimaryColor,
+                                                                          fontSize:
+                                                                              20.sp),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Padding(
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        24,
+                                                                    vertical:
+                                                                        20),
+                                                                child:
+                                                                    TextFormField(
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    border:
+                                                                        const UnderlineInputBorder(),
+                                                                    hintText:
+                                                                        AppLocalizations.of(context)!
+                                                                            .name,
+                                                                    hintStyle: TextStyle(
+                                                                        fontSize: 20
+                                                                            .sp,
+                                                                        color: AppColors
+                                                                            .grayColor),
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
+                                                              ),
+                                                              Padding(
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        24,
+                                                                    vertical:
+                                                                        20),
+                                                                child:
+                                                                    TextFormField(
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    border:
+                                                                        const UnderlineInputBorder(),
+                                                                    hintText:
+                                                                        AppLocalizations.of(context)!
+                                                                            .dose,
+                                                                    hintStyle: TextStyle(
+                                                                        fontSize: 20
+                                                                            .sp,
+                                                                        color: AppColors
+                                                                            .grayColor),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                  padding: const EdgeInsets
                                                                       .symmetric(
                                                                       horizontal:
                                                                           24,
                                                                       vertical:
                                                                           20),
-                                                              child:
-                                                                  TextFormField(
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  border:
-                                                             const         UnderlineInputBorder(),
-                                                                  hintText:
-                                                                      AppLocalizations.of(
-                                                                              context)!
-                                                                          .name,
-                                                                  hintStyle: TextStyle(
-                                                                      fontSize:
-                                                                          20.sp,
-                                                                      color: AppColors
-                                                                          .grayColor),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      horizontal:
-                                                                          24,
-                                                                      vertical:
-                                                                          20),
-                                                              child:
-                                                                  TextFormField(
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  border:
-                                                          const            UnderlineInputBorder(),
-                                                                  hintText:
-                                                                      AppLocalizations.of(
-                                                                              context)!
-                                                                          .dose,
-                                                                  hintStyle: TextStyle(
-                                                                      fontSize:
-                                                                          20.sp,
-                                                                      color: AppColors
-                                                                          .grayColor),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .symmetric(
-                                                                        horizontal:
-                                                                            24,
-                                                                        vertical:
-                                                                            20),
-                                                                child: Text(
-                                                                  AppLocalizations.of(
-                                                                          context)!
-                                                                      .shape,
-                                                                  style: textStyle(
-                                                                      color: AppColors
-                                                                          .grayColor,
-                                                                      fontSize:
-                                                                          20.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600),
-                                                                )),
-                                                          const  SizedBox(height: 23),
-                                                            StreamBuilder(
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                return Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(
-                                                                          8.0),
-                                                                  child: Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
-                                                                    children: [
-                                                                      MedicineTypeColumn(
-                                                                          iconValue:
-                                                                              AppAssets
-                                                                                  .medicine1,
-                                                                          isSelected: snapshot.data == MedicineType.bottle
-                                                                              ? true
-                                                                              : false,
-                                                                          medicineType:
-                                                                              MedicineType.bottle),
-                                                                      MedicineTypeColumn(
-                                                                          iconValue:
-                                                                              AppAssets
-                                                                                  .medicine2,
-                                                                          isSelected: snapshot.data == MedicineType.pill
-                                                                              ? true
-                                                                              : false,
-                                                                          medicineType:
-                                                                              MedicineType.pill),
-                                                                      MedicineTypeColumn(
-                                                                          iconValue:
-                                                                              AppAssets
-                                                                                  .medicine3,
-                                                                          isSelected: snapshot.data == MedicineType.syringe
-                                                                              ? true
-                                                                              : false,
-                                                                          medicineType:
-                                                                              MedicineType.syringe),
-                                                                      MedicineTypeColumn(
-                                                                          iconValue:
-                                                                              AppAssets
-                                                                                  .medicine4,
-                                                                          isSelected: snapshot.data == MedicineType.tablet
-                                                                              ? true
-                                                                              : false,
-                                                                          medicineType:
-                                                                              MedicineType.tablet),
-                                                                    ],
-                                                                  ),
-                                                                );
-                                                              },
-                                                              stream: null,
-                                                            )
-                                                          ],
+                                                                  child: Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .shape,
+                                                                    style: textStyle(
+                                                                        color: AppColors
+                                                                            .grayColor,
+                                                                        fontSize: 20
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight.w600),
+                                                                  )),
+                                                              const SizedBox(
+                                                                  height: 23),
+                                                              StreamBuilder(
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  return Padding(
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                            .all(
+                                                                            8.0),
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceBetween,
+                                                                      children: [
+                                                                        MedicineTypeColumn(
+                                                                            iconValue: AppAssets
+                                                                                .medicine1,
+                                                                            isSelected: snapshot.data == MedicineType.bottle
+                                                                                ? true
+                                                                                : false,
+                                                                            medicineType:
+                                                                                MedicineType.bottle),
+                                                                        MedicineTypeColumn(
+                                                                            iconValue: AppAssets
+                                                                                .medicine2,
+                                                                            isSelected: snapshot.data == MedicineType.pill
+                                                                                ? true
+                                                                                : false,
+                                                                            medicineType:
+                                                                                MedicineType.pill),
+                                                                        MedicineTypeColumn(
+                                                                            iconValue: AppAssets
+                                                                                .medicine3,
+                                                                            isSelected: snapshot.data == MedicineType.syringe
+                                                                                ? true
+                                                                                : false,
+                                                                            medicineType:
+                                                                                MedicineType.syringe),
+                                                                        MedicineTypeColumn(
+                                                                            iconValue: AppAssets
+                                                                                .medicine4,
+                                                                            isSelected: snapshot.data == MedicineType.tablet
+                                                                                ? true
+                                                                                : false,
+                                                                            medicineType:
+                                                                                MedicineType.tablet),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                },
+                                                                stream: null,
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
 
-                                                      // Positioned(
-                                                      //   left: 89.h,
-                                                      //   top: 400.h,
-                                                      //   child: Container(
-                                                      //     padding:
-                                                      //         const EdgeInsets
-                                                      //             .symmetric(
-                                                      //             horizontal: 29,
-                                                      //             vertical: 12),
-                                                      //     clipBehavior:
-                                                      //         Clip.antiAlias,
-                                                      //     decoration:
-                                                      //         ShapeDecoration(
-                                                      //       gradient:
-                                                      //           LinearGradient(
-                                                      //         begin: Alignment(
-                                                      //             0.00, -1.00),
-                                                      //         end:
-                                                      //             Alignment(0, 1),
-                                                      //         colors: [
-                                                      //           AppColors
-                                                      //               .lightPrimaryColor,
-                                                      //           AppColors
-                                                      //               .primaryColor
-                                                      //         ],
-                                                      //       ),
-                                                      //       shape:
-                                                      //           RoundedRectangleBorder(
-                                                      //         borderRadius:
-                                                      //             BorderRadius
-                                                      //                 .circular(
-                                                      //                     20.r),
-                                                      //       ),
-                                                      //     ),
-                                                      //     child: Row(
-                                                      //       mainAxisSize:
-                                                      //           MainAxisSize.min,
-                                                      //       mainAxisAlignment:
-                                                      //           MainAxisAlignment
-                                                      //               .center,
-                                                      //       crossAxisAlignment:
-                                                      //           CrossAxisAlignment
-                                                      //               .center,
-                                                      //       children: [
-                                                      //         Text(
-                                                      //           AppLocalizations.of(
-                                                      //                   context)!
-                                                      //               .addMedicine,
-                                                      //           textAlign:
-                                                      //               TextAlign
-                                                      //                   .center,
-                                                      //           style: TextStyle(
-                                                      //             color: AppColors
-                                                      //                 .redColor,
-                                                      //             fontSize: 20.sp,
-                                                      //             fontFamily:
-                                                      //                 'Kodchasan',
-                                                      //             fontWeight:
-                                                      //                 FontWeight
-                                                      //                     .w600,
-                                                      //             height: 0,
-                                                      //           ),
-                                                      //         ),
-                                                      //       ],
-                                                      //     ),
-                                                      //   ),
-                                                      // ),
-                                                      //
-                                                      //
-
-
-                                                    ],
+                                                        // Positioned(
+                                                        //   left: 89.h,
+                                                        //   top: 400.h,
+                                                        //   child: Container(
+                                                        //     padding:
+                                                        //         const EdgeInsets
+                                                        //             .symmetric(
+                                                        //             horizontal: 29,
+                                                        //             vertical: 12),
+                                                        //     clipBehavior:
+                                                        //         Clip.antiAlias,
+                                                        //     decoration:
+                                                        //         ShapeDecoration(
+                                                        //       gradient:
+                                                        //           LinearGradient(
+                                                        //         begin: Alignment(
+                                                        //             0.00, -1.00),
+                                                        //         end:
+                                                        //             Alignment(0, 1),
+                                                        //         colors: [
+                                                        //           AppColors
+                                                        //               .lightPrimaryColor,
+                                                        //           AppColors
+                                                        //               .primaryColor
+                                                        //         ],
+                                                        //       ),
+                                                        //       shape:
+                                                        //           RoundedRectangleBorder(
+                                                        //         borderRadius:
+                                                        //             BorderRadius
+                                                        //                 .circular(
+                                                        //                     20.r),
+                                                        //       ),
+                                                        //     ),
+                                                        //     child: Row(
+                                                        //       mainAxisSize:
+                                                        //           MainAxisSize.min,
+                                                        //       mainAxisAlignment:
+                                                        //           MainAxisAlignment
+                                                        //               .center,
+                                                        //       crossAxisAlignment:
+                                                        //           CrossAxisAlignment
+                                                        //               .center,
+                                                        //       children: [
+                                                        //         Text(
+                                                        //           AppLocalizations.of(
+                                                        //                   context)!
+                                                        //               .addMedicine,
+                                                        //           textAlign:
+                                                        //               TextAlign
+                                                        //                   .center,
+                                                        //           style: TextStyle(
+                                                        //             color: AppColors
+                                                        //                 .redColor,
+                                                        //             fontSize: 20.sp,
+                                                        //             fontFamily:
+                                                        //                 'Kodchasan',
+                                                        //             fontWeight:
+                                                        //                 FontWeight
+                                                        //                     .w600,
+                                                        //             height: 0,
+                                                        //           ),
+                                                        //         ),
+                                                        //       ],
+                                                        //     ),
+                                                        //   ),
+                                                        // ),
+                                                        //
+                                                        //
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                              );
-                                            });
-                                      },
+                                                );
+                                              });
+                                        },
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      ]),
-                ]),
-          ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ]),
+                  ]),
+            ),
+          ],
         ));
   }
 

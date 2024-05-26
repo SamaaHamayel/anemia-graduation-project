@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/detect/detectted/view/detected_result.dart';
 import 'package:animeacheck/features/detect/help/help.dart';
 import 'package:animeacheck/features/home/pri_home/presentation/detect_anemia_cubit/detect_anemia_cubit.dart';
@@ -94,115 +95,113 @@ class DetectedScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? const AssetImage(
-                      'lib/core/utils/appImages/images/backgroundDark.png')
-                  : const AssetImage(
-                      'lib/core/utils/appImages/images/background.png'),
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
-            ),
+        body: Stack(
+          children: [
+              Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-          child: Center(
-            child: BlocConsumer<DetectAnemiaCubit, DetectAnemiaState>(
-              listener: (context, state) {
-                if (state is ClassifyImageLoadingState) {
-                  showToast(
-                      message: "Just Wait a minute",
-                      state: ToastStates.success);
-                }
-                if (state is ClassifyImageSuccessState) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return ResultScreen(
-                          message: BlocProvider.of<DetectAnemiaCubit>(context)
-                              .data['message'],
-                          // predictedClass:
-                          //     BlocProvider.of<DetectAnemiaCubit>(context)
-                          //         .data['metadata']['predicted_classes'][0],
-                        );
-                      },
-                    ),
+            Center(
+              child: BlocConsumer<DetectAnemiaCubit, DetectAnemiaState>(
+                listener: (context, state) {
+                  if (state is ClassifyImageLoadingState) {
+                    showToast(
+                        message: "Just Wait a minute",
+                        state: ToastStates.success);
+                  }
+                  if (state is ClassifyImageSuccessState) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ResultScreen(
+                            message: BlocProvider.of<DetectAnemiaCubit>(context)
+                                .data['message'],
+                            // predictedClass:
+                            //     BlocProvider.of<DetectAnemiaCubit>(context)
+                            //         .data['metadata']['predicted_classes'][0],
+                          );
+                        },
+                      ),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  final detectAnemiaCubit =
+                      BlocProvider.of<DetectAnemiaCubit>(context);
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 350.w,
+                        height: 250.h,
+                        padding: EdgeInsets.only(top: 40.h),
+                        child: state is ClassifyImageLoadingState
+                            ? const Center(child: CircularProgressIndicator())
+                            : detectAnemiaCubit.image == null
+                                ? Image.asset(
+                                    'lib/core/utils/appImages/images/detectAnemia.png')
+                                : Image.file(File(detectAnemiaCubit.image!.path)),
+                      ),
+            
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 40.h, vertical: 30.h),
+                        child: Text(
+                            AppLocalizations.of(context)!.detectAnemiaTitle,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(
+                                  fontSize: 20.sp,
+                                  color: BlocProvider.of<SettingsCubit>(context)
+                                          .isDarkThemEnable
+                                      ? AppColors.whiteColor
+                                      : AppColors.lightPrimaryColor,
+                                  fontFamily: 'Kodchasan',
+                                  fontWeight: FontWeight.w600,
+                                  height: 0,
+                                  letterSpacing: 1.76,
+                                )),
+                      ),
+            
+                      //pick image from camera
+                      ImagePickerButton(
+                        icon: Icons.camera_alt_rounded,
+                        onTap: () async {
+                          detectAnemiaCubit.image =
+                              await pickImage(ImageSource.camera);
+            
+                          detectAnemiaCubit
+                              .classifyImage(detectAnemiaCubit.image!);
+                          // pickImage(ImageSource.gallery).then(
+                          //     (value) => detectAnemiaCubit.takeImage(value));
+                        },
+                      ),
+            
+                      //pick image from gallery
+                      ImagePickerButton(
+                        icon: Icons.image_rounded,
+                        onTap: () async {
+                          detectAnemiaCubit.image =
+                              await pickImage(ImageSource.gallery);
+            
+                          detectAnemiaCubit
+                              .classifyImage(detectAnemiaCubit.image!);
+                          // pickImage(ImageSource.gallery).then(
+                          //     (value) => detectAnemiaCubit.takeImage(value));
+                        },
+                      ),
+                    ],
                   );
-                }
-              },
-              builder: (context, state) {
-                final detectAnemiaCubit =
-                    BlocProvider.of<DetectAnemiaCubit>(context);
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 350.w,
-                      height: 250.h,
-                      padding: EdgeInsets.only(top: 40.h),
-                      child: state is ClassifyImageLoadingState
-                          ? const Center(child: CircularProgressIndicator())
-                          : detectAnemiaCubit.image == null
-                              ? Image.asset(
-                                  'lib/core/utils/appImages/images/detectAnemia.png')
-                              : Image.file(File(detectAnemiaCubit.image!.path)),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 40.h, vertical: 30.h),
-                      child: Text(
-                          AppLocalizations.of(context)!.detectAnemiaTitle,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(
-                                fontSize: 20.sp,
-                                color: BlocProvider.of<SettingsCubit>(context)
-                                        .isDarkThemEnable
-                                    ? AppColors.whiteColor
-                                    : AppColors.lightPrimaryColor,
-                                fontFamily: 'Kodchasan',
-                                fontWeight: FontWeight.w600,
-                                height: 0,
-                                letterSpacing: 1.76,
-                              )),
-                    ),
-
-                    //pick image from camera
-                    ImagePickerButton(
-                      icon: Icons.camera_alt_rounded,
-                      onTap: () async {
-                        detectAnemiaCubit.image =
-                            await pickImage(ImageSource.camera);
-
-                        detectAnemiaCubit
-                            .classifyImage(detectAnemiaCubit.image!);
-                        // pickImage(ImageSource.gallery).then(
-                        //     (value) => detectAnemiaCubit.takeImage(value));
-                      },
-                    ),
-
-                    //pick image from gallery
-                    ImagePickerButton(
-                      icon: Icons.image_rounded,
-                      onTap: () async {
-                        detectAnemiaCubit.image =
-                            await pickImage(ImageSource.gallery);
-
-                        detectAnemiaCubit
-                            .classifyImage(detectAnemiaCubit.image!);
-                        // pickImage(ImageSource.gallery).then(
-                        //     (value) => detectAnemiaCubit.takeImage(value));
-                      },
-                    ),
-                  ],
-                );
-              },
+                },
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

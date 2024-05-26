@@ -1,4 +1,5 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,33 +46,32 @@ class HelpDetect extends StatelessWidget {
               ),
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage(
-                    'lib/core/utils/appImages/images/background.png'),
+      body: Stack(
+        children: [
+            Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
             fit: BoxFit.cover,
+            width: double.infinity,
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              buildHelpText(context, AppLocalizations.of(context)!.helpOne),
-              buildImage('lib/core/utils/appImages/images/eyeExample.png',
-                  222.w, 158.h),
-              buildSeparator(),
-              buildHelpText(context, AppLocalizations.of(context)!.helpTwo),
-              buildSeparator(),
-              buildHelpText(context, AppLocalizations.of(context)!.helpThree),
-              buildSeparator(),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                buildHelpText(context, AppLocalizations.of(context)!.helpOne),
+                buildImage('lib/core/utils/appImages/images/eyeExample.png',
+                    222.w, 158.h),
+                buildSeparator(),
+                buildHelpText(context, AppLocalizations.of(context)!.helpTwo),
+                buildSeparator(),
+                buildHelpText(context, AppLocalizations.of(context)!.helpThree),
+                buildSeparator(),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

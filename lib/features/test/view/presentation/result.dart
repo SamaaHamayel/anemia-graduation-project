@@ -25,8 +25,10 @@ class ResultState extends State<ResultTest> {
       appBar: AppBar(
         flexibleSpace: Image(
           image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-              ?const AssetImage('lib/core/utils/appImages/images/backgroundDark.png')
-              :const AssetImage('lib/core/utils/appImages/images/background.png'),
+              ? const AssetImage(
+                  'lib/core/utils/appImages/images/backgroundDark.png')
+              : const AssetImage(
+                  'lib/core/utils/appImages/images/background.png'),
           // AssetImage('lib/core/utils/appImages/images/background.png'),
           fit: BoxFit.cover,
         ),
@@ -62,177 +64,176 @@ class ResultState extends State<ResultTest> {
           ],
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage(
-                    'lib/core/utils/appImages/images/background.png',
-                  ),
+      body: Stack(
+        children: [
+          Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
             fit: BoxFit.cover,
-            // Optional: You can set the image fit as needed
+            width: double.infinity,
           ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  width: 277,
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: 277,
+                      child: Text.rich(
                         TextSpan(
-                          text: AppLocalizations.of(context)!
-                              .theTypeOfAnemiaYouHaveIs,
-                          style: TextStyle(
-                            color: BlocProvider.of<SettingsCubit>(context)
-                                    .isDarkThemEnable
-                                ? AppColors.whiteColor
-                                : AppColors.blackColor,
-                            fontSize: 24,
-                            fontFamily: 'Kodchasan',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
-                          ),
+                          children: [
+                            TextSpan(
+                              text: AppLocalizations.of(context)!
+                                  .theTypeOfAnemiaYouHaveIs,
+                              style: TextStyle(
+                                color: BlocProvider.of<SettingsCubit>(context)
+                                        .isDarkThemEnable
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
+                                fontSize: 24,
+                                fontFamily: 'Kodchasan',
+                                fontWeight: FontWeight.w400,
+                                height: 0,
+                              ),
+                            ),
+                            TextSpan(
+                              text: widget.result,
+                              style: const TextStyle(
+                                color: Color(0xFFFF0100),
+                                fontSize: 24,
+                                fontFamily: 'Kodchasan',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                              ),
+                            ),
+                          ],
                         ),
-                        TextSpan(
-                          text: widget.result,
-                          style: const TextStyle(
-                            color: Color(0xFFFF0100),
-                            fontSize: 24,
-                            fontFamily: 'Kodchasan',
-                            fontWeight: FontWeight.w700,
-                            height: 0,
-                          ),
-                        ),
-                      ],
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: SizedBox(
-                  width: 325,
-                  child: Text(
-                    AppLocalizations.of(context)!.thisResult,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: BlocProvider.of<SettingsCubit>(context)
-                              .isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.lightPrimaryColor,
-                      fontSize: 18.sp,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                  width: 270.w,
-                  height: 230.h,
-                  child: Image.asset(AppAssets.symptoms)),
-              Container(
-                width: 172,
-                height: 48,
-                padding: const EdgeInsets.only(
-                  top: 13,
-                  left: 22,
-                  right: 22,
-                  bottom: 12,
-                ),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 1.50,
-                      color: BlocProvider.of<SettingsCubit>(context)
-                              .isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.lightPrimaryColor,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor:
-                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SizedBox(
+                    width: 325,
+                    child: Text(
+                      AppLocalizations.of(context)!.thisResult,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: BlocProvider.of<SettingsCubit>(context)
+                                .isDarkThemEnable
                             ? AppColors.whiteColor
                             : AppColors.lightPrimaryColor,
-                    padding: EdgeInsets.zero,
-                    textStyle: const TextStyle(
-                      fontFamily: 'Kodchasan',
-                      fontWeight: FontWeight.w700,
+                        fontSize: 18.sp,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                  child: Text(AppLocalizations.of(context)!.goBackHome),
                 ),
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Container(
-                width: 172,
-                height: 48,
-                padding: const EdgeInsets.only(
-                  top: 13,
-                  left: 28,
-                  right: 27,
-                  bottom: 12,
-                ),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment(0.00, -1.00),
-                    end: Alignment(0, 1),
-                    colors: [Color(0xFF2BB598), Color(0xFF398272)],
+                SizedBox(
+                    width: 270.w,
+                    height: 230.h,
+                    child: Image.asset(AppAssets.symptoms)),
+                Container(
+                  width: 172,
+                  height: 48,
+                  padding: const EdgeInsets.only(
+                    top: 13,
+                    left: 22,
+                    right: 22,
+                    bottom: 12,
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const HelpfulInformationScreen()),
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: AppColors.whiteColor,
-                    padding: EdgeInsets.zero,
-                    textStyle: TextStyle(
-                      fontSize: 18.sp,
-                      color: AppColors.whiteColor,
-                      fontFamily: 'Kodchasan',
-                      fontWeight: FontWeight.w700,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 1.50,
+                        color: BlocProvider.of<SettingsCubit>(context)
+                                .isDarkThemEnable
+                            ? AppColors.whiteColor
+                            : AppColors.lightPrimaryColor,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text(
-                    AppLocalizations.of(context)!.helpYourself,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: BlocProvider.of<SettingsCubit>(context)
+                              .isDarkThemEnable
+                          ? AppColors.whiteColor
+                          : AppColors.lightPrimaryColor,
+                      padding: EdgeInsets.zero,
+                      textStyle: const TextStyle(
+                        fontFamily: 'Kodchasan',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    child: Text(AppLocalizations.of(context)!.goBackHome),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 30.h,
+                ),
+                Container(
+                  width: 172,
+                  height: 48,
+                  padding: const EdgeInsets.only(
+                    top: 13,
+                    left: 28,
+                    right: 27,
+                    bottom: 12,
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment(0.00, -1.00),
+                      end: Alignment(0, 1),
+                      colors: [Color(0xFF2BB598), Color(0xFF398272)],
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const HelpfulInformationScreen()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.whiteColor,
+                      padding: EdgeInsets.zero,
+                      textStyle: TextStyle(
+                        fontSize: 18.sp,
+                        color: AppColors.whiteColor,
+                        fontFamily: 'Kodchasan',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    child: Text(
+                      AppLocalizations.of(context)!.helpYourself,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

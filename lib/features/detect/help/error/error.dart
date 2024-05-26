@@ -1,3 +1,4 @@
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
@@ -19,65 +20,64 @@ class ErrorScreen extends StatelessWidget {
             BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                 ? AppColors.darkThemBlackColor
                 : AppColors.lightPrimaryColor,
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? const AssetImage(
-                      'lib/core/utils/appImages/images/backgroundDark.png')
-                  : const AssetImage(
-                      'lib/core/utils/appImages/images/background.png'),
-              fit: BoxFit.cover,
-            ),
+        body: Stack(
+          children: [
+              Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.wifi_off,
-                  size: 200,
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.darkThemBlackColor,
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  AppLocalizations.of(context)!.failedToLoad,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.wifi_off,
+                    size: 200,
                     color:
                         BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
                             ? AppColors.whiteColor
                             : AppColors.darkThemBlackColor,
                   ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: onRetry,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                            ? AppColors.lightPrimaryColor
-                            : AppColors.darkThemBlackColor,
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  ),
-                  child: Text(
-                    'Try Again',
+                  const SizedBox(height: 20),
+                  Text(
+                    AppLocalizations.of(context)!.failedToLoad,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: BlocProvider.of<SettingsCubit>(context)
-                              .isDarkThemEnable
-                          ? AppColors.darkThemBlackColor
-                          : AppColors.whiteColor,
                       fontSize: 16,
+                      color:
+                          BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                              ? AppColors.whiteColor
+                              : AppColors.darkThemBlackColor,
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: onRetry,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                              ? AppColors.lightPrimaryColor
+                              : AppColors.darkThemBlackColor,
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    ),
+                    child: Text(
+                      'Try Again',
+                      style: TextStyle(
+                        color: BlocProvider.of<SettingsCubit>(context)
+                                .isDarkThemEnable
+                            ? AppColors.darkThemBlackColor
+                            : AppColors.whiteColor,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

@@ -46,104 +46,115 @@ class ForgetPasswordScreen extends StatelessWidget {
         ),
       ),
 
-      body: SingleChildScrollView(
-        child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
-          listener: (context, state) {
-            if(state is SendCodeSuccess){
-              //Show message
-              showToast(message: state.message, state: ToastStates.success);
-              //Navigate to change password screen
-              navigateReplacement(context: context, route: Routes.verify);
-            }          },
-          builder: (context, state) {
-            return Form(
-              key: BlocProvider.of<ForgetPasswordCubit>(context).sendCodeKey,
-              child: Column(
-                children: [
-                  //___image___
-                  const CustomImage(imagePath: AppAssets.forgetPassword),
-                  SizedBox(height: 32.h),
-
-                  //___imageTitle____
-                  Align(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      width: 343.w,
-                      child: Text(
-                        AppLocalizations.of(context)!.forgetPasswordTitle,
-                        style: Theme.of(context)
-                            .textTheme
-                            .displaySmall!
-                            .copyWith(
-                                 color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
-                                fontSize: 16,
-                                fontFamily: "Kodchasan",
-                                fontWeight: FontWeight.w400),
+      body: Stack(
+        children: [
+            Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
+          SingleChildScrollView(
+            child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
+              listener: (context, state) {
+                if(state is SendCodeSuccess){
+                  //Show message
+                  showToast(message: state.message, state: ToastStates.success);
+                  //Navigate to change password screen
+                  navigateReplacement(context: context, route: Routes.verify);
+                }          },
+              builder: (context, state) {
+                return Form(
+                  key: BlocProvider.of<ForgetPasswordCubit>(context).sendCodeKey,
+                  child: Column(
+                    children: [
+                      //___image___
+                      const CustomImage(imagePath: AppAssets.forgetPassword),
+                      SizedBox(height: 32.h),
+          
+                      //___imageTitle____
+                      Align(
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          width: 343.w,
+                          child: Text(
+                            AppLocalizations.of(context)!.forgetPasswordTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displaySmall!
+                                .copyWith(
+                                     color: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable ?AppColors.whiteColor : AppColors.lightPrimaryColor,
+                                    fontSize: 16,
+                                    fontFamily: "Kodchasan",
+                                    fontWeight: FontWeight.w400),
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(height: 24.h),
+          
+                      //____Email____
+                       CustomText(
+                          alignment: Alignment.bottomLeft,
+                          text: AppLocalizations.of(context)!.email),
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                      CustomTextFormField(
+                        controller: BlocProvider.of<ForgetPasswordCubit>(context)
+                            .emailController,
+                        hint: AppLocalizations.of(context)!.emailHint,
+                        prefixIcon: Icons.email_outlined,
+                        keyboardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.next,
+                        validate: (data) {
+                          if (data!.isEmpty || !data.contains('@gmail.com')) {
+                            return AppLocalizations.of(context)!.enterValidEmail;
+                          }
+                          return null;
+                        },
+                      ),
+          
+                      //____phone____
+                      SizedBox(height: 24.h),
+                      CustomText(
+                          alignment: Alignment.bottomLeft,
+                          text: AppLocalizations.of(context)!.phone),
+                      SizedBox(
+                        height: 4.h,
+                      ),
+                      CustomTextFormField(controller: BlocProvider.of<ForgetPasswordCubit>(context).phoneController,
+                        hint: AppLocalizations.of(context)!.enterYourPhone,
+                        prefixIcon: Icons.phone_outlined,
+                        keyboardType: TextInputType.phone,
+                      ),
+                      SizedBox(height: 32.h),
+          
+                      state is SendCodeLoading
+                          ? const Center(
+                          child: CircularProgressIndicator())
+                          :CustomElevatedButton(
+                        onPressed: () {
+                          if (BlocProvider.of<ForgetPasswordCubit>(context)
+                              .sendCodeKey
+                              .currentState!
+                              .validate()) {
+                            BlocProvider.of<ForgetPasswordCubit>(context)
+                                .sendCode();
+                          }
+          
+                        },
+                          text: AppLocalizations.of(context)!.send,),
+          
+          
+          
+                    ],
                   ),
-                  SizedBox(height: 24.h),
-
-                  //____Email____
-                   CustomText(
-                      alignment: Alignment.bottomLeft,
-                      text: AppLocalizations.of(context)!.email),
-                  SizedBox(
-                    height: 4.h,
-                  ),
-                  CustomTextFormField(
-                    controller: BlocProvider.of<ForgetPasswordCubit>(context)
-                        .emailController,
-                    hint: AppLocalizations.of(context)!.emailHint,
-                    prefixIcon: Icons.email_outlined,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    validate: (data) {
-                      if (data!.isEmpty || !data.contains('@gmail.com')) {
-                        return AppLocalizations.of(context)!.enterValidEmail;
-                      }
-                      return null;
-                    },
-                  ),
-
-                  //____phone____
-                  SizedBox(height: 24.h),
-                  CustomText(
-                      alignment: Alignment.bottomLeft,
-                      text: AppLocalizations.of(context)!.phone),
-                  SizedBox(
-                    height: 4.h,
-                  ),
-                  CustomTextFormField(controller: BlocProvider.of<ForgetPasswordCubit>(context).phoneController,
-                    hint: AppLocalizations.of(context)!.enterYourPhone,
-                    prefixIcon: Icons.phone_outlined,
-                    keyboardType: TextInputType.phone,
-                  ),
-                  SizedBox(height: 32.h),
-
-                  state is SendCodeLoading
-                      ? const Center(
-                      child: CircularProgressIndicator())
-                      :CustomElevatedButton(
-                    onPressed: () {
-                      if (BlocProvider.of<ForgetPasswordCubit>(context)
-                          .sendCodeKey
-                          .currentState!
-                          .validate()) {
-                        BlocProvider.of<ForgetPasswordCubit>(context)
-                            .sendCode();
-                      }
-
-                    },
-                      text: AppLocalizations.of(context)!.send,),
-
-
-
-                ],
-              ),
-            );
-          },
-        ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

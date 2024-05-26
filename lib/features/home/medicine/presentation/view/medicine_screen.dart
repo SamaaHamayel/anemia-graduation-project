@@ -65,51 +65,62 @@ class _MedicineScreenState extends State<MedicineScreen> {
               fontWeight: FontWeight.w700),
         ),
       ),
-      body: BlocConsumer<MedicineCubit, MedicineState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return Stack(
-            children: [
-              Image.asset(
-                BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                    ? (AppAssets.backgroundDark)
-                    : (AppAssets.background),
-                fit: BoxFit.cover,
-                width: double.infinity,
-              ),
-              Column(
+      body: Stack(
+        children: [
+            Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
+          BlocConsumer<MedicineCubit, MedicineState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return Stack(
                 children: [
-                  SizedBox(
-                    height: 30.h,
+                  Image.asset(
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? (AppAssets.backgroundDark)
+                        : (AppAssets.background),
+                    fit: BoxFit.cover,
+                    width: double.infinity,
                   ),
-                  BlocProvider.of<MedicineCubit>(context).medicineList.isEmpty
-                      ? const NoMedicineWidgets()
-                      : Expanded(
-                          child: GridView.builder(
-                            itemCount: BlocProvider.of<MedicineCubit>(context)
-                                .medicineList
-                                .length,
-                            itemBuilder: (context, index) {
-                              return Component(
-                                index,
-                                medicineModel:
-                                    BlocProvider.of<MedicineCubit>(context)
-                                        .medicineList[index],
-                              );
-                            },
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 16,
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      BlocProvider.of<MedicineCubit>(context).medicineList.isEmpty
+                          ? const NoMedicineWidgets()
+                          : Expanded(
+                              child: GridView.builder(
+                                itemCount: BlocProvider.of<MedicineCubit>(context)
+                                    .medicineList
+                                    .length,
+                                itemBuilder: (context, index) {
+                                  return Component(
+                                    index,
+                                    medicineModel:
+                                        BlocProvider.of<MedicineCubit>(context)
+                                            .medicineList[index],
+                                  );
+                                },
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 8,
+                                  mainAxisSpacing: 16,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
+                    ],
+                  ),
                 ],
-              ),
-            ],
-          );
-        },
+              );
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(

@@ -30,93 +30,91 @@ class MyAccountState extends State<MyAccount> {
     return BlocProvider(
       create: (context) => SettingsCubit(),
       child: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                  ? const AssetImage(
-                      'lib/core/utils/appImages/images/backgroundDark.png')
-                  : const AssetImage(
-                      'lib/core/utils/appImages/images/background.png'),
-              fit:
-                  BoxFit.cover, // Optional: You can set the image fit as needed
-            ),
+        body: Stack(
+          children: [
+              Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
           ),
-          child: SingleChildScrollView(
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //  buildHeader(),
-                    buildProfileCard(),
-                    SizedBox(height: 28.h),
-                    buildActionCard(
-                      icon: Icons.person_2_outlined,
-                      title: AppLocalizations.of(context)!.profile,
-                      //goBackHome
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EditProfileScreen()),
-                        );
-                      },
-                    ),
-                    SizedBox(height: 28.h),
-                    buildActionCard(
-                      icon: Icons.smart_toy_outlined,
-                      title: AppLocalizations.of(context)!.chat,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ChatBotView()),
-                        );
-                      },
-                    ),
-                    SizedBox(height: 28.h),
-                    buildActionCard(
-                      icon: Icons.storage,
-                      title: AppLocalizations.of(context)!.myData,
-                      //myData
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const InfoOneScreen()),
-                        );
-                        // Navigate to information page
-                      },
-                    ),
-                    SizedBox(height: 28.h),
-                    buildNotificationCard(),
-                    SizedBox(height: 45.h),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignInScreen()),
-                        );
-                      },
-                      child: Text(
-                        AppLocalizations.of(context)!.logOut,
-                        //logOut
-                        style: TextStyle(
-                          color: const Color(0xFFFF0404),
-                          fontSize: 18.sp,
-                          fontFamily: 'Kodchasan',
-                          fontWeight: FontWeight.w600,
-                          height: 0,
+            SingleChildScrollView(
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //  buildHeader(),
+                      buildProfileCard(),
+                      SizedBox(height: 28.h),
+                      buildActionCard(
+                        icon: Icons.person_2_outlined,
+                        title: AppLocalizations.of(context)!.profile,
+                        //goBackHome
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const EditProfileScreen()),
+                          );
+                        },
+                      ),
+                      SizedBox(height: 28.h),
+                      buildActionCard(
+                        icon: Icons.smart_toy_outlined,
+                        title: AppLocalizations.of(context)!.chat,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ChatBotView()),
+                          );
+                        },
+                      ),
+                      SizedBox(height: 28.h),
+                      buildActionCard(
+                        icon: Icons.storage,
+                        title: AppLocalizations.of(context)!.myData,
+                        //myData
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const InfoOneScreen()),
+                          );
+                          // Navigate to information page
+                        },
+                      ),
+                      SizedBox(height: 28.h),
+                      buildNotificationCard(),
+                      SizedBox(height: 45.h),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignInScreen()),
+                          );
+                        },
+                        child: Text(
+                          AppLocalizations.of(context)!.logOut,
+                          //logOut
+                          style: TextStyle(
+                            color: const Color(0xFFFF0404),
+                            fontSize: 18.sp,
+                            fontFamily: 'Kodchasan',
+                            fontWeight: FontWeight.w600,
+                            height: 0,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

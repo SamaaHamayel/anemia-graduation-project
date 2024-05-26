@@ -1,4 +1,5 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
+import 'package:animeacheck/core/utils/appImages/app_assets.dart';
 import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/auth/presentation/signUp_cubit/sign_up_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_text.dart';
@@ -66,210 +67,206 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                ? const AssetImage(
-                    'lib/core/utils/appImages/images/backgroundDark.png')
-                : const AssetImage(
-                    'lib/core/utils/appImages/images/background.png',
-                  ),
+      body: Stack(
+        children: [
+            Image.asset(
+            BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                ? (AppAssets.backgroundDark)
+                : (AppAssets.background),
             fit: BoxFit.cover,
+            width: double.infinity,
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Stack(children: [
-                  Container(
-                    height: 96.h,
-                    width: 96.w,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.green,
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(72.r))),
-                    child: CustomEditProfileFileImage(
-                      image: editProfileCubit.image,
-                      fit: BoxFit.fill,
-
-                    ),
-                  ),
-                  Positioned(
-                    bottom: -13,
-                    left: -13,
-                    child: IconButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return ImagePickerDialog(
-                              cameraOnTap: () async {
-                                Navigator.pop(context);
-                                await pickImage(ImageSource.camera).then(
-                                    (value) =>
-                                        editProfileCubit.editImage(value));
-                              },
-                              galleryOnTap: () async {
-                                Navigator.pop(context);
-                                await pickImage(ImageSource.gallery).then(
-                                    (value) =>
-                                        editProfileCubit.uploadImage(value));
-                              },
-                            );
-                          },
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.add_circle_outline,
-                        color: AppColors.medicineNameColor,
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Stack(children: [
+                    Container(
+                      height: 96.h,
+                      width: 96.w,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.green,
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(72.r))),
+                      child: CustomEditProfileFileImage(
+                        image: editProfileCubit.image,
+                        fit: BoxFit.fill,
+          
                       ),
                     ),
-                  )
-                ]),
-                SizedBox(
-                  height: 20.h,
-                ),
-                CustomTextFormField(
-                  controller:
-                      BlocProvider.of<SignUpCubit>(context).nameController,
-                  prefixIcon: Icons.person_outlined,
-                  hint: AppLocalizations.of(context)!.nameHint,
-                  textInputAction: TextInputAction.next,
-                  validate: (data) {
-                    if (data!.length < 3 || data.isEmpty) {
-                      return AppLocalizations.of(context)!.nameHint;
-                    }
-                    return null;
-                  },
-                  readOnly: isEditing==false?true:false,
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
-
-                //____email____
-                CustomText(
-                    alignment: Alignment.bottomLeft,
-                    text: AppLocalizations.of(context)!.email),
-                SizedBox(
-                  height: 4.h,
-                ),
-                CustomTextFormField(
-                  controller: BlocProvider.of<SignUpCubit>(context)
-                      .signUpEmailController,
-                  prefixIcon: Icons.email_outlined,
-                  hint: AppLocalizations.of(context)!.emailHint,
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  validate: (data) {
-                    if (data!.isEmpty || !data.contains('@gmail.com')) {
-                      return AppLocalizations.of(context)!.enterValidEmail;
-                    }
-                    return null;
-                  },
-                  readOnly: isEditing==false?true:false,
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
-
-                //___password_____
-                CustomText(
-                    alignment: Alignment.bottomLeft,
-                    text: AppLocalizations.of(context)!.password),
-                SizedBox(
-                  height: 4.h,
-                ),
-                CustomTextFormField(
-                  controller: BlocProvider.of<SignUpCubit>(context)
-                      .signUpPasswordController,
-                  prefixIcon: Icons.lock_outlined,
-                  hint: AppLocalizations.of(context)!.passwordHint,
-                  textInputAction: TextInputAction.next,
-                  isPassword: BlocProvider.of<SignUpCubit>(context)
-                      .isSignUpPasswordShowing,
-                  icon: BlocProvider.of<SignUpCubit>(context).suffixIcon,
-                  suffixIconOnPressed: () {
-                    BlocProvider.of<SignUpCubit>(context)
-                        .changeLoginPasswordSuffixIcon();
-                  },
-                  validate: (data) {
-                    if (data!.length < 3 || data.isEmpty) {
-                      return AppLocalizations.of(context)!.enterValidPassword;
-                    }
-                    return null;
-                  },
-                  readOnly: isEditing==false?true:false,
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
-
-                SizedBox(
-                  height: 230.h,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      ElevatedButton(
+                    Positioned(
+                      bottom: -13,
+                      left: -13,
+                      child: IconButton(
                         onPressed: () {
-                          setState(() {
-                            isEditing = true; // تفعيل وضع التعديل
-                            isReadOnly = false;
-                          });
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return ImagePickerDialog(
+                                cameraOnTap: () async {
+                                  Navigator.pop(context);
+                                  await pickImage(ImageSource.camera).then(
+                                      (value) =>
+                                          editProfileCubit.editImage(value));
+                                },
+                                galleryOnTap: () async {
+                                  Navigator.pop(context);
+                                  await pickImage(ImageSource.gallery).then(
+                                      (value) =>
+                                          editProfileCubit.uploadImage(value));
+                                },
+                              );
+                            },
+                          );
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: isEditing
-                              ? AppColors.grayColor
-                              : AppColors.primaryColor,
-                        ),
-                        child: Text(
-                          AppLocalizations.of(context)!.edit,
-                          style: TextStyle(
-                              color: AppColors.whiteColor, fontSize: 20.sp),
+                        icon: const Icon(
+                          Icons.add_circle_outline,
+                          color: AppColors.medicineNameColor,
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: isEditing
-                            ? () {
-                                setState(() {
-                                  isEditing = false; // إلغاء تفعيل وضع التعديل
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeScreen()),
-                                  );
-                                });
-                              }
-                            : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: isEditing
-                              ? AppColors.primaryColor
-                              : AppColors.grayColor,
-                        ), // تعطيل زر Save حتى يتم تفعيل وضع التعديل
-                        child: Text(
-                          AppLocalizations.of(context)!.save,
-                          style: TextStyle(
-                              color: AppColors.whiteColor, fontSize: 20.sp),
-                        ),
-                      ),
-                    ],
+                    )
+                  ]),
+                  SizedBox(
+                    height: 20.h,
                   ),
-                ),
-
-              ],
+                  CustomTextFormField(
+                    controller:
+                        BlocProvider.of<SignUpCubit>(context).nameController,
+                    prefixIcon: Icons.person_outlined,
+                    hint: AppLocalizations.of(context)!.nameHint,
+                    textInputAction: TextInputAction.next,
+                    validate: (data) {
+                      if (data!.length < 3 || data.isEmpty) {
+                        return AppLocalizations.of(context)!.nameHint;
+                      }
+                      return null;
+                    },
+                    readOnly: isEditing==false?true:false,
+                  ),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+          
+                  //____email____
+                  CustomText(
+                      alignment: Alignment.bottomLeft,
+                      text: AppLocalizations.of(context)!.email),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  CustomTextFormField(
+                    controller: BlocProvider.of<SignUpCubit>(context)
+                        .signUpEmailController,
+                    prefixIcon: Icons.email_outlined,
+                    hint: AppLocalizations.of(context)!.emailHint,
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    validate: (data) {
+                      if (data!.isEmpty || !data.contains('@gmail.com')) {
+                        return AppLocalizations.of(context)!.enterValidEmail;
+                      }
+                      return null;
+                    },
+                    readOnly: isEditing==false?true:false,
+                  ),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+          
+                  //___password_____
+                  CustomText(
+                      alignment: Alignment.bottomLeft,
+                      text: AppLocalizations.of(context)!.password),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  CustomTextFormField(
+                    controller: BlocProvider.of<SignUpCubit>(context)
+                        .signUpPasswordController,
+                    prefixIcon: Icons.lock_outlined,
+                    hint: AppLocalizations.of(context)!.passwordHint,
+                    textInputAction: TextInputAction.next,
+                    isPassword: BlocProvider.of<SignUpCubit>(context)
+                        .isSignUpPasswordShowing,
+                    icon: BlocProvider.of<SignUpCubit>(context).suffixIcon,
+                    suffixIconOnPressed: () {
+                      BlocProvider.of<SignUpCubit>(context)
+                          .changeLoginPasswordSuffixIcon();
+                    },
+                    validate: (data) {
+                      if (data!.length < 3 || data.isEmpty) {
+                        return AppLocalizations.of(context)!.enterValidPassword;
+                      }
+                      return null;
+                    },
+                    readOnly: isEditing==false?true:false,
+                  ),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+          
+                  SizedBox(
+                    height: 230.h,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              isEditing = true; // تفعيل وضع التعديل
+                              isReadOnly = false;
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: isEditing
+                                ? AppColors.grayColor
+                                : AppColors.primaryColor,
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)!.edit,
+                            style: TextStyle(
+                                color: AppColors.whiteColor, fontSize: 20.sp),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: isEditing
+                              ? () {
+                                  setState(() {
+                                    isEditing = false; // إلغاء تفعيل وضع التعديل
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HomeScreen()),
+                                    );
+                                  });
+                                }
+                              : null,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: isEditing
+                                ? AppColors.primaryColor
+                                : AppColors.grayColor,
+                          ), // تعطيل زر Save حتى يتم تفعيل وضع التعديل
+                          child: Text(
+                            AppLocalizations.of(context)!.save,
+                            style: TextStyle(
+                                color: AppColors.whiteColor, fontSize: 20.sp),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+          
+                ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
