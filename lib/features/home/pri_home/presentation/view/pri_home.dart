@@ -116,6 +116,7 @@ class PriHome extends StatelessWidget {
 void _navigateToDetectedScreen(BuildContext context) async {
   bool isConnected = await _isConnected();
 
+
   if (isConnected) {
     Navigator.push(
       context,

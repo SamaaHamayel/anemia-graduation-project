@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class DetectAnemiaByImage extends StatefulWidget {
+  const DetectAnemiaByImage({super.key});
+
   @override
   DetectAnemiaByImageState createState() => DetectAnemiaByImageState();
 }

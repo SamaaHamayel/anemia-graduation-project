@@ -39,39 +39,37 @@ class HelpfulInformationScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         automaticallyImplyLeading: false,
-        title: Container(
-          child: Row(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.lightPrimaryColor,
-                  size: 23.sp,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+        title: Row(
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_rounded,
+                color:
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? AppColors.whiteColor
+                        : AppColors.lightPrimaryColor,
+                size: 23.sp,
               ),
-              SizedBox(width: 30.w),
-              Text(
-                AppLocalizations.of(context)!.helpfulInformation,
-                style: TextStyle(
-                  color:
-                      BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
-                          ? AppColors.whiteColor
-                          : AppColors.lightBackgroundColor,
-                  fontSize: 19.sp,
-                  fontFamily: 'Kodchasan',
-                  fontWeight: FontWeight.w500,
-                  height: 0,
-                  letterSpacing: 1.76,
-                ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            SizedBox(width: 30.w),
+            Text(
+              AppLocalizations.of(context)!.helpfulInformation,
+              style: TextStyle(
+                color:
+                    BlocProvider.of<SettingsCubit>(context).isDarkThemEnable
+                        ? AppColors.whiteColor
+                        : AppColors.lightBackgroundColor,
+                fontSize: 19.sp,
+                fontFamily: 'Kodchasan',
+                fontWeight: FontWeight.w500,
+                height: 0,
+                letterSpacing: 1.76,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       body: Stack(

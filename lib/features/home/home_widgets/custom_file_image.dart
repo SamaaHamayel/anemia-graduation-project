@@ -18,7 +18,7 @@ class CustomFileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: 150.h,
         width: 220.w,
          child: image != null

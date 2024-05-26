@@ -12,7 +12,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   // Take image from user
   void editImage(value) {
     image = value;
-    emit(EditProfileImageState());
+    emit(EditProfileImageSuccessState());
   }
 
 

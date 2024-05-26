@@ -1,4 +1,3 @@
-import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_cubit.dart';
 import 'package:animeacheck/features/auth/presentation/forgetPassword_cubit/forget_password_state.dart';
 import 'package:animeacheck/features/auth/presentation/widgets/custom_elevated_button.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
@@ -10,6 +9,7 @@ import '../../../../conf/routes/routes.dart';
 import '../../../../core/utils/appColors/app_colors.dart';
 import '../../../../core/utils/appImages/app_assets.dart';
 import '../../../../core/utils/common.dart';
+import '../forgetPassword_cubit/forget_password_cubit.dart';
 import '../widgets/custom_image.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_text_form_field.dart';

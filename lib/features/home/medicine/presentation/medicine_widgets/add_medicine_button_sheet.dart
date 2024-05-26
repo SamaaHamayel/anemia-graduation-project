@@ -1,8 +1,6 @@
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

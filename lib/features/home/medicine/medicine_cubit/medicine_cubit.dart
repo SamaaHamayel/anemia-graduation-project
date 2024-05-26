@@ -4,6 +4,7 @@ import 'package:animeacheck/core/sqflite_helper/sqflite_helper.dart';
 import 'package:animeacheck/core/utils/common.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:animeacheck/features/home/medicine/presentation/medicine_widgets/add_medicine_button_sheet.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -98,7 +99,9 @@ class MedicineCubit extends Cubit<MedicineState> {
         ),
 
       );
-      print(medicineList.length);
+      if (kDebugMode) {
+        print(medicineList.length);
+      }
       getMedicine();
       medicineNameController.clear();
       medicineDoseController.clear();
@@ -119,7 +122,7 @@ class MedicineCubit extends Cubit<MedicineState> {
       medicineList = value.map((e) => MedicineModel.fromJson(e)).toList();
       emit(GetMedicineSuccessState());
     }).catchError((e) {
-      print(e.toString());
+      log(e.toString());
       emit(GetMedicineErrorState());
     });
   }
@@ -132,7 +135,7 @@ class MedicineCubit extends Cubit<MedicineState> {
       emit(EditMedicineSuccessState());
       const AddMedicineButtonSheet(readOnly: false, hintText: "edit");
     }).catchError((e) {
-      print(e.toString());
+      log(e.toString());
       emit(EditMedicineErrorState());
     });
   }
@@ -144,7 +147,7 @@ class MedicineCubit extends Cubit<MedicineState> {
       emit(DeleteMedicineSuccessState());
       getMedicine();
     }).catchError((e) {
-      print(e.toString());
+      log(e.toString());
       emit(DeleteMedicineErrorState());
     });
   }

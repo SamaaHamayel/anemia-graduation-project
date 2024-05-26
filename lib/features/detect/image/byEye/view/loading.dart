@@ -26,7 +26,7 @@ Widget buildLoading(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
+              const Center(
                 child: RotatingIcon(),
               ),
               const SizedBox(height: 32),
@@ -52,6 +52,8 @@ Widget buildLoading(BuildContext context) {
 }
 
 class RotatingIcon extends StatefulWidget {
+  const RotatingIcon({super.key});
+
   @override
   RotatingIconState createState() => RotatingIconState();
 }

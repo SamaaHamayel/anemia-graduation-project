@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animeacheck/core/utils/appColors/app_colors.dart';
 import 'package:animeacheck/features/home/setting/presentation/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +51,7 @@ Widget buildSnackBar(BuildContext context) {
                     GestureDetector(
                       onTap: () {
                         // Add your onPressed logic here
-                        print('Try Again button pressed');
+                        log('Try Again button pressed');
                       },
                       child: TextButton(
                         onPressed: () {

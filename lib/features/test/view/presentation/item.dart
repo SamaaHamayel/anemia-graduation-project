@@ -65,6 +65,8 @@ class CustomContainer extends StatelessWidget {
 }
 
 class ExpandLessIcon extends StatelessWidget {
+  const ExpandLessIcon({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Column(
@@ -114,15 +116,15 @@ Widget buildContainerWithHB(String labelText) {
             ),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Row(
+          child: const Row(
             children: [
-              const CustomText(
+              CustomText(
                 text: 'Less',
                 color: Color(0xFF2BB598),
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
-              const SizedBox(width: 44),
+              SizedBox(width: 44),
               ExpandLessIcon(),
             ],
           ),

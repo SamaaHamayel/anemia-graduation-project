@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animeacheck/features/home/history/data/history_model.dart';
 import 'package:animeacheck/features/home/medicine/domain/medicine_model/medicine_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -33,7 +35,7 @@ class SqfliteHelper
           result TEXT)
       ''');
       },
-      onOpen: (db) => print('Database opened'),
+      onOpen: (db) => log('Database opened'),
     );
   }
 
